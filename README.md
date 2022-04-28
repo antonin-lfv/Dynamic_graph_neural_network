@@ -59,27 +59,33 @@ Ainsi, soit ![formula](https://render.githubusercontent.com/render/math?math=x=[
 le vecteur d'entrée, alors la distance euclidienne 
 ![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par : <br>
 
-![formula](https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2})
+<p align="center">
+   <img src="https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}" alt="">
+</p>
 
-Donc ![formula](https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2)
+Donc 
+
+<p align="center">
+   <img src="https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2" alt="">
+</p>
 
 Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
 
 
-La distance euclidienne entre le vecteur d'entrée $u$ et le foyer $z$ est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire $b_v$ un paramètre d'échelle qui correspond au learning rate du réseau.
+La distance euclidienne entre le vecteur d'entrée ![formula](https://render.githubusercontent.com/render/math?math=u) et le foyer ![formula](https://render.githubusercontent.com/render/math?math=z) est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire $b_v$ un paramètre d'échelle qui correspond au learning rate du réseau.
 $$\Delta z(x)=b_v(z-u)$$
-Après modification du foyer, on va modifier de la même manière les neurones connectés à proximité du foyer (en dessous d'un certain seuil $a_n$ de similarité), mais à un degré moindre par rapport au foyer. On introduit le scalaire $b_c$ un paramètre d'échelle qui correspond au taux de changement du noeud. ($k$ est le foyer ?)$$\Delta x_j=b_c*c_{jk}(x_k-x_j)$$
-Avec $k = 1,2,3, .., l$   $j\ne k$   $b_c ∈ R$ 
+Après modification du foyer, on va modifier de la même manière les neurones connectés à proximité du foyer (en dessous d'un certain seuil ![formula](https://render.githubusercontent.com/render/math?math=a_n) de similarité), mais à un degré moindre par rapport au foyer. On introduit le scalaire $b_c$ un paramètre d'échelle qui correspond au taux de changement du noeud. ($k$ est le foyer ?)$$\Delta x_j=b_c*c_{jk}(x_k-x_j)$$
+Avec ![formula](https://render.githubusercontent.com/render/math?math=k=1,2,3,..,l)   ![formula](https://render.githubusercontent.com/render/math?math=j!=k)   ![formula](https://render.githubusercontent.com/render/math?math=b_c) ∈ ![formula](https://render.githubusercontent.com/render/math?math=R) 
 
-On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire $b_l$ . La nouvelle valeur de la connexion entre $j$ et $k$ est alors $$c_{jk}=b_l(||x_j-x_k||)$$
+On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_l) . La nouvelle valeur de la connexion entre ![formula](https://render.githubusercontent.com/render/math?math=j) et $k$ est alors $$c_{jk}=b_l(||x_j-x_k||)$$
 Avec $b_l ∈ R$
 
 
-Si l'entrée du réseau $u$ est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté. Un neurone est ajouté quand $||d||>a_n$   avec $a_n ∈ R$
-C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil $a_n$.
+Si l'entrée du réseau ![formula](https://render.githubusercontent.com/render/math?math=u) est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté. Un neurone est ajouté quand $||d||>a_n$   avec $a_n ∈ R$
+C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil ![formula](https://render.githubusercontent.com/render/math?math=a_n).
 
 
-Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit $a_r$ le seuil, le lien entre le neurone $i$ et $j$ est supprimé si $c_{ij}>a_r$ . 
+Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit $a_r$ le seuil, le lien entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j) est supprimé si $c_{ij}>a_r$ . 
 
 Quand un neurone n'a plus de lien, il est supprimé.
 
