@@ -14,13 +14,18 @@
 <br>
 
 Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests.
-La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées.
+La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées. Ensuite, la partie graphique avec Plotly sera construite
+pour pouvoir suivre l'évolution architecturale du réseau. Puis viendra une phase d'expérimentation où on tentera de classer plusieurs
+types de fonctions, et de jouer avec les seuils présents dans le modèle. 
+Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement.
 
 <br>
 
 # Liens utiles
 
 - Comprendre les [self-organising maps](https://en.wikipedia.org/wiki/Self-organizing_map)
+
+- Article scientifique initial sur les fondements du modèle de [Dynamic graph neural network](https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual)
 
 <br/>
 
