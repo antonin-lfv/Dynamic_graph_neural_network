@@ -53,6 +53,8 @@ plotly
 [Fastdist](https://github.com/talboger/fastdist) documentation
 [Plotly](https://plotly.com/python/) documentation
 
+<br>
+
 # Mathematical model
 
 ## Algorithm
