@@ -34,15 +34,71 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 # Index
 
 1. [Librairies](#librairies)
-2. [Le modèle mathématique](#le-modèle-mathématique)
-    1. [Algorithme](#algorithme)
-    2. [Prédictions](#prédictions)
+2. [Mathematical model](#mathematical-model)
+    1. [Algorithm](#algorithm)
+    2. [Predictions](#predictions)
+
+<br>
+
+# Librairies
+
+# Mathematical model
+
+## Algorithm
+
+Voici un réseau basique, chaque neurone ![formula](https://render.githubusercontent.com/render/math?math=x) contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note ![formula](https://render.githubusercontent.com/render/math?math=c_{ij})
+la liaison entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j). Les neurones les plus semblables sont connectés par un poids synaptique.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/63207451/165794912-0e449845-0544-4234-842b-fdd41a7c3e13.png" alt="archi of PSOM">
+	</p>
+
+A partir de là, le vecteur d'entrée noté ![formula](https://render.githubusercontent.com/render/math?math=u) est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée ![formula](https://render.githubusercontent.com/render/math?math=d) ) de l'input est alors appelé le foyer, et est noté ![formula](https://render.githubusercontent.com/render/math?math=z(x) ).
+
+Ainsi, soit ![formula](https://render.githubusercontent.com/render/math?math=x=[x_1,x_2,...,x_n]^T) un vecteur d'un neurone, et ![formula](https://render.githubusercontent.com/render/math?math=u=[u_1,u_2,...,u_n]^T)
+le vecteur d'entrée, alors la distance euclidienne ![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par :
+![formula](https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2})
+Donc ![formula](https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2)
+Avec $j = 1,2,3,... l$  et $l$ le nombre de neurones dans le graphe.
 
 
+La distance euclidienne entre le vecteur d'entrée $u$ et le foyer $z$ est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire $b_v$ un paramètre d'échelle qui correspond au learning rate du réseau.
+$$\Delta z(x)=b_v(z-u)$$
+Après modification du foyer, on va modifier de la même manière les neurones connectés à proximité du foyer (en dessous d'un certain seuil $a_n$ de similarité), mais à un degré moindre par rapport au foyer. On introduit le scalaire $b_c$ un paramètre d'échelle qui correspond au taux de changement du noeud. ($k$ est le foyer ?)$$\Delta x_j=b_c*c_{jk}(x_k-x_j)$$
+Avec $k = 1,2,3, .., l$   $j\ne k$   $b_c ∈ R$ 
+
+On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire $b_l$ . La nouvelle valeur de la connexion entre $j$ et $k$ est alors $$c_{jk}=b_l(||x_j-x_k||)$$
+Avec $b_l ∈ R$
 
 
+Si l'entrée du réseau $u$ est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté. Un neurone est ajouté quand $||d||>a_n$   avec $a_n ∈ R$
+C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil $a_n$.
 
 
+Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit $a_r$ le seuil, le lien entre le neurone $i$ et $j$ est supprimé si $c_{ij}>a_r$ . 
+
+Quand un neurone n'a plus de lien, il est supprimé.
+
+## Predictions
+
+
+Il y a deux méthodes pour effectuer une prédiction
+
+1) Par concaténation 
+
+En considérant que chaque neurone contient un vecteur qui contient en plus la sortie souhaitée. Ainsi, en envoyant en entrée un vecteur avec seulement une taille correspondant à la taille de ceux des neurones sans la sortie, le réseau devrait renvoyer la sortie du foyer associé. 
+
+> Cette méthode induit que les données sont labellisés 
+
+2) Par labellisation automatique des clusters
+
+Si la connexion entre deux neurones est suffisamment petite, le réseau va associer aux deux neurones le même label. Par exemple, sur l'image ci-dessous le neurone du Label A et le neurone du label B ont une liaison de poids 5, ce qui veut dire qu'ils sont très similaires, dans ce cas les labels sont fusionnés.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/63207451/165794988-62cc255f-0d0a-428d-ae8c-807dbd928c0c.png" alt="archi of PSOM">
+	</p>
+
+> Marche très bien pour des données non labélisées
 
 
 
