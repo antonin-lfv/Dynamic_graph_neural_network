@@ -50,6 +50,9 @@ numpy
 plotly
 ```
 
+[Fastdist](https://github.com/talboger/fastdist) documentation
+[Plotly](https://plotly.com/python/) documentation
+
 # Mathematical model
 
 ## Algorithm
