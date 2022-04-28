@@ -56,10 +56,14 @@ la liaison entre le neurone ![formula](https://render.githubusercontent.com/rend
 A partir de là, le vecteur d'entrée noté ![formula](https://render.githubusercontent.com/render/math?math=u) est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée ![formula](https://render.githubusercontent.com/render/math?math=d) ) de l'input est alors appelé le foyer, et est noté ![formula](https://render.githubusercontent.com/render/math?math=z(x) ).
 
 Ainsi, soit ![formula](https://render.githubusercontent.com/render/math?math=x=[x_1,x_2,...,x_n]^T) un vecteur d'un neurone, et ![formula](https://render.githubusercontent.com/render/math?math=u=[u_1,u_2,...,u_n]^T)
-le vecteur d'entrée, alors la distance euclidienne ![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par :
+le vecteur d'entrée, alors la distance euclidienne 
+![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par : <br>
+
 ![formula](https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2})
+
 Donc ![formula](https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2)
-Avec $j = 1,2,3,... l$  et $l$ le nombre de neurones dans le graphe.
+
+Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
 
 
 La distance euclidienne entre le vecteur d'entrée $u$ et le foyer $z$ est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire $b_v$ un paramètre d'échelle qui correspond au learning rate du réseau.
