@@ -42,6 +42,14 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 
 # Librairies
 
+Libraries used :
+
+```python
+fastdist
+numpy
+plotly
+```
+
 # Mathematical model
 
 ## Algorithm
