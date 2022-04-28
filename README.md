@@ -9,15 +9,17 @@
 <p align="center">
 <a href="https://"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
 <a href="https://"><img src="https://img.shields.io/badge/Dynamic-Neural_Network-018291" alt="Dynamic - Neural Network"></a>
-</p>
+<p>
 
 <br>
 
+<p align="center">
 Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests.
 La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées. Ensuite, la partie graphique avec Plotly sera construite
 pour pouvoir suivre l'évolution architecturale du réseau. Puis viendra une phase d'expérimentation où on tentera de classer plusieurs
 types de fonctions, et de jouer avec les seuils présents dans le modèle. 
 Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement.
+</p>
 
 <br>
 
