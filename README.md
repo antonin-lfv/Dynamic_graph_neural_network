@@ -34,15 +34,15 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 # Index
 
 1. [Librairies](#librairies)
-2. [Mathematical model](#mathematical-model)
-    1. [Algorithm](#algorithm)
-    2. [Predictions](#predictions)
+2. [Modèle mathématique](#modèle-mathématique)
+    1. [Algorithme](#algorithme)
+    2. [Prédictions](#prédictions)
 
 <br>
 
 # Librairies
 
-Libraries used :
+Libraries utilisées :
 
 ```python
 fastdist
@@ -50,14 +50,14 @@ numpy
 plotly
 ```
 
-[Fastdist](https://github.com/talboger/fastdist) documentation
-[Plotly](https://plotly.com/python/) documentation
+Documentation [Fastdist](https://github.com/talboger/fastdist)
+Documentation [Plotly](https://plotly.com/python/)
 
 <br>
 
-# Mathematical model
+# Modèle mathématique
 
-## Algorithm
+## Algorithme
 
 Voici un réseau basique, chaque neurone ![formula](https://render.githubusercontent.com/render/math?math=x) contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note ![formula](https://render.githubusercontent.com/render/math?math=c_{ij})
 la liaison entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j). Les neurones les plus semblables sont connectés par un poids synaptique.
@@ -111,7 +111,7 @@ C'est à dire si la distance minimale entre l'entrée et les neurones dépasse l
 
 Quand un neurone n'a plus de lien, il est supprimé.
 
-## Predictions
+## Prédictions
 
 
 Il y a deux méthodes pour effectuer une prédiction
