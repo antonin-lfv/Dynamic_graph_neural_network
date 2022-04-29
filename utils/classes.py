@@ -70,9 +70,15 @@ class Graph:
         connexions est faite par des méthodes propres aux neurones.
         Ici on ajoute simplement le neurone et ses connexions.
         """
+        # ===== neurone
         # set index
         neuron.index = self.compt_neurons
         # On l'ajoute au réseau
         self.neurons[neuron.index] = neuron
+        # si la distance du foyer est supérieur au seuil, on lui attribut un nouveau label (son index)
+        # sinon on lui associe le label du foyer
+
         # on augmente le compteur du graphe
         self.compt_neurons += 1
+
+        # ===== connexion

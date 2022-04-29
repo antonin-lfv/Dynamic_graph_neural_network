@@ -14,6 +14,7 @@ class ConstGraph:
 class ConstThreshold:
     bv = ...
     bc = ...
+    seuilNouveauLabel = 10
 
 
 class ConstPlotly:
