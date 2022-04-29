@@ -38,6 +38,7 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
     1. [Algorithme](#algorithme)
     2. [Prédictions](#prédictions)
 
+
 <br>
 
 # Librairies
