@@ -77,7 +77,7 @@ class Graph:
             # set label
             neuron.label = str(neuron.index)
             # connexion
-            neuron.liaisons = {self.neurons.keys()[0]: distance_neurons(self.neurons.keys()[1], neuron.vecteur)}
+            neuron.liaisons = {list(self.neurons.keys())[0]: distance_neurons(list(self.neurons.values())[0].vecteur, neuron.vecteur)}
             # On l'ajoute au réseau
             self.neurons[neuron.index] = neuron
             # on augmente le compteur du graphe
