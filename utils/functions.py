@@ -31,9 +31,10 @@ def get_foyer(graph, neuron):
     :param neuron: le neurone d'entrée
     """
     if len(graph.neurons) != 0:
-        index_foyer, distance_foyer, label_foyer = None, np.inf, None
+        distance_foyer, foyer = np.inf, graph.neurons[list(graph.neurons.keys())[0]]
         for n in graph.neurons.keys():
             if distance_neurons(neuron.vecteur, graph.neurons[n].vecteur) < distance_foyer:
-                return graph.neurons[n]
+                foyer = graph.neurons[n]
+        return foyer
     else:
         raise ValueError("Le graphique ne contient aucun neurone")

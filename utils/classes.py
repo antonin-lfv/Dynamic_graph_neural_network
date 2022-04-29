@@ -81,24 +81,6 @@ class Graph:
             # on augmente le compteur du graphe
             self.compt_neurons += 1
 
-        # ===== Si il n'y a qu'un seul neurone dans le réseau
-        elif len(self.neurons) == 1:
-            # set index
-            neuron.index = self.compt_neurons
-            # si la distance du foyer est supérieur au seuil, on lui attribut un nouveau label (son index) sinon on lui associe le label du foyer
-            foyer = get_foyer(self, neuron)
-            if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold.seuilNouveauLabel:
-                neuron.label = str(neuron.index)
-            else:
-                neuron.label = foyer.label
-            # connexion (on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons)
-            neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur, neuron.vecteur)
-            # On l'ajoute au réseau
-            self.neurons[neuron.index] = neuron
-            # on augmente le compteur du graphe
-            self.compt_neurons += 1
-
-        # ===== Si il y a au moins 2 neurones dans le réseau
         else:
             # set index
             neuron.index = self.compt_neurons
@@ -108,7 +90,15 @@ class Graph:
                 neuron.label = str(neuron.index)
             else:
                 neuron.label = foyer.label
-            # liaisons
+
+            if len(self.neurons) == 1:
+                # Il y a un seul neurone dans le réseau -> création d'une seule connexion
+                # on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons
+                neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur, neuron.vecteur)
+
+            else:
+                # Il y a au moins 2 neurones dans le réseau
+                ...
 
             # On l'ajoute au réseau
             self.neurons[neuron.index] = neuron
