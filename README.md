@@ -51,7 +51,8 @@ numpy
 plotly
 ```
 
-Documentation [Fastdist](https://github.com/talboger/fastdist)
+Documentation [Fastdist](https://github.com/talboger/fastdist) 
+
 Documentation [Plotly](https://plotly.com/python/)
 
 <br>
