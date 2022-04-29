@@ -1,7 +1,7 @@
 from utils.const import *
 
 def distance_neurons(x: list, y: list) -> float:
-    """ Distance entre 2 neurones
+    """ Distance euclidienne entre 2 vecteurs de neurones
     :param x: vecteur du premier neurone de taille l
     :param y: vecteur du deuxieme neurone de taille l
     """
