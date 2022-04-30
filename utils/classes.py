@@ -26,7 +26,8 @@ class Neuron:
         ...
 
     def alterLiaisons(self):
-        """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)"""
+        """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)
+        C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
         ...
 
 
@@ -71,6 +72,7 @@ class Graph:
         Ici on ajoute simplement le neurone et ses connexions.
         """
         # ===== Si il n'y a pas de neurone
+        # Aucune liaison n'est créée
         if len(self.neurons) == 0:
             # set index
             neuron.index = self.compt_neurons
@@ -84,13 +86,14 @@ class Graph:
         else:
             # set index
             neuron.index = self.compt_neurons
-            # si la distance du foyer est supérieur au seuil, on lui attribut un nouveau label (son index) sinon on lui associe le label du foyer
+            # set label
+            # si la distance du foyer est supérieur au seuil an, on lui attribut un nouveau label (son index) sinon on lui associe le label du foyer
             foyer = get_foyer(self, neuron)
-            if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold.seuilNouveauLabel:
+            if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold.an:
                 neuron.label = str(neuron.index)
             else:
                 neuron.label = foyer.label
-
+            # set connexions
             if len(self.neurons) == 1:
                 # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion
                 # on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons
@@ -98,7 +101,15 @@ class Graph:
 
             else:
                 # ===== Il y a au moins 2 neurones dans le réseau
-                ...
+                for n in self.neurons.values():
+                    print(n)
+                    if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold.an:
+                        # Si la distance du foyer est plus petite que an on connecte à tous les neurones de distance < an
+                        ...
+                    else:
+                        # Si la distance du foyer est supérieur à an on connecte le neurone seulement au foyer
+                        # neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur, neuron.vecteur)
+                        ...
 
             # On l'ajoute au réseau
             self.neurons[neuron.index] = neuron

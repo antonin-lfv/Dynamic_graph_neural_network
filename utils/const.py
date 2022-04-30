@@ -12,9 +12,14 @@ class ConstGraph:
 
 
 class ConstThreshold:
+    # altération du foyer
     bv = ...
+    # altération des voisins du foyer
     bc = ...
-    seuilNouveauLabel = 30
+    # seuil après lequel suppression des liens suite à altération
+    ar = ...
+    # seuil après lequel le neurone est seulement connecté au foyer
+    an = ...
 
 
 class ConstPlotly:
