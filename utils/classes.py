@@ -45,6 +45,10 @@ class Graph:
         self.neurons = neurons
         self.compt_neurons = compt_neurons
 
+    def get_neuron_index(self):
+        """Retourne les index des neurones du graphe"""
+        return [n.index for n in self.neurons.values()]
+
     def __repr__(self):
         return f'G = Graph(neurons={self.neurons}, compt_neurons={self.compt_neurons})'
 
@@ -59,10 +63,31 @@ class Graph:
         neuron_points_x = []
         neuron_points_y = []
         neuron_points_label = []
+        # index des neurones existants
+        index_n = self.get_neuron_index()
         for index, n in self.neurons.items():
-            neuron_points_x.append(index)
-            neuron_points_y.append(0)
-            neuron_points_label.append(f'Label = {n.label}')
+            if index == index_n[0]:
+                # 1er point à placer
+                neuron_points_x.append(0)
+                neuron_points_y.append(0)
+                neuron_points_label.append(f'Label = {n.label}')
+            elif index == index_n[1]:
+                # 2e point à placer par rapport au premier
+                neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
+                neuron_points_y.append(0)
+                neuron_points_label.append(f'Label = {n.label}')
+            elif index == index_n[2]:
+                # 3e point à placer par rapport aux 2 premiers,
+                # intersection de 2 cercles
+                x, y = get_intersections_2circle(neuron_points_x[0], neuron_points_y[0], distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur), neuron_points_x[1], neuron_points_y[1], distance_neurons(n.vecteur, self.neurons[index_n[1]].vecteur))
+                neuron_points_x.append(x)
+                neuron_points_y.append(y)
+                neuron_points_label.append(f'Label = {n.label}')
+            else:
+                neuron_points_x.append(index)
+                neuron_points_y.append(0)
+                neuron_points_label.append(f'Label = {n.label}')
+
         fig.add_scatter(x=neuron_points_x, y=neuron_points_y, text=neuron_points_label, mode='markers+text',
                         hovertemplate="<b>%{text}</b><extra></extra>", textposition="bottom center",
                         textfont=dict(
@@ -71,9 +96,7 @@ class Graph:
                         marker=dict(
                             color='black'
                         ))
-
-        # Création des liaisons
-
+        print(neuron_points_x, neuron_points_y)
 
         fig.update_layout(
             xaxis=ConstPlotly.xaxis,

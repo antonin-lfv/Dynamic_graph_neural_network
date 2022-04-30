@@ -1,10 +1,11 @@
 import plotly.graph_objects as go
 from plotly.offline import plot
 import numpy as np
-import math as m
+import math
 import json
 from fastdist import fastdist
 from typing import List
+from scipy.optimize import fsolve
 
 
 class ConstGraph:
