@@ -37,7 +37,7 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 2. [Modèle mathématique](#modèle-mathématique)
     1. [Algorithme](#algorithme)
     2. [Prédictions](#prédictions)
-
+3. [Implémentation](#implémentation)
 
 <br>
 
@@ -135,6 +135,9 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 > Marche très bien pour des données non labélisées
 
+<br>
+
+# Implémentation
 
 
 
@@ -142,13 +145,13 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 
 
-
-
+<br>
 
 <p align="center"><a href="#librairies"><img src="http://randojs.com/images/backToTopButton.png" alt="Haut de la page" height="29"/></a></p>
 
-<br/>
+<br>
 
+<br>
 
 <p align="center">
 	  <a href="https://antonin-lfv.github.io" class="fancybox" ><img src="https://user-images.githubusercontent.com/63207451/127334786-f48498e4-7aa1-4fbd-b7b4-cd78b43972b8.png" title="Web Page" width="38" height="38"></a>
