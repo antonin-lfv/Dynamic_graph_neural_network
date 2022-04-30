@@ -16,12 +16,12 @@ class Neuron:
         self.label = label
 
     def __repr__(self):
-        return f'Neuron(index={self.index}, vecteur={self.vecteur}, liaison={self.liaisons}, label={self.label})'
+        return f'Neuron(index={self.index}, vecteur="Pas d\'affichage", liaison={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        Deltaz = [ConstThreshold.bv*(a+b) for a, b in zip(self.vecteur, u)]
-        self.vecteur = [a+b for a, b in zip(self.vecteur, Deltaz)]
+        Deltaz = [ConstThreshold.bv * (a + b) for a, b in zip(self.vecteur, u)]
+        self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
 
     def alterVoisins(self):
         """Alteration des voisins dans le cas ou il est le foyer : Δxj = bc*cjk(xk-xj)"""
@@ -55,9 +55,27 @@ class Graph:
     def plotGraph(self):
         """Plot le Graph actuel avec plotly"""
         fig = go.Figure()
+        # Création des points
+        neuron_points_x = []
+        neuron_points_y = []
+        neuron_points_label = []
+        for index, n in self.neurons.items():
+            neuron_points_x.append(index)
+            neuron_points_y.append(0)
+            neuron_points_label.append(f'Label = {n.label}')
+        fig.add_scatter(x=neuron_points_x, y=neuron_points_y, text=neuron_points_label, mode='markers+text',
+                        hovertemplate="<b>%{text}</b><extra></extra>", textposition="bottom center",
+                        textfont=dict(
+                            size=10,
+                        ),
+                        marker=dict(
+                            color='black'
+                        ))
+
+        # Création des liaisons
+
 
         fig.update_layout(
-            showlegend=False,
             xaxis=ConstPlotly.xaxis,
             yaxis=ConstPlotly.yaxis,
             paper_bgcolor=ConstPlotly.transparent_color,
