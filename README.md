@@ -146,9 +146,11 @@ Très vite, la nécessité d'avoir une représentation visuelle est devenu oblig
 Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
 Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly.
 Voici les étapes de l'algoritme :
-Étape 1: On place le premier neurone à la position (x=0, y=0)
-Étape 2: Le deuxième neurone est translater sur l'axe des x par rapport au premier neurone, ainsi en notant d la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0)
-Étape 3: 
+Étape 1: On place le premier neurone à la position (x=0, y=0) <br>
+Étape 2: Le deuxième neurone est translaté sur l'axe des x par rapport au premier neurone, ainsi en notant d la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0) <br>
+Étape 3: Pour les autres neurones, on résout un système de n équation à 2 inconnues. Prenons l'exemple ou nous avons les 2 premiers neurones, et nous voulons ajouter un 3e : <br>
+
+
 
 
 
