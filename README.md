@@ -154,7 +154,7 @@ Voici les étapes de l'algoritme : <br>
 Le premier point n1 est en coordonnées (x1=0, y1=0) avec comme rayon r1=69.58 la distance entre n1 et le neurone n3 à ajouter
 Le deuxième point n2 est en coordonnées (x2=58.42, y2=0) avec comme rayon r2=11.18 la distance entre n2 et n3
 
-Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les cercles voici le système : <br>
+Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les 2 cercles de centre n1 et n2 voici le système : <br>
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/63207451/166120794-b67cd845-33bf-4aa5-9b2d-ef12b7968836.png" alt="eq_syst">
