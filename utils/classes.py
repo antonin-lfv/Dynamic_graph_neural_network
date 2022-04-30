@@ -92,12 +92,12 @@ class Graph:
                 neuron.label = foyer.label
 
             if len(self.neurons) == 1:
-                # Il y a un seul neurone dans le réseau -> création d'une seule connexion
+                # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion
                 # on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons
                 neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur, neuron.vecteur)
 
             else:
-                # Il y a au moins 2 neurones dans le réseau
+                # ===== Il y a au moins 2 neurones dans le réseau
                 ...
 
             # On l'ajoute au réseau
