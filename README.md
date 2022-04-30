@@ -145,8 +145,10 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 Très vite, la nécessité d'avoir une représentation visuelle est devenu obligatoire. Ainsi, voici l'approche utilisée pour se faire.
 Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
 Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly.
-
-
+Voici les étapes de l'algoritme :
+Étape 1: On place le premier neurone à la position (x=0, y=0)
+Étape 2: Le deuxième neurone est translater sur l'axe des x par rapport au premier neurone, ainsi en notant d la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0)
+Étape 3: 
 
 
 
