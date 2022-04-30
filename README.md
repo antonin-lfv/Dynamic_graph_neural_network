@@ -38,6 +38,7 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
     1. [Algorithme](#algorithme)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
+   1. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
 
@@ -139,6 +140,11 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 # Implémentation
 
+## Affichage du graphe
+
+Très vite, la nécessité d'avoir une représentation visuelle est devenu obligatoire. Ainsi, voici l'approche utilisée pour se faire.
+Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
+Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly.
 
 
 

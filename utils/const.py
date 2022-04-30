@@ -6,6 +6,8 @@ import json
 from fastdist import fastdist
 from typing import List
 from scipy.optimize import fsolve
+import warnings
+warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 
 class ConstGraph:

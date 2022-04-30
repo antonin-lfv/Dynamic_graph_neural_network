@@ -40,32 +40,14 @@ def get_foyer(graph, neuron):
         raise ValueError("Le graphique ne contient aucun neurone")
 
 
-def get_intersections_2circle(x0: float, y0: float, r0: float, x1: float, y1: float, r1: float):
-    # circle 1: (x0, y0), rayon r0
-    # circle 2: (x1, y1), rayon r1
+def solve_inter_circles(centres_x, centres_y, rayons):
+    """Get one intersection of n circles
+    :param centres_x: liste des abscisses des n centres des cercles
+    :param centres_y: liste des ordonnées des n centres des cercles
+    :param rayons: liste des rayons des n cercles
+    """
+    def func(x):
+        return [(x[0] - cx) ** 2 + (x[1] - cy) ** 2 - d ** 2 for cx, cy, d in zip(centres_x, centres_y, rayons)]
 
-    d = math.sqrt((x1 - x0) ** 2 + (y1 - y0) ** 2)
-
-    # non-intersecting
-    if d > r0 + r1:
-        return None
-    # One circle within other
-    if d < abs(r0 - r1):
-        return None
-    # coincident circles
-    if d == 0 and r0 == r1:
-        return None
-    else:
-        a = (r0 ** 2 - r1 ** 2 + d ** 2) / (2 * d)
-        h = math.sqrt(r0 ** 2 - a ** 2)
-        x2 = x0 + a * (x1 - x0) / d
-        y2 = y0 + a * (y1 - y0) / d
-        x3 = x2 + h * (y1 - y0) / d
-        y3 = y2 - h * (x1 - x0) / d
-
-        # x4 = x2 - h * (y1 - y0) / d
-        # y4 = y2 + h * (x1 - x0) / d
-
-        # return [x3, y3, x4, y4]
-        # On choisi arbitrairement un des 2 pts d'intersection
-        return x3, y3
+    root = fsolve(func, [1]*len(centres_x), maxfev=500)
+    return root[0], root[1]
