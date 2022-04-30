@@ -16,11 +16,12 @@ class Neuron:
         self.label = label
 
     def __repr__(self):
-        return f'Neuron(index={self.index}, vecteur={"Non affiché"}, liaison={self.liaisons}, label={self.label})'
+        return f'Neuron(index={self.index}, vecteur={self.vecteur}, liaison={self.liaisons}, label={self.label})'
 
-    def alterFoyer(self):
+    def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        ...
+        Deltaz = [ConstThreshold.bv*(a+b) for a, b in zip(self.vecteur, u)]
+        self.vecteur = [a+b for a, b in zip(self.vecteur, Deltaz)]
 
     def alterVoisins(self):
         """Alteration des voisins dans le cas ou il est le foyer : Δxj = bc*cjk(xk-xj)"""
