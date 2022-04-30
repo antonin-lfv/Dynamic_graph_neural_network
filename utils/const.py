@@ -17,9 +17,9 @@ class ConstThreshold:
     # altération des voisins du foyer
     bc = ...
     # seuil après lequel suppression des liens suite à altération
-    ar = ...
+    ar = 80
     # seuil après lequel le neurone est seulement connecté au foyer
-    an = ...
+    an = 30
 
 
 class ConstPlotly:
