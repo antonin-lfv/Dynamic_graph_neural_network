@@ -155,8 +155,13 @@ Le deuxième point n2 est en coordonnées (x2=58.42, y2=0) avec comme rayon r2=1
 
 Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les cercles voici le système : <br>
 
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/63207451/166120794-b67cd845-33bf-4aa5-9b2d-ef12b7968836.png" alt="eq_syst">
+	</p>
 
+Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve choisir. <br>
 
+Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du neurone.
 
 
 <br>
