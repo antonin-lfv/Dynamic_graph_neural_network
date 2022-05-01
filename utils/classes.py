@@ -73,13 +73,13 @@ class Graph:
                 # 1er point à placer
                 neuron_points_x.append(0)
                 neuron_points_y.append(0)
-                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}<br>Liaisons={n.liaisons}')
             elif index == index_n[1]:
                 # 2e point à placer par rapport au premier
                 neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
                 neuron_points_y.append(0)
-                liaison_x.extend([neuron_points_x[-1], None])
-                liaison_y.extend([neuron_points_y[-1], None])
+                liaison_x.extend([neuron_points_x[-1], neuron_points_x[-2], None])
+                liaison_y.extend([neuron_points_y[-1], neuron_points_y[-2], None])
                 neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
             else:
                 # jème point à placer par rapport aux j-1 premiers,
@@ -97,6 +97,8 @@ class Graph:
                         marker=dict(
                             color='black'
                         ))
+
+        fig.add_scatter(x=liaison_x, y=liaison_y, mode="lines", opacity=.5)
 
         fig.update_layout(
             xaxis=ConstPlotly.xaxis,
