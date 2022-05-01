@@ -55,6 +55,10 @@ class Graph:
     def graphInfo(self):
         print(f"Nombre de neurones vus : {self.compt_neurons}")
         print(f"Nombre de neurones présents dans le réseau : {len(self.neurons)}")
+        nb_liaisons = 0
+        for n in self.neurons.values():
+            nb_liaisons += len(n.liaisons)
+        print(f"Nombre de liaisons dans le réseau : {nb_liaisons/2}")
 
     def plotGraph(self):
         """Plot le Graph actuel avec plotly"""
@@ -74,7 +78,7 @@ class Graph:
                 # 1er point à placer
                 neuron_points_x.append(0)
                 neuron_points_y.append(0)
-                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_points_info.append(f'Classe = {n.label}<br>Neurone {n.index}')
                 neuron_index.append(n.index)
             elif index == index_n[1]:
                 # 2e point à placer par rapport au premier
@@ -82,7 +86,7 @@ class Graph:
                 neuron_points_y.append(0)
                 liaison_x.extend([neuron_points_x[-1], neuron_points_x[-2], None])
                 liaison_y.extend([neuron_points_y[-1], neuron_points_y[-2], None])
-                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_points_info.append(f'Classe = {n.label}<br>Neurone {n.index}')
                 neuron_index.append(n.index)
             else:
                 # jème point à placer par rapport aux j-1 premiers,
@@ -95,7 +99,7 @@ class Graph:
                     if index_liaison in neuron_index:
                         liaison_x.extend([neuron_points_x[-1], neuron_points_x[neuron_index.index(index_liaison)], None])
                         liaison_y.extend([neuron_points_y[-1], neuron_points_y[neuron_index.index(index_liaison)], None])
-                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_points_info.append(f'Classe = {n.label}<br>Neurone {n.index}')
 
         fig.add_scatter(x=neuron_points_x, y=neuron_points_y, text=neuron_points_info, mode='markers+text',
                         hovertemplate="<b>%{text}</b><extra></extra>", textposition="bottom center",
@@ -106,13 +110,14 @@ class Graph:
                             color='black'
                         ))
 
-        fig.add_scatter(x=liaison_x, y=liaison_y, mode="lines", opacity=.5)
+        fig.add_scatter(x=liaison_x, y=liaison_y, mode="lines", opacity=.2, line=dict(color='blue'))
 
         fig.update_layout(
             xaxis=ConstPlotly.xaxis,
             yaxis=ConstPlotly.yaxis,
             paper_bgcolor=ConstPlotly.transparent_color,
             plot_bgcolor=ConstPlotly.transparent_color,
+            showlegend=False
         )
         plot(fig)
 
