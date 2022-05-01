@@ -144,15 +144,18 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 Très vite, la nécessité d'avoir une représentation visuelle est devenu obligatoire. Ainsi, voici l'approche utilisée pour se faire.
 Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
-Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly.
+Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly. On se ramène à un problème purement mathématique, comment placer `n` points
+en ne connaissant que la distance entre eux. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
 Voici les étapes de l'algoritme : <br>
 
 - Étape 1: On place le premier neurone à la position (x=0, y=0) <br>
-- Étape 2: Le deuxième neurone est translaté sur l'axe des x par rapport au premier neurone, ainsi en notant d la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0) <br>
-- Étape 3: Pour les autres neurones, on résout un système de n équation à 2 inconnues. Prenons l'exemple ou nous avons les 2 premiers neurones, et nous voulons ajouter un 3e : <br>
+- Étape 2: Le deuxième neurone est translaté sur l'axe des x par rapport au premier neurone, ainsi en notant `d` la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0) <br>
+- Étape 3: Pour les autres neurones, on résout un système de n équation à 2 inconnues qui permet de trouver le neurone à l'intersection des cercles dont tous les autres points en sont les centres. 
 
-Le premier point n1 est en coordonnées (x1=0, y1=0) avec comme rayon r1=69.58 la distance entre n1 et le neurone n3 à ajouter
-Le deuxième point n2 est en coordonnées (x2=58.42, y2=0) avec comme rayon r2=11.18 la distance entre n2 et n3
+Prenons l'exemple ou nous avons les 2 premiers neurones, et nous voulons ajouter un 3e : <br>
+
+Le premier point n1 est en coordonnées (x1=0, y1=0) avec comme rayon r1=69.58 qui est la distance entre n1 et le neurone n3 à ajouter
+Le deuxième point n2 est en coordonnées (x2=58.42, y2=0) avec comme rayon r2=11.18 qui est la distance entre n2 et n3
 
 Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les 2 cercles de centre n1 et n2 voici le système : <br>
 

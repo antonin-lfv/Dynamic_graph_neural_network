@@ -127,7 +127,6 @@ class Graph:
 
         L'altération du foyer, ainsi que des neurones voisins et des
         connexions est faite par des méthodes propres aux neurones.
-        Ici on ajoute simplement le neurone et ses connexions.
         """
         # ===== Si il n'y a pas de neurone
         # Aucune liaison n'est créée
