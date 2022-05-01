@@ -63,6 +63,9 @@ class Graph:
         neuron_points_x = []
         neuron_points_y = []
         neuron_points_info = []
+        # Création des liaisons inter-neurones
+        liaison_x = []
+        liaison_y = []
         # index des neurones existants
         index_n = self.get_neuron_index()
         for index, n in self.neurons.items():
@@ -75,6 +78,8 @@ class Graph:
                 # 2e point à placer par rapport au premier
                 neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
                 neuron_points_y.append(0)
+                liaison_x.extend([neuron_points_x[-1], None])
+                liaison_y.extend([neuron_points_y[-1], None])
                 neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
             else:
                 # jème point à placer par rapport aux j-1 premiers,
