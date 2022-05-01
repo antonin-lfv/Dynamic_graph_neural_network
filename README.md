@@ -35,10 +35,11 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 
 1. [Librairies](#librairies)
 2. [Modèle mathématique](#modèle-mathématique)
-    1. [Algorithme](#algorithme)
+    1. [Principe](#principe)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
-   1. [Affichage du graphe](#affichage-du-graphe)
+   1. [Algorithme](#algorithme)
+   2. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
 
@@ -60,7 +61,7 @@ Documentation [Plotly](https://plotly.com/python/)
 
 # Modèle mathématique
 
-## Algorithme
+## Principe
 
 Voici un réseau basique, chaque neurone ![formula](https://render.githubusercontent.com/render/math?math=x) contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note ![formula](https://render.githubusercontent.com/render/math?math=c_{ij})
 la liaison entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j). Les neurones les plus semblables sont connectés par un poids synaptique.
@@ -139,6 +140,12 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 <br>
 
 # Implémentation
+
+
+## Algorithme
+
+
+<br>
 
 ## Affichage du graphe
 
