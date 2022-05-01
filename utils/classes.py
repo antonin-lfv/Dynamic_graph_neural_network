@@ -63,6 +63,7 @@ class Graph:
         neuron_points_x = []
         neuron_points_y = []
         neuron_points_info = []
+        neuron_index = []
         # Création des liaisons inter-neurones
         liaison_x = []
         liaison_y = []
@@ -73,7 +74,8 @@ class Graph:
                 # 1er point à placer
                 neuron_points_x.append(0)
                 neuron_points_y.append(0)
-                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}<br>Liaisons={n.liaisons}')
+                neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_index.append(n.index)
             elif index == index_n[1]:
                 # 2e point à placer par rapport au premier
                 neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
@@ -81,12 +83,18 @@ class Graph:
                 liaison_x.extend([neuron_points_x[-1], neuron_points_x[-2], None])
                 liaison_y.extend([neuron_points_y[-1], neuron_points_y[-2], None])
                 neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
+                neuron_index.append(n.index)
             else:
                 # jème point à placer par rapport aux j-1 premiers,
                 # intersection de j-1 cercles
                 x, y = solve_inter_circles(neuron_points_x, neuron_points_y, [distance_neurons(self.neurons[i].vecteur, n.vecteur) for i in index_n])
                 neuron_points_x.append(x)
                 neuron_points_y.append(y)
+                neuron_index.append(n.index)
+                for index_liaison, liaisons in n.liaisons.items():
+                    if index_liaison in neuron_index:
+                        liaison_x.extend([neuron_points_x[-1], neuron_points_x[neuron_index.index(index_liaison)], None])
+                        liaison_y.extend([neuron_points_y[-1], neuron_points_y[neuron_index.index(index_liaison)], None])
                 neuron_points_info.append(f'Label = {n.label}<br>Index={n.index}')
 
         fig.add_scatter(x=neuron_points_x, y=neuron_points_y, text=neuron_points_info, mode='markers+text',
@@ -106,7 +114,7 @@ class Graph:
             paper_bgcolor=ConstPlotly.transparent_color,
             plot_bgcolor=ConstPlotly.transparent_color,
         )
-        plot(fig, filename="plot.html")
+        plot(fig)
 
     def addNeuron(self, neuron: Neuron):
         """ Connecte le neurone au réseau

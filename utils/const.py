@@ -22,7 +22,7 @@ class ConstThreshold:
     # seuil après lequel suppression des liens suite à altération
     ar = 80
     # seuil après lequel le neurone est seulement connecté au foyer
-    an = 30
+    an = 50
 
 
 class ConstPlotly:
