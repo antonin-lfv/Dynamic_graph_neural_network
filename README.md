@@ -48,9 +48,9 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 Libraries utilisées :
 
 ```python
-fastdist
-numpy
-plotly
+pip install fastdist
+pip install numpy
+pip install plotly
 ```
 
 Documentation [Fastdist](https://github.com/talboger/fastdist) 
