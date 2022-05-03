@@ -205,7 +205,7 @@ On cherche les coordonnées du point D :
 <br>
 
 <p align="center">
-<img width="893" alt="3_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467089-b45760ca-fc6e-4551-b3b5-b9492b349963.png">
+<img width="500" alt="3_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467089-b45760ca-fc6e-4551-b3b5-b9492b349963.png">
 	</p>
 
 <br> 
@@ -219,7 +219,7 @@ On cherche les coordonnées du point E :
 <br>
 
 <p align="center">
-<img width="731" alt="4_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467154-d220c01d-54ca-4a49-838a-a9a16f8671da.png">
+<img width="500" alt="4_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467154-d220c01d-54ca-4a49-838a-a9a16f8671da.png">
 	</p>
 
 <br>
