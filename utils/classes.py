@@ -16,22 +16,25 @@ class Neuron:
         self.label = label
 
     def __repr__(self):
-        return f'Neuron(index={self.index}, vecteur="Pas d\'affichage", liaison={self.liaisons}, label={self.label})'
+        return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaison={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
         Deltaz = [ConstThreshold.bv * (a + b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
 
-    def alterVoisins(self):
+    def alterVoisins(self, graph):
         """Alteration des voisins dans le cas ou il est le foyer : Δxj = bc*cjk(xk-xj)"""
-        ...
+        for k, val in self.liaisons.items():
+            # k prend les valeurs des index des neurones voisins, donc de similarité < an
+            graph.neurons[k].vecteur = [i+j for i, j in zip(graph.neurons[k].vecteur, [ConstThreshold.bc*val*(a-b) for a, b in zip(self.vecteur, graph.neurons[k].vecteur)])]
 
-    def alterLiaisons(self):
+    def alterLiaisons(self, graph):
         """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)
         C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
-        ...
-
+        for k, val in self.liaisons.items():
+            self.liaison[k] = graph.neurons[k].liaison[self.index] = [ConstThreshold.bl*abs(a-b) for a, b in zip(graph.neurons[k].vecteur, self.vecteur)]
+        # TODO : supprimer un lien si il est trop grand + supprimer un neurone si len(liaison) == 0
 
 class Graph:
     def __init__(self, neurons: dict = None, compt_neurons: int = 0):
@@ -178,5 +181,6 @@ class Graph:
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
             if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold.an:
-                # foyer.alterFoyer(neuron.vecteur)
-                ...
+                foyer.alterFoyer(neuron.vecteur)
+                foyer.alterVoisins(self)
+                foyer.alterLiaisons(self)

@@ -2,20 +2,32 @@ import numpy as np
 
 from utils.const import *
 
-cosinus = {
-    1: 1 * np.cos(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 2 * np.cos(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 3 * np.cos(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 4 * np.cos(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 5 * np.cos(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+f = np.cos
+g = np.sqrt
+h = np.sin
+
+type_1 = {
+    1: 1 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    2: 2 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    3: 3 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    4: 4 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    5: 5 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
 }
 
-sqrt = {
-    1: 4 * np.sqrt(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 5 * np.sqrt(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 6 * np.sqrt(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 7 * np.sqrt(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 8 * np.sqrt(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+type_2 = {
+    1: 4 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    2: 5 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    3: 6 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    4: 7 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    5: 8 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+}
+
+type_3 = {
+    1: 4 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    2: 5 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    3: 6 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    4: 7 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    5: 8 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
 }
 
 
