@@ -181,7 +181,7 @@ On obtient mathématiquement :
 <img width="355" alt="2_cercles_code" src="https://user-images.githubusercontent.com/63207451/166466584-59ad449e-5083-425e-a8af-e6044a929975.png">
 	</p>
 	
-	<br>
+<br>
 
 et géométriquement : <br>
 
