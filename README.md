@@ -175,19 +175,26 @@ Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections 
 Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve choisir. <br>
 On obtient mathématiquement :
 
+<br>
+
 <p align="center">
 <img width="355" alt="2_cercles_code" src="https://user-images.githubusercontent.com/63207451/166466584-59ad449e-5083-425e-a8af-e6044a929975.png">
 	</p>
+	
+	<br>
 
-et géométriquement :
+et géométriquement : <br>
 
 <p align="center">
-<img width="817" alt="2_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166466707-760ad15d-2e26-453b-a548-d0e655002be8.png">
+<img width="500" alt="2_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166466707-760ad15d-2e26-453b-a548-d0e655002be8.png" >
 	</p>
+<br>
 
 Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du nouveau neurone. <br>
 
 Voici les essaies sur les deux prochains points :
+
+<br>
 
 On cherche les coordonnées du point D :
 
@@ -200,6 +207,8 @@ On cherche les coordonnées du point D :
 <p align="center">
 <img width="893" alt="3_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467089-b45760ca-fc6e-4551-b3b5-b9492b349963.png">
 	</p>
+
+<br> 
 
 On cherche les coordonnées du point E :
 
