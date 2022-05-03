@@ -7,8 +7,8 @@
 <br/>
 
 <p align="center">
-<a href="https://"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
-<a href="https://"><img src="https://img.shields.io/badge/Dynamic-Neural_Network-018291" alt="Dynamic - Neural Network"></a>
+<a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
+<a href="https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks#Dynamic"><img src="https://img.shields.io/badge/Dynamic-Neural_Network-018291" alt="Dynamic - Neural Network"></a>
 <p>
 
 <br>
@@ -25,9 +25,11 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 
 # Liens utiles
 
-- Comprendre les [self-organising maps](https://en.wikipedia.org/wiki/Self-organizing_map)
+- Comprendre les [Self-Organising Maps](https://en.wikipedia.org/wiki/Self-organizing_map) (SOM)
 
 - Article scientifique initial sur les fondements du modèle de [Dynamic graph neural network](https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual)
+
+- Article sur les [Self-Growing Neural Network](https://www.researchgate.net/publication/268454314_Anomaly_detection_using_dynamic_Neural_Networks_classification_of_prestack_data) (SGNN)
 
 <br/>
 
@@ -159,19 +161,66 @@ Voici les étapes de l'algoritme : <br>
 - Étape 2: Le deuxième neurone est translaté sur l'axe des x par rapport au premier neurone, ainsi en notant `d` la distance entre les deux neurones, le deuxième neurone est alors en position (d, 0) <br>
 - Étape 3: Pour les autres neurones, on résout un système de n équation à 2 inconnues qui permet de trouver le neurone à l'intersection des cercles dont tous les autres points en sont les centres. 
 
-Prenons l'exemple ou nous avons les 2 premiers neurones, et nous voulons ajouter un 3e : <br>
+Prenons l'exemple ou nous avons les 2 premiers neurones A et B, et nous voulons ajouter un 3e neurone C : <br>
 
-Le premier point n1 est en coordonnées (x1=0, y1=0) avec comme rayon r1=69.58 qui est la distance entre n1 et le neurone n3 à ajouter
-Le deuxième point n2 est en coordonnées (x2=58.42, y2=0) avec comme rayon r2=11.18 qui est la distance entre n2 et n3
+Le premier point A est en coordonnées (x1=0, y1=0) avec comme rayon r1=2 qui est la distance entre A et le neurone C à ajouter
+Le deuxième point B est en coordonnées (x2=3, y2=0) avec comme rayon r2=4 qui est la distance entre B et C
 
-Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les 2 cercles de centre n1 et n2 voici le système : <br>
+Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections entre les 2 cercles de centre A et B voici le système : <br>
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/63207451/166120794-b67cd845-33bf-4aa5-9b2d-ef12b7968836.png" alt="eq_syst">
 	</p>
 
-Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve choisir. Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du neurone.
+Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve choisir. <br>
+On obtient mathématiquement :
 
+<br>
+
+<p align="center">
+<img width="355" alt="2_cercles_code" src="https://user-images.githubusercontent.com/63207451/166466584-59ad449e-5083-425e-a8af-e6044a929975.png">
+	</p>
+	
+<br>
+
+et géométriquement : <br>
+
+<p align="center">
+<img width="500" alt="2_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166466707-760ad15d-2e26-453b-a548-d0e655002be8.png" >
+	</p>
+<br>
+
+Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du nouveau neurone. <br>
+
+Voici les essaies sur les deux prochains points :
+
+<br>
+
+On cherche les coordonnées du point D :
+
+<p align="center">
+<img width="521" alt="3_cercles_code" src="https://user-images.githubusercontent.com/63207451/166467072-d4efe888-1aac-4055-a3d0-f5958b186c0e.png">
+	</p>
+
+<br>
+
+<p align="center">
+<img width="500" alt="3_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467089-b45760ca-fc6e-4551-b3b5-b9492b349963.png">
+	</p>
+
+<br> 
+
+On cherche les coordonnées du point E :
+
+<p align="center">
+<img width="640" alt="4_cercles_code" src="https://user-images.githubusercontent.com/63207451/166467120-efb5f312-e0ad-4742-9735-94d5081cc9eb.png">
+	</p>
+
+<br>
+
+<p align="center">
+<img width="500" alt="4_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467154-d220c01d-54ca-4a49-838a-a9a16f8671da.png">
+	</p>
 
 <br>
 
@@ -182,7 +231,6 @@ Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve 
 <br>
 
 <p align="center">
-	  <a href="https://antonin-lfv.github.io" class="fancybox" ><img src="https://user-images.githubusercontent.com/63207451/127334786-f48498e4-7aa1-4fbd-b7b4-cd78b43972b8.png" title="Web Page" width="38" height="38"></a>
   <a href="https://github.com/antonin-lfv" class="fancybox" ><img src="https://user-images.githubusercontent.com/63207451/97302854-e484da80-1859-11eb-9374-5b319ca51197.png" title="GitHub" width="40" height="40"></a>
   <a href="https://www.linkedin.com/in/antonin-lefevre-565b8b141" class="fancybox" ><img src="https://user-images.githubusercontent.com/63207451/97303444-b2c04380-185a-11eb-8cfc-864c33a64e4b.png" title="LinkedIn" width="40" height="40"></a>
   <a href="mailto:antoninlefevre45@icloud.com" class="fancybox" ><img src="https://user-images.githubusercontent.com/63207451/97303543-cec3e500-185a-11eb-8adc-c1364e2054a9.png" title="Mail" width="40" height="40"></a>
