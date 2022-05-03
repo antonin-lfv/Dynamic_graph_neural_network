@@ -2,21 +2,21 @@ from utils.functions import *
 
 
 class Neuron:
-    def __init__(self, vecteur: List, index: int = None, label: str = None, liaison: dict = None):
+    def __init__(self, vecteur: List, index: int = None, label: str = None, liaisons: dict = None):
         """
         :param index: donné par le compteur du graphe
         :param vecteur: les données de taille ConstGraph.INPUT_SIZE
-        :param liaison: dictionnaire de liaison avec comme index l'index de l'arrivée et comme valeur le poids synaptique
+        :param liaisons: dictionnaire de liaison avec comme index l'index de l'arrivée et comme valeur le poids synaptique
         """
-        if liaison is None:
-            liaison = {}
+        if liaisons is None:
+            liaisons = {}
         self.index = index
         self.vecteur = vecteur
-        self.liaisons = liaison
+        self.liaisons = liaisons
         self.label = label
 
     def __repr__(self):
-        return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaison={self.liaisons}, label={self.label})'
+        return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaisons={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
@@ -33,8 +33,9 @@ class Neuron:
         """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)
         C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
         for k, val in self.liaisons.items():
-            self.liaison[k] = graph.neurons[k].liaison[self.index] = [ConstThreshold.bl*abs(a-b) for a, b in zip(graph.neurons[k].vecteur, self.vecteur)]
-        # TODO : supprimer un lien si il est trop grand + supprimer un neurone si len(liaison) == 0
+            self.liaisons[k] = graph.neurons[k].liaisons[self.index] = self.liaisons[k]*ConstThreshold.bl
+        # TODO : supprimer un lien si il est trop grand + supprimer un neurone si len(liaisons) == 0
+
 
 class Graph:
     def __init__(self, neurons: dict = None, compt_neurons: int = 0):
@@ -122,7 +123,7 @@ class Graph:
             plot_bgcolor=ConstPlotly.transparent_color,
             showlegend=False
         )
-        plot(fig)
+        plot(fig, filename='plotly_fig/plot.html')
 
     def addNeuron(self, neuron: Neuron):
         """ Connecte le neurone au réseau
