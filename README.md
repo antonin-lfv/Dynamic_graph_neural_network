@@ -173,6 +173,8 @@ On définit dans cette méthode 3 cas :
 <img width="850" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
 </p>
 
+Les deux types de fonctions sont bien dans des espaces différents, et sont séparés en deux labels.
+
 <br>
 
 ### Apprentissage et prédiction
