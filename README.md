@@ -9,7 +9,9 @@
 <p align="center">
 <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
 <a href="https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks#Dynamic"><img src="https://img.shields.io/badge/Dynamic-Neural_Network-018291" alt="Dynamic - Neural Network"></a>
-<p>
+<a href="https://github.com/antonin-lfv/Dynamic_graph_neural_network"><img src="https://img.shields.io/github/stars/antonin-lfv/Dynamic_graph_neural_network?style=social" alt="stars"></a>
+
+</p>
 
 <br>
 
@@ -48,15 +50,10 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
 
 Libraries utilisées :
 
-```python
-fastdist
-numpy
-plotly
-```
-
-Documentation [Fastdist](https://github.com/talboger/fastdist) 
-
-Documentation [Plotly](https://plotly.com/python/)
+<p align="center">
+<a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Lib-Plotly-937BCB" alt="Python - 3.10"></a>
+<a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Lib-Fastdist-937BCB" alt="Python - 3.10"></a>
+</p>
 
 <br>
 
