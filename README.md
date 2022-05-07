@@ -51,9 +51,9 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
 Libraries utilisées :
 
 <p align="center">
-<a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Lib-Plotly-937BCB" alt="Plotly"></a>
-<a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Lib-Fastdist-937BCB" alt="Fastdist"></a>
-<a href="https://scipy.github.io/devdocs/index.html"><img src="https://img.shields.io/badge/Lib-Scipy-937BCB" alt="Scipy"></a>
+<a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Plotly-937BCB" alt="Plotly"></a>
+<a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Fastdist-937BCB" alt="Fastdist"></a>
+<a href="https://scipy.github.io/devdocs/index.html"><img src="https://img.shields.io/badge/Scipy-937BCB" alt="Scipy"></a>
 </p>
 
 <br>
