@@ -160,7 +160,7 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 <br>
 
-## Affichage du graphe
+### Affichage du graphe
 
 Très vite, la nécessité d'avoir une représentation visuelle est devenu obligatoire. Ainsi, voici l'approche utilisée pour se faire.
 Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
