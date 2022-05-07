@@ -41,7 +41,7 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
    1. [Ajout des neurones](#ajout-des-neurones)
    2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
       1. [Version de l'article](#version-de-larticle)
-      2. [Version modifié](#version-modifié)
+      2. [Version modifiéé](#version-modifiée)
    3. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
@@ -170,11 +170,11 @@ On définit dans cette méthode 3 cas :
 
 ### Apprentissage et prédiction
 
-#### Version 1
+#### Version de l'article
 
 <br>
 
-#### Version 2
+#### Version modifiée
 
 <br>
 
