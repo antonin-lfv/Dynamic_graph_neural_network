@@ -87,7 +87,7 @@ Donc
 
 Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...,l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
 
-Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil. (le même seuil qui, à partir duquel, un lien est supprimé)
+Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil.
 
 La distance euclidienne entre le vecteur d'entrée ![formula](https://render.githubusercontent.com/render/math?math=u) et le foyer ![formula](https://render.githubusercontent.com/render/math?math=z) est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_v) un paramètre d'échelle qui correspond au learning rate du réseau.
 
