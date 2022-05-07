@@ -9,16 +9,14 @@
 <p align="center">
 <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
 <a href="https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks#Dynamic"><img src="https://img.shields.io/badge/Dynamic-Neural_Network-018291" alt="Dynamic - Neural Network"></a>
-<p>
+<a href="https://github.com/antonin-lfv/Dynamic_graph_neural_network"><img src="https://img.shields.io/github/stars/antonin-lfv/Dynamic_graph_neural_network?style=social" alt="stars"></a>
+
+</p>
 
 <br>
 
 <p align="center">
-Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests.
-La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées. Ensuite, la partie graphique avec Plotly sera construite
-pour pouvoir suivre l'évolution architecturale du réseau. Puis viendra une phase d'expérimentation où on tentera de classer plusieurs
-types de fonctions, et de jouer avec les seuils présents dans le modèle. 
-Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement.
+Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests. Le modèle sur lequel est basé cet approche est disponible dans les liens utiles en dessous. La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans l'article, puis, en fonction des resultats, de modifier ce modèle pour en proposer un nouveau. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à suivre l'évolution architecturale du réseau. Concernant les phases d'expérimentation, on tentera de classer plusieurs types de fonctions, et de jouer avec les seuils présents dans le modèle. Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 </p>
 
 <br>
@@ -27,7 +25,7 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 
 - Comprendre les [Self-Organising Maps](https://en.wikipedia.org/wiki/Self-organizing_map) (SOM)
 
-- Article scientifique initial sur les fondements du modèle de [Dynamic graph neural network](https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual)
+- Article scientifique sur les [Dynamic graph neural networks](https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual) sur lequel se base ce projet.
 
 - Article sur les [Self-Growing Neural Network](https://www.researchgate.net/publication/268454314_Anomaly_detection_using_dynamic_Neural_Networks_classification_of_prestack_data) (SGNN)
 
@@ -42,8 +40,8 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 3. [Implémentation](#implémentation)
    1. [Ajout des neurones](#ajout-des-neurones)
    2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
-      1. [Version 1](#version-1)
-      2. [Version 2](#version-2)
+      1. [Version de l'article](#version-de-larticle)
+      2. [Version modifiéé](#version-modifiée)
    3. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
@@ -52,15 +50,11 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
 
 Libraries utilisées :
 
-```python
-fastdist
-numpy
-plotly
-```
-
-Documentation [Fastdist](https://github.com/talboger/fastdist) 
-
-Documentation [Plotly](https://plotly.com/python/)
+<p align="center">
+<a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Lib-Plotly-937BCB" alt="Plotly"></a>
+<a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Lib-Fastdist-937BCB" alt="Fastdist"></a>
+<a href="https://scipy.github.io/devdocs/index.html"><img src="https://img.shields.io/badge/Lib-Scipy-937BCB" alt="Scipy"></a>
+</p>
 
 <br>
 
@@ -93,7 +87,7 @@ Donc
 
 Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...,l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
 
-Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil. (le même seuil qui, à partir duquel, un lien est supprimé)
+Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil.
 
 La distance euclidienne entre le vecteur d'entrée ![formula](https://render.githubusercontent.com/render/math?math=u) et le foyer ![formula](https://render.githubusercontent.com/render/math?math=z) est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_v) un paramètre d'échelle qui correspond au learning rate du réseau.
 
@@ -144,19 +138,62 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 <br>
 
+<br>
+
 # Implémentation
 
+L'implémentation repose sur la création de deux classes. Une classe représentant les neurones (`Neuron`), et une classe représentant le graphe (`Graph`). Ainsi, chaque instance de graphe possède un certain nombre de neurones. <br>
+
+La classe `Neuron` possède plusieurs paramètres : 
+- vecteur : qui représente le vecteur du neurone, c'est sur ce vecteur que repose le modèle
+- index : identifiant unique d'un neurone dans un graphe, il est attribué grâce à un compteur interne au graphe
+- label : c'est la classe à laquelle le neurone appartient, il est attribué lors de l'ajout des neurones
+- liaisons : qui est un dictionnaire des liaisons dont les clés représentent l'index d'un neurone, et la valeur son poids
+
+La classe `Graph` possède également plusieurs paramètres :
+- neurons : qui est un dictionnaire contenant tous les neurones du graphe, indexé par l'index des neurones
+- compt_neurons : qui est initialisé à 0 lors de la création du graphe et qui correspond au compteur de neurones, pour l'attribution des index
+
+Ces paramètres seront fixes tout au long de ce projet. Concernant les méthodes de ces deux classes, elles seront détaillées par la suite.
+
+<br>
+
 ### Ajout des neurones
+
+La première étape de la modélisation est la création du graphe et l'ajout de neurones. On définit alors la méthode `addNeuron` de la classe `Graph` prenant en paramètre un objet de la classe `Neuron`. <br>
+
+On définit dans cette méthode 3 cas :
+- Si le graphe est vide : le neurone prend comme label son index, et aucune liaison n'est alors créée.
+- Si le graphe contient un seul neurone : on assigne au nouveau neurone le label du premier si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}), sinon son label est défini par son index. On crée ensuite la liaison entre les deux. (qui est ajouté aux deux neurones)
+- Si il y a plus que deux neurones, on calcul le foyer du nouveau neurone. Si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) il prend le label du foyer, et on connecte au nouveau neurone tous les autres à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}). Sinon, l'index du nouveau neurone devient aussi son label, et il n'est connecté qu'a son foyer.
+
+À partir de là on peut déjà tester l'affichage avec la méthode `plotGraph` de la class `Graph` (expliqué [ici](#affichage-du-graphe)). Les neurones d'index 1, 2, 5, 8, et 9 représentent des fonctions racines, et les neurones d'index 0, 3, 4, 6 et 7 représentent des fonctions cosinus :
+
+<p align="center">
+<img width="950" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
+</p>
+
+Les deux types de fonctions sont bien dans des espaces éloignés du graphe, et sont séparés en deux labels.
+Il ne manque plus que quelques étapes supplémentaires pour que notre modèle soit complet. C'est l'objet de la section suivante.
 
 <br>
 
 ### Apprentissage et prédiction
 
-#### Version 1
+On va ici détailler deux versions du déroulement du modèle après ajout de chaque neurone.
+
+#### Version de l'article
+
+Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) de son foyer, modifier le foyer ainsi que toutes ces liaisons et neurones voisins. Si une liaison devient supérieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{r}) durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) <br>
+
+On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces modifications :
+- `alterFoyer` : qui va altérer le vecteur du foyer du noouveau neurone ajouté
+- `alterVoisins` : qui va modifier les voisins du foyer du nouveau neurone ajouté, selon le modèle mathématique
+- `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
 <br>
 
-#### Version 2
+#### Version modifiée
 
 <br>
 

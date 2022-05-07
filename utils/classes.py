@@ -19,7 +19,7 @@ class Neuron:
         return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaisons={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
-        # TODO : altération des liaisons -> calculs des nouvelles distances ici ? ou à la fin de "altervoisins" ?
+        # TODO : altération des liaisons -> calculs des nouvelles distances ici ? ou à la fin de "altervoisins" ? + mettre à jour les labels
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
         Deltaz = [ConstThreshold.bv * (a + b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
