@@ -154,8 +154,17 @@ La classe `Graph` possède également plusieurs paramètres :
 - neurons : qui est un dictionnaire contenant tous les neurones du graphe, indexé par l'index des neurones
 - compt_neurons : qui est initialisé à 0 lors de la création du graphe et qui correspond au compteur de neurones, pour l'attribution des index
 
+Ces paramètres seront fixes tout au long de ce projet. Concernant les méthodes de ces deux classes, elles seront détaillées par la suite.
+
+<br>
 
 ### Ajout des neurones
+
+La première étape de la modélisation est la création du graphe et l'ajout de neurones. On définit alors la méthode `addNeuron` de la classe `Graph` prenant en paramètre un objet de la classe `Neuron`. <br>
+
+On définit dans cette méthode 3 cas :
+- Si le graphe est vide : le neurone prend comme label son index, et aucune liaison n'est alors créée.
+- Si le graphe contient un seul neurone : on assigne au nouveau neurone le label du premier si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}), sinon son label est défini par son index. On crée ensuite la liaison entre les deux. (qui est ajouté aux deux neurones)
 
 <br>
 
