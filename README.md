@@ -142,8 +142,11 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 # Implémentation
 
-Voici le diagramme de classes 
-
+L'implémentation repose sur la création de deux classes. Une classe représentant les neurones, et une classe représentant le graphe. Ainsi, chaque instance de graphe possède un certain nombre de neurones. <br>
+La classe neurone possède plusieurs paramètres : 
+- Vecteur : qui représente le vecteur du neurone, c'est sur ce vecteur que repose le modèle
+- Index : identifiant unique d'un neurone dans un graphe, il est attribué grâce à un compteur interne au graphe
+- Label : c'est la classe à laquelle le neurone appartient, il est attribué lors de l'ajout des neurones
 
 
 ### Ajout des neurones
