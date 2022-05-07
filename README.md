@@ -191,6 +191,8 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterVoisins` : qui va modifier les voisins du foyer du nouveau neurone ajouté, selon le modèle mathématique
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
+Un premier problème apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. Ainsi, on le modifiera pour prendre les distances directement au près des neurones si la liaison existe, sinon on prendra la distance euclidienne comme initialement prévu par la méthode.
+
 <br>
 
 #### Version modifiée
