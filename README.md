@@ -191,8 +191,14 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterVoisins` : qui va modifier les voisins du foyer du nouveau neurone ajouté, selon le modèle mathématique
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
-Un premier problème apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones du graphe avec leur label pour savoir comment le modèle les a rassemblés. <br>
+<br> 
+Un premier problème dans l'implémentation de la fonction d'affichage du graphe apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones du graphe avec leur label pour savoir comment le modèle les a rassemblés. 
+
+<br>
+
 Par exemple, prenons un ensemble de 10 neurones, dont les index 0, 3, 4, 6, 7 sont ceux représentants des fonctions cosinus et 1, 2, 5, 8, 9 des fonctions racines. On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste des neurones)
+
+<br>
 
 ```
 {0: Neuron(index=0, vecteur="", liaisons={1: 170.126}, label=0),
@@ -206,6 +212,8 @@ Par exemple, prenons un ensemble de 10 neurones, dont les index 0, 3, 4, 6, 7 so
  8: Neuron(index=8, vecteur="", liaisons={9: 31.863949999999996}, label=8),
  9: Neuron(index=9, vecteur="", liaisons={8: 31.863949999999996}, label=8)}
 ```
+
+<br>
 
 On remarque que les neurones d'index 1 et 2 sont ajoutés à la même classe (ce qui est cohérent), les neurones 3, 4, 6, 7 aussi (ce qui est aussi cohérent) et les neurones 8 et 9 sont aussi dans la même classe ce qui est aussi cohérent.
 Donc, on remarque que le réseau n'a pas associé de neurones qui étaient de même type, ce qui est très satisfaisant. Mais au sein de chaque type de fonctions le réseau à subdivisé en sous-classe, cela peut-être la conséquence de seuils trop stricts.
