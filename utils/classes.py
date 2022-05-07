@@ -113,7 +113,7 @@ class Graph:
                 # jème point à placer par rapport aux j-1 premiers,
                 # intersection de j-1 cercles
                 x, y = solve_inter_circles(neuron_points_x, neuron_points_y,
-                                           [distance_neurons(self.neurons[i].vecteur, n.vecteur) for i in index_n])
+                                           [self.neurons[i].liaisons[n.index] if n.index in self.neurons[i].liaisons.keys() else distance_neurons(self.neurons[i].vecteur, n.vecteur) for i in index_n])
                 neuron_points_x.append(x)
                 neuron_points_y.append(y)
                 neuron_index.append(n.index)
