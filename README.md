@@ -4,7 +4,7 @@
 
 <h1 align="center">Dynamic graph neural network</h1>
 
-<br/>
+<br>
 
 <p align="center">
 <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.10-2ea44f" alt="Python - 3.10"></a>
