@@ -1,6 +1,6 @@
 from utils.classes import *
 
-G = Graph()
+G = Graph_v2()
 G.addNeuron(Neuron(vecteur=type_1[1]))
 G.plotGraph()
 G.addNeuron(Neuron(vecteur=type_2[2]))

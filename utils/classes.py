@@ -397,6 +397,7 @@ class Graph_v2:
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
             if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold.an:
-                foyer.alterFoyer(neuron.vecteur)
-                foyer.alterVoisins(self)
-                foyer.alterLiaisons(self)
+                #foyer.alterFoyer(neuron.vecteur)
+                #foyer.alterVoisins(self)
+                #foyer.alterLiaisons(self)
+                ...
