@@ -225,6 +225,8 @@ Donc, on remarque que le réseau n'a pas associé de neurones qui étaient de m�
 
 #### Version modifiée
 
+À venir ...
+
 <br>
 
 ### Affichage du graphe
