@@ -18,7 +18,7 @@ class Neuron:
         self.label = label
 
     def __repr__(self):
-        return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaisons={self.liaisons}, label={self.label})'
+        return f'Neuron(index={self.index}, vecteur="", liaisons={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
@@ -46,14 +46,6 @@ class Neuron:
         # suppression de la liaison si trop grande
         for ele in a_suppr:
             del self.liaisons[ele]
-
-        # Mise à jour des labels
-        for ind, n in graph.neurons.items():
-            foyer = get_foyer(graph, n)
-            if distance_neurons(n.vecteur, foyer.vecteur) < ConstThreshold.an:
-                n.label = foyer.label
-            else:
-                n.label = n.index
 
 
 class Graph:
@@ -120,7 +112,9 @@ class Graph:
                 # jème point à placer par rapport aux j-1 premiers,
                 # intersection de j-1 cercles
                 x, y = solve_inter_circles(neuron_points_x, neuron_points_y,
-                                           [self.neurons[i].liaisons[n.index] if n.index in self.neurons[i].liaisons.keys() else distance_neurons(self.neurons[i].vecteur, n.vecteur) for i in index_n])
+                                           [self.neurons[i].liaisons[n.index] if n.index in self.neurons[
+                                               i].liaisons.keys() else distance_neurons(self.neurons[i].vecteur,
+                                                                                        n.vecteur) for i in index_n])
                 neuron_points_x.append(x)
                 neuron_points_y.append(y)
                 neuron_index.append(n.index)
@@ -215,6 +209,7 @@ class Graph:
 
 
 """Version modifiée"""
+
 
 # TODO : changer ConstTreshold vers ConstTreshold_v2
 
@@ -398,7 +393,7 @@ class Graph_v2:
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
             if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold.an:
-                #foyer.alterFoyer(neuron.vecteur)
-                #foyer.alterVoisins(self)
-                #foyer.alterLiaisons(self)
+                # foyer.alterFoyer(neuron.vecteur)
+                # foyer.alterVoisins(self)
+                # foyer.alterLiaisons(self)
                 ...

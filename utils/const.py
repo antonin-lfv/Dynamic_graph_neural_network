@@ -16,15 +16,15 @@ class ConstGraph:
 
 class ConstThreshold:
     # altération du foyer
-    bv = 0.95
+    bv = 0.55
     # altération des voisins du foyer
-    bc = 0.75
+    bc = 0.55
     # altération des liaisons du foyer
     bl = 0.95
     # seuil après lequel suppression des liens suite à altération
     ar = 100
     # seuil après lequel le neurone est seulement connecté au foyer
-    an = 85
+    an = 50
 
 
 class ConstThreshold_v2:
