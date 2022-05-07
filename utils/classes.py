@@ -98,7 +98,12 @@ class Graph:
                 neuron_index.append(n.index)
             elif index == index_n[1]:
                 # 2e point à placer par rapport au premier
-                neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
+                if n.index in self.neurons[index_n[0]].liaisons.keys():
+                    # si la liaison existe
+                    neuron_points_x.append(self.neurons[index_n[0]].liaisons[n.index])
+                else:
+                    # si la liaison n'existe pas
+                    neuron_points_x.append(distance_neurons(n.vecteur, self.neurons[index_n[0]].vecteur))
                 neuron_points_y.append(0)
                 liaison_x.extend([neuron_points_x[-1], neuron_points_x[-2], None])
                 liaison_y.extend([neuron_points_y[-1], neuron_points_y[-2], None])
