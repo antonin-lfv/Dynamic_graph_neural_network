@@ -173,11 +173,14 @@ On définit dans cette méthode 3 cas :
 <img width="950" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
 </p>
 
-Les deux types de fonctions sont bien dans des espaces différents, et sont séparés en deux labels.
+Les deux types de fonctions sont bien dans des espaces éloignés du graphe, et sont séparés en deux labels.
+Il ne manque plus que quelques étapes supplémentaires pour que notre modèle soit complet. C'est l'objet de la section suivante.
 
 <br>
 
 ### Apprentissage et prédiction
+
+On va ici détailler deux versions du déroulement du modèle après ajout de chaque neurone. En effet, dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) de son foyer, alors on doit modifier le foyer ainsi que toutes ces liaisons et les neurones voisins. Si une liaison devient supérieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{r}) durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}))
 
 #### Version de l'article
 
