@@ -142,6 +142,10 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 # Implémentation
 
+Voici le diagramme de classes 
+
+
+
 ### Ajout des neurones
 
 <br>
