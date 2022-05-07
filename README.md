@@ -14,11 +14,7 @@
 <br>
 
 <p align="center">
-Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests.
-La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées. Ensuite, la partie graphique avec Plotly sera construite
-pour pouvoir suivre l'évolution architecturale du réseau. Puis viendra une phase d'expérimentation où on tentera de classer plusieurs
-types de fonctions, et de jouer avec les seuils présents dans le modèle. 
-Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement.
+Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests. Le modèle sur lequel est basé cet approche est disponible <a href="https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual"><ici</a>. La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans l'article, puis, en fonction des resultats, de modifier ce modèle pour en proposer un nouveau. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à suivre l'évolution architecturale du réseau. Concernant les phases d'expérimentation, on tentera de classer plusieurs types de fonctions, et de jouer avec les seuils présents dans le modèle. Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 </p>
 
 <br>
@@ -141,6 +137,8 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 	</p>
 
 > Marche très bien pour des données non labélisées
+
+<br>
 
 <br>
 
