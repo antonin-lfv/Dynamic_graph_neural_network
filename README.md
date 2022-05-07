@@ -142,11 +142,17 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 # Implémentation
 
-L'implémentation repose sur la création de deux classes. Une classe représentant les neurones, et une classe représentant le graphe. Ainsi, chaque instance de graphe possède un certain nombre de neurones. <br>
-La classe neurone possède plusieurs paramètres : 
-- Vecteur : qui représente le vecteur du neurone, c'est sur ce vecteur que repose le modèle
-- Index : identifiant unique d'un neurone dans un graphe, il est attribué grâce à un compteur interne au graphe
-- Label : c'est la classe à laquelle le neurone appartient, il est attribué lors de l'ajout des neurones
+L'implémentation repose sur la création de deux classes. Une classe représentant les neurones (`Neuron`), et une classe représentant le graphe (`Graph`). Ainsi, chaque instance de graphe possède un certain nombre de neurones. <br>
+
+La classe `Neuron` possède plusieurs paramètres : 
+- vecteur : qui représente le vecteur du neurone, c'est sur ce vecteur que repose le modèle
+- index : identifiant unique d'un neurone dans un graphe, il est attribué grâce à un compteur interne au graphe
+- label : c'est la classe à laquelle le neurone appartient, il est attribué lors de l'ajout des neurones
+- liaisons : qui est un dictionnaire des liaisons dont les clés représentent l'index d'un neurone, et la valeur son poids
+
+La classe `Graph` possède également plusieurs paramètres :
+- neurons : qui est un dictionnaire contenant tous les neurones du graphe, indexé par l'index des neurones
+- compt_neurons : qui est initialisé à 0 lors de la création du graphe et qui correspond au compteur de neurones, pour l'attribution des index
 
 
 ### Ajout des neurones
