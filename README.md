@@ -40,8 +40,11 @@ Dans ce repo, une première partie sera consacrée à l'aspect mathématique du 
     1. [Principe](#principe)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
-   1. [Algorithme](#algorithme)
-   2. [Affichage du graphe](#affichage-du-graphe)
+   1. [Ajout des neurones](#ajout-des-neurones)
+   2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
+      1. [Version 1](#version-1)
+      2. [Version 2](#version-2)
+   3. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
 
@@ -143,9 +146,17 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 # Implémentation
 
+### Ajout des neurones
 
-## Algorithme
+<br>
 
+### Apprentissage et prédiction
+
+#### Version 1
+
+<br>
+
+#### Version 2
 
 <br>
 

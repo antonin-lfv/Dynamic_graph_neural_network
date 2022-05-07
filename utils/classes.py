@@ -6,7 +6,7 @@ class Neuron:
         """
         :param index: donné par le compteur du graphe
         :param vecteur: les données de taille ConstGraph.INPUT_SIZE
-        :param liaisons: dictionnaire de liaison avec comme index l'index de l'arrivée et comme valeur le poids synaptique
+        :param liaisons: dictionary de liaison avec comme index l'index de l'arrivée et comme valeur le poids synaptique
         """
         if liaisons is None:
             liaisons = {}
@@ -19,6 +19,7 @@ class Neuron:
         return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaisons={self.liaisons}, label={self.label})'
 
     def alterFoyer(self, u: List[float]):
+        # TODO : altération des liaisons -> calculs des nouvelles distances ici ? ou à la fin de "altervoisins" ?
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
         Deltaz = [ConstThreshold.bv * (a + b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
@@ -30,11 +31,19 @@ class Neuron:
             graph.neurons[k].vecteur = [i+j for i, j in zip(graph.neurons[k].vecteur, [ConstThreshold.bc*val*(a-b) for a, b in zip(self.vecteur, graph.neurons[k].vecteur)])]
 
     def alterLiaisons(self, graph):
+        # TODO : Cette méthode est elle nécessaire ? la distance est altérée automatiquement
         """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)
         C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
+        a_suppr = []
         for k, val in self.liaisons.items():
-            self.liaisons[k] = graph.neurons[k].liaisons[self.index] = self.liaisons[k]*ConstThreshold.bl
-        # TODO : supprimer un lien si il est trop grand + supprimer un neurone si len(liaisons) == 0
+            if (tailleLiaison := self.liaisons[k]*ConstThreshold.bl) < ConstThreshold.ar:
+                self.liaisons[k] = graph.neurons[k].liaisons[self.index] = tailleLiaison
+            else:
+                a_suppr.append(k)
+
+        # suppression de la liaison si trop grande
+        for ele in a_suppr:
+            del self.liaisons[ele]
 
 
 class Graph:
@@ -123,7 +132,7 @@ class Graph:
             plot_bgcolor=ConstPlotly.transparent_color,
             showlegend=False
         )
-        plot(fig, filename='plotly_fig/plot.html')
+        plot(fig, filename='plot.html')
 
     def addNeuron(self, neuron: Neuron):
         """ Connecte le neurone au réseau

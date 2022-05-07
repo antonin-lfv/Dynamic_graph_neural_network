@@ -15,11 +15,11 @@ type_1 = {
 }
 
 type_2 = {
-    1: 4 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 5 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 6 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 7 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 8 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    1: 14 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    2: 15 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    3: 16 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    4: 17 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    5: 18 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
 }
 
 type_3 = {
