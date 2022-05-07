@@ -216,6 +216,7 @@ class Graph:
 
 """Version modifiée"""
 
+# TODO : changer ConstTreshold vers ConstTreshold_v2
 
 class Neuron_v2:
     def __init__(self, vecteur: List, index: int = None, label: str = None, liaisons: dict = None):
