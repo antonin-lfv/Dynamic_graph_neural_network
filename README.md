@@ -170,7 +170,7 @@ On définit dans cette méthode 3 cas :
 À partir de là on peut déjà tester l'affichage avec la méthode `plotGraph` de la class `Graph` (expliqué [ici](#affichage-du-graphe)). Les neurones d'index 1, 2, 5, 8, et 9 représentent des fonctions racines, et les neurones d'index 0, 3, 4, 6 et 7 représentent des fonctions cosinus :
 
 <p align="center">
-<img width="700" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
+<img width="850" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
 </p>
 
 <br>
