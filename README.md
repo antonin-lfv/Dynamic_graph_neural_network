@@ -138,6 +138,8 @@ Si la connexion entre deux neurones est suffisamment petite, le réseau va assoc
 
 <br>
 
+On utilisera cette dernière méthode de prédiction dans ce projet.
+
 <br>
 
 # Implémentation
