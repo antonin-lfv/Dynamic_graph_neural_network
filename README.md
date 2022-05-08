@@ -201,7 +201,15 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-Par exemple, prenons un ensemble de 10 neurones, dont les index 0, 3, 4, 6, 7 sont ceux représentants des fonctions cosinus et 1, 2, 5, 8, 9 des fonctions racines. On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste des neurones)
+Par exemple, prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus et **1, 2, 5, 8, 9** des fonctions racines. On peut les représenter graphiquement : <br>
+
+<p align="center">
+	
+	</p>
+
+<br>
+
+On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste des neurones du graphe, les vecteurs ne sont pas affichés pour des raisons de lisibilité)
 
 <br>
 
@@ -220,8 +228,8 @@ Par exemple, prenons un ensemble de 10 neurones, dont les index 0, 3, 4, 6, 7 so
 
 <br>
 
-On remarque que les neurones d'index 1 et 2 sont ajoutés à la même classe (ce qui est cohérent), les neurones 3, 4, 6, 7 aussi (ce qui est aussi cohérent) et les neurones 8 et 9 sont aussi dans la même classe ce qui est aussi cohérent.
-Donc, on remarque que le réseau n'a pas associé de neurones qui étaient de même type, ce qui est très satisfaisant. Mais au sein de chaque type de fonctions le réseau à subdivisé en sous-classe, cela peut-être la conséquence de seuils trop stricts.
+On remarque que les neurones d'index 1 et 2 sont ajoutés à la même classe, de même que les neurones 3, 4, 6, 7 et les neurones 8 et 9. Tout cela semble cohérent car chacune des classes créées par le réseau ne contient que des neurones qui, de base, représentent des fonctions de même type.
+On peut souligné aussi qu'au sein de chaque type de fonctions de départ, le réseau à subdivisé en sous-classe, cela peut-être la conséquence de seuils trop stricts. On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
 
 <br>
 
