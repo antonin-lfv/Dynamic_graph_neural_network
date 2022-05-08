@@ -12,8 +12,8 @@ warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 
 class ConstGraph:
-    INPUT_SIZE = 50
-
+    INPUT_SIZE_CONFIG1_ARTICLE = 50
+    INPUT_SIZE = 500
 
 class ConstThreshold:
     # altération du foyer

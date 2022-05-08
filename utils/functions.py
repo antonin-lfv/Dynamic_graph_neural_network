@@ -5,20 +5,26 @@ g = np.sqrt
 h = np.sin
 
 type_1 = {
-    1: 1 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 2 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 3 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 4 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 5 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    1: 1 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    2: 2 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    3: 3 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    4: 4 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    5: 5 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
 }
 
 type_2 = {
-    1: 14 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 15 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 16 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 17 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 18 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
+    1: 14 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    2: 15 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    3: 16 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    4: 17 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    5: 18 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
 }
+
+
+def dict_radio_wave():
+    """retourne un dictionnaire de 4 classes différentes de signaux"""
+    df = pd.read_csv('data/signal.csv', sep=',')
+
 
 
 def distance_neurons(x: list, y: list) -> float:
@@ -64,7 +70,7 @@ def plot_neurons_config_1_article():
     index = [0, 3, 6, 4, 7, 8, 1, 2, 9, 5]
     fig = go.Figure()
     for l, j in zip(L, index):
-        fig.add_scatter(x=np.linspace(0, 5, ConstGraph.INPUT_SIZE), y=l, name=f"index : {j}")
+        fig.add_scatter(x=np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE), y=l, name=f"index : {j}")
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
         plot_bgcolor=ConstPlotly.transparent_color,
