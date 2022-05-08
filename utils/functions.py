@@ -1,5 +1,3 @@
-import numpy as np
-
 from utils.const import *
 
 f = np.cos
@@ -20,14 +18,6 @@ type_2 = {
     3: 16 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
     4: 17 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
     5: 18 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-}
-
-type_3 = {
-    1: 4 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    2: 5 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    3: 6 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    4: 7 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
-    5: 8 + h(np.linspace(0, 5, ConstGraph.INPUT_SIZE)),
 }
 
 
@@ -65,9 +55,18 @@ def solve_inter_circles(centres_x, centres_y, rayons):
     def func(x):
         return [(x[0] - cx) ** 2 + (x[1] - cy) ** 2 - d ** 2 for cx, cy, d in zip(centres_x, centres_y, rayons)]
 
-    root = fsolve(func, [1] * len(centres_x), maxfev=500)
+    root = fsolve(func, np.array([1] * len(centres_x)), maxfev=500)
     return root[0], root[1]
 
 
-def plot_neurons(L: list, index: list):
-    ...
+def plot_neurons_config_1_article():
+    L = list(type_1.values()) + list(type_2.values())
+    index = [0, 3, 6, 4, 7, 8, 1, 2, 9, 5]
+    fig = go.Figure()
+    for l, j in zip(L, index):
+        fig.add_scatter(x=np.linspace(0, 5, ConstGraph.INPUT_SIZE), y=l, name=f"index : {j}")
+    fig.update_layout(
+        paper_bgcolor=ConstPlotly.transparent_color,
+        plot_bgcolor=ConstPlotly.transparent_color,
+    )
+    plot(fig)
