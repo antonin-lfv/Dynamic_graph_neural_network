@@ -12,32 +12,21 @@ warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 
 class ConstGraph:
-    INPUT_SIZE_CONFIG1_ARTICLE = 50
-    INPUT_SIZE = 500
+    # avec fct racines et cosinus
+    INPUT_SIZE_CONFIG1_ARTICLE = 100
+    # avec les signaux
+    INPUT_SIZE_CONFIG2_ARTICLE = 500
 
 
 class ConstThreshold_config1_article:
     # altération du foyer
-    bv = 0.55
-    # altération des voisins du foyer
-    bc = 0.55
+    bv = 0.90
+    # altération des voisins du foyer (taux)
+    bc = 0.95
     # altération des liaisons du foyer
-    bl = 0.95
+    bl = 0.90
     # seuil après lequel suppression des liens suite à altération
-    ar = 100
-    # seuil après lequel le neurone est seulement connecté au foyer
-    an = 50
-
-
-class ConstThreshold_v2:
-    # altération du foyer
-    bv = 0.85
-    # altération des voisins du foyer
-    bc = 0.65
-    # altération des liaisons du foyer
-    bl = 0.95
-    # seuil après lequel suppression des liens suite à altération
-    ar = 80
+    ar = 150
     # seuil après lequel le neurone est seulement connecté au foyer
     an = 90
 

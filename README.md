@@ -214,22 +214,22 @@ On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste
 <br>
 
 ```
-{0: Neuron(index=0, liaisons={1: 170.126}, label=0),
- 1: Neuron(index=1, liaisons={2: 10.620999999999999, 3: 363.164}, label=1),
- 2: Neuron(index=2, liaisons={1: 10.620999999999999}, label=1),
- 3: Neuron(index=3, liaisons={4: 8.349975124999998, 6: 10.639999999999999, 7: 23.69}, label=3),
- 4: Neuron(index=4, liaisons={3: 8.349975124999998, 6: 36.839099999999995, 7: 1.7308999999999999, 8: 188.738}, label=3),
- 5: Neuron(index=5, liaisons={3: 214.979}, label=5),
- 6: Neuron(index=6, liaisons={3: 10.639999999999999, 4: 36.839099999999995}, label=3),
- 7: Neuron(index=7, liaisons={3: 23.69, 4: 1.7308999999999999}, label=3),
- 8: Neuron(index=8, liaisons={9: 31.863949999999996}, label=8),
- 9: Neuron(index=9, liaisons={8: 31.863949999999996}, label=8)}
+{0: Neuron(index=0, vecteur="", liaisons={1: 240.644}, label=0),
+ 1: Neuron(index=1, vecteur="", liaisons={2: 11.526219000000001, 5: 49.94784000000001, 8: 48.5253, 9: 149.876}, label=1),
+ 2: Neuron(index=2, vecteur="", liaisons={1: 11.526219000000001, 3: 191.833}, label=1),
+ 3: Neuron(index=3, vecteur="", liaisons={4: 10.032498, 6: 15.60627, 7: 45.333}, label=3),
+ 4: Neuron(index=4, vecteur="", liaisons={3: 10.032498}, label=3),
+ 5: Neuron(index=5, vecteur="", liaisons={1: 49.94784000000001}, label=1),
+ 6: Neuron(index=6, vecteur="", liaisons={3: 15.60627}, label=3),
+ 7: Neuron(index=7, vecteur="", liaisons={3: 45.333}, label=3),
+ 8: Neuron(index=8, vecteur="", liaisons={1: 48.5253}, label=1),
+ 9: Neuron(index=9, vecteur="", liaisons={1: 149.876}, label=9)}
 ```
 
 <br>
 
-On remarque que les neurones d'index 1 et 2 sont ajoutés à la même classe, de même que les neurones 3, 4, 6, 7 et les neurones 8 et 9. Tout cela semble cohérent car chacune des classes créées par le réseau ne contient que des neurones qui, de base, représentent des fonctions de même type.
-On peut souligné aussi qu'au sein de chaque type de fonctions de départ, le réseau à subdivisé en sous-classe, cela peut-être la conséquence de seuils trop stricts. On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
+On remarque que les neurones d'index 1, 2, 5 et 8 sont ajoutés à la même classe, de même que les neurones 3, 4, 6, 7. Tout cela semble cohérent car chacune des classes créées par le réseau ne contient que des neurones qui, de base, représentent des fonctions de même type.
+On peut souligné aussi que le réseau a placé les neurones 0 et 9 en tant qu'outliers, cela peut-être la conséquence de seuils trop stricts. On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
 
 <br>
 

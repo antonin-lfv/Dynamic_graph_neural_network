@@ -22,7 +22,7 @@ class Neuron:
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        Deltaz = [ConstThreshold_config1_article.bv * (a + b) for a, b in zip(self.vecteur, u)]
+        Deltaz = [ConstThreshold_config1_article.bv * (a - b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
 
     def alterVoisins(self, graph):

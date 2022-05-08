@@ -20,7 +20,7 @@ G.addNeuron(Neuron(vecteur=type_2[1]))  # 8
 G.addNeuron(Neuron(vecteur=type_2[4]))  # 9
 
 # Affichage des vecteurs des neurones de cette config
-plot_neurons_config_1_article()
+# plot_neurons_config_1_article()
 
 print(G.neurons)
 
