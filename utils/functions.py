@@ -67,3 +67,7 @@ def solve_inter_circles(centres_x, centres_y, rayons):
 
     root = fsolve(func, [1] * len(centres_x), maxfev=500)
     return root[0], root[1]
+
+
+def plot_neurons(L: list, index: list):
+    ...
