@@ -113,7 +113,7 @@ C'est à dire si la distance minimale entre l'entrée et les neurones dépasse l
 
 Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit ![formula](https://render.githubusercontent.com/render/math?math=a_r) le seuil, le lien entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j) est supprimé si ![formula](https://render.githubusercontent.com/render/math?math=c_{ij}>a_r) . 
 
-Quand un neurone n'a plus de lien, il est supprimé.
+Quand un neurone n'a plus de lien, il est supprimé. (on préfèrera ici conserver tous les neurones)
 
 ## Prédictions
 
