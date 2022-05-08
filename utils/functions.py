@@ -21,11 +21,6 @@ type_2 = {
 }
 
 
-def dict_radio_wave():
-    """retourne un dictionnaire de 4 classes différentes de signaux"""
-    df = pd.read_csv('data/signal.csv', sep=',')
-
-
 def distance_neurons(x: list, y: list) -> float:
     """ Distance euclidienne entre 2 vecteurs de neurones
     :param x: vecteur du premier neurone de taille l
