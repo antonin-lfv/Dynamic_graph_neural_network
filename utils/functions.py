@@ -2,22 +2,23 @@ from utils.const import *
 
 f = np.cos
 g = np.sqrt
-h = np.sin
+
+taille_input = ConstGraph_article.INPUT_SIZE_CONFIG_1
 
 type_1 = {
-    1: 1 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    2: 2 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    3: 3 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    4: 4 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    5: 5 * f(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    1: 1 * f(np.linspace(0, 5, taille_input)),
+    2: 2 * f(np.linspace(0, 5, taille_input)),
+    3: 3 * f(np.linspace(0, 5, taille_input)),
+    4: 4 * f(np.linspace(0, 5, taille_input)),
+    5: 5 * f(np.linspace(0, 5, taille_input)),
 }
 
 type_2 = {
-    1: 14 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    2: 15 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    3: 16 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    4: 17 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
-    5: 18 * g(np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE)),
+    1: 14 * g(np.linspace(0, 5, taille_input)),
+    2: 15 * g(np.linspace(0, 5, taille_input)),
+    3: 16 * g(np.linspace(0, 5, taille_input)),
+    4: 17 * g(np.linspace(0, 5, taille_input)),
+    5: 18 * g(np.linspace(0, 5, taille_input)),
 }
 
 
@@ -64,7 +65,7 @@ def plot_neurons_config_1_article():
     index = [0, 3, 6, 4, 7, 8, 1, 2, 9, 5]
     fig = go.Figure()
     for l, j in zip(L, index):
-        fig.add_scatter(x=np.linspace(0, 5, ConstGraph.INPUT_SIZE_CONFIG1_ARTICLE), y=l, name=f"index : {j}")
+        fig.add_scatter(x=np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_1), y=l, name=f"index : {j}")
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
         plot_bgcolor=ConstPlotly.transparent_color,

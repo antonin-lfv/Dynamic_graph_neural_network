@@ -12,11 +12,15 @@ import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 
-class ConstGraph:
+class ConstGraph_article:
     # avec fct racines et cosinus
-    INPUT_SIZE_CONFIG1_ARTICLE = 100
+    INPUT_SIZE_CONFIG_1 = 100
     # avec les signaux
-    INPUT_SIZE_CONFIG2_ARTICLE = 250
+    INPUT_SIZE_CONFIG_2 = 250
+
+
+class ConstGraph_custom:
+    INPUT_SIZE = 250
 
 
 class ConstThreshold_config1_article:
