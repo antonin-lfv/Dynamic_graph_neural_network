@@ -15,7 +15,8 @@ class ConstGraph:
     INPUT_SIZE_CONFIG1_ARTICLE = 50
     INPUT_SIZE = 500
 
-class ConstThreshold:
+
+class ConstThreshold_config1_article:
     # altération du foyer
     bv = 0.55
     # altération des voisins du foyer
