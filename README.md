@@ -201,10 +201,10 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-Par exemple, prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus et **1, 2, 5, 8, 9** des fonctions racines. On peut les représenter graphiquement : <br>
+Par exemple, prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
-	
+	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
 	</p>
 
 <br>
@@ -214,16 +214,16 @@ On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste
 <br>
 
 ```
-{0: Neuron(index=0, vecteur="", liaisons={1: 170.126}, label=0),
- 1: Neuron(index=1, vecteur="", liaisons={2: 10.620999999999999, 3: 363.164}, label=1),
- 2: Neuron(index=2, vecteur="", liaisons={1: 10.620999999999999}, label=1),
- 3: Neuron(index=3, vecteur="", liaisons={4: 8.349975124999998, 6: 10.639999999999999, 7: 23.69}, label=3),
- 4: Neuron(index=4, vecteur="", liaisons={3: 8.349975124999998, 6: 36.839099999999995, 7: 1.7308999999999999, 8: 188.738}, label=3),
- 5: Neuron(index=5, vecteur="", liaisons={3: 214.979}, label=5),
- 6: Neuron(index=6, vecteur="", liaisons={3: 10.639999999999999, 4: 36.839099999999995}, label=3),
- 7: Neuron(index=7, vecteur="", liaisons={3: 23.69, 4: 1.7308999999999999}, label=3),
- 8: Neuron(index=8, vecteur="", liaisons={9: 31.863949999999996}, label=8),
- 9: Neuron(index=9, vecteur="", liaisons={8: 31.863949999999996}, label=8)}
+{0: Neuron(index=0, liaisons={1: 170.126}, label=0),
+ 1: Neuron(index=1, liaisons={2: 10.620999999999999, 3: 363.164}, label=1),
+ 2: Neuron(index=2, liaisons={1: 10.620999999999999}, label=1),
+ 3: Neuron(index=3, liaisons={4: 8.349975124999998, 6: 10.639999999999999, 7: 23.69}, label=3),
+ 4: Neuron(index=4, liaisons={3: 8.349975124999998, 6: 36.839099999999995, 7: 1.7308999999999999, 8: 188.738}, label=3),
+ 5: Neuron(index=5, liaisons={3: 214.979}, label=5),
+ 6: Neuron(index=6, liaisons={3: 10.639999999999999, 4: 36.839099999999995}, label=3),
+ 7: Neuron(index=7, liaisons={3: 23.69, 4: 1.7308999999999999}, label=3),
+ 8: Neuron(index=8, liaisons={9: 31.863949999999996}, label=8),
+ 9: Neuron(index=9, liaisons={8: 31.863949999999996}, label=8)}
 ```
 
 <br>
