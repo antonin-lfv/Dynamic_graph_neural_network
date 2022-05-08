@@ -2,7 +2,7 @@ from utils.classes import *
 
 """ Version article """
 
-# Config 1
+# ----- Config 1 -----
 
 # G1 : 0, 3, 4, 6, 7
 # G2 : 1, 2, 5, 8, 9
@@ -24,7 +24,7 @@ G.addNeuron(Neuron(vecteur=type_2[4]))  # 9
 
 print(G.neurons)
 
-# Config 2
+# ----- Config 2 -----
 
 # G1 : 0, 2, 4, 7
 # G2 : 1, 3, 9, 12

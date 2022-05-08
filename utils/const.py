@@ -15,7 +15,7 @@ class ConstGraph:
     # avec fct racines et cosinus
     INPUT_SIZE_CONFIG1_ARTICLE = 100
     # avec les signaux
-    INPUT_SIZE_CONFIG2_ARTICLE = 500
+    INPUT_SIZE_CONFIG2_ARTICLE = 250
 
 
 class ConstThreshold_config1_article:
