@@ -1,26 +1,5 @@
 from utils.const import *
 
-f = np.cos
-g = np.sqrt
-
-taille_input = ConstGraph_article.INPUT_SIZE_CONFIG_1
-
-type_1 = {
-    1: 1 * f(np.linspace(0, 5, taille_input)),
-    2: 2 * f(np.linspace(0, 5, taille_input)),
-    3: 3 * f(np.linspace(0, 5, taille_input)),
-    4: 4 * f(np.linspace(0, 5, taille_input)),
-    5: 5 * f(np.linspace(0, 5, taille_input)),
-}
-
-type_2 = {
-    1: 14 * g(np.linspace(0, 5, taille_input)),
-    2: 15 * g(np.linspace(0, 5, taille_input)),
-    3: 16 * g(np.linspace(0, 5, taille_input)),
-    4: 17 * g(np.linspace(0, 5, taille_input)),
-    5: 18 * g(np.linspace(0, 5, taille_input)),
-}
-
 
 def distance_neurons(x: list, y: list) -> float:
     """ Distance euclidienne entre 2 vecteurs de neurones
@@ -58,16 +37,3 @@ def solve_inter_circles(centres_x, centres_y, rayons):
 
     root = fsolve(func, np.array([1] * len(centres_x)), maxfev=500)
     return root[0], root[1]
-
-
-def plot_neurons_config_1_article():
-    L = list(type_1.values()) + list(type_2.values())
-    index = [0, 3, 6, 4, 7, 8, 1, 2, 9, 5]
-    fig = go.Figure()
-    for l, j in zip(L, index):
-        fig.add_scatter(x=np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_1), y=l, name=f"index : {j}")
-    fig.update_layout(
-        paper_bgcolor=ConstPlotly.transparent_color,
-        plot_bgcolor=ConstPlotly.transparent_color,
-    )
-    plot(fig)
