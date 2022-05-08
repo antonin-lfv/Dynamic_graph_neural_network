@@ -229,7 +229,9 @@ On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste
 <br>
 
 On remarque que les neurones d'index 1, 2, 5 et 8 sont ajoutés à la même classe, de même que les neurones 3, 4, 6, 7. Tout cela semble cohérent car chacune des classes créées par le réseau ne contient que des neurones qui, de base, représentent des fonctions de même type.
-On peut souligné aussi que le réseau a placé les neurones 0 et 9 en tant qu'outliers, cela peut-être la conséquence de seuils trop stricts. On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
+On peut souligné aussi que le réseau a placé les neurones 0 et 9 en tant qu'outliers, cela peut-être la conséquence de seuils trop stricts. <br>
+
+On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
 
 <br>
 
