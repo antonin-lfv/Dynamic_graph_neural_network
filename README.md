@@ -243,8 +243,7 @@ On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des 
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
-	<img width="950" alt="Capture d’écran 2022-05-09 à 20 27 43" src="https://user-images.githubusercontent.com/63207451/167473679-2273d71d-cba6-4366-8f8b-629481438bd7.png">
-	<img width="950" alt="Capture d’écran 2022-05-09 à 23 41 40" src="https://user-images.githubusercontent.com/63207451/167503422-dfcf12dc-e615-415c-872e-9e6a1200f8a2.png">
+<img width="950" alt="Capture d’écran 2022-05-09 à 23 45 34" src="https://user-images.githubusercontent.com/63207451/167503949-77b26c00-4d8a-475b-9682-11f5fa38bbcf.png">
 
 	</p>
 
