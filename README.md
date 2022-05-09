@@ -16,7 +16,7 @@
 <br>
 
 <p align="center">
-Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests. Le modèle sur lequel est basé cet approche est disponible dans les liens utiles en dessous. La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans l'article, puis, en fonction des resultats, de modifier ce modèle pour en proposer un nouveau. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à suivre l'évolution architecturale du réseau. Concernant les phases d'expérimentation, on tentera de classer plusieurs types de fonctions, et de jouer avec les seuils présents dans le modèle. Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
+Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests. Le modèle sur lequel est basé cet approche est disponible dans les liens utiles en dessous. La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans l'article, puis, en fonction des resultats, d'améliorer ce modèle sur le plan de l'implémentation. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à suivre l'évolution architecturale du réseau (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera de classer plusieurs types de fonctions, et de jouer avec les seuils présents dans le modèle. Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 </p>
 
 <br>
@@ -40,8 +40,6 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
 3. [Implémentation](#implémentation)
    1. [Ajout des neurones](#ajout-des-neurones)
    2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
-      1. [Version de l'article](#version-de-larticle)
-      2. [Version modifiéé](#version-modifiée)
    3. [Affichage du graphe](#affichage-du-graphe)
 
 <br>
@@ -184,10 +182,6 @@ Il ne manque plus que quelques étapes supplémentaires pour que notre modèle s
 
 ### Apprentissage et prédiction
 
-On va ici détailler deux versions du déroulement du modèle après ajout de chaque neurone.
-
-#### Version de l'article
-
 Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) de son foyer, modifier le foyer ainsi que toutes ces liaisons et neurones voisins. Si une liaison devient supérieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{r}) durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) 
 
 <br>
@@ -205,7 +199,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-1. Premier test sur des fonctions classiques
+#### 1) Premier test sur des fonctions classiques
 
 Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
@@ -243,7 +237,7 @@ On va poursuivre les tests avec d'autres données, et un peu plus de types diff�
 
 <br>
 
-2. Deuxième test avec des signaux sinusoïdaux
+#### 2. Deuxième test avec des signaux sinusoïdaux
 
 On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
@@ -285,13 +279,6 @@ On peut relever de façon assez remarquable que **chaque cluster de signaux corr
 <p align="center">
 <img width="667" alt="Capture d’écran 2022-05-09 à 23 32 13" src="https://user-images.githubusercontent.com/63207451/167502111-10a624dc-31e6-4548-a7da-b7df23847451.png">
 	</p>
-
-<br>
-
-
-#### Version modifiée
-
-À venir ...
 
 <br>
 
