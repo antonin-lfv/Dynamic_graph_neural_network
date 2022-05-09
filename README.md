@@ -203,7 +203,9 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-Par exemple, prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+1. Premier test sur des fonctions classiques
+
+Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
@@ -238,6 +240,47 @@ Mais dans cette dernière classe le neurone 0 a été classé en tant qu'outlier
 On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
 
 <br>
+
+2. Deuxième test avec des signaux sinusoïdaux
+
+On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
+On peut déjà tracer les courbes représentant les 9 neurones : <br>
+
+<p align="center">
+	<img width="950" alt="Capture d’écran 2022-05-09 à 20 27 43" src="https://user-images.githubusercontent.com/63207451/167473679-2273d71d-cba6-4366-8f8b-629481438bd7.png">
+	</p>
+
+On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
+
+```
+{
+0: Neuron(index=0, vecteur="", liaisons={1: 19.632699, 2: 19.12167, 3: 48.8934, 7: 24.4062}, label=0),
+ 1: Neuron(index=1, vecteur="", liaisons={0: 19.632699}, label=0),
+ 2: Neuron(index=2, vecteur="", liaisons={0: 19.12167}, label=0),
+ 3: Neuron(index=3, vecteur="", liaisons={0: 48.8934, 4: 23.345496}, label=3),
+ 4: Neuron(index=4, vecteur="", liaisons={3: 23.345496, 5: 11.343969000000001, 6: 9.22833, 8: 23.1399}, label=4),
+ 5: Neuron(index=5, vecteur="", liaisons={4: 11.343969000000001}, label=4),
+ 6: Neuron(index=6, vecteur="", liaisons={4: 9.22833}, label=4),
+ 7: Neuron(index=7, vecteur="", liaisons={0: 24.4062}, label=0),
+ 8: Neuron(index=8, vecteur="", liaisons={4: 23.1399}, label=4)
+ }
+```
+
+<br>
+
+Pour mieux comprendre comment le réseau a classé les neurones, on va afficher les signaux de même cluster ensemble : <br>
+
+<p align="center">
+	<img width="1294" alt="Capture d’écran 2022-05-09 à 20 29 14" src="https://user-images.githubusercontent.com/63207451/167473949-ce5bc1f0-23f1-4284-885b-844c0c97d960.png">
+	</p>
+
+<br>
+
+Chacune des colonnes du résultats ci-dessus correspond à un cluster créé par le réseau. Ainsi, les neurones 0, 1, 2 et 7 appartiennent au même cluster, de même que les neurones 4, 5, 5 et 8. Enfin, le neurone 3 est classé tout seul.
+On peut relever de façon assez remarquable que chaque cluster de signaux correspond à un nombre bien défini de "pics". Le premier cluster rassemble des signaux avec 2 et 3 pics, le deuxième cluster rassemble des neurones dont les signaux ont 5 pics, et on peut alors comprendre que le neurone 3 est classé tout seul car son signal possède 7 pics.
+
+<br>
+
 
 #### Version modifiée
 
