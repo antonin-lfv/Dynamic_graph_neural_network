@@ -239,6 +239,33 @@ On va poursuivre les tests avec d'autres données, et un peu plus de types diff�
 
 <br>
 
+On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
+On peut déjà tracer les courbes représentant les 9 neurones : <br>
+
+<p align="center">
+<img width="1399" alt="Capture d’écran 2022-05-09 à 19 44 58" src="https://user-images.githubusercontent.com/63207451/167467176-fad89e18-6561-45bb-b65f-233641c5bedf.png">
+</p>
+
+On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. <br>
+
+On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
+
+```
+{
+0: Neuron(index=0, vecteur="", liaisons={1: 19.632699, 2: 19.12167, 3: 48.8934, 7: 24.4062}, label=0),
+ 1: Neuron(index=1, vecteur="", liaisons={0: 19.632699}, label=0),
+ 2: Neuron(index=2, vecteur="", liaisons={0: 19.12167}, label=0),
+ 3: Neuron(index=3, vecteur="", liaisons={0: 48.8934, 4: 23.345496}, label=3),
+ 4: Neuron(index=4, vecteur="", liaisons={3: 23.345496, 5: 11.343969000000001, 6: 9.22833, 8: 23.1399}, label=4),
+ 5: Neuron(index=5, vecteur="", liaisons={4: 11.343969000000001}, label=4),
+ 6: Neuron(index=6, vecteur="", liaisons={4: 9.22833}, label=4),
+ 7: Neuron(index=7, vecteur="", liaisons={0: 24.4062}, label=0),
+ 8: Neuron(index=8, vecteur="", liaisons={4: 23.1399}, label=4)
+ }
+
+
+<br>
+
 #### Version modifiée
 
 À venir ...
