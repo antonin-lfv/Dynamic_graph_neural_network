@@ -20,4 +20,4 @@ def random_signal():
 
 fct = {}
 for i in range(16):
-    fct[i] = random.uniform(0, 1)
+    fct[i] = random.uniform(0,1)
