@@ -244,7 +244,6 @@ On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
 <img width="950" alt="Capture d’écran 2022-05-09 à 23 45 34" src="https://user-images.githubusercontent.com/63207451/167503949-77b26c00-4d8a-475b-9682-11f5fa38bbcf.png">
-
 	</p>
 
 On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
@@ -275,11 +274,16 @@ Pour mieux comprendre comment le réseau a classé les neurones, on va afficher 
 
 Chacune des colonnes du résultats ci-dessus correspond à un cluster créé par le réseau. Ainsi, les neurones 0, 1, 2 et 7 appartiennent au même cluster, de même que les neurones 4, 5, 6 et 8. Enfin, le neurone 3 est classé tout seul.
 On peut relever de façon assez remarquable que **chaque cluster de signaux correspond à un nombre bien défini de "pics"**. Le premier cluster rassemble des signaux avec 2 et 3 pics, le deuxième cluster rassemble des neurones dont les signaux ont 5 pics, et on peut alors comprendre que le neurone 3 est classé tout seul car son signal possède 7 pics. <br>
+
 **Cependant**, cette logique de pics sur le signal brute n'est pas tout le temps vérifiée, par exemple sur un autre jeu de données, le réseau peut regrouper des signaux totalement différents. Par exemple ces deux signaux : <br>
 
 <p align="center">
 <img width="667" alt="Capture d’écran 2022-05-09 à 23 32 13" src="https://user-images.githubusercontent.com/63207451/167502111-10a624dc-31e6-4548-a7da-b7df23847451.png">
 	</p>
+
+<br>
+
+On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers .. avec **une décomposition en séries de Fourier**
 
 <br>
 
