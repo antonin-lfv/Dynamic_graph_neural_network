@@ -54,6 +54,8 @@ def plot_neurons_config_1_article():
     plot(fig)
 
 
+# affichage des vecteurs des neurones
 # plot_neurons_config_1_article()
 
+# affichage de la config du réseau
 G.neurons

@@ -162,7 +162,7 @@ class Neuron_v2:
     def alterFoyer(self, u: List[float]):
         # TODO : altération des liaisons -> calculs des nouvelles distances ici ? ou à la fin de "altervoisins" ? + mettre à jour les labels
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        Deltaz = [ConstThreshold_article.bv_config1 * (a + b) for a, b in zip(self.vecteur, u)]
+        Deltaz = [ConstThreshold_custom.bv * (a + b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
 
     def alterVoisins(self, graph):
@@ -170,7 +170,7 @@ class Neuron_v2:
         for k, val in self.liaisons.items():
             # k prend les valeurs des index des neurones voisins, donc de similarité < an
             graph.neurons[k].vecteur = [i + j for i, j in zip(graph.neurons[k].vecteur,
-                                                              [ConstThreshold_article.bc_config1 * val * (a - b) for a, b in
+                                                              [ConstThreshold_custom.bc * val * (a - b) for a, b in
                                                                zip(self.vecteur, graph.neurons[k].vecteur)])]
 
 
@@ -293,7 +293,7 @@ class Graph_v2:
             if len(self.neurons) == 1:
                 # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion
                 # Le label est attribué avec le seuil an
-                if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold_article.an_config1:
+                if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold_custom.an:
                     neuron.label = str(neuron.index)
                 else:
                     neuron.label = foyer.label
@@ -303,12 +303,12 @@ class Graph_v2:
 
             else:
                 # ===== Il y a au moins 2 neurones dans le réseau
-                if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an_config1:
+                if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_custom.an:
                     # set label
                     neuron.label = foyer.label
                     # Si la distance du foyer est plus petite que an on connecte à tous les neurones de distance < an
                     for n in self.neurons.values():
-                        if (d := distance_neurons(n.vecteur, neuron.vecteur)) < ConstThreshold_article.an_config1:
+                        if (d := distance_neurons(n.vecteur, neuron.vecteur)) < ConstThreshold_custom.an:
                             neuron.liaisons[n.index] = n.liaisons[neuron.index] = d
                 else:
                     # set label
@@ -321,7 +321,7 @@ class Graph_v2:
             # on augmente le compteur du graphe
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
-            if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an_config1:
+            if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_custom.an:
                 # foyer.alterFoyer(neuron.vecteur)
                 # foyer.alterVoisins(self)
                 # foyer.alterLiaisons(self)

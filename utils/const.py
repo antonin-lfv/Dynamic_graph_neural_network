@@ -8,6 +8,7 @@ from fastdist import fastdist
 from typing import List
 from scipy.optimize import fsolve
 import pandas as pd
+from plotly.subplots import make_subplots
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
@@ -16,7 +17,7 @@ class ConstGraph_article:
     # avec fct racines et cosinus
     INPUT_SIZE_CONFIG_1 = 100
     # avec les signaux
-    INPUT_SIZE_CONFIG_2 = 250
+    INPUT_SIZE_CONFIG_2 = 300
 
 
 class ConstGraph_custom:
@@ -39,6 +40,19 @@ class ConstThreshold_article:
     # seuil après lequel le neurone est seulement connecté au foyer
     an_config1 = 100
     an_config2 = 100
+
+
+class ConstThreshold_custom:
+    # altération du foyer (plus il est grand, plus il est modifié)
+    bv = 0.10
+    # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
+    bc = 0.10
+    # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
+    bl = 0.50
+    # seuil après lequel suppression des liens suite à altération
+    ar = 150
+    # seuil après lequel le neurone est seulement connecté au foyer
+    an = 100
 
 
 class ConstPlotly:
