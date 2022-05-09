@@ -247,7 +247,7 @@ On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des 
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
-<img width="1399" alt="Capture d’écran 2022-05-09 à 19 44 58" src="https://user-images.githubusercontent.com/63207451/167467176-fad89e18-6561-45bb-b65f-233641c5bedf.png">
+	<img width="950" alt="Capture d’écran 2022-05-09 à 20 27 43" src="https://user-images.githubusercontent.com/63207451/167473679-2273d71d-cba6-4366-8f8b-629481438bd7.png">
 	</p>
 
 On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. <br>
@@ -267,6 +267,12 @@ On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
  8: Neuron(index=8, vecteur="", liaisons={4: 23.1399}, label=4)
  }
 ```
+
+Pour mieux comprendre comment le réseau a classé les neurones, on va afficher les signaux de même cluster ensemble : <br>
+
+<p align="center">
+	<img width="1294" alt="Capture d’écran 2022-05-09 à 20 29 14" src="https://user-images.githubusercontent.com/63207451/167473949-ce5bc1f0-23f1-4284-885b-844c0c97d960.png">
+	</p>
 
 <br>
 
