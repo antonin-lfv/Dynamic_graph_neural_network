@@ -35,22 +35,15 @@ signaux = dict_of_signal()
 # Réseau
 
 G = Graph()
-G.addNeuron(Neuron(vecteur=signaux[0]))  # 0
-G.addNeuron(Neuron(vecteur=signaux[1]))  # 1
-G.addNeuron(Neuron(vecteur=signaux[2]))  # 2
-G.addNeuron(Neuron(vecteur=signaux[3]))  # 3
-G.addNeuron(Neuron(vecteur=signaux[4]))  # 4
-G.addNeuron(Neuron(vecteur=signaux[5]))  # 5
-G.addNeuron(Neuron(vecteur=signaux[6]))  # 6
-G.addNeuron(Neuron(vecteur=signaux[7]))  # 7
-G.addNeuron(Neuron(vecteur=signaux[8]))  # 8
+for i in range(9):
+    G.addNeuron(Neuron(vecteur=signaux[i]))
 
 
 def affichage_signaux():
     """Affichage de tous les signaux"""
-    fig = make_subplots(cols=2, rows=5, shared_xaxes=True, subplot_titles=[f"Neurone {i}" for i in [1, 6, 2, 7, 3, 8, 4, 9, 5]])
+    fig = make_subplots(cols=3, rows=3, shared_xaxes=True, subplot_titles=[f"Neurone {i}" for i in [0, 3, 6, 1, 4, 7, 2, 5, 8]])
     for row_index, sign in enumerate(signaux.values()):
-        fig.add_scatter(y=sign, x=inter, row=row_index % 5 + 1, col= 1 if row_index < 5 else 2)
+        fig.add_scatter(y=sign, x=inter, row=row_index % 3 + 1, col=1 if row_index < 3 else 2 if row_index < 6 else 3)
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
         showlegend=False
@@ -81,10 +74,10 @@ def affichage_signaux_par_cluster():
 
 
 # Affichage des signaux des neurones
-affichage_signaux()
+# affichage_signaux()
 
 # Affichage des clusters des signaux
-# affichage_signaux_par_cluster()
+affichage_signaux_par_cluster()
 
 # affichage de la config du réseau
 # G.neurons
