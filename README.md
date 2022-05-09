@@ -266,9 +266,10 @@ On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
  7: Neuron(index=7, vecteur="", liaisons={0: 24.4062}, label=0),
  8: Neuron(index=8, vecteur="", liaisons={4: 23.1399}, label=4)
  }
-
+```
 
 <br>
+
 
 #### Version modifiée
 
