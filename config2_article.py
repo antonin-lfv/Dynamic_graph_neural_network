@@ -57,7 +57,10 @@ G.addNeuron(Neuron(vecteur=signaux[7]))  # 7
 G.addNeuron(Neuron(vecteur=signaux[8]))  # 8
 
 # Affichage des signaux des neurones
-affichage_signaux()
+# affichage_signaux()
 
 # affichage de la config du réseau
 G.neurons
+
+for i in range(len(G.neurons)):
+    print(distance_neurons(G.neurons[0].vecteur, G.neurons[i].vecteur))
