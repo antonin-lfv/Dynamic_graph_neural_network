@@ -203,7 +203,9 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-Par exemple, prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+1. Premier test sur des fonctions classiques
+
+Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
@@ -238,6 +240,8 @@ Mais dans cette dernière classe le neurone 0 a été classé en tant qu'outlier
 On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
 
 <br>
+
+2. Deuxième test avec des signaux sinusoïdaux
 
 On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
