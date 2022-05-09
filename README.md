@@ -178,6 +178,8 @@ On définit dans cette méthode 3 cas :
 Les deux types de fonctions sont bien dans des espaces éloignés du graphe, et sont séparés en deux labels.
 Il ne manque plus que quelques étapes supplémentaires pour que notre modèle soit complet. C'est l'objet de la section suivante.
 
+> La vue graphique ci-dessus n'est là que pour confirmer la bonne mise en place de la méthode `add_neuron`, ce n'est pas un modèle de classification à lui tout seul
+
 <br>
 
 ### Apprentissage et prédiction
