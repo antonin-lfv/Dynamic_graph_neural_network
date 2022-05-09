@@ -41,6 +41,7 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
    1. [Ajout des neurones](#ajout-des-neurones)
    2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
    3. [Affichage du graphe](#affichage-du-graphe)
+4. [Conclusion](#conclusion)
 
 <br>
 
@@ -192,8 +193,7 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
 <br> 
-Si un neurone n'a plus de connexion on lui attribut son label comme classe.
-<br>
+Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
 
 Un problème dans l'implémentation de la fonction d'affichage du graphe apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones (avec la méthode `__repr__` de chaque classe) du graphe avec leur label pour savoir comment le modèle les a rassemblés. 
 
@@ -356,6 +356,10 @@ On cherche les coordonnées du point E :
 <p align="center">
 <img width="500" alt="4_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467154-d220c01d-54ca-4a49-838a-a9a16f8671da.png">
 	</p>
+
+<br>
+
+# Conclusion
 
 <br>
 
