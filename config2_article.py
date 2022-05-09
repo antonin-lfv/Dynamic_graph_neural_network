@@ -81,10 +81,10 @@ def affichage_signaux_par_cluster():
 
 
 # Affichage des signaux des neurones
-# affichage_signaux()
+affichage_signaux()
 
 # Affichage des clusters des signaux
-affichage_signaux_par_cluster()
+# affichage_signaux_par_cluster()
 
 # affichage de la config du réseau
-G.neurons
+# G.neurons
