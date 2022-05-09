@@ -32,17 +32,6 @@ def dict_of_signal():
 
 signaux = dict_of_signal()
 
-
-def affichage_signaux():
-    fig = make_subplots(cols=1, rows=len(signaux), shared_xaxes=True)
-    for row_index, sign in zip([i for i in range(1, len(signaux)+1)], signaux.values()):
-        fig.add_scatter(y=sign, x=inter, row=row_index, col=1)
-    fig.update_layout(
-        paper_bgcolor=ConstPlotly.transparent_color,
-    )
-    plot(fig)
-
-
 # Réseau
 
 G = Graph()
@@ -56,11 +45,46 @@ G.addNeuron(Neuron(vecteur=signaux[6]))  # 6
 G.addNeuron(Neuron(vecteur=signaux[7]))  # 7
 G.addNeuron(Neuron(vecteur=signaux[8]))  # 8
 
+
+def affichage_signaux():
+    """Affichage de tous les signaux"""
+    fig = make_subplots(cols=2, rows=5, shared_xaxes=True, subplot_titles=[f"Neurone {i}" for i in [1, 6, 2, 7, 3, 8, 4, 9, 5]])
+    for row_index, sign in enumerate(signaux.values()):
+        fig.add_scatter(y=sign, x=inter, row=row_index % 5 + 1, col= 1 if row_index < 5 else 2)
+    fig.update_layout(
+        paper_bgcolor=ConstPlotly.transparent_color,
+        showlegend=False
+    )
+    plot(fig)
+
+
+def affichage_signaux_par_cluster():
+    """Affichage des signaux par cluster généré par le réseau
+    -> Ici les neurones 0, 1, 2, 7 sont ensemble
+    -> Les neurones 4, 5, 6, 8 sont également ensemble
+    -> le neurone 3 est tout seul
+    """
+    fig = make_subplots(cols=3, rows=4, shared_xaxes=True, subplot_titles=["Neurones 0, 1, 2, 7", "Neurones 4, 5, 6, 8", "Neurone 3"])
+    # Col 1 : neurones 0, 1, 2, 7
+    for row_index, n in enumerate([0, 1, 2, 7]):
+        fig.add_scatter(y=G.neurons[n].vecteur, x=inter, row=row_index+1, col=1, name=f"Neurone {n}")
+    # Col 2 : neurones 4, 5, 6, 8
+    for row_index, n in enumerate([4, 5, 6, 8]):
+        fig.add_scatter(y=G.neurons[n].vecteur, x=inter, row=row_index+1, col=2, name=f"Neurone {n}")
+    # Col 3 : neurone 3
+    for row_index, n in enumerate([3]):
+        fig.add_scatter(y=G.neurons[n].vecteur, x=inter, row=row_index+1, col=3, name=f"Neurone {n}")
+    fig.update_layout(
+        paper_bgcolor=ConstPlotly.transparent_color,
+    )
+    plot(fig)
+
+
 # Affichage des signaux des neurones
 # affichage_signaux()
 
+# Affichage des clusters des signaux
+affichage_signaux_par_cluster()
+
 # affichage de la config du réseau
 G.neurons
-
-for i in range(len(G.neurons)):
-    print(distance_neurons(G.neurons[0].vecteur, G.neurons[i].vecteur))
