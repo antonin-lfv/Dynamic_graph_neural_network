@@ -25,6 +25,8 @@ class ConstGraph_custom:
 
 
 class ConstThreshold_article:
+    """La config 1 correspond à la classification des fonctions racines et sinus
+    et la config 2 à la classification des signaux"""
     # altération du foyer (plus il est grand, plus il est modifié)
     # bv_config1 = 0.10
     bv = 0.90
