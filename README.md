@@ -248,7 +248,7 @@ On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
 <img width="1399" alt="Capture d’écran 2022-05-09 à 19 44 58" src="https://user-images.githubusercontent.com/63207451/167467176-fad89e18-6561-45bb-b65f-233641c5bedf.png">
-</p>
+	</p>
 
 On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. <br>
 
