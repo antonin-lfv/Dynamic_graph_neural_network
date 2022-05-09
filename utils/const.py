@@ -23,17 +23,22 @@ class ConstGraph_custom:
     INPUT_SIZE = 250
 
 
-class ConstThreshold_config1_article:
-    # altération du foyer
-    bv = 0.90
-    # altération des voisins du foyer (taux)
-    bc = 0.95
-    # altération des liaisons du foyer
-    bl = 0.90
+class ConstThreshold_article:
+    # altération du foyer (plus il est grand, plus il est modifié)
+    bv_config1 = 0.10
+    bv_config2 = 0.90
+    # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
+    bc_config1 = 0.10
+    bc_config2 = 0.15
+    # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
+    bl_config1 = 0.50
+    bl_config2 = 0.30
     # seuil après lequel suppression des liens suite à altération
-    ar = 150
+    ar_config1 = 150
+    ar_config2 = 150
     # seuil après lequel le neurone est seulement connecté au foyer
-    an = 90
+    an_config1 = 100
+    an_config2 = 90
 
 
 class ConstPlotly:

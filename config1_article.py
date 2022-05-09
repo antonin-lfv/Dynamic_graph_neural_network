@@ -24,8 +24,8 @@ type_2 = {
     5: 18 * g(np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_1)),
 }
 
-# G1 : 0, 3, 4, 6, 7
-# G2 : 1, 2, 5, 8, 9
+# Groupe de neurones 1 : 0, 3, 4, 6, 7
+# Groupe de neurones 2 : 1, 2, 5, 8, 9
 
 G = Graph()
 G.addNeuron(Neuron(vecteur=type_1[1]))  # 0
@@ -56,4 +56,4 @@ def plot_neurons_config_1_article():
 
 # plot_neurons_config_1_article()
 
-print(G.neurons)
+G.neurons
