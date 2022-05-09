@@ -59,3 +59,5 @@ G.addNeuron(Neuron(vecteur=signaux[8]))  # 8
 # Affichage des signaux des neurones
 affichage_signaux()
 
+# affichage de la config du réseau
+G.neurons
