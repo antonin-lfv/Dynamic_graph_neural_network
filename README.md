@@ -268,6 +268,8 @@ On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
  }
 ```
 
+<br>
+
 Pour mieux comprendre comment le réseau a classé les neurones, on va afficher les signaux de même cluster ensemble : <br>
 
 <p align="center">
