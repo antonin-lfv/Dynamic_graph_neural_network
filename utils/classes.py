@@ -137,7 +137,7 @@ class Graph:
                 foyer.alterLiaisons(self)
 
         # si le neurone n'a plus de liaison, il est associé à un label à part
-        for n in self.neurons:
+        for n in self.neurons.values():
             if len(n.liaisons) == 0:
                 n.label = n.index
 
