@@ -215,16 +215,16 @@ On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste
 
 ```
 {
-0: Neuron(index=0, vecteur="", liaisons={1: 15.04025}, label=0),
- 1: Neuron(index=1, vecteur="", liaisons={0: 15.04025, 2: 0.9881875, 5: 6.126875, 8: 2.33225, 9: 18.5865}, label=1),
- 2: Neuron(index=2, vecteur="", liaisons={1: 0.9881875, 3: 58.147}, label=1),
- 3: Neuron(index=3, vecteur="", liaisons={2: 58.147, 4: 3.4405, 6: 2.06425, 7: 22.845}, label=3),
- 4: Neuron(index=4, vecteur="", liaisons={3: 3.4405, 6: 6.976, 7: 24.364}, label=3),
- 5: Neuron(index=5, vecteur="", liaisons={1: 6.126875, 6: 17.707, 7: 47.834}, label=1),
- 6: Neuron(index=6, vecteur="", liaisons={3: 2.06425, 4: 6.976, 5: 17.707, 7: 10.631}, label=3),
- 7: Neuron(index=7, vecteur="", liaisons={3: 22.845, 4: 24.364, 5: 47.834, 6: 10.631}, label=3),
- 8: Neuron(index=8, vecteur="", liaisons={1: 2.33225, 9: 37.861}, label=1),
- 9: Neuron(index=9, vecteur="", liaisons={1: 18.5865, 8: 37.861}, label=1)
+0: Neuron(index=0, liaisons={1: 15.04025}, label=0),
+ 1: Neuron(index=1, liaisons={0: 15.04025, 2: 0.9881875, 5: 6.126875, 8: 2.33225, 9: 18.5865}, label=1),
+ 2: Neuron(index=2, liaisons={1: 0.9881875, 3: 58.147}, label=1),
+ 3: Neuron(index=3, liaisons={2: 58.147, 4: 3.4405, 6: 2.06425, 7: 22.845}, label=3),
+ 4: Neuron(index=4, liaisons={3: 3.4405, 6: 6.976, 7: 24.364}, label=3),
+ 5: Neuron(index=5, liaisons={1: 6.126875, 6: 17.707, 7: 47.834}, label=1),
+ 6: Neuron(index=6, liaisons={3: 2.06425, 4: 6.976, 5: 17.707, 7: 10.631}, label=3),
+ 7: Neuron(index=7, liaisons={3: 22.845, 4: 24.364, 5: 47.834, 6: 10.631}, label=3),
+ 8: Neuron(index=8, liaisons={1: 2.33225, 9: 37.861}, label=1),
+ 9: Neuron(index=9, liaisons={1: 18.5865, 8: 37.861}, label=1)
  }
 ```
 
