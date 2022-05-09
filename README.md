@@ -278,7 +278,7 @@ Pour mieux comprendre comment le réseau a classé les neurones, on va afficher 
 
 <br>
 
-Chacune des colonnes du résultats ci-dessus correspond à un cluster créé par le réseau. Ainsi, les neurones 0, 1, 2 et 7 appartiennent au même cluster, de même que les neurones 4, 5, 5 et 8. Enfin, le neurone 3 est classé tout seul.
+Chacune des colonnes du résultats ci-dessus correspond à un cluster créé par le réseau. Ainsi, les neurones 0, 1, 2 et 7 appartiennent au même cluster, de même que les neurones 4, 5, 6 et 8. Enfin, le neurone 3 est classé tout seul.
 On peut relever de façon assez remarquable que chaque cluster de signaux correspond à un nombre bien défini de "pics". Le premier cluster rassemble des signaux avec 2 et 3 pics, le deuxième cluster rassemble des neurones dont les signaux ont 5 pics, et on peut alors comprendre que le neurone 3 est classé tout seul car son signal possède 7 pics.
 
 <br>
