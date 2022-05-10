@@ -40,7 +40,7 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
 3. [Implémentation](#implémentation)
 	1. [Test sur des fonctions classiques](#1.-Premier-test-sur-des-fonctions-classiques)
 	2. [Test sur des signaux sinusoïdaux](#2.-Deuxième-test-avec-des-signaux-sinusoïdaux)
-	3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-Troisième-test-avec-utilisation-de-la-transormée-de-Fourrier)
+	3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-troisieme-test-avec-utilisation-de-la-transormee-de-fourrier)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
@@ -284,8 +284,11 @@ On observe à vue d'oeil des différences au niveau des fréquences. Appliquons 
 Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit ![formula](https://render.githubusercontent.com/render/math?math=f) notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
 
 <p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="100">
+   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="350">
 	</p>
+	
+<br>
+
 
 <br>
 
