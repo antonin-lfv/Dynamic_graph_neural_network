@@ -29,23 +29,23 @@ class ConstThreshold_article:
     # altération du foyer (plus il est grand, plus il est modifié)
     # bv_config1 = 0.10
     # bv_config2 = 0.70
-    bv = 0.70
+    bv = 0.20
     # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
     # bc_config1 = 0.10
     # bc_config2 = 0.70
-    bc = 0.70
+    bc = 0.20
     # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
     # bl_config1 = 0.50
     # bl_config2 = 0.70
-    bl = 0.70
+    bl = 0.20
     # seuil après lequel suppression des liens suite à altération
     # ar_config1 = 150
     # ar_config2 = 100
-    ar = 100
+    ar = 30
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
     # an_config2 = 35
-    an = 40
+    an = 5
 
 
 class ConstPlotly:

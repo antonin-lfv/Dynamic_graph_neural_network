@@ -48,12 +48,12 @@ signaux = dict_of_signal()
 def plot_dict_signal(abs, dict_y):
     """Affiche un dictionnaire de signaux"""
     size = math.ceil(np.sqrt(len(signaux)))
-    fig = make_subplots(rows=size, cols=size)
+    fig = make_subplots(rows=size, cols=size, subplot_titles=[f"Neurone {i}" for i in range(len(signaux))])
     index_signal = 0
     for row in range(1, size + 1):
         for col in range(1, size + 1):
             if index_signal < nb_neurons:
-                fig.add_scatter(row=row, col=col, x=abs, y=dict_y[index_signal])
+                fig.add_scatter(row=row, col=col, x=abs, y=dict_y[index_signal], name=index_signal)
                 index_signal += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
@@ -78,4 +78,12 @@ def dict_of_fft():
 FFT = dict_of_fft()
 
 # Affichage des FFT
-plot_dict_signal(abs=abs_fft, dict_y=FFT)
+# plot_dict_signal(abs=abs_fft, dict_y=FFT)
+
+# Création du réseau
+G = Graph()
+for i in range(nb_neurons):
+    G.addNeuron(Neuron(vecteur=FFT[i]))
+
+# affichage de la config du réseau
+G.neurons
