@@ -289,6 +289,45 @@ Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit ![form
 	
 <br>
 
+Si on regarde les données brutes du réseau on obtient ceci : <br>
+
+```
+{
+0: Neuron(index=0, liaisons={1: 0.006926400000000001, 3: 0.164, 4: 1.0906, 7: 2.1456, 8: 1.1800000000000002, 11: 1.1814, 15: 3.769}, label=0),
+ 1: Neuron(index=1, liaisons={0: 0.006926400000000001, 2: 0.30952, 3: 0.028696000000000006, 4: 1.1492000000000002, 8: 1.2998, 11: 1.2300000000000002, 15: 0.5498000000000001}, label=0),
+ 2: Neuron(index=2, liaisons={1: 0.30952, 15: 6.163}, label=2),
+ 3: Neuron(index=3, liaisons={0: 0.164, 1: 0.028696000000000006, 4: 1.0162000000000002, 5: 0.32352000000000003}, label=0),
+ 4: Neuron(index=4, liaisons={0: 1.0906, 1: 1.1492000000000002, 3: 1.0162000000000002, 8: 5.77, 11: 5.981, 15: 3.842}, label=0),
+ 5: Neuron(index=5, liaisons={3: 0.32352000000000003, 6: 0.21260000000000004, 8: 0.9372, 11: 6.406}, label=5),
+ 6: Neuron(index=6, liaisons={5: 0.21260000000000004, 8: 4.875, 11: 6.383}, label=5),
+ 7: Neuron(index=7, liaisons={0: 2.1456, 9: 7.783, 10: 0.26996000000000003}, label=7),
+ 8: Neuron(index=8, liaisons={0: 1.1800000000000002, 1: 1.2998, 4: 5.77, 5: 0.9372, 6: 4.875, 11: 6.268, 15: 4.79}, label=5),
+ 9: Neuron(index=9, liaisons={7: 7.783}, label=9),
+ 10: Neuron(index=10, liaisons={7: 0.26996000000000003, 12: 0.03649600000000001, 13: 1.0204000000000002, 14: 1.0712}, label=10),
+ 11: Neuron(index=11, liaisons={0: 1.1814, 1: 1.2300000000000002, 4: 5.981, 5: 6.406, 6: 6.383, 8: 6.268, 15: 4.869}, label=0),
+ 12: Neuron(index=12, liaisons={10: 0.03649600000000001, 13: 0.979, 14: 5.743}, label=10),
+ 13: Neuron(index=13, liaisons={10: 1.0204000000000002, 12: 0.979, 14: 5.648}, label=10),
+ 14: Neuron(index=14, liaisons={10: 1.0712, 12: 5.743, 13: 5.648}, label=10),
+ 15: Neuron(index=15, liaisons={0: 3.769, 1: 0.5498000000000001, 2: 6.163, 4: 3.842, 8: 4.79, 11: 4.869}, label=0)
+ }
+ ```
+
+<br>
+
+De façon plus lisible, voici comment le réseau a classé les signaux : <br>
+
+```
+Label 0 :  0 1 3 4 11 15
+Label 2 :  2
+Label 5 :  5 6 8
+Label 7 :  7
+Label 9 :  9
+Label 10 :  10 12 13 14
+```
+
+<br>
+
+On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussi. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliqué.
 
 <br>
 
