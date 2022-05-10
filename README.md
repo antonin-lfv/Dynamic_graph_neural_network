@@ -191,7 +191,7 @@ Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone
 <br>
 
 On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces modifications :
-- `alterFoyer` : qui va altérer le vecteur du foyer du noouveau neurone ajouté
+- `alterFoyer` : qui va altérer le vecteur du foyer du nouveau neurone ajouté
 - `alterVoisins` : qui va modifier les voisins du foyer du nouveau neurone ajouté, selon le modèle mathématique
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
