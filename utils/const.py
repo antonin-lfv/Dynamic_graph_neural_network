@@ -9,6 +9,7 @@ from typing import List
 from scipy.optimize import fsolve
 import pandas as pd
 from plotly.subplots import make_subplots
+from scipy.fft import fft, fftfreq
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
@@ -18,10 +19,8 @@ class ConstGraph_article:
     INPUT_SIZE_CONFIG_1 = 100
     # avec les signaux
     INPUT_SIZE_CONFIG_2 = 300
-
-
-class ConstGraph_custom:
-    INPUT_SIZE = 250
+    # avec les FFT
+    INPUT_SIZE_CONFIG_3 = 200
 
 
 class ConstThreshold_article:
@@ -29,32 +28,24 @@ class ConstThreshold_article:
     et la config 2 à la classification des signaux"""
     # altération du foyer (plus il est grand, plus il est modifié)
     # bv_config1 = 0.10
+    # bv_config2 = 0.70
     bv = 0.70
     # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
     # bc_config1 = 0.10
+    # bc_config2 = 0.70
     bc = 0.70
     # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
     # bl_config1 = 0.50
+    # bl_config2 = 0.70
     bl = 0.70
     # seuil après lequel suppression des liens suite à altération
     # ar_config1 = 150
+    # ar_config2 = 100
     ar = 100
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
-    an = 35
-
-
-class ConstThreshold_custom:
-    # altération du foyer (plus il est grand, plus il est modifié)
-    bv = 0.10
-    # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
-    bc = 0.10
-    # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
-    bl = 0.50
-    # seuil après lequel suppression des liens suite à altération
-    ar = 150
-    # seuil après lequel le neurone est seulement connecté au foyer
-    an = 100
+    # an_config2 = 35
+    an = 40
 
 
 class ConstPlotly:
