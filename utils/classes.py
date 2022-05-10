@@ -142,10 +142,8 @@ class Graph:
                 n.label = n.index
 
 
-"""Version modifiée"""
+"""Version pour afficher le graphe avec le moteur graphique"""
 
-
-# TODO : changer ConstTreshold vers ConstTreshold_v2
 
 class Neuron_v2:
     def __init__(self, vecteur: List, index: int = None, label: str = None, liaisons: dict = None):
@@ -163,20 +161,6 @@ class Neuron_v2:
 
     def __repr__(self):
         return f'Neuron(index={self.index}, vecteur="{self.vecteur}", liaisons={self.liaisons}, label={self.label})'
-
-    def alterFoyer(self, u: List[float]):
-        # TODO : altération des liaisons -> calculs des nouvelles distances ici ? ou à la fin de "altervoisins" ? + mettre à jour les labels
-        """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        Deltaz = [ConstThreshold_custom.bv * (a + b) for a, b in zip(self.vecteur, u)]
-        self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
-
-    def alterVoisins(self, graph):
-        """Alteration des voisins dans le cas ou il est le foyer : Δxj = bc*cjk(xk-xj)"""
-        for k, val in self.liaisons.items():
-            # k prend les valeurs des index des neurones voisins, donc de similarité < an
-            graph.neurons[k].vecteur = [i + j for i, j in zip(graph.neurons[k].vecteur,
-                                                              [ConstThreshold_custom.bc * val * (a - b) for a, b in
-                                                               zip(self.vecteur, graph.neurons[k].vecteur)])]
 
 
 class Graph_v2:
@@ -325,9 +309,3 @@ class Graph_v2:
             self.neurons[neuron.index] = neuron
             # on augmente le compteur du graphe
             self.compt_neurons += 1
-            # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
-            if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_custom.an:
-                # foyer.alterFoyer(neuron.vecteur)
-                # foyer.alterVoisins(self)
-                # foyer.alterLiaisons(self)
-                ...

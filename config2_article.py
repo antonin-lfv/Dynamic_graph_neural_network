@@ -3,6 +3,7 @@ from utils.classes import *
 """ Version article """
 
 # ----- Config 2 -----
+# Avec 9 neurones
 
 # fonctions
 s = np.sin
