@@ -17,7 +17,9 @@
 
 <p align="center">
 Les réseaux de neurones dynamiques sont une branche peu développée du Deep Learning, qui repose sur un principe simple, l'architecture du réseau est dynamique. Cela a plusieurs avantages, notamment le fait que le réseau est en perpetuel apprentissage, et qu'il peut découvrir de nouveaux patterns dès qu'il en voit, ce qui le rend très flexible. Ici, on va encore un peu plus loin dans ce concept de réseau de neurones dynamiques, car on va utiliser une structure de graphe, c'est à dire sans organisation en couches, comme les modèles classiques. <br>
-	
+	</p>
+
+<p align="center">
 Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, pour nous poursuivrons sur une classification de signaux sinusoïdaux. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 	</p>
 
