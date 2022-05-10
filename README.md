@@ -316,20 +316,11 @@ Si on regarde les données brutes du réseau on obtient ceci : <br>
 
 De façon plus lisible, voici comment le réseau a classé les signaux : <br>
 
-```
-Label 0 :  0 1 3 4 11 15
-Label 2 :  2
-Label 5 :  5 6 8
-Label 7 :  7
-Label 9 :  9
-Label 10 :  10 12 13 14
-```
+| Clusters | Signaux |
+| --- | ----------- |
+| <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/167699829-1e656a93-aa86-4b33-a6a2-b5b2b04404a5.png"> | <img width="950" alt="Capture d’écran 2022-05-10 à 20 00 48" src="https://user-images.githubusercontent.com/63207451/167693006-dcd7b083-0ded-4876-85cf-aba57e3fc1bd.png"> |
 
 <br>
-
-<p align="center">
-<img width="950" alt="Capture d’écran 2022-05-10 à 20 00 48" src="https://user-images.githubusercontent.com/63207451/167693006-dcd7b083-0ded-4876-85cf-aba57e3fc1bd.png">
-	</p>
 
 <br>
 
