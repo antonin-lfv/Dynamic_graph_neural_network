@@ -20,13 +20,14 @@ Les réseaux de neurones dynamiques sont une branche peu développée du Deep Le
 	</p>
 
 <p align="center">
-Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, pour nous poursuivrons sur une classification de signaux sinusoïdaux. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
+Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. On verra que l'utilisation de la transformée de Fourier sera nécessaire. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, pour nous poursuivrons sur une classification de signaux sinusoïdaux. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 	</p>
 
 <br>
 
 > To Do :
 > - Tester le modèle sur un plus large dataset, avec de vraies données
+> - Utiliser une autre méthode que la transformée de Fourier
 
 <br>
 
