@@ -38,13 +38,11 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
     1. [Principe](#principe)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
-   1. [Ajout des neurones](#ajout-des-neurones)
-   2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
-		1. [Test sur des fonctions classiques](#1.-Premier-test-sur-des-fonctions-classiques)
-		2. [Test sur des signaux sinusoïdaux](#2.-Deuxième-test-avec-des-signaux-sinusoïdaux)
-		3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-Troisième-test-avec-utilisation-de-la-transormée-de-Fourrier)
-   3. [Affichage du graphe](#affichage-du-graphe)
-4. [Conclusion](#conclusion)
+	1. [Test sur des fonctions classiques](#1.-Premier-test-sur-des-fonctions-classiques)
+	2. [Test sur des signaux sinusoïdaux](#2.-Deuxième-test-avec-des-signaux-sinusoïdaux)
+	3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-Troisième-test-avec-utilisation-de-la-transormée-de-Fourrier)
+4. [Bonus](#affichage-du-graphe)
+5. [Conclusion](#conclusion)
 
 <br>
 
@@ -162,8 +160,6 @@ Ces paramètres seront fixes tout au long de ce projet. Concernant les méthodes
 
 <br>
 
-### Ajout des neurones
-
 La première étape de la modélisation est la création du graphe et l'ajout de neurones. On définit alors la méthode `addNeuron` de la classe `Graph` prenant en paramètre un objet de la classe `Neuron`. <br>
 
 On définit dans cette méthode 3 cas :
@@ -171,20 +167,7 @@ On définit dans cette méthode 3 cas :
 - Si le graphe contient un seul neurone : on assigne au nouveau neurone le label du premier si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}), sinon son label est défini par son index. On crée ensuite la liaison entre les deux. (qui est ajouté aux deux neurones)
 - Si il y a plus que deux neurones, on calcul le foyer du nouveau neurone. Si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) il prend le label du foyer, et on connecte au nouveau neurone tous les autres à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}). Sinon, l'index du nouveau neurone devient aussi son label, et il n'est connecté qu'a son foyer.
 
-À partir de là on peut déjà tester l'affichage avec la méthode `plotGraph` de la class `Graph` (expliqué [ici](#affichage-du-graphe)). Les neurones d'index 1, 2, 5, 8, et 9 représentent des fonctions racines, et les neurones d'index 0, 3, 4, 6 et 7 représentent des fonctions cosinus :
-
-<p align="center">
-<img width="950" alt="config3_connexions" src="https://user-images.githubusercontent.com/63207451/167264481-ea2f6763-aba4-4d4a-9248-7520f32c9f7e.png">
-</p>
-
-Les deux types de fonctions sont bien dans des espaces éloignés du graphe, et sont séparés en deux labels.
-Il ne manque plus que quelques étapes supplémentaires pour que notre modèle soit complet. C'est l'objet de la section suivante.
-
-> La vue graphique ci-dessus n'est là que pour confirmer la bonne mise en place de la méthode `add_neuron`, ce n'est pas un modèle de classification à lui tout seul. Dans le modèle que présente ce projet, des modifications sont effectuées après chaque ajout de neurone, rendant inutile la vue graphique.
-
 <br>
-
-### Apprentissage et prédiction
 
 Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) de son foyer, modifier le foyer ainsi que toutes ces liaisons et neurones voisins. Si une liaison devient supérieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{r}) durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) 
 
@@ -204,7 +187,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-#### 1. Premier test sur des fonctions classiques
+### 1. Premier test sur des fonctions classiques
 
 Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
@@ -242,7 +225,7 @@ On va poursuivre les tests avec d'autres données, et un peu plus de types diff�
 
 <br>
 
-#### 2. Deuxième test avec des signaux sinusoïdaux
+### 2. Deuxième test avec des signaux sinusoïdaux
 
 On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
@@ -278,20 +261,27 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-#### 3. Troisième test avec utilisation de la transormée de Fourrier
+### 3. Troisième test avec utilisation de la transormée de Fourrier
 
 On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux.
 
 <br>
 
-### Affichage du graphe
+# Bonus
 
-> Cette partie concerne uniquement la méthode d'affichage qui a permis de valider la première méthode du réseau, `add_neuron`
+> Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
 
-Très vite, la nécessité d'avoir une représentation visuelle est devenu obligatoire. Ainsi, voici l'approche utilisée pour se faire.
-Les données que nous avons à disposition sont les neurones avec leurs données ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires.
-Le but est alors de générer les coordonnées des neurones pour pouvoir les plot avec Plotly. On se ramène à un problème purement mathématique, comment placer `n` points
-en ne connaissant que la distance entre eux. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
+Voici un exemple de résultat obtenu avec 10 neurones :
+
+<p align="center">
+<img width="950" alt="3_connexions" src="https://user-images.githubusercontent.com/63207451/167640201-b1e42cdd-89c1-471c-8254-734d1b1280e5.png">
+	</p>
+<br>
+
+Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones de droites représentent des fonctions sinus. Cette représentation est seulement basée sur la distance euclidienne entre les neurones. <br>
+
+
+Les données que nous avons à disposition sont les neurones avec leurs vecteur ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires. Le but est alors de générer les coordonnées des neurones pour pouvoir les afficher avec Plotly. On se ramène à un problème purement mathématique, comment placer `n` points en ne connaissant que la distance entre eux. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
 Voici les étapes de l'algoritme : <br>
 
 - Étape 1: On place le premier neurone à la position (x=0, y=0) <br>
