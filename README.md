@@ -269,16 +269,7 @@ On va dans cette section utiliser la transformée de Fourrier pour voir si le mo
 
 # Bonus
 
-> Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
-
-Voici un exemple de résultat obtenu avec 10 neurones :
-
-<p align="center">
-<img width="950" alt="3_connexions" src="https://user-images.githubusercontent.com/63207451/167640201-b1e42cdd-89c1-471c-8254-734d1b1280e5.png">
-	</p>
-<br>
-
-Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones de droites représentent des fonctions sinus. Cette représentation est seulement basée sur la distance euclidienne entre les neurones. <br>
+Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
 
 
 Les données que nous avons à disposition sont les neurones avec leurs vecteur ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires. Le but est alors de générer les coordonnées des neurones pour pouvoir les afficher avec Plotly. On se ramène à un problème purement mathématique, comment placer `n` points en ne connaissant que la distance entre eux. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
@@ -348,6 +339,17 @@ On cherche les coordonnées du point E :
 <p align="center">
 <img width="500" alt="4_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166467154-d220c01d-54ca-4a49-838a-a9a16f8671da.png">
 	</p>
+
+<br>
+
+Voici un exemple de résultat obtenu avec 10 neurones :
+
+<p align="center">
+<img width="950" alt="3_connexions" src="https://user-images.githubusercontent.com/63207451/167640201-b1e42cdd-89c1-471c-8254-734d1b1280e5.png">
+	</p>
+<br>
+
+Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones de droites représentent des fonctions sinus. Cette représentation est seulement basée sur la distance euclidienne entre les neurones. <br>
 
 <br>
 
