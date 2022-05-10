@@ -245,47 +245,35 @@ On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des 
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
-<img width="950" alt="Capture d’écran 2022-05-09 à 23 45 34" src="https://user-images.githubusercontent.com/63207451/167503949-77b26c00-4d8a-475b-9682-11f5fa38bbcf.png">
+<img width="950" alt="Capture d’écran 2022-05-10 à 13 52 16" src="https://user-images.githubusercontent.com/63207451/167622241-c2550e20-d4d5-4ea3-9c60-152efcaf5319.png">
 	</p>
 
-On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. On va maintenant ajouter nos neurones au réseau. Voici le résultat : <br>
+On remarque des signaux de différentes périodicités, avec des amplitudes plus ou moins grandes. On va maintenant ajouter nos neurones au réseau pour voir comment le modèle va les rassembler. Voici le résultat : <br>
 
 ```
 {
-0: Neuron(index=0, vecteur="", liaisons={1: 19.632699, 2: 19.12167, 3: 48.8934, 7: 24.4062}, label=0),
- 1: Neuron(index=1, vecteur="", liaisons={0: 19.632699}, label=0),
- 2: Neuron(index=2, vecteur="", liaisons={0: 19.12167}, label=0),
- 3: Neuron(index=3, vecteur="", liaisons={0: 48.8934, 4: 23.345496}, label=3),
- 4: Neuron(index=4, vecteur="", liaisons={3: 23.345496, 5: 11.343969000000001, 6: 9.22833, 8: 23.1399}, label=4),
- 5: Neuron(index=5, vecteur="", liaisons={4: 11.343969000000001}, label=4),
- 6: Neuron(index=6, vecteur="", liaisons={4: 9.22833}, label=4),
- 7: Neuron(index=7, vecteur="", liaisons={0: 24.4062}, label=0),
- 8: Neuron(index=8, vecteur="", liaisons={4: 23.1399}, label=4)
+0: Neuron(index=0, vecteur="", liaisons={1: 21.28756, 2: 33.84723999999999, 4: 6.818349999999999, 5: 23.8938}, label=0),
+ 1: Neuron(index=1, vecteur="", liaisons={0: 21.28756, 3: 67.593}, label=1),
+ 2: Neuron(index=2, vecteur="", liaisons={0: 33.84723999999999}, label=2),
+ 3: Neuron(index=3, vecteur="", liaisons={1: 67.593, 6: 77.476}, label=3),
+ 4: Neuron(index=4, vecteur="", liaisons={0: 6.818349999999999}, label=0),
+ 5: Neuron(index=5, vecteur="", liaisons={0: 23.8938}, label=0),
+ 6: Neuron(index=6, vecteur="", liaisons={3: 77.476, 7: 35.44029999999999}, label=6),
+ 7: Neuron(index=7, vecteur="", liaisons={6: 35.44029999999999, 8: 17.2781}, label=7),
+ 8: Neuron(index=8, vecteur="", liaisons={7: 17.2781}, label=7)
  }
 ```
 
 <br>
 
-Pour mieux comprendre comment le réseau a classé les neurones, on va afficher les signaux de même cluster ensemble : <br>
+<br>
 
-<p align="center">
-<img width="950" alt="Capture d’écran 2022-05-10 à 13 38 19" src="https://user-images.githubusercontent.com/63207451/167620049-69cc0867-9fa2-4ffd-815f-ff892f6825ff.png">
-	</p>
+On remarque que certains neurones on été ajouté au même ensemble. Les neurones 0, 4 et 5 appartiennent au même cluster, de même que les neurones 7et 8. Enfin, les autres neurones sont classés dans des cluster différents.
+On peut relever que le modèle a rassembler les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. <br>
 
 <br>
 
-Chacune des colonnes du résultats ci-dessus correspond à un cluster créé par le réseau. Ainsi, les neurones 0, 1, 2 et 7 appartiennent au même cluster, de même que les neurones 4, 5, 6 et 8. Enfin, le neurone 3 est classé tout seul.
-On peut relever de façon assez remarquable que **chaque cluster de signaux correspond à un nombre bien défini de "pics"**. Le premier cluster rassemble des signaux avec 2 et 3 pics (le neurone 2 est alors une "erreur" de classification), le deuxième cluster rassemble des neurones dont les signaux ont 5 pics, et on peut alors comprendre que le neurone 3 est classé tout seul car son signal possède 7 pics. <br>
-
-**Cependant**, cette logique de pics sur le signal brute n'est pas tout le temps vérifiée, On l'a vu précédemment avec le neurone 2, mais on peut aussi le remarquer sur d'autres jeu de données, où le réseau peut regrouper des signaux totalement différents comme par exemple ces deux signaux : <br>
-
-<p align="center">
-<img width="667" alt="Capture d’écran 2022-05-09 à 23 32 13" src="https://user-images.githubusercontent.com/63207451/167502111-10a624dc-31e6-4548-a7da-b7df23847451.png">
-	</p>
-
-<br>
-
-On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers .. avec **une décomposition en séries de Fourier**
+On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers pour mieux les comparer .. avec **une décomposition en séries de Fourier**.
 
 <br>
 
