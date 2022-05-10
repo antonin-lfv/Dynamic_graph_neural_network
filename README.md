@@ -25,6 +25,11 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 <br>
 
+> To Do :
+> - Tester le modèle sur un plus large dataset, avec de vraies données
+
+<br>
+
 # Liens utiles
 
 - Comprendre les [Self-Organising Maps](https://en.wikipedia.org/wiki/Self-organizing_map) (SOM)
@@ -258,8 +263,8 @@ On remarque des signaux de différentes périodicités, avec des amplitudes plus
 
 <br>
 
-On remarque que certains neurones on été ajouté au même ensemble. Les neurones 0, 4 et 5 appartiennent au même cluster, de même que les neurones 7et 8. Enfin, les autres neurones sont classés dans des cluster différents.
-On peut relever que le modèle a rassembler les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. <br>
+On remarque que certains neurones on été ajoutés au même ensemble. Les neurones 0, 4 et 5 appartiennent au même cluster, de même que les neurones 7 et 8. Enfin, les autres neurones sont classés dans des clusters différents.
+On peut relever que le modèle a rassemblé les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. <br>
 
 <br>
 
@@ -269,7 +274,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 ### 3. Troisième test avec utilisation de la transormée de Fourier
 
-On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
+On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
 
 Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
@@ -328,7 +333,7 @@ De façon plus lisible, voici comment le réseau a classé les signaux par label
 
 <br>
 
-On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliqué. Il n'y a pas d'erreur aberrantes, comme sur les configurations précédentes. On peut alors valider cette technique comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
+On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliquée. Il n'y a pas d'erreurs aberrantes, comme sur les configurations précédentes. On peut alors valider cette technique comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
 
 <br>
 
@@ -337,7 +342,7 @@ On peut ainsi remarquer que cette fois ci, la classification est plutôt très b
 Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
 
 
-Les données que nous avons à disposition sont les neurones avec leurs vecteur ainsi que les liaisons entre eux. Nous calculerons toutes les distances nécessaires. Le but est alors de générer les coordonnées des neurones pour pouvoir les afficher avec Plotly. On se ramène à un problème purement mathématique, comment placer `n` points en ne connaissant que la distance entre eux. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
+Les données que nous avons à disposition sont les neurones avec leur vecteur. Nous calculerons toutes les distances nécessaires. Le but est alors de générer les coordonnées des neurones pour pouvoir les afficher avec Plotly. On se ramène à un problème purement mathématique, **comment placer `n` points en ne connaissant que les distances entre eux**. Pour cela on va utiliser une méthode geométrique consistant à trouver l'intersection de n cercles, grâce à un système à n équations non linéaires.
 Voici les étapes de l'algoritme : <br>
 
 - Étape 1: On place le premier neurone à la position (x=0, y=0) <br>
@@ -355,7 +360,7 @@ Ainsi, mathématiquement pour trouver les coordonnées (x, y) des intersections 
 	<img src="https://user-images.githubusercontent.com/63207451/166120794-b67cd845-33bf-4aa5-9b2d-ef12b7968836.png" alt="eq_syst">
 	</p>
 
-Pour choisir quel point prendre, on laissera la fonction de scipy nommé fsolve choisir. <br>
+Pour choisir quel point prendre, on laissera la fonction de scipy nommée fsolve choisir. <br>
 On obtient mathématiquement :
 
 <br>
@@ -375,7 +380,7 @@ et géométriquement : <br>
 
 Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du nouveau neurone. <br>
 
-Voici les essaies sur les deux prochains points :
+Voici les résultats sur les deux prochains points :
 
 <br>
 
@@ -414,7 +419,7 @@ Voici un exemple de résultat obtenu avec 10 neurones :
 	</p>
 <br>
 
-Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones de droites représentent des fonctions sinus. Cette représentation est seulement basée sur la distance euclidienne entre les neurones. <br>
+Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones de droites représentent des fonctions sinus. Cette représentation est seulement basée sur la distance euclidienne entre les neurones. Comme ces fonctions sont très distinctes, les neurones sont bien séparés. Mais comme vu dans ce projet, la distance des fonctions n'est pas suffisante pour avoir un modèle de classification performant.<br>
 
 <br>
 
