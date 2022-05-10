@@ -278,8 +278,9 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-
 #### 3. Troisième test avec utilisation de la transormée de Fourrier
+
+On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux.
 
 <br>
 
