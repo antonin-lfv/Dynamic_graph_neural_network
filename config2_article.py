@@ -19,10 +19,10 @@ inter = np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_2)
 
 def dict_of_signal():
     def random_signal():
-        signal = (-1)**random.randint(1, 2)*random.uniform(0, 1)*c(inter)
+        signal = (-1)**random.randint(1, 2)*random.uniform(0, 1)*s(inter)
         common = random.randint(1, 3)
         for i in range(15):
-            signal += (-1)**random.randint(1, 2)*random.uniform(0, 1)*s(pi*common*inter)
+            signal += (-1)**random.randint(1, 2)*random.uniform(0, 1)*c(pi*common*inter)+(-1)**random.randint(1, 2)*random.uniform(0, 1)*s(pi*common*inter)
         return signal
     fct = {}
     for i in range(9):
@@ -51,33 +51,8 @@ def affichage_signaux():
     plot(fig)
 
 
-def affichage_signaux_par_cluster():
-    """Affichage des signaux par cluster généré par le réseau, seed = 1
-    -> Ici les neurones 0, 1, 2, 7 sont ensemble
-    -> Les neurones 4, 5, 6, 8 sont également ensemble
-    -> le neurone 3 est tout seul
-    """
-    fig = make_subplots(cols=3, rows=4, shared_xaxes=True, subplot_titles=["Neurones 0, 1, 2, 7", "Neurones 4, 5, 6, 8", "Neurone 3"])
-    # Col 1 : neurones 0, 1, 2, 7
-    for row_index, n in enumerate([0, 1, 2, 7]):
-        fig.add_scatter(y=signaux[n], x=inter, row=row_index+1, col=1, name=f"Neurone {n}")
-    # Col 2 : neurones 4, 5, 6, 8
-    for row_index, n in enumerate([4, 5, 6, 8]):
-        fig.add_scatter(y=signaux[n], x=inter, row=row_index+1, col=2, name=f"Neurone {n}")
-    # Col 3 : neurone 3
-    for row_index, n in enumerate([3]):
-        fig.add_scatter(y=signaux[n], x=inter, row=row_index+1, col=3, name=f"Neurone {n}")
-    fig.update_layout(
-        paper_bgcolor=ConstPlotly.transparent_color,
-    )
-    plot(fig)
-
-
 # Affichage des signaux des neurones
-# affichage_signaux()
-
-# Affichage des clusters des signaux
-# affichage_signaux_par_cluster()
+affichage_signaux()
 
 # affichage de la config du réseau
 # G.neurons

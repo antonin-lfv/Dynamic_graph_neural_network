@@ -29,19 +29,19 @@ class ConstThreshold_article:
     et la config 2 à la classification des signaux"""
     # altération du foyer (plus il est grand, plus il est modifié)
     # bv_config1 = 0.10
-    bv = 0.90
+    bv = 0.70
     # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
     # bc_config1 = 0.10
-    bc = 0.90
+    bc = 0.70
     # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
     # bl_config1 = 0.50
-    bl = 0.90
+    bl = 0.70
     # seuil après lequel suppression des liens suite à altération
     # ar_config1 = 150
-    ar = 120
+    ar = 100
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
-    an = 30
+    an = 35
 
 
 class ConstThreshold_custom:
