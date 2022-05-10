@@ -281,10 +281,10 @@ On observe à vue d'oeil des différences au niveau des fréquences. Appliquons 
 
 <br>
 
-Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit `f` notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
+Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit ![formula](https://render.githubusercontent.com/render/math?math=f) notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
 
 <p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{\infty} f(x)e^{-ix \xi} dx" alt="FFT">
+   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="100">
 	</p>
 
 <br>
