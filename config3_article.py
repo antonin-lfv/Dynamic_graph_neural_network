@@ -10,16 +10,16 @@ c = np.cos
 
 # constantes
 pi = np.pi
-np.random.seed(90)
-random.seed(90)
+np.random.seed(3)
+random.seed(3)
 
 # intervalle signal
-x_min, x_max = 0, 5
+x_min, x_max = 0, 4
 abs_normal = np.linspace(x_min, x_max, ConstGraph_article.INPUT_SIZE_CONFIG_3)
 abs_fft = fftfreq(ConstGraph_article.INPUT_SIZE_CONFIG_3, x_max)[:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2]
 
 # Nombre de neurones
-nb_neurons = 15
+nb_neurons = 16
 
 
 def dict_of_signal():
@@ -46,7 +46,10 @@ signaux = dict_of_signal()
 
 
 def plot_dict_signal(abs, dict_y):
-    """Affiche un dictionnaire de signaux"""
+    """Affiche un dictionnaire de signaux
+    @:param abs: l'abscisse
+    @:param dict_y: le dict de signaux
+    """
     size = math.ceil(np.sqrt(len(signaux)))
     fig = make_subplots(rows=size, cols=size, subplot_titles=[f"Neurone {i}" for i in range(len(signaux))])
     index_signal = 0
@@ -63,7 +66,7 @@ def plot_dict_signal(abs, dict_y):
 
 
 # affichage des signaux brutes
-# plot_dict_signal(abs=abs_normal, dict_y=signaux)
+plot_dict_signal(abs=abs_normal, dict_y=signaux)
 
 
 def dict_of_fft():
@@ -80,10 +83,22 @@ FFT = dict_of_fft()
 # Affichage des FFT
 # plot_dict_signal(abs=abs_fft, dict_y=FFT)
 
-# Création du réseau
+# Création du réseau et ajout des neurones
 G = Graph()
 for i in range(nb_neurons):
     G.addNeuron(Neuron(vecteur=FFT[i]))
 
+
+def print_cluster(G):
+    clusters = {}
+    for n in G.neurons.values():
+        if n.label in clusters.keys():
+            clusters[n.label].append(n.index)
+        else:
+            clusters[n.label] = [n.index]
+    for label, neurons in clusters.items():
+        print(f"Label {label} : ", *neurons)
+
+
 # affichage de la config du réseau
-G.neurons
+print_cluster(G)

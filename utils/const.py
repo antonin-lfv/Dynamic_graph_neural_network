@@ -45,7 +45,7 @@ class ConstThreshold_article:
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
     # an_config2 = 35
-    an = 5
+    an = 6.5
 
 
 class ConstPlotly:
