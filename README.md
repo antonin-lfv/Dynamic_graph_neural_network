@@ -419,7 +419,7 @@ Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones 
 
 <br>
 
-Ce projet nous a ammené, au travers de cette branche des réseaux de neurones dynamiques, à découvrir de nouveaux concepts et de nouvelles représentations des données. On peut dire que ce type de réseau en graphe est très efficace pour classer des signaux notamment, et aussi pour détecter des outliers (des anomalies). Mais, comme les résultats l'ont montré, il ne faut pas seulement travailler avec les signaux brutes, mais plutôt avec leur transformée de Fourier (Ou autre méthode, qui pourrait faire l'objet d'une nouvelle partie dans ce projet) qui permet au réseau de généraliser les types de signaux.
+Ce projet nous a ammené, au travers de cette branche des réseaux de neurones dynamiques, à découvrir de nouveaux concepts et de nouvelles représentations des données. On peut dire que ce type de réseau en graphe est très efficace pour classer des signaux notamment, et aussi pour détecter des outliers (des anomalies). Mais, comme les résultats l'ont montré, il ne faut pas seulement travailler avec les signaux brutes, mais plutôt avec leur transformée de Fourier (Ou autre méthode, qui pourrait faire l'objet d'une nouvelle partie dans ce projet) qui permet au réseau de généraliser les types de signaux de façon plus efficace et sans faire d'erreur grossière.
 
 <br>
 
