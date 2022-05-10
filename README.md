@@ -40,6 +40,9 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
 3. [Implémentation](#implémentation)
    1. [Ajout des neurones](#ajout-des-neurones)
    2. [Apprentissage et prédiction](#apprentissage-et-prédiction)
+   	1. [Test sur des fonctions classiques](#1.-Premier-test-sur-des-fonctions-classiques)
+   	2. [Test sur des signaux sinusoïdaux](#2.-Deuxième-test-avec-des-signaux-sinusoïdaux)
+   	3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-Troisième-test-avec-utilisation-de-la-transormée-de-Fourrier)
    3. [Affichage du graphe](#affichage-du-graphe)
 4. [Conclusion](#conclusion)
 
@@ -266,14 +269,17 @@ On remarque des signaux de différentes périodicités, avec des amplitudes plus
 
 <br>
 
-<br>
-
 On remarque que certains neurones on été ajouté au même ensemble. Les neurones 0, 4 et 5 appartiennent au même cluster, de même que les neurones 7et 8. Enfin, les autres neurones sont classés dans des cluster différents.
 On peut relever que le modèle a rassembler les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. <br>
 
 <br>
 
 On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers pour mieux les comparer .. avec **une décomposition en séries de Fourier**.
+
+<br>
+
+
+#### 3. Troisième test avec utilisation de la transormée de Fourrier
 
 <br>
 
