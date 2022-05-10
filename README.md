@@ -263,7 +263,29 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 ### 3. Troisième test avec utilisation de la transormée de Fourrier
 
-On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux.
+On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourrier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. <br>
+
+Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
+
+<p align="center">
+<img width="950" alt="Capture d’écran 2022-05-10 à 20 00 48" src="https://user-images.githubusercontent.com/63207451/167693006-dcd7b083-0ded-4876-85cf-aba57e3fc1bd.png">
+	</p>
+
+<br>
+
+On observe à vue d'oeil des différences au niveau des fréquences. Appliquons maintenant une transformée de Fourrier sur chacun d'entre eux. Voici les résultat : <br>
+
+<p align="center">
+<img width="950" alt="Capture d’écran 2022-05-10 à 20 03 00" src="https://user-images.githubusercontent.com/63207451/167693362-e56e97c7-d8a3-484b-857e-00f2d3e4d8ac.png">
+	</p>
+
+<br>
+
+Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit `f` notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
+
+<p align="center">
+   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{\infty} f(x)e^{-ix \xi} dx" alt="FFT">
+	</p>
 
 <br>
 
