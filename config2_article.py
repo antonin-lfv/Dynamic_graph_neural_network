@@ -19,7 +19,7 @@ inter = np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_2)
 
 def dict_of_signal():
     def random_signal():
-        signal = (-1)**random.randint(1, 2)*random.uniform(0, 1)*s(inter)
+        signal = (-1)**random.randint(1, 2)*random.uniform(0, 1)*c(inter)
         common = random.randint(1, 3)
         for i in range(15):
             signal += (-1)**random.randint(1, 2)*random.uniform(0, 1)*s(pi*common*inter)
