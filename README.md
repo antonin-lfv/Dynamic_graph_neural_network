@@ -38,9 +38,9 @@ Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph
     1. [Principe](#principe)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
-	1. [Test sur des fonctions classiques](#1.-Premier-test-sur-des-fonctions-classiques)
-	2. [Test sur des signaux sinusoïdaux](#2.-Deuxième-test-avec-des-signaux-sinusoïdaux)
-	3. [Test avec des signaux soumis à une transformée de Fourrier](#3.-troisieme-test-avec-utilisation-de-la-transormee-de-fourrier)
+	1. [Test sur des fonctions classiques](#1-Premier-test-sur-des-fonctions-classiques)
+	2. [Test sur des signaux sinusoïdaux](#2-Deuxième-test-avec-des-signaux-sinusoïdaux)
+	3. [Test avec des signaux soumis à une transformée de Fourrier](#3-troisieme-test-avec-utilisation-de-la-transormee-de-fourrier)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
