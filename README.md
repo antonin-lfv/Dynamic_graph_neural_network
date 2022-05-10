@@ -327,6 +327,12 @@ Label 10 :  10 12 13 14
 
 <br>
 
+<p align="center">
+<img width="950" alt="Capture d’écran 2022-05-10 à 20 00 48" src="https://user-images.githubusercontent.com/63207451/167693006-dcd7b083-0ded-4876-85cf-aba57e3fc1bd.png">
+	</p>
+
+<br>
+
 On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussi. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliqué.
 
 <br>
