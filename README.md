@@ -17,7 +17,7 @@
 
 <p align="center">
 Ce projet a pour objectif de tester le pouvoir classificateur d'un Dynamic graph neural network aux travers de plusieurs tests. Le modèle sur lequel est basé cet approche est disponible dans les liens utiles en dessous. La première étape sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans l'article, puis, en fonction des resultats, d'améliorer ce modèle sur le plan de l'implémentation. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à suivre l'évolution architecturale du réseau (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera de classer plusieurs types de fonctions, et de jouer avec les seuils présents dans le modèle. Dans ce repo, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
-</p>
+	</p>
 
 <br>
 
@@ -263,7 +263,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 ### 3. Troisième test avec utilisation de la transormée de Fourrier
 
-On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourrier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. <br>
+On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourrier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
 
 Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
@@ -273,7 +273,7 @@ Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
 <br>
 
-On observe à vue d'oeil des différences au niveau des fréquences. Appliquons maintenant une transformée de Fourrier sur chacun d'entre eux. Voici les résultat : <br>
+On observe à vue d'oeil des différences au niveau des fréquences. Appliquons maintenant une transformée de Fourrier sur chacun d'entre eux. Voici les résultats : <br>
 
 <p align="center">
 <img width="950" alt="Capture d’écran 2022-05-10 à 20 03 00" src="https://user-images.githubusercontent.com/63207451/167693362-e56e97c7-d8a3-484b-857e-00f2d3e4d8ac.png">
@@ -284,7 +284,7 @@ On observe à vue d'oeil des différences au niveau des fréquences. Appliquons 
 Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit ![formula](https://render.githubusercontent.com/render/math?math=f) notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
 
 <p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="200">
+   <img src="https://render.githubusercontent.com/render/math?math=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="150">
 	</p>
 	
 <br>
@@ -314,7 +314,7 @@ Si on regarde les données brutes du réseau on obtient ceci : <br>
 
 <br>
 
-De façon plus lisible, voici comment le réseau a classé les signaux : <br>
+De façon plus lisible, voici comment le réseau a classé les signaux par label : <br>
 
 | Clusters | Signaux |
 | --- | ----------- |
@@ -322,7 +322,7 @@ De façon plus lisible, voici comment le réseau a classé les signaux : <br>
 
 <br>
 
-On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussi. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliqué.
+On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliqué. Il n'y a pas d'erreur aberrantes, comme sur les configurations précédentes. On peut alors valider cette technique comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
 
 <br>
 
