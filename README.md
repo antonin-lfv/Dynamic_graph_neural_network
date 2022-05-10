@@ -30,6 +30,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 - Article sur les [Self-Growing Neural Network](https://www.researchgate.net/publication/268454314_Anomaly_detection_using_dynamic_Neural_Networks_classification_of_prestack_data) (SGNN)
 
+- [Transformée de Fourier](https://helios2.mi.parisdescartes.fr/~eprovenz/include/Poly.pdf) et applications
+
 <br/>
 
 # Index
