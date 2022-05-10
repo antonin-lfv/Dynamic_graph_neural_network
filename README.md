@@ -43,7 +43,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 3. [Implémentation](#implémentation)
 	1. [Test sur des fonctions classiques](#1-Premier-test-sur-des-fonctions-classiques)
 	2. [Test sur des signaux sinusoïdaux](#2-Deuxième-test-avec-des-signaux-sinusoïdaux)
-	3. [Test avec des signaux soumis à une transformée de Fourrier](#3-Troisième-test-avec-utilisation-de-la-transormée-de-Fourrier)
+	3. [Test avec des signaux soumis à une transformée de Fourier](#3-Troisième-test-avec-utilisation-de-la-transormée-de-Fourier)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
@@ -264,9 +264,9 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-### 3. Troisième test avec utilisation de la transormée de Fourrier
+### 3. Troisième test avec utilisation de la transormée de Fourier
 
-On va dans cette section utiliser la transformée de Fourrier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourrier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
+On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi mieux à classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
 
 Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
@@ -276,7 +276,7 @@ Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
 <br>
 
-On observe à vue d'oeil des différences au niveau des fréquences. Appliquons maintenant une transformée de Fourrier sur chacun d'entre eux. Voici les résultats : <br>
+On observe à vue d'oeil des différences au niveau des fréquences. Appliquons maintenant une transformée de Fourier sur chacun d'entre eux. Voici les résultats : <br>
 
 <p align="center">
 <img width="950" alt="Capture d’écran 2022-05-10 à 20 03 00" src="https://user-images.githubusercontent.com/63207451/167693362-e56e97c7-d8a3-484b-857e-00f2d3e4d8ac.png">
