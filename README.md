@@ -366,10 +366,12 @@ On obtient mathématiquement :
 
 <br>
 
+<p align="center">
 | mathématiquement | géométriquement |
 | --- | ----------- |
 |<img width="300" alt="2_cercles_code" src="https://user-images.githubusercontent.com/63207451/166466584-59ad449e-5083-425e-a8af-e6044a929975.png">|<img width="400" alt="2_cercles_plot" src="https://user-images.githubusercontent.com/63207451/166466707-760ad15d-2e26-453b-a548-d0e655002be8.png" >|
-
+	</p>
+	
 <br>
 
 Puis, pour chaque nouveau neurone à ajouter, on ajoute une équation au système, ce qui nous donne les coordonnées (x, y) du nouveau neurone. Voici les résultats sur les deux prochains points :
