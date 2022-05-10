@@ -55,4 +55,4 @@ def affichage_signaux():
 affichage_signaux()
 
 # affichage de la config du réseau
-# G.neurons
+G.neurons

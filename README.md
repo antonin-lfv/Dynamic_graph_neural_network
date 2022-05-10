@@ -201,7 +201,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-#### 1) Premier test sur des fonctions classiques
+#### 1. Premier test sur des fonctions classiques
 
 Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
