@@ -326,11 +326,11 @@ Si on regarde les données brutes du réseau on obtient ceci : <br>
 
 <br>
 
-De façon plus lisible, voici comment le réseau a classé les signaux par label : <br>
+De façon plus lisible, voici comment le réseau a classé les signaux par label (1 colonne = 1 cluster de neurones) : <br>
 
 | Clusters | Signaux |
 | --- | ----------- |
-| <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/167699829-1e656a93-aa86-4b33-a6a2-b5b2b04404a5.png"> | <img width="950" alt="Capture d’écran 2022-05-10 à 20 00 48" src="https://user-images.githubusercontent.com/63207451/167693006-dcd7b083-0ded-4876-85cf-aba57e3fc1bd.png"> |
+| <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/167699829-1e656a93-aa86-4b33-a6a2-b5b2b04404a5.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 34 49" src="https://user-images.githubusercontent.com/63207451/167818769-bab5ada1-e4b8-443c-9f69-886bf8915425.png"> |
 
 <br>
 
@@ -342,13 +342,13 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 | Clusters | Signaux |
 | --- | ----------- |
-| <img width="300" alt="Capture d’écran 2022-05-11 à 10 55 33" src="https://user-images.githubusercontent.com/63207451/167810904-9972c20b-172a-4cae-9650-0ad53a5d65db.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 10 53 54" src="https://user-images.githubusercontent.com/63207451/167810649-0fb168c9-319e-430d-a71c-ebd42bebbdef.png"> |
+|  | |
 
 <br>
 
 | Clusters | Signaux |
 | --- | ----------- |
-| <img width="300" alt="Capture d’écran 2022-05-11 à 11 09 46" src="https://user-images.githubusercontent.com/63207451/167813838-49b35484-b7c2-48c1-8904-5d3bd0d2ed25.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 08 48" src="https://user-images.githubusercontent.com/63207451/167813795-9470279b-56ef-449c-9fb9-e577f7824e5e.png"> |
+|  |  |
 
 <br>
 
