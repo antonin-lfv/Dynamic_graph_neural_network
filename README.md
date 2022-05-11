@@ -348,7 +348,7 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 | Clusters | Signaux |
 | --- | ----------- |
-|  |  |
+| <img width="300" alt="Capture d’écran 2022-05-11 à 11 09 46" src="https://user-images.githubusercontent.com/63207451/167813838-49b35484-b7c2-48c1-8904-5d3bd0d2ed25.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 08 48" src="https://user-images.githubusercontent.com/63207451/167813795-9470279b-56ef-449c-9fb9-e577f7824e5e.png"> |
 
 <br>
 
