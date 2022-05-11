@@ -342,13 +342,13 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 | Clusters | Signaux |
 | --- | ----------- |
-|  | |
+| <img width="300" alt="Capture d’écran 2022-05-11 à 11 44 01" src="https://user-images.githubusercontent.com/63207451/167820535-573c95fc-d92e-4607-9364-2b267acd97d6.png"> |<img width="950" alt="Capture d’écran 2022-05-11 à 11 39 13" src="https://user-images.githubusercontent.com/63207451/167819597-9a7c77ce-052b-4dab-bba0-b7a36913a7d4.png"> |
 
 <br>
 
 | Clusters | Signaux |
 | --- | ----------- |
-|  |  |
+| <img width="300" alt="Capture d’écran 2022-05-11 à 11 44 09" src="https://user-images.githubusercontent.com/63207451/167820573-d5f9a896-e60b-497c-b66f-9eaef122f3b7.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 42 14" src="https://user-images.githubusercontent.com/63207451/167820128-908192cc-3327-48dd-b21e-0eb741b3271e.png"> |
 
 <br>
 
