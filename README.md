@@ -334,7 +334,25 @@ De façon plus lisible, voici comment le réseau a classé les signaux par label
 
 <br>
 
-On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliquée. Il n'y a pas d'erreurs aberrantes, comme sur les configurations précédentes. On peut alors valider cette technique comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
+On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliquée. <br>
+
+On peut réitérer la classification avec d'autres données, voici certains résultats :
+
+<br>
+
+| Clusters | Signaux |
+| --- | ----------- |
+| <img width="300" alt="Capture d’écran 2022-05-11 à 10 55 33" src="https://user-images.githubusercontent.com/63207451/167810904-9972c20b-172a-4cae-9650-0ad53a5d65db.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 10 53 54" src="https://user-images.githubusercontent.com/63207451/167810649-0fb168c9-319e-430d-a71c-ebd42bebbdef.png"> |
+
+<br>
+
+| Clusters | Signaux |
+| --- | ----------- |
+| <img width="300" alt="Capture d’écran 2022-05-11 à 11 09 46" src="https://user-images.githubusercontent.com/63207451/167813838-49b35484-b7c2-48c1-8904-5d3bd0d2ed25.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 08 48" src="https://user-images.githubusercontent.com/63207451/167813795-9470279b-56ef-449c-9fb9-e577f7824e5e.png"> |
+
+<br>
+
+Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base ce projet. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
 
 <br>
 
