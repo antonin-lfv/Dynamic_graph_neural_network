@@ -335,6 +335,7 @@ De façon plus lisible, voici comment le réseau a classé les signaux par label
 <br>
 
 On peut ainsi remarquer que cette fois ci, la classification est plutôt très bien réussie. Les neurones de label 0 sont les signaux avec la fréquence la plus basse, et les neurones de label 10 sont les signaux de plus hautes fréquences. Les labels intermédiaires sont des signaux de fréquences moyennes (par rapport aux labels 0 et 10), et donc la classification est un peu plus compliquée. <br>
+
 On peut réitérer la classification avec d'autres données, voici certains résultats :
 
 <br>
@@ -351,7 +352,7 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 <br>
 
-Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes. On peut alors valider cette technique comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
+Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
 
 <br>
 
