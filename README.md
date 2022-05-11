@@ -265,7 +265,7 @@ On remarque des signaux de différentes périodicités, avec des amplitudes plus
 <br>
 
 On remarque que certains neurones on été ajoutés au même ensemble. Les neurones 0, 4 et 5 appartiennent au même cluster, de même que les neurones 7 et 8. Enfin, les autres neurones sont classés dans des clusters différents.
-On peut relever que le modèle a rassemblé les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. <br>
+On peut relever que le modèle a rassemblé les signaux qui se superposent bien, cependant il ne prend pas en compte le fait que les signaux sont périodiques et que deux signaux peuvent se superposer à une translation près. On peut alors comprendre pourquoi le réseau a réussi à classer de façon correcte les fonctions racines et sinus, c'est parce qu'elles sont superposables. <br>
 
 <br>
 
