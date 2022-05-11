@@ -10,8 +10,8 @@ c = np.cos
 
 # constantes
 pi = np.pi
-np.random.seed(291)
-random.seed(1)
+np.random.seed(3)
+random.seed(19)
 
 # intervalle signal
 x_min, x_max = 0, 3
@@ -19,7 +19,7 @@ abs_normal = np.linspace(x_min, x_max, ConstGraph_article.INPUT_SIZE_CONFIG_3)
 abs_fft = fftfreq(ConstGraph_article.INPUT_SIZE_CONFIG_3, x_max)[:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2]
 
 # Nombre de neurones
-nb_neurons = 16
+nb_neurons = 18
 
 
 def dict_of_signal():
@@ -28,7 +28,7 @@ def dict_of_signal():
     def random_signal():
         signal = (-1) ** random.randint(1, 2) * random.uniform(0, 1) * s(abs_normal)
         common = random.randint(1, 3)
-        for _ in range(10):
+        for _ in range(11):
             signal += (-1) ** random.randint(1, 2) * random.uniform(0, 3) * c(
                 pi * random.uniform(1, 3) * common * abs_normal) + (
                           -1) ** random.randint(1, 2) * random.uniform(0, 3) * s(
