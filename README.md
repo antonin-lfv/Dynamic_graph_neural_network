@@ -352,7 +352,7 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 <br>
 
-Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base cet article. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
+Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base ce projet. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
 
 <br>
 
