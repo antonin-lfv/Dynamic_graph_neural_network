@@ -10,16 +10,16 @@ c = np.cos
 
 # constantes
 pi = np.pi
-np.random.seed(3)
+np.random.seed(18)
 random.seed(3)
 
 # intervalle signal
-x_min, x_max = 0, 4
+x_min, x_max = 0, 3
 abs_normal = np.linspace(x_min, x_max, ConstGraph_article.INPUT_SIZE_CONFIG_3)
 abs_fft = fftfreq(ConstGraph_article.INPUT_SIZE_CONFIG_3, x_max)[:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2]
 
 # Nombre de neurones
-nb_neurons = 16
+nb_neurons = 25
 
 
 def dict_of_signal():
@@ -65,10 +65,6 @@ def plot_dict_signal(abs, dict_y):
     plot(fig)
 
 
-# affichage des signaux brutes
-plot_dict_signal(abs=abs_normal, dict_y=signaux)
-
-
 def dict_of_fft():
     """Retourne un dictionnaire de fft correspondant aux signaux"""
     fft_dict = {}
@@ -80,25 +76,37 @@ def dict_of_fft():
 # création des FFT
 FFT = dict_of_fft()
 
-# Affichage des FFT
-# plot_dict_signal(abs=abs_fft, dict_y=FFT)
 
-# Création du réseau et ajout des neurones
-G = Graph()
-for i in range(nb_neurons):
-    G.addNeuron(Neuron(vecteur=FFT[i]))
-
-
-def print_cluster(G):
+def print_cluster(G, display):
     clusters = {}
     for n in G.neurons.values():
         if n.label in clusters.keys():
             clusters[n.label].append(n.index)
         else:
             clusters[n.label] = [n.index]
-    for label, neurons in clusters.items():
-        print(f"Label {label} : ", *neurons)
+    if display:
+        for label, neurons in clusters.items():
+            print(f"Label {label} : ", *neurons)
+    return clusters
 
 
-# affichage de la config du réseau
-print_cluster(G)
+def plot_signaux_par_cluster(G):
+    clusters = print_cluster(G, display=False)
+
+
+def train_model():
+    # affichage des signaux brutes
+    # plot_dict_signal(abs=abs_normal, dict_y=signaux)
+    # Affichage des FFT
+    # plot_dict_signal(abs=abs_fft, dict_y=FFT)
+    # Création réseau et ajout neurones
+    G = Graph()
+    for i in range(nb_neurons):
+        G.addNeuron(Neuron(vecteur=FFT[i]))
+    # affichage de la config du réseau finale
+    print_cluster(G, display=True)
+    # Affichage des signaux classés par cluster
+    plot_signaux_par_cluster(G)
+
+
+train_model()
