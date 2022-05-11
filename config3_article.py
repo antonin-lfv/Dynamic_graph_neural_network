@@ -10,8 +10,8 @@ c = np.cos
 
 # constantes
 pi = np.pi
-np.random.seed(18)
-random.seed(3)
+np.random.seed(291)
+random.seed(1)
 
 # intervalle signal
 x_min, x_max = 0, 3
@@ -19,7 +19,7 @@ abs_normal = np.linspace(x_min, x_max, ConstGraph_article.INPUT_SIZE_CONFIG_3)
 abs_fft = fftfreq(ConstGraph_article.INPUT_SIZE_CONFIG_3, x_max)[:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2]
 
 # Nombre de neurones
-nb_neurons = 25
+nb_neurons = 16
 
 
 def dict_of_signal():
@@ -90,8 +90,26 @@ def print_cluster(G, display):
     return clusters
 
 
-def plot_signaux_par_cluster(G):
+def plot_signaux_par_cluster(G, abs, dict_y):
+    """
+    :param G: le graphe
+    :param abs: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT
+    :param dict_y: le dictionnaire des signaux brutes ou FFT
+    :return:
+    """
     clusters = print_cluster(G, display=False)
+    fig = make_subplots(rows=max([len(i) for i in clusters.values()]), cols=len(clusters),
+                        column_titles=[f"Label {i}" for i in clusters.keys()])
+    for label in clusters.keys():
+        row_index = 1
+        for neuron_index in clusters[label]:
+            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label)+1, x=abs, y=dict_y[neuron_index])
+            row_index += 1
+    fig.update_layout(
+        paper_bgcolor=ConstPlotly.transparent_color,
+        showlegend=False
+    )
+    plot(fig)
 
 
 def train_model():
@@ -105,8 +123,8 @@ def train_model():
         G.addNeuron(Neuron(vecteur=FFT[i]))
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
-    # Affichage des signaux classés par cluster
-    plot_signaux_par_cluster(G)
+    # Affichage des signaux brutes classés par cluster
+    plot_signaux_par_cluster(G, abs=abs_normal, dict_y=signaux)
 
 
 train_model()
