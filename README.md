@@ -28,6 +28,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 > To Do :
 > - Tester le modèle sur un plus large dataset, avec de vraies données
 > - Utiliser une autre méthode que la transformée de Fourier
+> - Ahouter une métrique pour mesurer l'efficacité du modèle
 
 <br>
 
