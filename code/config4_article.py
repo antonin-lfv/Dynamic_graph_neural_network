@@ -100,6 +100,21 @@ def plot_signaux_par_cluster(G, abs, dict_y):
     plot(fig)
 
 
+def test_affiche_decomp_ondelettes(signal):
+    """Plot le signal, et sa décomposition en ondelettes
+    @:param signal: le signal
+    """
+    (cA, cD) = pywt.dwt(signal, 'coif3')
+    fig = make_subplots(rows=3, cols=1, subplot_titles=["origin", "cA", "cD"], shared_xaxes=True)
+    fig.add_scatter(x=abs_wv, y=signaux[0], row=1, col=1)
+    fig.add_scatter(x=abs_wv, y=cA, row=2, col=1)
+    fig.add_scatter(x=abs_wv, y=cD, row=3, col=1)
+    plot(fig)
+
+
+test_affiche_decomp_ondelettes(signaux[4])
+
+
 def dict_of_wv():
     """Retourne un dictionnaire de wavelet correspondant aux signaux"""
     wv_dict = {}
@@ -109,7 +124,7 @@ def dict_of_wv():
 
 
 # création des WV
-WV = dict_of_wv()
+# WV = dict_of_wv()
 
 
 def train_model():

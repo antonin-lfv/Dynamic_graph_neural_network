@@ -10,6 +10,7 @@ from scipy.optimize import fsolve
 import pandas as pd
 from plotly.subplots import make_subplots
 from scipy.fft import fft, fftfreq
+import pywt
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
