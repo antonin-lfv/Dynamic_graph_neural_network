@@ -1,6 +1,6 @@
 from utils.classes import *
 
-""" Version article """
+""" Signaux sinusoidaux et transformée de Fourier """
 
 # ----- Config 3 -----
 

@@ -1,6 +1,6 @@
 from utils.classes import *
 
-""" Version article """
+""" Fonctions classiques """
 
 # ----- Config 1 -----
 
