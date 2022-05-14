@@ -153,4 +153,44 @@ def dict_of_fft(signaux):
 
 def read(file_path):
     x, sr = a2n.audio_from_file(file_path)
-    return x, sr
+    return x
+
+
+def dict_of_birds():
+    """
+    Retourne un dict de signaux et un dict de correspondance à la classe réelle
+    Ici, on aura 5 syllabes de chants d'oiseaux de 3 espèces différentes
+    """
+    # Path
+    pinsons_des_arbres = read("data/birdsong/Bird song 1/Pinson des arbres/XC113679-Fringilla_colebs_Estonia_Jarek_Matusiak_20100430-004.mp3")
+    pinsons_du_nord = read("data/birdsong/Bird song 1/Pinson du Nord/FrinMont song male 22609 0347.mp3")
+    moineau_friquet = read("data/birdsong/Bird song 1/Moineau friquet/EurasianTreeSparrow14April2009Dwingelderveld.mp3")
+    # création des dictionnaires
+    signaux, corr_classes = {}, {}
+
+
+"""
+Moineau friquet:
+> EurasianTreeSparrow14April2009Dwingelderveld.mp3
+521k - 524.5k
+119k - 122k
+942k - 945k
+19.5k - 23k
+323k - 327k
+
+pinsons du nord:
+> FrinMont song male 22609 0347.mp3
+53k - 84k
+291k - 322k
+491k - 521k
+711k - 740k
+929k - 958k
+
+pinsons des arbres:
+> XC113679-Fringilla_colebs_Estonia_Jarek_Matusiak_20100430-004.mp3
+63k - 159k
+357k - 465k
+710k - 800k
+1130k - 1245k
+1371k - 1494k
+"""
