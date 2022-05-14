@@ -142,7 +142,9 @@ class Graph:
                 n.label = n.index
 
     def fit(self, X: dict):
-        """Ensemble de signaux sous forme de dictionnaire"""
+        """ Ajout des neurones
+        @:param X : Ensemble de signaux sous forme de dictionnaire
+        """
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x))
 

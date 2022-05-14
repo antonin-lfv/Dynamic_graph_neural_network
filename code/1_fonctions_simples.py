@@ -28,6 +28,7 @@ type_2 = {
 # Groupe de neurones 2 : 1, 2, 5, 8, 9
 
 G = Graph()
+# Ajout à la main
 G.addNeuron(Neuron(vecteur=type_1[1]))  # 0
 G.addNeuron(Neuron(vecteur=type_2[2]))  # 1
 G.addNeuron(Neuron(vecteur=type_2[3]))  # 2

@@ -28,7 +28,7 @@ signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 FFT = dict_of_fft(signaux=signaux)
 
 
-def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
+def main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
     # affichage des signaux brutes
     if plot_brutes:
         plot_dict_signal(abs=abs_normal, dict_y=signaux, signaux=signaux, nb_neurons=nb_neurons)
@@ -45,4 +45,4 @@ def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
         plot_signaux_par_cluster(G, abs=abs_normal, dict_y=signaux)
 
 
-train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)

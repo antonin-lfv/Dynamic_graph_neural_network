@@ -44,7 +44,7 @@ test_affiche_decomp_ondelettes(signaux[7])
 WV = dict_of_wv(signaux=signaux)
 
 
-def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
+def main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
     # affichage des signaux brutes
     if plot_brutes:
         plot_dict_signal(abs=abs_normal, dict_y=signaux, signaux=signaux, nb_neurons=nb_neurons)
@@ -53,8 +53,7 @@ def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
         plot_dict_signal(abs=abs_wv, dict_y=WV, signaux=signaux, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph()
-    for i in range(nb_neurons):
-        G.addNeuron(Neuron(vecteur=WV[i]))
+    G.fit(X=WV)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     # Affichage des signaux brutes classés par cluster
@@ -62,4 +61,4 @@ def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
         plot_signaux_par_cluster(G, abs=abs_normal, dict_y=signaux)
 
 
-train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)

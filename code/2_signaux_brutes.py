@@ -22,8 +22,7 @@ signaux = dict_of_signal(inter, 9)
 
 # Réseau
 G = Graph()
-for i in range(9):
-    G.addNeuron(Neuron(vecteur=signaux[i]))
+G.fit(X=signaux)
 
 
 def affichage_signaux():
