@@ -120,7 +120,7 @@ def plot_signaux_par_cluster(G, abs, dict_y):
     for label in clusters.keys():
         row_index = 1
         for neuron_index in clusters[label]:
-            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=abs, y=dict_y[neuron_index])
+            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=abs, y=dict_y[neuron_index], text=f"Index : {neuron_index}", hoverinfo="text")
             row_index += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
