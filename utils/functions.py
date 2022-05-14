@@ -162,11 +162,21 @@ def dict_of_birds():
     Ici, on aura 5 syllabes de chants d'oiseaux de 3 espèces différentes
     """
     # Path
-    pinsons_des_arbres = read("data/birdsong/Bird song 1/Pinson des arbres/XC113679-Fringilla_colebs_Estonia_Jarek_Matusiak_20100430-004.mp3")
-    pinsons_du_nord = read("data/birdsong/Bird song 1/Pinson du Nord/FrinMont song male 22609 0347.mp3")
     moineau_friquet = read("data/birdsong/Bird song 1/Moineau friquet/EurasianTreeSparrow14April2009Dwingelderveld.mp3")
+    pinsons_du_nord = read("data/birdsong/Bird song 1/Pinson du Nord/FrinMont song male 22609 0347.mp3")
+    pinsons_des_arbres = read("data/birdsong/Bird song 1/Pinson des arbres/XC113679-Fringilla_colebs_Estonia_Jarek_Matusiak_20100430-004.mp3")
     # création des dictionnaires
-    signaux, corr_classes = {}, {}
+    signaux = {0: moineau_friquet[521000:524500], 1: moineau_friquet[119000:122000], 2: moineau_friquet[942000:945000],
+               3: moineau_friquet[19500:23000], 4: moineau_friquet[323000:327000]}
+    ...
+    corr_classes = {
+        0: "moineau_friquet",
+        1: "moineau_friquet",
+        2: "moineau_friquet",
+        3: "moineau_friquet",
+        4: "moineau_friquet",
+    }
+    return signaux, corr_classes
 
 
 """
