@@ -141,6 +141,11 @@ class Graph:
             if len(n.liaisons) == 0:
                 n.label = n.index
 
+    def fit(self, X: dict):
+        """Ensemble de signaux sous forme de dictionnaire"""
+        for x in X.values():
+            self.addNeuron(Neuron(vecteur=x))
+
 
 """méthode de Graph pour afficher le graphe avec plotly"""
 

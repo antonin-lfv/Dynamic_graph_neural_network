@@ -37,8 +37,7 @@ def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
         plot_dict_signal(abs=abs_fft, dict_y=FFT, signaux=signaux, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph()
-    for i in range(nb_neurons):
-        G.addNeuron(Neuron(vecteur=FFT[i]))
+    G.fit(FFT)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     # Affichage des signaux brutes classés par cluster
