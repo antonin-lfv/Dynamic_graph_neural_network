@@ -120,7 +120,8 @@ def plot_signaux_par_cluster(G, abs, dict_y):
     for label in clusters.keys():
         row_index = 1
         for neuron_index in clusters[label]:
-            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=abs, y=dict_y[neuron_index], text=f"Index : {neuron_index}", hoverinfo="text")
+            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=abs, y=dict_y[neuron_index],
+                            text=f"Index : {neuron_index}", hoverinfo="text")
             row_index += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
@@ -145,3 +146,11 @@ def dict_of_fft(signaux):
         fft_dict[index_fft] = 2.0 / ConstGraph_article.INPUT_SIZE_CONFIG_3 * np.abs(
             fft(s)[0:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2])
     return fft_dict
+
+
+"""Lire les ressources - chants des oiseaux"""
+
+
+def read(file_path):
+    x, sr = a2n.audio_from_file(file_path)
+    return x, sr
