@@ -29,7 +29,7 @@ def test_affiche_decomp_ondelettes(signal):
     """Plot le signal, et sa décomposition en ondelettes
     @:param signal: le signal
     """
-    (cA, cD) = pywt.dwt(signal, 'coif3')
+    (cA, cD) = pywt.dwt(signal, 'db20')
     fig = make_subplots(rows=3, cols=1, subplot_titles=["origin", "cA", "cD"], shared_xaxes=True)
     fig.add_scatter(x=abs_wv, y=signaux[0], row=1, col=1)
     fig.add_scatter(x=abs_wv, y=cA, row=2, col=1)
@@ -37,7 +37,7 @@ def test_affiche_decomp_ondelettes(signal):
     plot(fig)
 
 
-test_affiche_decomp_ondelettes(signaux[4])
+test_affiche_decomp_ondelettes(signaux[7])
 
 
 # création des WV
@@ -60,5 +60,6 @@ def train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
     # Affichage des signaux brutes classés par cluster
     if plot_brutes_par_cluster:
         plot_signaux_par_cluster(G, abs=abs_normal, dict_y=signaux)
+
 
 train_model(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
