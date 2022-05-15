@@ -196,6 +196,10 @@ Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
 
 <br>
 
+Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un dictionnaire indexé sur les entiers naturels, contenant le tableau de valeurs de chaque neurone. Elle ajoute automatiquement les neurones avec la méthode `add_Neuron`.
+
+<br>
+
 Un problème dans l'implémentation de la fonction d'affichage du graphe apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones (avec la méthode `__repr__` de chaque classe) du graphe avec leur label pour savoir comment le modèle les a rassemblés. 
 
 <br>
