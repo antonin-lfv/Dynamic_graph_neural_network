@@ -192,11 +192,11 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
 
 <br> 
-Si un neurone n'a plus de connexion on lui attribut son label comme classe. 
+Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
 
 <br>
 
-Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un dictionnaire indexé sur les entiers naturels, contenant le tableau de valeurs de chaque neurone.
+Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un dictionnaire indexé sur les entiers naturels, contenant le tableau de valeurs de chaque neurone. Elle ajoute automatiquement les neurones avec la méthode `add_Neuron`.
 
 <br>
 
