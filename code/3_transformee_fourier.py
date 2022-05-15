@@ -24,9 +24,6 @@ nb_neurons = 18
 # création des signaux brutes - signaux sinusoidaux aléatoires
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 
-# création des signaux - chants des oiseaux
-signaux_oiseaux = dict_of_birds()
-
 # création des FFT des signaux brutes
 FFT = dict_of_fft(signaux=signaux)
 
