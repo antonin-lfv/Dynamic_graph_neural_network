@@ -148,4 +148,12 @@ def dict_of_fft(signaux):
     return fft_dict
 
 
-"""Lire les ressources """
+"""Lire les ressources - chants d'oiseaux"""
+
+# data : https://figshare.com/articles/media/BirdsongRecognition/3470165?file=5463221
+
+y, sr = librosa.load('data/Birdsong/Bird2/Wave/100.wav')
+
+fig=go.Figure()
+fig.add_scatter(y=y)
+plot(fig)

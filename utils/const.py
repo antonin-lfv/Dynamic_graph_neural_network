@@ -11,8 +11,7 @@ import pandas as pd
 from plotly.subplots import make_subplots
 from scipy.fft import fft, fftfreq
 import pywt
-import pydub
-import audio2numpy as a2n
+import librosa
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
