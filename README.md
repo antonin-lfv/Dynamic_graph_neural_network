@@ -194,7 +194,7 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 <br> 
 Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
 
-Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un dictionnaire indexé sur les entiers naturels, contenant les tableaux de valeurs de chaque neurone.
+Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un dictionnaire indexé sur les entiers naturels, contenant le tableau de valeurs de chaque neurone.
 
 <br>
 
