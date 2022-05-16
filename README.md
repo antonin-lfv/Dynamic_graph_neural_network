@@ -51,6 +51,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
     1. [Principe](#principe)
     2. [Prédictions](#prédictions)
 3. [Implémentation](#implémentation)
+4. [Expérimentations](#Expérimentations)
 	1. [Classification de fonctions classiques](#1-Classification-de-fonctions-classiques)
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
@@ -204,7 +205,11 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-### 1. Classification de fonctions classiques
+# Expérimentation
+
+<br>
+
+## 1. Classification de fonctions classiques
 
 Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
@@ -242,7 +247,7 @@ On va poursuivre les tests avec d'autres données, et un peu plus de types diff�
 
 <br>
 
-### 2. Classification de signaux sinusoïdaux
+## 2. Classification de signaux sinusoïdaux
 
 On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
@@ -278,7 +283,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-### 3. Classification de signaux soumis à une transformée de Fourier
+## 3. Classification de signaux soumis à une transformée de Fourier
 
 On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
 
