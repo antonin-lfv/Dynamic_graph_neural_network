@@ -5,7 +5,7 @@ import math
 import random
 import json
 from fastdist import fastdist
-from typing import List
+from typing import List, Callable
 from scipy.optimize import fsolve
 import pandas as pd
 from plotly.subplots import make_subplots

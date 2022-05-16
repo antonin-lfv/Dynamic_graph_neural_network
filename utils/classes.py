@@ -49,7 +49,7 @@ class Neuron:
 
 
 class Graph:
-    def __init__(self, neurons: dict = None, compt_neurons: int = 0):
+    def __init__(self, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0):
         """
         :param neurons: liste des neurones du graphe
         :param compt_neurons: nombre de neurones que le graphe aura vu
@@ -59,6 +59,10 @@ class Graph:
             neurons = {}
         self.neurons = neurons
         self.compt_neurons = compt_neurons
+        if fct_distance is None:
+            # default - euclidean distance
+            self.fct_distance = distance_neurons
+        self.fct_distance = fct_distance
 
     def get_neuron_index(self):
         """Retourne les index des neurones du graphe"""
@@ -103,35 +107,35 @@ class Graph:
             if len(self.neurons) == 1:
                 # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion
                 # Le label est attribué avec le seuil an
-                if distance_neurons(foyer.vecteur, neuron.vecteur) > ConstThreshold_article.an:
+                if self.fct_distance(foyer.vecteur, neuron.vecteur) > ConstThreshold_article.an:
                     neuron.label = str(neuron.index)
                 else:
                     neuron.label = foyer.label
                 # on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons
-                neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur,
+                neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = self.fct_distance(foyer.vecteur,
                                                                                                neuron.vecteur)
 
             else:
                 # ===== Il y a au moins 2 neurones dans le réseau
-                if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
+                if self.fct_distance(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
                     # set label
                     neuron.label = foyer.label
                     # Si la distance du foyer est plus petite que an on connecte à tous les neurones de distance < an
                     for n in self.neurons.values():
-                        if (d := distance_neurons(n.vecteur, neuron.vecteur)) < ConstThreshold_article.an:
+                        if (d := self.fct_distance(n.vecteur, neuron.vecteur)) < ConstThreshold_article.an:
                             neuron.liaisons[n.index] = n.liaisons[neuron.index] = d
                 else:
                     # set label
                     neuron.label = str(neuron.index)
                     # Si la distance du foyer est supérieur à an on connecte le neurone seulement au foyer
-                    neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = distance_neurons(foyer.vecteur,
+                    neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = self.fct_distance(foyer.vecteur,
                                                                                                    neuron.vecteur)
             # On l'ajoute au réseau
             self.neurons[neuron.index] = neuron
             # on augmente le compteur du graphe
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
-            if distance_neurons(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
+            if self.fct_distance(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
                 foyer.alterFoyer(neuron.vecteur)
                 foyer.alterVoisins(self)
                 foyer.alterLiaisons(self)

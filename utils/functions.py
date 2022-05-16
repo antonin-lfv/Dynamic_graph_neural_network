@@ -13,6 +13,15 @@ def distance_neurons(x: list, y: list) -> float:
     return round(fastdist.euclidean(np.array(x), np.array(y)), 3)
 
 
+def distance_neurons_DTW(x: list, y: list) -> float:
+    """ Distance euclidienne entre 2 vecteurs de neurones
+    :param x: vecteur du premier neurone de taille m
+    :param y: vecteur du deuxième neurone de taille n
+    """
+    distance, _ = fastdtw(x, y, dist=euclidean)
+    return round(distance, 3)
+
+
 def get_foyer(graph, neuron):
     """Retourne l'index, la distance et le label du foyer d'un neurone d'entrée
     :param graph:
@@ -141,15 +150,18 @@ def plot_signaux_par_cluster(G, dict_y, absc=None):
     plot(fig)
 
 
-def dict_of_fft(signaux, taille_signaux):
+def dict_of_fft(signaux, taille_signaux=None):
     """
     Retourne un dictionnaire de fft correspondant aux signaux
-    /!\ Chaque signaux est de même taille
     """
     fft_dict = {}
     for index_fft, s in enumerate(signaux.values()):
-        fft_dict[index_fft] = 2.0 / taille_signaux * np.abs(
-            fft(s)[0:taille_signaux // 2])
+        if taille_signaux:
+            fft_dict[index_fft] = 2.0 / taille_signaux * np.abs(
+                fft(s)[0:taille_signaux // 2])
+        else:
+            fft_dict[index_fft] = 2.0 / len(s) * np.abs(
+                fft(s)[0:len(s) // 2])
     return fft_dict
 
 
