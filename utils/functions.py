@@ -70,18 +70,21 @@ def dict_of_signal(abscisse, nb_neurons):
     return fct
 
 
-def plot_dict_signal(abs, dict_y, signaux, nb_neurons):
+def plot_dict_signal(dict_y, nb_neurons, abs=None):
     """Affiche un dictionnaire de signaux
     @:param abs: l'abscisse
     @:param dict_y: le dict de signaux
     """
-    size = math.ceil(np.sqrt(len(signaux)))
-    fig = make_subplots(rows=size, cols=size, subplot_titles=[f"Neurone {i}" for i in range(len(signaux))])
+    size = math.ceil(np.sqrt(len(dict_y)))
+    fig = make_subplots(rows=size, cols=size, subplot_titles=[f"Neurone {i}" for i in range(len(dict_y))])
     index_signal = 0
     for row in range(1, size + 1):
         for col in range(1, size + 1):
             if index_signal < nb_neurons:
-                fig.add_scatter(row=row, col=col, x=abs, y=dict_y[index_signal], name=index_signal)
+                if abs is None:
+                    fig.add_scatter(row=row, col=col, x=abs, y=dict_y[index_signal], name=index_signal)
+                else:
+                    fig.add_scatter(row=row, col=col, y=dict_y[index_signal], name=index_signal)
                 index_signal += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
@@ -152,8 +155,21 @@ def dict_of_fft(signaux):
 
 # data : https://figshare.com/articles/media/BirdsongRecognition/3470165?file=5463221
 
-y, sr = librosa.load('data/Birdsong/Bird2/Wave/100.wav')
 
-fig=go.Figure()
-fig.add_scatter(y=y)
-plot(fig)
+def read(path):
+    y, _ = librosa.load(path)
+    return y
+
+
+def dict_of_birds():
+    """
+    Retourne un dictionnaire de chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
+    Ici, les signaux 0 à 9 seront ceux de l'oiseau 0, 10 à 19 ceux de l'oiseau 1 et 20 à 29 de l'oiseau 2
+    """
+    birds_dict, corr_dict = {}, {}
+    for bird in range(3):
+        for wave_num in range(10):
+            birds_dict[wave_num+bird*10] = read(f"data/Birdsong/Bird{bird}/Wave/{wave_num}.wav")
+            corr_dict[wave_num+bird*10] = bird
+
+    return birds_dict, corr_dict

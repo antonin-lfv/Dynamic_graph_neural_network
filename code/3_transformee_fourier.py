@@ -23,9 +23,9 @@ nb_neurons = 18
 
 # création des signaux brutes :
 # 1) signaux sinusoidaux aléatoires
-signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
+# signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 # 2) chants d'oiseaux
-# signaux = dict_of_birds()
+signaux, corr = dict_of_birds()
 
 # création des FFT des signaux brutes
 FFT = dict_of_fft(signaux=signaux)
@@ -34,10 +34,10 @@ FFT = dict_of_fft(signaux=signaux)
 def main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
     # affichage des signaux brutes
     if plot_brutes:
-        plot_dict_signal(abs=abs_normal, dict_y=signaux, signaux=signaux, nb_neurons=nb_neurons)
+        plot_dict_signal(abs=abs_normal, dict_y=signaux, nb_neurons=nb_neurons)
     # Affichage des FFT
     if plot_FFT:
-        plot_dict_signal(abs=abs_fft, dict_y=FFT, signaux=signaux, nb_neurons=nb_neurons)
+        plot_dict_signal(abs=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph()
     G.fit(FFT)
@@ -48,4 +48,4 @@ def main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, abs=abs_normal, dict_y=signaux)
 
 
-main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+# main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
