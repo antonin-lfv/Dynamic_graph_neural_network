@@ -371,7 +371,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-## 4.  Classification de signaux soumis à une transformée de Fourier avec distance DTW
+## 4. Classification de signaux soumis à une transformée de Fourier avec distance DTW
 
 <br>
 
