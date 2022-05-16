@@ -127,7 +127,8 @@ def plot_signaux_par_cluster(G, dict_y, absc=None):
                 fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, y=dict_y[neuron_index],
                                 text=f"Index : {neuron_index}", hoverinfo="text")
             else:
-                fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=absc, y=dict_y[neuron_index],
+                fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=absc,
+                                y=dict_y[neuron_index],
                                 text=f"Index : {neuron_index}", hoverinfo="text")
             row_index += 1
     fig.update_layout(
@@ -137,25 +138,20 @@ def plot_signaux_par_cluster(G, dict_y, absc=None):
     plot(fig)
 
 
-def dict_of_wv(signaux):
-    """Retourne un dictionnaire de wavelet correspondant aux signaux"""
-    wv_dict = {}
-    for index_wv, s in enumerate(signaux.values()):
-        wv_dict[index_wv] = 2.0 / ConstGraph_article.INPUT_SIZE_CONFIG_3 * np.abs(
-            fft(s)[0:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2])
-    return wv_dict
-
-
-def dict_of_fft(signaux):
-    """Retourne un dictionnaire de fft correspondant aux signaux"""
+def dict_of_fft(signaux, taille_signaux):
+    """
+    Retourne un dictionnaire de fft correspondant aux signaux
+    /!\ Chaque signaux est de même taille
+    """
     fft_dict = {}
     for index_fft, s in enumerate(signaux.values()):
-        fft_dict[index_fft] = 2.0 / ConstGraph_article.INPUT_SIZE_CONFIG_3 * np.abs(
-            fft(s)[0:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2])
+        fft_dict[index_fft] = 2.0 / taille_signaux * np.abs(
+            fft(s)[0:taille_signaux // 2])
     return fft_dict
 
 
 """Lire les ressources - chants d'oiseaux"""
+
 
 # data : https://figshare.com/articles/media/BirdsongRecognition/3470165?file=5463221
 
@@ -173,7 +169,7 @@ def dict_of_birds():
     birds_dict, corr_dict = {}, {}
     for bird in range(3):
         for wave_num in range(10):
-            birds_dict[wave_num+bird*10] = read(f"data/Birdsong/Bird{bird}/Wave/{wave_num}.wav")
-            corr_dict[wave_num+bird*10] = bird
+            birds_dict[wave_num + bird * 10] = read(f"data/Birdsong/Bird{bird}/Wave/{wave_num}.wav")
+            corr_dict[wave_num + bird * 10] = bird
 
     return birds_dict, corr_dict

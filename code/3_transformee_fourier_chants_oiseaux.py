@@ -4,10 +4,33 @@ from utils.classes import *
 
 # chants d'oiseaux
 nb_neurons = 30
-signaux, corr = dict_of_birds()
+# signaux, corr = dict_of_birds()
+
+# Affichage sons
+path = "data/Birdsong/Bird1/Wave/3.wav"
+fig = go.Figure()
+y = read(path)
+fig.add_scatter(y=y)
+fig.update_layout(
+    paper_bgcolor=ConstPlotly.transparent_color,
+    showlegend=False
+)
+plot(fig)
+
+signaux = {0: y}
 
 # création des FFT des chants
-FFT = dict_of_fft(signaux=signaux)
+FFT = dict_of_fft(signaux=signaux, taille_signaux=len(y))
+print(len(y))
+print(len(FFT[0]))
+
+fig = go.Figure()
+fig.add_scatter(y=FFT[0])
+fig.update_layout(
+    paper_bgcolor=ConstPlotly.transparent_color,
+    showlegend=False
+)
+plot(fig)
 
 
 def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):

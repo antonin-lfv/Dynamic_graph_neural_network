@@ -23,8 +23,6 @@ class ConstGraph_article:
     INPUT_SIZE_CONFIG_2 = 300
     # avec les FFT - signaux brutes
     INPUT_SIZE_CONFIG_3 = 200
-    # avec les FFT - chants d'oiseaux
-    INPUT_SIZE_CONFIG_4 = 200
 
 
 class ConstThreshold_article:

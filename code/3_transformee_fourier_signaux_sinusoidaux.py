@@ -23,7 +23,7 @@ nb_neurons = 18
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 
 # création des FFT des signaux brutes
-FFT = dict_of_fft(signaux=signaux)
+FFT = dict_of_fft(signaux=signaux, taille_signaux=ConstGraph_article.INPUT_SIZE_CONFIG_3)
 
 
 def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
