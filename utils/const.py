@@ -14,6 +14,7 @@ import pywt
 import librosa
 from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
+from dtaidistance import dtw
 import pickle
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')

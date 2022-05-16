@@ -21,7 +21,6 @@ def distance_neurons_DTW(x: list, y: list) -> float:
     distance, _ = fastdtw(x, y, dist=euclidean)
     return round(distance, 3)
 
-
 def get_foyer(graph, neuron):
     """Retourne l'index, la distance et le label du foyer d'un neurone d'entrée
     :param graph:
@@ -91,8 +90,7 @@ def plot_dict_signal(dict_y, nb_neurons, absc=None):
     index_signal = 0
     for row in range(1, size + 1):
         for col in range(1, size + 1):
-            if index_signal < nb_neurons-1:
-                print(index_signal)
+            if index_signal < nb_neurons:
                 if absc is None:
                     fig.add_scatter(row=row, col=col, x=absc, y=dict_y[index_signal], name=index_signal)
                 else:

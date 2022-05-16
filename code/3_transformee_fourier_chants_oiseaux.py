@@ -4,7 +4,7 @@ from utils.classes import *
 
 # chants d'oiseaux
 nb_neurons = 15  # fixe
-create_dict_of_birds()  # one time
+# create_dict_of_birds()  # one time
 signaux, corr = dict_of_birds()
 
 # Affichage sons
@@ -31,4 +31,5 @@ def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, dict_y=signaux)
 
 
-main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+# main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+dtw.distance_fast(signaux[1], signaux[2], use_pruning=True)
