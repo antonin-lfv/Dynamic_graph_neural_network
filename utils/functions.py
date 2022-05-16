@@ -70,7 +70,7 @@ def dict_of_signal(abscisse, nb_neurons):
     return fct
 
 
-def plot_dict_signal(dict_y, nb_neurons, abs=None):
+def plot_dict_signal(dict_y, nb_neurons, absc=None):
     """Affiche un dictionnaire de signaux
     @:param abs: l'abscisse
     @:param dict_y: le dict de signaux
@@ -81,8 +81,8 @@ def plot_dict_signal(dict_y, nb_neurons, abs=None):
     for row in range(1, size + 1):
         for col in range(1, size + 1):
             if index_signal < nb_neurons:
-                if abs is None:
-                    fig.add_scatter(row=row, col=col, x=abs, y=dict_y[index_signal], name=index_signal)
+                if absc is None:
+                    fig.add_scatter(row=row, col=col, x=absc, y=dict_y[index_signal], name=index_signal)
                 else:
                     fig.add_scatter(row=row, col=col, y=dict_y[index_signal], name=index_signal)
                 index_signal += 1
@@ -110,7 +110,7 @@ def print_cluster(G, display):
     return clusters
 
 
-def plot_signaux_par_cluster(G, abs, dict_y):
+def plot_signaux_par_cluster(G, dict_y, absc=None):
     """
     :param G: le graphe
     :param abs: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT
@@ -123,8 +123,12 @@ def plot_signaux_par_cluster(G, abs, dict_y):
     for label in clusters.keys():
         row_index = 1
         for neuron_index in clusters[label]:
-            fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=abs, y=dict_y[neuron_index],
-                            text=f"Index : {neuron_index}", hoverinfo="text")
+            if absc is None:
+                fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, y=dict_y[neuron_index],
+                                text=f"Index : {neuron_index}", hoverinfo="text")
+            else:
+                fig.add_scatter(row=row_index, col=list(clusters.keys()).index(label) + 1, x=absc, y=dict_y[neuron_index],
+                                text=f"Index : {neuron_index}", hoverinfo="text")
             row_index += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
@@ -163,7 +167,7 @@ def read(path):
 
 def dict_of_birds():
     """
-    Retourne un dictionnaire de chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
+    Retourne un dictionnaire de 30 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
     Ici, les signaux 0 à 9 seront ceux de l'oiseau 0, 10 à 19 ceux de l'oiseau 1 et 20 à 29 de l'oiseau 2
     """
     birds_dict, corr_dict = {}, {}
