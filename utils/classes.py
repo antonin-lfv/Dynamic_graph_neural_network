@@ -149,10 +149,11 @@ class Graph:
         """ Ajout des neurones
         @:param X : Ensemble de signaux sous forme de dictionnaire
         """
+        color = fg('blue')
         compt = 0
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x))
-            print(f"[{compt}/{len(X)-1}] Neurone ajouté !")
+            print(color + f"[{compt}/{len(X)-1}]" + " Neurone ajouté !")
             compt += 1
 
 

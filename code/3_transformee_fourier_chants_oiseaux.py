@@ -13,7 +13,7 @@ signaux, corr = dict_of_birds()
 # Création des FFT des syllabes des chants d'oiseaux
 FFT = dict_of_fft(signaux=signaux)
 # prendre que les 2 premières classes
-FFT = dict(itertools.islice(FFT.items(), 9))
+FFT = dict(itertools.islice(FFT.items(), 10))
 
 
 def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):

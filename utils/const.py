@@ -17,6 +17,7 @@ from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
 from dtaidistance import dtw
 import pickle
+from colored import fg
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
@@ -42,12 +43,12 @@ class ConstThreshold_article:
     # bc_config1 = 0.10
     # bc_config2 = 0.70
     # bc_config3 = 0.20 # FFT signaux sinusoidaux
-    bc = 0.20
+    bc = 0.30
     # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
     # bl_config1 = 0.50
     # bl_config2 = 0.70
     # bl_config3 = 0.20 # FFT signaux sinusoidaux
-    bl = 0.20
+    bl = 0.35
     # seuil après lequel suppression des liens suite à altération
     # ar_config1 = 150
     # ar_config2 = 100
@@ -57,7 +58,7 @@ class ConstThreshold_article:
     # an_config1 = 100
     # an_config2 = 35
     # an_config3 = 6.5 # FFT signaux sinusoidaux
-    an = 35
+    an = 0.39
 
 
 class ConstPlotly:
