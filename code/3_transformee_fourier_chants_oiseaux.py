@@ -3,19 +3,12 @@ from utils.classes import *
 """ Chants d'oiseaux et transformée de Fourier """
 
 # chants d'oiseaux
-nb_neurons = 30
+nb_neurons = 15  # fixe
+create_dict_of_birds()  # one time
 signaux, corr = dict_of_birds()
 
 # Affichage sons
-path1 = "data/Birdsong/Bird2/Wave/1.wav"
-y1 = read(path1)
-fig = go.Figure()
-fig.add_scatter(y=y1)
-fig.update_layout(
-    paper_bgcolor=ConstPlotly.transparent_color,
-    showlegend=False
-)
-plot(fig)
+plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
 
 # distance, path = fastdtw(y1, y2[:84562], dist=euclidean)
 

@@ -1,3 +1,5 @@
+import pickle
+
 from utils.const import *
 
 """Fonctions pour le graphe"""
@@ -80,7 +82,8 @@ def plot_dict_signal(dict_y, nb_neurons, absc=None):
     index_signal = 0
     for row in range(1, size + 1):
         for col in range(1, size + 1):
-            if index_signal < nb_neurons:
+            if index_signal < nb_neurons-1:
+                print(index_signal)
                 if absc is None:
                     fig.add_scatter(row=row, col=col, x=absc, y=dict_y[index_signal], name=index_signal)
                 else:
@@ -150,6 +153,12 @@ def dict_of_fft(signaux, taille_signaux):
     return fft_dict
 
 
+def plot_rapide(y):
+    fig = go.Figure()
+    fig.add_scatter(y=y)
+    plot(fig)
+
+
 """Lire les ressources - chants d'oiseaux"""
 
 
@@ -177,11 +186,11 @@ def create_dict_of_birds():
         birds[7] = read("data/Birdsong/Bird1/Wave/5.wav")[96000:98300]
         birds[8] = read("data/Birdsong/Bird1/Wave/5.wav")[98800:101000]
         birds[9] = read("data/Birdsong/Bird1/Wave/5.wav")[101500:103600]
-        birds[10] = read("data/Birdsong/Bird1/Wave/5.wav")[25700:94727]
-        birds[11] = read("data/Birdsong/Bird1/Wave/5.wav")[99180:160300]
-        birds[12] = read("data/Birdsong/Bird1/Wave/5.wav")[164300:206900]
-        birds[13] = read("data/Birdsong/Bird1/Wave/5.wav")[210500:256255]
-        birds[14] = read("data/Birdsong/Bird1/Wave/5.wav")[257000:309000]
+        birds[10] = read("data/Birdsong/Bird2/Wave/0.wav")[25700:94727]
+        birds[11] = read("data/Birdsong/Bird2/Wave/0.wav")[99180:160300]
+        birds[12] = read("data/Birdsong/Bird2/Wave/0.wav")[164300:206900]
+        birds[13] = read("data/Birdsong/Bird2/Wave/0.wav")[210500:256255]
+        birds[14] = read("data/Birdsong/Bird2/Wave/0.wav")[257000:309000]
         pickle.dump(birds, f)
 
     with open('data/Birdsong/corr.pkl', 'wb') as f:
@@ -210,9 +219,7 @@ def dict_of_birds():
     Retourne un dictionnaire de 15 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
     Ici, les signaux 0 à 4 seront ceux de l'oiseau 0, 5 à 9 ceux de l'oiseau 1 et 10 à 14 de l'oiseau 2
     """
-    with open('data/Birdsong/birdsongs.pkl', 'wb') as f:
-        birds_dict = pickle.load(f)
-    with open('data/Birdsong/corr.pkl', 'wb') as f:
-        corr_dict = pickle.load(f)
+    birds_dict = pickle.load(open('data/Birdsong/birdsongs.pkl', 'rb'))
+    corr_dict = pickle.load(open('data/Birdsong/corr.pkl', 'rb'))
 
     return birds_dict, corr_dict
