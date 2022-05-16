@@ -19,10 +19,12 @@ warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 class ConstGraph_article:
     # avec fct racines et cosinus
     INPUT_SIZE_CONFIG_1 = 100
-    # avec les signaux
+    # avec les signaux brutes
     INPUT_SIZE_CONFIG_2 = 300
-    # avec les FFT
+    # avec les FFT - signaux brutes
     INPUT_SIZE_CONFIG_3 = 200
+    # avec les FFT - chants d'oiseaux
+    INPUT_SIZE_CONFIG_4 = 200
 
 
 class ConstThreshold_article:
