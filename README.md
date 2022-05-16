@@ -205,7 +205,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 <br>
 
-# Expérimentation
+# Expérimentations
 
 <br>
 
