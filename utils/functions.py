@@ -21,6 +21,7 @@ def distance_neurons_DTW(x: list, y: list) -> float:
     distance, _ = fastdtw(x, y, dist=euclidean)
     return round(distance, 3)
 
+
 def get_foyer(graph, neuron):
     """Retourne l'index, la distance et le label du foyer d'un neurone d'entrée
     :param graph:

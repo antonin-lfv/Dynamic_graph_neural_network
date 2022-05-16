@@ -32,4 +32,4 @@ def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
 
 
 # main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
-dtw.distance_fast(signaux[1], signaux[2], use_pruning=True)
+# dtw.distance_fast(signaux[1], signaux[2], use_pruning=True)
