@@ -12,6 +12,9 @@ from plotly.subplots import make_subplots
 from scipy.fft import fft, fftfreq
 import pywt
 import librosa
+from fastdtw import fastdtw
+from scipy.spatial.distance import euclidean
+import pickle
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 

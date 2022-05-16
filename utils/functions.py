@@ -161,6 +161,12 @@ def read(path):
     return y
 
 
+def create_dict_of_birds():
+    dico = {}
+    with open('data/Birdsong/birdsongs.pkl', 'wb') as f:
+        pickle.dump(dico, f)
+
+
 def dict_of_birds():
     """
     Retourne un dictionnaire de 30 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau

@@ -7,21 +7,19 @@ nb_neurons = 30
 # signaux, corr = dict_of_birds()
 
 # Affichage sons
-path = "data/Birdsong/Bird1/Wave/3.wav"
+path1 = "data/Birdsong/Bird1/Wave/3.wav"
+path2 = "data/Birdsong/Bird0/Wave/0.wav"
+y1 = read(path1)
+y2 = read(path2)
 fig = go.Figure()
-y = read(path)
-fig.add_scatter(y=y)
-fig.update_layout(
-    paper_bgcolor=ConstPlotly.transparent_color,
-    showlegend=False
-)
+fig.add_scatter(y=y1/np.linalg.norm(y1))
+fig.add_scatter(y=y2/np.linalg.norm(y2))
 plot(fig)
-
-signaux = {0: y}
+signaux = {0: y1}
 
 # création des FFT des chants
-FFT = dict_of_fft(signaux=signaux, taille_signaux=len(y))
-print(len(y))
+FFT = dict_of_fft(signaux=signaux, taille_signaux=len(y1))
+print(len(y1))
 print(len(FFT[0]))
 
 fig = go.Figure()
@@ -31,6 +29,8 @@ fig.update_layout(
     showlegend=False
 )
 plot(fig)
+
+distance, path = fastdtw(y1, y2[:84562], dist=euclidean)
 
 
 def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
