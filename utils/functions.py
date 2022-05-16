@@ -162,20 +162,57 @@ def read(path):
 
 
 def create_dict_of_birds():
-    dico = {}
+    """
+    Création des partitions des chants d'oiseaux et remplissage des dictionnaires
+    """
+    birds = {}
     with open('data/Birdsong/birdsongs.pkl', 'wb') as f:
-        pickle.dump(dico, f)
+        birds[0] = read("data/Birdsong/Bird0/Wave/3.wav")[48900:50700]
+        birds[1] = read("data/Birdsong/Bird0/Wave/3.wav")[50900:52750]
+        birds[2] = read("data/Birdsong/Bird0/Wave/3.wav")[52976:54800]
+        birds[3] = read("data/Birdsong/Bird0/Wave/3.wav")[55000:57000]
+        birds[4] = read("data/Birdsong/Bird0/Wave/3.wav")[57280:59200]
+        birds[5] = read("data/Birdsong/Bird1/Wave/5.wav")[93381:95500]
+        birds[6] = read("data/Birdsong/Bird1/Wave/5.wav")[96000:98300]
+        birds[7] = read("data/Birdsong/Bird1/Wave/5.wav")[96000:98300]
+        birds[8] = read("data/Birdsong/Bird1/Wave/5.wav")[98800:101000]
+        birds[9] = read("data/Birdsong/Bird1/Wave/5.wav")[101500:103600]
+        birds[10] = read("data/Birdsong/Bird1/Wave/5.wav")[25700:94727]
+        birds[11] = read("data/Birdsong/Bird1/Wave/5.wav")[99180:160300]
+        birds[12] = read("data/Birdsong/Bird1/Wave/5.wav")[164300:206900]
+        birds[13] = read("data/Birdsong/Bird1/Wave/5.wav")[210500:256255]
+        birds[14] = read("data/Birdsong/Bird1/Wave/5.wav")[257000:309000]
+        pickle.dump(birds, f)
+
+    with open('data/Birdsong/corr.pkl', 'wb') as f:
+        corr = {
+            0: 0,
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 1,
+            6: 1,
+            7: 1,
+            8: 1,
+            9: 1,
+            10: 2,
+            11: 2,
+            12: 2,
+            13: 2,
+            14: 2
+        }
+        pickle.dump(corr, f)
 
 
 def dict_of_birds():
     """
-    Retourne un dictionnaire de 30 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
-    Ici, les signaux 0 à 9 seront ceux de l'oiseau 0, 10 à 19 ceux de l'oiseau 1 et 20 à 29 de l'oiseau 2
+    Retourne un dictionnaire de 15 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
+    Ici, les signaux 0 à 4 seront ceux de l'oiseau 0, 5 à 9 ceux de l'oiseau 1 et 10 à 14 de l'oiseau 2
     """
-    birds_dict, corr_dict = {}, {}
-    for bird in range(3):
-        for wave_num in range(10):
-            birds_dict[wave_num + bird * 10] = read(f"data/Birdsong/Bird{bird}/Wave/{wave_num}.wav")
-            corr_dict[wave_num + bird * 10] = bird
+    with open('data/Birdsong/birdsongs.pkl', 'wb') as f:
+        birds_dict = pickle.load(f)
+    with open('data/Birdsong/corr.pkl', 'wb') as f:
+        corr_dict = pickle.load(f)
 
     return birds_dict, corr_dict
