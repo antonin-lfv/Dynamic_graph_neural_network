@@ -55,6 +55,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	1. [Classification de fonctions classiques](#1-Classification-de-fonctions-classiques)
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
+	4. [Classification de signaux soumis à une transformée de Fourier avec distance DTW](#4-Classification-de-signaux-soumis-à-une-transformée-de-Fourier-avec-distance-DTW)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
@@ -243,7 +244,7 @@ On obtient après ajout de ces neurones le graphe suivant : (on affiche la liste
 On remarque que les neurones d'index 1, 2, 5, 8 et 9 sont ajoutés à la même classe. Ce groupe de 5 neurones correspond exactement au type de fonction racine, donc le réseau a parfaitement réussi à regrouper ces données ensemble. De même que les neurones 3, 4, 6, 7 qui sont les neurones de type cosinus.
 Mais dans cette dernière classe le neurone 0 a été classé en tant qu'outlier. (ce n'est pas totalement absurde dans le sens ou il sa fonction est éloignée de toutes les autres) <br>
 
-On va poursuivre les tests avec d'autres données, et un peu plus de types différents.
+On va poursuivre les tests avec d'autres données pour voir comment le modèle se comporte.
 
 <br>
 
@@ -362,7 +363,15 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 <br>
 
-Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base ce projet. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones)
+Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédentes, et ce sur une multitude de données. On peut alors valider cette technique (d'application du FFT) comme étant efficace, et aussi valider le modèle décrit dans l'article sur lequel se base ce projet. (tout en ajoutant cette petite subtilité dans le passage des signaux aux neurones) <br>
+
+<br>
+
+Cependant, ce modèle a une limite dans son implémentation actuelle (telle que décrite dans l'article). En effet, tout est basé sur la distance euclidienne entre les neurones, ce qui immplique que les signaux doivent impérativement être de la même taille. Ainsi, il faudrait utiliser une méthode pour calculer la distance entre deux vecteurs de tailles différentes ... avec la méthode de **Dynamic Time Warping**.
+
+<br>
+
+## 4. Classification de signaux soumis à une transformée de Fourier avec distance DTW
 
 <br>
 
