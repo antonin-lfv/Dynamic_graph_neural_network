@@ -149,8 +149,11 @@ class Graph:
         """ Ajout des neurones
         @:param X : Ensemble de signaux sous forme de dictionnaire
         """
+        compt = 0
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x))
+            print(f"[{compt}/{len(X)-1}] Neurone ajouté !")
+            compt += 1
 
 
 """méthode de Graph pour afficher le graphe avec plotly"""

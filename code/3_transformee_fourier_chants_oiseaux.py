@@ -8,10 +8,12 @@ nb_neurons = 15  # fixe
 signaux, corr = dict_of_birds()
 
 # Affichage sons
-plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
+# plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
 
 # Création des FFT des syllabes des chants d'oiseaux
 FFT = dict_of_fft(signaux=signaux)
+# prendre que les 2 premières classes
+FFT = dict(itertools.islice(FFT.items(), 9))
 
 
 def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
@@ -31,5 +33,4 @@ def main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, dict_y=signaux)
 
 
-# main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
-# dtw.distance_fast(signaux[1], signaux[2], use_pruning=True)
+main_birds(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)

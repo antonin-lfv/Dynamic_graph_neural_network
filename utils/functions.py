@@ -1,5 +1,3 @@
-import pickle
-
 from utils.const import *
 
 """Fonctions pour le graphe"""
