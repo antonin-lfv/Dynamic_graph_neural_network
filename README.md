@@ -25,8 +25,9 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 <br>
 
+<br>
+
 > To Do :
-> - Utiliser une autre méthode que la transformée de Fourier
 > - Ajouter une métrique pour mesurer l'efficacité du modèle avec un large dataset deja labelisé
 > - Ajouter une animation pour l'ajout des neurones
 
@@ -55,7 +56,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	1. [Classification de fonctions classiques](#1-Classification-de-fonctions-classiques)
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
-	4. [Classification de signaux soumis à une transformée de Fourier avec distance DTW](#4-Classification-de-signaux-soumis-à-une-transformée-de-Fourier-avec-distance-DTW)
+	4. [Classification de signaux avec la méthode Dynamic Time Warping](#4-Classification-de-signaux-avec-la-méthode-Dynamic-Time-Warping)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
@@ -69,6 +70,9 @@ Libraries utilisées :
 <a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Lib-Plotly-937BCB" alt="Plotly"></a>
 <a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Lib-Fastdist-937BCB" alt="Fastdist"></a>
 <a href="https://scipy.github.io/devdocs/index.html"><img src="https://img.shields.io/badge/Lib-Scipy-937BCB" alt="Scipy"></a>
+<a href="https://librosa.org"><img src="https://img.shields.io/badge/Lib-Librosa-937BCB" alt="Librosa"></a>
+<a href="https://pypi.org/project/fastdtw/"><img src="https://img.shields.io/badge/Lib-fastdtw-937BCB" alt="fastdtw"></a>
+<a href="https://pypi.org/project/pickle5/"><img src="https://img.shields.io/badge/Lib-pickle-937BCB" alt="pickle"></a>
 </p>
 
 <br>
@@ -212,7 +216,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 ## 1. Classification de fonctions classiques
 
-Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+On va dans cette première partie utiliser le modèle de la façon la plus basique possible. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
@@ -250,7 +254,7 @@ On va poursuivre les tests avec d'autres données pour voir comment le modèle s
 
 ## 2. Classification de signaux sinusoïdaux
 
-On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
+Dans cette deuxième partie, on va continuer à utiliser uniquement la distance euclidienne tel que décrit dans l'article. On prend alors 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
@@ -286,7 +290,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 ## 3. Classification de signaux soumis à une transformée de Fourier
 
-On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
+On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. C'est donc entre les transformées de Fourier des signaux que le modèle va faire les calculs de distance euclidienne. <br>
 
 Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
@@ -371,7 +375,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-## 4. Classification de signaux soumis à une transformée de Fourier avec distance DTW
+## 4. Classification de signaux avec la méthode Dynamic Time Warping
 
 <br>
 
@@ -379,25 +383,35 @@ Dans cette section, nous allons changer la façon de calculer les distances à l
 
 <br>
 
-On peut représenter graphiquement cette situation comme ceci : <br>
+Ainsi, on se passera de la Transformée de Fourier dont le but était justement de pouvoir comparer des signaux qui était superposables à une translation près, et on va simplememtn changer la fonction qui calcule la distance entre les vecteurs des neurones, en utilisant la méthode Dynamic Time Warping (DTW) 
+
+<br>
+
+<br>
+
+On peut représenter graphiquement la distance euclidienne comme ceci : <br>
 
 <br>
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
+<img width="650" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
 	</p>
 
-Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Ils le sont à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
+Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Et la distance euclidienne compare les valeurs une à une dans l'ordre. Ils sont alignés à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
 
 <br>
 
-Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**.
+Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cette méthode permet de trouver l’alignement global optimal entre deux signaux, c’est-à-dire d’associer chaque élément de chaque signal à au moins un élément de l’autre signal en minimisant les coûts d’association. Le coût d’une association correspond à la distance entre les deux éléments. Le résultat numérique fournit par DTW correspond à la somme des hauteurs des “barreaux” formés par les associations (les barres noires entre les signaux rouge et bleu). On remarque sur la figure ci-dessous à gauche des signaux que DTW a réaligné correctement les deux signaux, et parvient ainsi à saisir des similarités que la distance euclidienne ne peut extraire.
 
 <br>
 
 <p align="center">
-	<img width="850" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
+	<img width="650" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
 	</p>
+
+<br>
+
+Cette fois-ci nous allons utiliser de vraies données, qui sont des chants d'oiseaux. On isolera les syllabes de plusieurs espèces, ce qui constituera nos données d'entrées. Puis, on passera au modèle ces données qui utilisera la méthode DTW pour calculer les distances. 
 
 <br>
 
