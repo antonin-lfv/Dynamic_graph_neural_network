@@ -28,10 +28,4 @@ def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, dict_y=signaux)
 
 
-print("Début de l'apprentissage")
-print("========================")
-# main_birds(plot_brutes=False, plot_brutes_par_cluster=True)
-G = Graph(fct_distance=distance_neurons_DTW)
-G.fit(signaux)
-print_cluster(G, display=True)
-plot_signaux_par_cluster(G, dict_y=signaux)
+main_birds(plot_brutes=False, plot_brutes_par_cluster=True)

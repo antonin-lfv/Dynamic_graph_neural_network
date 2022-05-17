@@ -151,6 +151,8 @@ class Graph:
         """
         color = fg('blue')
         compt = 0
+        print("Début de l'apprentissage")
+        print("========================")
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x))
             print(color + f"[{compt}/{len(X)-1}]" + " Neurone ajouté !")
