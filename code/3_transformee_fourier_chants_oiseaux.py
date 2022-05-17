@@ -7,7 +7,7 @@ nb_neurons = 15  # fixe
 # create_dict_of_birds()  # one time
 signaux, corr = dict_of_birds()
 # prendre que les 2 premières classes
-signaux = dict(itertools.islice(signaux.items(), 10))
+# signaux = dict(itertools.islice(signaux.items(), 10))
 
 # Affichage sons
 # plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)

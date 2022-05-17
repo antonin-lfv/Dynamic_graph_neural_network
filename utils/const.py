@@ -56,7 +56,7 @@ class ConstThreshold_article:
     # an_config1 = 100
     # an_config2 = 35
     # an_config3 = 6.5 # FFT signaux sinusoidaux
-    an = 55
+    an = 100
 
 
 class ConstPlotly:
