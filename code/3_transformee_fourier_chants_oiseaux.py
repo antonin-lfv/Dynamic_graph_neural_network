@@ -3,19 +3,15 @@ from utils.classes import *
 """ Chants d'oiseaux et transformée de Fourier """
 
 # chants d'oiseaux
-nb_neurons = 15  # fixe
+# nb_neurons = 15  # fixe
 # create_dict_of_birds()  # one time
 signaux, corr = dict_of_birds()
 # prendre que les 2 premières classes
-# signaux = dict(itertools.islice(signaux.items(), 10))
+nb_neurons = 10
+signaux = dict(itertools.islice(signaux.items(), 10))
 
-# Affichage sons
+# Affichage des sons
 # plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
-
-# Création des FFT des syllabes des chants d'oiseaux
-# FFT = dict_of_fft(signaux=signaux)
-# prendre que les 2 premières classes
-# FFT = dict(itertools.islice(FFT.items(), 10))
 
 
 def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
@@ -32,4 +28,10 @@ def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, dict_y=signaux)
 
 
-main_birds(plot_brutes=False, plot_brutes_par_cluster=True)
+print("Début de l'apprentissage")
+print("========================")
+# main_birds(plot_brutes=False, plot_brutes_par_cluster=True)
+G = Graph(fct_distance=distance_neurons_DTW)
+G.fit(signaux)
+print_cluster(G, display=True)
+plot_signaux_par_cluster(G, dict_y=signaux)

@@ -36,27 +36,27 @@ class ConstThreshold_article:
     # bv_config1 = 0.10
     # bv_config2 = 0.70
     # bv_config3 = 0.30 # FFT signaux sinusoidaux
-    bv = 0.20
+    bv = 0.50
     # altération des voisins du foyer (plus il est grand, plus ils sont modifiés)
     # bc_config1 = 0.10
     # bc_config2 = 0.70
     # bc_config3 = 0.20 # FFT signaux sinusoidaux
-    bc = 0.20
+    bc = 0.50
     # altération des liaisons du foyer (plus il est grand, plus elle est modifiée)
     # bl_config1 = 0.50
     # bl_config2 = 0.70
     # bl_config3 = 0.20 # FFT signaux sinusoidaux
-    bl = 0.10
+    bl = 0.50
     # seuil après lequel suppression des liens suite à altération
     # ar_config1 = 150
     # ar_config2 = 100
     # ar_config3 = 30 # FFT signaux sinusoidaux
-    ar = 110
+    ar = 60
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
     # an_config2 = 35
     # an_config3 = 6.5 # FFT signaux sinusoidaux
-    an = 100
+    an = 97
 
 
 class ConstPlotly:
