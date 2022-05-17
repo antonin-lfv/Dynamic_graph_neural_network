@@ -407,6 +407,8 @@ Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cet
 
 <br>
 
+Cette fois-ci nous allons utiliser de vraies données, qui sont des chants d'oiseaux. On isolera les syllabes de plusieurs espèces, ce qui constituera nos données d'entrées. Puis, on passera au modèle ces données qui utilisera la méthode DTW pour calculer les distances. 
+
 <br>
 
 # Bonus
