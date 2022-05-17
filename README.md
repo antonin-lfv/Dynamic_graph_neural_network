@@ -375,6 +375,32 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
+Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
+
+<br>
+
+On peut représenter graphiquement cette situation comme ceci : <br>
+
+<br>
+
+<p align="center">
+<img width="850" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
+	</p>
+
+Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Ils le sont à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
+
+<br>
+
+Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**.
+
+<br>
+
+<p align="center">
+	<img width="850" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
+	</p>
+
+<br>
+
 # Bonus
 
 Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
