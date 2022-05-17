@@ -394,7 +394,7 @@ On peut représenter graphiquement la distance euclidienne comme ceci : <br>
 <br>
 
 <p align="center">
-<img width="650" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
+<img width="500" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
 	</p>
 
 Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Et la distance euclidienne compare les valeurs une à une dans l'ordre. Ils sont alignés à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
@@ -406,7 +406,7 @@ Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cet
 <br>
 
 <p align="center">
-	<img width="650" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
+	<img width="500" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
 	</p>
 
 <br>
