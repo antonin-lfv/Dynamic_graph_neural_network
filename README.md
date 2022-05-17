@@ -55,7 +55,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	1. [Classification de fonctions classiques](#1-Classification-de-fonctions-classiques)
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
-	4. [Classification de signaux soumis à une transformée de Fourier avec distance DTW](#4-Classification-de-signaux-soumis-à-une-transformée-de-Fourier-avec-distance-DTW)
+	4. [Classification de signaux avec la méthode Dynamic Time Warping](#4-Classification-de-signaux-avec-la-méthode-Dynamic-Time-Warping)
 4. [Bonus](#bonus)
 5. [Conclusion](#conclusion)
 
@@ -371,7 +371,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-## 4. Classification de signaux soumis à une transformée de Fourier avec distance DTW
+## 4. Classification de signaux avec la méthode Dynamic Time Warping
 
 <br>
 
