@@ -375,7 +375,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
+Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) Ainsi, on se passera de la Transformée de Fourier dont le but était justement de pouvoir comparer des signaux qui était superposables à une translation près, et on va simplememtn changer la fonction qui calcule la distance entre les vecteurs des neurones, en utilisant la méthode Dynamic Time Warping (DTW) <br>
 
 <br>
 
