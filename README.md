@@ -70,6 +70,9 @@ Libraries utilisées :
 <a href="https://plotly.com/python/"><img src="https://img.shields.io/badge/Lib-Plotly-937BCB" alt="Plotly"></a>
 <a href="https://github.com/talboger/fastdist"><img src="https://img.shields.io/badge/Lib-Fastdist-937BCB" alt="Fastdist"></a>
 <a href="https://scipy.github.io/devdocs/index.html"><img src="https://img.shields.io/badge/Lib-Scipy-937BCB" alt="Scipy"></a>
+<a href="https://librosa.org"><img src="https://img.shields.io/badge/Lib-Librosa-937BCB" alt="Librosa"></a>
+<a href="https://pypi.org/project/fastdtw/"><img src="https://img.shields.io/badge/Lib-fastdtw-937BCB" alt="fastdtw"></a>
+<a href="https://pypi.org/project/pickle5/"><img src="https://img.shields.io/badge/Lib-pickle-937BCB" alt="pickle"></a>
 </p>
 
 <br>
