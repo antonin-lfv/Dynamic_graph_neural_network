@@ -11,11 +11,9 @@ from scipy.optimize import fsolve
 import pandas as pd
 from plotly.subplots import make_subplots
 from scipy.fft import fft, fftfreq
-import pywt
 import librosa
 from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
-from dtaidistance import dtw
 import pickle
 from colored import fg
 import warnings
