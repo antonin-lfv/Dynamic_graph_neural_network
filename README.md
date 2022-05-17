@@ -212,7 +212,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 ## 1. Classification de fonctions classiques
 
-Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+On va dans cette première partie utiliser le modèle de la façon la plus basique possible. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
@@ -250,7 +250,7 @@ On va poursuivre les tests avec d'autres données pour voir comment le modèle s
 
 ## 2. Classification de signaux sinusoïdaux
 
-On prend ici 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
+Dans cette deuxième partie, on va continuer à utiliser uniquement la distance euclidienne tel que décrit dans l'article. On prend alors 9 neurones, qui représentent des signaux quelconques qui sont des sommes aléatoires de fonctions sinusoïdales. On va alors tester différents seuils pour voir si on arrive à trouver une classification satisfaisante. <br>
 On peut déjà tracer les courbes représentant les 9 neurones : <br>
 
 <p align="center">
@@ -286,7 +286,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 ## 3. Classification de signaux soumis à une transformée de Fourier
 
-On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. <br>
+On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. C'est donc entre les transformées de Fourier des signaux que le modèle va faire les calculs de distance euclidienne. <br>
 
 Voici les 16 signaux, correspondant aux 16 neurones du réseau : <br>
 
@@ -375,7 +375,13 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) Ainsi, on se passera de la Transformée de Fourier dont le but était justement de pouvoir comparer des signaux qui était superposables à une translation près, et on va simplememtn changer la fonction qui calcule la distance entre les vecteurs des neurones, en utilisant la méthode Dynamic Time Warping (DTW) <br>
+Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
+
+<br>
+
+Ainsi, on se passera de la Transformée de Fourier dont le but était justement de pouvoir comparer des signaux qui était superposables à une translation près, et on va simplememtn changer la fonction qui calcule la distance entre les vecteurs des neurones, en utilisant la méthode Dynamic Time Warping (DTW) 
+
+<br>
 
 <br>
 
@@ -398,6 +404,8 @@ Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cet
 <p align="center">
 	<img width="650" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
 	</p>
+
+<br>
 
 <br>
 
