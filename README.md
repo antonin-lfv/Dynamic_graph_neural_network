@@ -26,7 +26,6 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 <br>
 
 > To Do :
-> - Utiliser une autre méthode que la transformée de Fourier
 > - Ajouter une métrique pour mesurer l'efficacité du modèle avec un large dataset deja labelisé
 > - Ajouter une animation pour l'ajout des neurones
 
