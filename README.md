@@ -379,7 +379,7 @@ Dans cette section, nous allons changer la façon de calculer les distances à l
 
 <br>
 
-On peut représenter graphiquement cette situation comme ceci : <br>
+On peut représenter graphiquement la distance euclidienne comme ceci : <br>
 
 <br>
 
@@ -387,11 +387,11 @@ On peut représenter graphiquement cette situation comme ceci : <br>
 <img width="650" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
 	</p>
 
-Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Ils le sont à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
+Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Et la distance euclidienne compare les valeurs une à une dans l'ordre. Ils sont alignés à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
 
 <br>
 
-Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**.
+Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cette méthode permet de trouver l’alignement global optimal entre deux signaux, c’est-à-dire d’associer chaque élément de chaque signal à au moins un élément de l’autre signal en minimisant les coûts d’association. Le coût d’une association correspond à la distance entre les deux éléments. Le résultat numérique fournit par DTW correspond à la somme des hauteurs des “barreaux” formés par les associations (les barres noires entre les signaux rouge et bleu). On remarque sur la figure ci-dessous à gauche des signaux que DTW a réaligné correctement les deux signaux, et parvient ainsi à saisir des similarités que la distance euclidienne ne peut extraire.
 
 <br>
 
