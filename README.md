@@ -425,6 +425,34 @@ Voici des exemples de syllabes de chants d'oiseaux:
 
 <br>
 
+On remarque que les deux syllabes sont de tailles différentes, c'est ce qui motive l'utilisation du DTW. Maintenant, voici le dataset de syllabes de chants d'oiseaux que nous allons utiliser dans la suite des tests:
+
+<br>
+
+<p align="center">
+<img width="850" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
+	</p>
+
+<br>
+
+Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neurones 5 à 9 contiennent des syllabes d'une autre espèce. On ajoute maintenant les neurones au réseau, et on observe la classification du modèle :
+
+<br>
+
+<p align="center">
+<img width="850" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
+	</p>
+
+<br>
+
+Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été associée au même cluster. Pour la deuxième espèce, le résultat est plus mitigé, en effet l'espèce a été divisée en trois sous-catégories. En fait, notre modèle a un pouvoir de classification trop élevé pour nos données. Il cherche a vraiment trouver les différences entre les signaux. Mais, la classification par le modèle reste stable, en effet après avoir essayé beaucoup de seuils différents le réseau ne classe quasiment jamais deux signaux d'espèces différentes ensemble, ce qui est très encourageant en terme de véracité du modèle.
+
+<br>
+
+En conclusion de tous ces tests, nous avons réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permette d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les test sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au réseau. Ainsi, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" les seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
+
+<br>
+	
 # Bonus
 
 Cette partie est un bonus qui a été developpé dans un premier temps pour afficher un réseau de neurones en graphe lorsque les distances entre neurones ne tiennent compte **uniquement** des distances euclidiennes entre ces derniers. Dans le modèle détaillé dans ce projet, les neurones sont modifiés, et donc on ne peut pas les représenter avec cette méthode. <br>
