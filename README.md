@@ -454,7 +454,7 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 <br>
 
 <p align="center">
-	<img width="850" alt="temps exec" src="https://user-images.githubusercontent.com/63207451/169139897-75e40085-f1f4-479c-b382-25b492c6ea0a.png">
+	<img width="950" alt="temps exec" src="https://user-images.githubusercontent.com/63207451/169149156-e9cc45c9-91fa-402c-8285-cbff1057fffa.png">
 	</p>
 
 <br>
