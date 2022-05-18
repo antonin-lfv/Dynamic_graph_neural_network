@@ -430,7 +430,7 @@ On remarque que les deux syllabes sont de tailles différentes, c'est ce qui mot
 <br>
 
 <p align="center">
-<img width="850" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
+<img width="950" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
 	</p>
 
 <br>
@@ -440,7 +440,7 @@ Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neur
 <br>
 
 <p align="center">
-<img width="850" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
+<img width="950" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
 	</p>
 
 <br>
@@ -449,7 +449,17 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 
 <br>
 
-En conclusion, nous avons réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au modèle. Ainsi, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" les seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
+À noter que le calcul de la distance avec la méthode DTW est très long, et donc pour un nombre de neurones plus élevé, le temps de calcul sera très grand. En terme de rapidité c'est la méthode par transformée de Fourier qui l'emporte. On peut comparer le temps d'exécution des deux méthodes :
+
+<br>
+
+<p align="center">
+	<img width="1050" alt="temps exec" src="https://user-images.githubusercontent.com/63207451/169149156-e9cc45c9-91fa-402c-8285-cbff1057fffa.png">
+	</p>
+
+<br>
+
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au modèle (sauf dans le cas de l'utilisation de la transformée de Fourier où les 2 derniers seuils tournent autour de 10). Ainsi, lors l'utilisation de la méthode DTW, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" ces 2 derniers seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
 
 <br>
 	
