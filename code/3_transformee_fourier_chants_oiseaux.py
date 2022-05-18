@@ -3,7 +3,7 @@ from utils.classes import *
 """ Chants d'oiseaux et transformée de Fourier """
 
 # chants d'oiseaux
-# nb_neurons = 15  # fixe
+
 # create_dict_of_birds()  # one time
 signaux, corr = dict_of_birds()
 # prendre que les 2 premières classes
