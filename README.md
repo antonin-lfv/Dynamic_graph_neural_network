@@ -445,7 +445,7 @@ Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neur
 
 <br>
 
-Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été associée au même cluster. Pour la deuxième espèce, le résultat est plus mitigé, en effet l'espèce a été divisée en trois sous-catégories. En fait, notre modèle a un pouvoir de classification trop élevé pour nos données. Il cherche a vraiment trouver les différences entre les signaux. Mais, la classification par le modèle reste stable, en effet après avoir essayé beaucoup de seuils différents le réseau ne classe quasiment jamais deux signaux d'espèces différentes ensemble, ce qui est très encourageant en terme de véracité du modèle.
+Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été associée au même cluster (de label 0). Pour la deuxième espèce, le résultat est plus mitigé, en effet l'espèce a été divisée en trois sous-catégories (labels 5, 6 et 9). En fait, notre modèle a un pouvoir de classification trop élevé pour nos données. Il cherche a vraiment trouver les différences entre les signaux. Mais, la classification par le modèle reste stable, en effet après avoir essayé beaucoup de seuils différents le réseau ne classe quasiment jamais deux signaux d'espèces différentes ensemble, ce qui est très encourageant en terme de véracité du modèle.
 
 <br>
 
