@@ -16,7 +16,7 @@
 <br>
 
 <p align="center">
-Les réseaux de neurones dynamiques sont une branche peu développée du Deep Learning, qui repose sur un principe simple, l'architecture du réseau est dynamique. Cela a plusieurs avantages, notamment le fait que le réseau est en perpetuel apprentissage, et qu'il peut découvrir de nouveaux patterns dès qu'il en voit, ce qui le rend très flexible. Ici, on va encore un peu plus loin dans ce concept de réseau de neurones dynamiques, car on va utiliser une structure de graphe, c'est à dire sans organisation en couches, comme les modèles classiques. <br>
+Les réseaux de neurones dynamiques sont une branche peu développée du Deep Learning, qui repose sur un principe simple, l'architecture du réseau est dynamique. Cela a plusieurs avantages, notamment le fait que le réseau est en perpetuel apprentissage, et qu'il peut changer sa structure et le routage des informations en fonction des données, ce qui le rend très flexible. Le dynamisme s'opère au niveau de la profondeur du réseau mais aussi sur sa largeur (dans le cas d'un réseau en couches comme dans le modèle DAN2). Ici, on va encore un peu plus loin dans ce concept de réseau de neurones dynamiques, car on va utiliser une structure de graphe, c'est à dire sans organisation en couches comme les modèles classiques. <br>
 	</p>
 
 <p align="center">
