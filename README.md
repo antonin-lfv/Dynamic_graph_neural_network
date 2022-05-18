@@ -28,8 +28,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 <br>
 
 > To Do :
-> - Ajouter une métrique pour mesurer l'efficacité du modèle avec un large dataset deja labelisé
-> - Ajouter une animation pour l'ajout des neurones
+> optimiser le calcul du **Dynamic Time Warping**
 
 <br>
 
