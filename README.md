@@ -370,7 +370,7 @@ Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédente
 
 <br>
 
-Cependant, ce modèle a une limite dans son implémentation actuelle (telle que décrite dans l'article). En effet, tout est basé sur la distance euclidienne entre les neurones, ce qui immplique que les signaux doivent impérativement être de la même taille. Ainsi, il faudrait utiliser une méthode pour calculer la distance entre deux vecteurs de tailles différentes ... avec la méthode de **Dynamic Time Warping**.
+Cependant, ce modèle a une limite dans son implémentation actuelle (telle que décrite dans l'article). En effet, tout est basé sur la distance euclidienne entre les neurones, ce qui immplique que les signaux doivent impérativement être de la même taille. Ainsi, il faudrait utiliser une méthode pour calculer la distance entre deux vecteurs de tailles différentes ... la méthode de **Dynamic Time Warping**.
 
 <br>
 
