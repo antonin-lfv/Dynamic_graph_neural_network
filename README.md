@@ -430,7 +430,7 @@ On remarque que les deux syllabes sont de tailles différentes, c'est ce qui mot
 <br>
 
 <p align="center">
-<img width="850" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
+<img width="950" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
 	</p>
 
 <br>
@@ -440,7 +440,7 @@ Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neur
 <br>
 
 <p align="center">
-<img width="850" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
+<img width="950" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
 	</p>
 
 <br>
