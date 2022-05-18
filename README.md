@@ -28,7 +28,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 <br>
 
 > To Do :
-> optimiser le calcul du **Dynamic Time Warping**
+> - optimiser le calcul du **Dynamic Time Warping**
 
 <br>
 
