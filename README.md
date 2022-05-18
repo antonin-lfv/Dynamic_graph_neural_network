@@ -420,8 +420,8 @@ Voici des exemples de syllabes de chants d'oiseaux:
 <br>
 
 <p align="center">
-<img width="450" alt="syll1" src="https://user-images.githubusercontent.com/63207451/168826924-ca1147e4-78be-495f-912d-dd408f406c26.png">
-<img width="450" alt="syll2" src="https://user-images.githubusercontent.com/63207451/168826940-cdd69f52-584e-44e7-bbd4-8ce3ddd9afd7.png">
+	<img width="500" alt="syll1" src="https://user-images.githubusercontent.com/63207451/168826924-ca1147e4-78be-495f-912d-dd408f406c26.png">
+	<img width="500" alt="syll2" src="https://user-images.githubusercontent.com/63207451/168826940-cdd69f52-584e-44e7-bbd4-8ce3ddd9afd7.png">
 	</p>
 
 <br>
