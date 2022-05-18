@@ -10,9 +10,6 @@ signaux, corr = dict_of_birds()
 nb_neurons = 10
 signaux = dict(itertools.islice(signaux.items(), 10))
 
-# Affichage des sons
-# plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
-
 
 def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
     # affichage des signaux brutes
