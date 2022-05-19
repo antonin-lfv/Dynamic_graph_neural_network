@@ -41,6 +41,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 - Article sur les [Self-Growing Neural Network](https://www.researchgate.net/publication/268454314_Anomaly_detection_using_dynamic_Neural_Networks_classification_of_prestack_data) (SGNN)
 
+- Article sur le [réseau de neurones dynamique DAN2](https://www.researchgate.net/publication/256662765_A_Review_of_DAN2_Dynamic_Architecture_for_Artificial_Neural_Networks_Model_in_Time_Series_Forecasting)
+
 - [Transformée de Fourier](https://helios2.mi.parisdescartes.fr/~eprovenz/include/Poly.pdf) et applications
 
 <br/>
