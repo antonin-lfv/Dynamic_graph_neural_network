@@ -218,7 +218,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 ## 1. Classification de fonctions classiques
 
-On va dans cette première partie utiliser le modèle de la façon la plus basique possible. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+On va dans cette première partie utiliser le modèle de la façon la plus basique possible. La distance euclidienne utilisée par le réseau nous oblige à avoir des fonctions avec le même nombre de points. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
