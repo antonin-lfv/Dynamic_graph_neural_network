@@ -90,15 +90,15 @@ la liaison entre le neurone $i$ et $j$. Les neurones les plus semblables sont co
 	<img src="https://user-images.githubusercontent.com/63207451/165794912-0e449845-0544-4234-842b-fdd41a7c3e13.png" alt="archi of PSOM">
 	</p>
 
-A partir de là, le vecteur d'entrée noté ![formula](https://render.githubusercontent.com/render/math?math=u) est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée ![formula](https://render.githubusercontent.com/render/math?math=d) ) de l'input est alors appelé le foyer, et est noté ![formula](https://render.githubusercontent.com/render/math?math=z(x) ).
+A partir de là, le vecteur d'entrée noté $u$ est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée $d$ ) de l'input est alors appelé le foyer, et est noté $z(x)$ ).
 
-Ainsi, soit ![formula](https://render.githubusercontent.com/render/math?math=x=[x_1,x_2,...,x_n]^T) un vecteur d'un neurone, et ![formula](https://render.githubusercontent.com/render/math?math=u=[u_1,u_2,...,u_n]^T)
+Ainsi, soit $x=[x_1,x_2,...,x_n]^T$ un vecteur d'un neurone, et $u=[u_1,u_2,...,u_n]^T$
 le vecteur d'entrée, alors la distance euclidienne 
-![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par : <br>
+$d$ entre $x$ et $u$ est définie par : <br>
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}" alt="" width="200">
-</p>
+
+$$||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}$$
+
 
 Donc 
 
