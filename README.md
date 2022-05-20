@@ -83,8 +83,8 @@ Libraries utilisées :
 
 ## Principe
 
-Voici un réseau basique, chaque neurone $$x$$ contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note $$c_{ij}$$
-la liaison entre le neurone $$i$$ et $$j$$. Les neurones les plus semblables sont connectés par un poids synaptique.
+Voici un réseau basique, chaque neurone $x$ contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note $c_{ij}$
+la liaison entre le neurone $i$ et $j$. Les neurones les plus semblables sont connectés par un poids synaptique.
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/63207451/165794912-0e449845-0544-4234-842b-fdd41a7c3e13.png" alt="archi of PSOM">
