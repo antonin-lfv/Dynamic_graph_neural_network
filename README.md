@@ -102,11 +102,11 @@ $$||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}$$
 
 Donc 
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2" alt="" width="150">
-</p>
 
-Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...,l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
+$$z(x)=arg\min_j||d||_2$$
+
+
+Avec $j=1,2,3,...,l$  et $l$ le nombre de neurones dans le graphe.
 
 Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil.
 
