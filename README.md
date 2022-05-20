@@ -13,8 +13,6 @@
 
 </p>
 
-$$k_i$$
-
 <br>
 
 <p align="center">
