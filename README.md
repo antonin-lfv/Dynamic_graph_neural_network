@@ -20,7 +20,7 @@ Les réseaux de neurones dynamiques sont une branche peu développée du Deep Le
 	</p>
 
 <p align="center">
-Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. On verra que l'utilisation de la transformée de Fourier sera nécessaire. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, puis nous poursuivrons sur une classification de signaux sinusoïdaux. Dans un premier temps, les signeaux sont tous de la même taille, puis nous élargirons le domaine de compétences du réseau à des signaux de tailles différentes. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
+Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. On verra que l'utilisation de la transformée de Fourier sera nécessaire dans un premier temps. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, puis nous poursuivrons sur une classification de signaux sinusoïdaux. Dans un premier temps, les signeaux sont tous de la même taille, puis nous élargirons le domaine de compétences du réseau à des signaux de tailles différentes. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 	</p>
 
 <br>
@@ -29,6 +29,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 > To Do :
 > - optimiser le calcul du **Dynamic Time Warping**
+
 
 <br>
 
@@ -39,6 +40,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 - Article scientifique sur les [Dynamic graph neural networks](https://www.researchgate.net/publication/2523357_A_Dynamic_Neural_Network_for_Continual) sur lequel se base ce projet.
 
 - Article sur les [Self-Growing Neural Network](https://www.researchgate.net/publication/268454314_Anomaly_detection_using_dynamic_Neural_Networks_classification_of_prestack_data) (SGNN)
+
+- Article sur le [réseau de neurones dynamique DAN2](https://www.researchgate.net/publication/256662765_A_Review_of_DAN2_Dynamic_Architecture_for_Artificial_Neural_Networks_Model_in_Time_Series_Forecasting)
 
 - [Transformée de Fourier](https://helios2.mi.parisdescartes.fr/~eprovenz/include/Poly.pdf) et applications
 
@@ -80,56 +83,54 @@ Libraries utilisées :
 
 ## Principe
 
-Voici un réseau basique, chaque neurone ![formula](https://render.githubusercontent.com/render/math?math=x) contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note ![formula](https://render.githubusercontent.com/render/math?math=c_{ij})
-la liaison entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j). Les neurones les plus semblables sont connectés par un poids synaptique.
+Voici un réseau basique, chaque neurone $x$ contient un vecteur qui est de la même taille que l'input. Les liaisons entre les neurones sont des scalaires, et on note $c_{ij}$
+la liaison entre le neurone $i$ et $j$. Les neurones les plus semblables sont connectés par un poids synaptique.
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/63207451/165794912-0e449845-0544-4234-842b-fdd41a7c3e13.png" alt="archi of PSOM">
 	</p>
 
-A partir de là, le vecteur d'entrée noté ![formula](https://render.githubusercontent.com/render/math?math=u) est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée ![formula](https://render.githubusercontent.com/render/math?math=d) ) de l'input est alors appelé le foyer, et est noté ![formula](https://render.githubusercontent.com/render/math?math=z(x) ).
+A partir de là, le vecteur d'entrée noté $u$ est comparé avec le vecteur de chaque neurone. Le neurone le plus proche (avec une distance euclidienne notée $d$ ) de l'input est alors appelé le foyer, et est noté $z(x)$ ).
 
-Ainsi, soit ![formula](https://render.githubusercontent.com/render/math?math=x=[x_1,x_2,...,x_n]^T) un vecteur d'un neurone, et ![formula](https://render.githubusercontent.com/render/math?math=u=[u_1,u_2,...,u_n]^T)
+Ainsi, soit $x=[x_1,x_2,...,x_n]^T$ un vecteur d'un neurone, et $u=[u_1,u_2,...,u_n]^T$
 le vecteur d'entrée, alors la distance euclidienne 
-![formula](https://render.githubusercontent.com/render/math?math=d) entre ![formula](https://render.githubusercontent.com/render/math?math=x) et ![formula](https://render.githubusercontent.com/render/math?math=u) est définie par : <br>
+$d$ entre $x$ et $u$ est définie par : <br>
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}" alt="" width="200">
-</p>
+
+$$||d||_2=\left[\sum_{i=1}^m(x_i-u_i)^2\right]^{1/2}$$
+
 
 Donc 
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=z(x)=arg\min_j||d||_2" alt="" width="150">
-</p>
 
-Avec ![formula](https://render.githubusercontent.com/render/math?math=j=1,2,3,...,l)  et ![formula](https://render.githubusercontent.com/render/math?math=l) le nombre de neurones dans le graphe.
+$$z(x)=arg\min_j||d||_2$$
+
+
+Avec $j=1,2,3,...,l$  et $l$ le nombre de neurones dans le graphe.
 
 Le neurone d'entrée est alors connecté aux neurones dont la similarité dépasse un certain seuil.
 
-La distance euclidienne entre le vecteur d'entrée ![formula](https://render.githubusercontent.com/render/math?math=u) et le foyer ![formula](https://render.githubusercontent.com/render/math?math=z) est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_v) un paramètre d'échelle qui correspond au learning rate du réseau.
+La distance euclidienne entre le vecteur d'entrée $u$ et le foyer $z$ est ensuite utilisé pour modifier le foyer (son vecteur). On introduit le scalaire $b_v$ un paramètre d'échelle qui correspond au learning rate du réseau.
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=\Delta z(x)=b_v(z-u)" alt="" width="150">
-</p>
-
-Après modification du foyer, on va modifier de la même manière les neurones connectés à proximité du foyer (en dessous d'un certain seuil ![formula](https://render.githubusercontent.com/render/math?math=a_n) de similarité), mais à un degré moindre par rapport au foyer. On introduit le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_c) un paramètre d'échelle qui correspond au taux de changement du noeud. (![formula](https://render.githubusercontent.com/render/math?math=k) est le foyer) 
-
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=\Delta x_j=b_c*c_{jk}(x_k-x_j)" alt="" width="200">
-</p>
-
-Avec ![formula](https://render.githubusercontent.com/render/math?math=k=1,2,3,..,l) ,  ![formula](https://render.githubusercontent.com/render/math?math=j!=k) ,  ![formula](https://render.githubusercontent.com/render/math?math=b_c) ∈ ![formula](https://render.githubusercontent.com/render/math?math=R) 
-
-On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire ![formula](https://render.githubusercontent.com/render/math?math=b_l) . La nouvelle valeur de la connexion entre ![formula](https://render.githubusercontent.com/render/math?math=j) et ![formula](https://render.githubusercontent.com/render/math?math=k) est alors ![formula](https://render.githubusercontent.com/render/math?math=c_{jk}=b_l(||x_j-x_k||))
-Avec ![formula](https://render.githubusercontent.com/render/math?math=b_l) ∈ ![formula](https://render.githubusercontent.com/render/math?math=R)
+$$\Delta z(x)=b_v(z-u)$$
 
 
-Si l'entrée du réseau ![formula](https://render.githubusercontent.com/render/math?math=u) est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand ![formula](https://render.githubusercontent.com/render/math?math=||d||>a_n)   avec ![formula](https://render.githubusercontent.com/render/math?math=a_n) ∈ ![formula](https://render.githubusercontent.com/render/math?math=R)
-C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil ![formula](https://render.githubusercontent.com/render/math?math=a_n).
+Après modification du foyer, on va modifier de la même manière les neurones connectés à proximité du foyer (en dessous d'un certain seuil $a_n$ de similarité), mais à un degré moindre par rapport au foyer. On introduit le scalaire $b_c$ un paramètre d'échelle qui correspond au taux de changement du noeud. ($k$ est le foyer) 
+
+$$\Delta x_j=b_c*c_{jk}(x_k-x_j)$$
 
 
-Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit ![formula](https://render.githubusercontent.com/render/math?math=a_r) le seuil, le lien entre le neurone ![formula](https://render.githubusercontent.com/render/math?math=i) et ![formula](https://render.githubusercontent.com/render/math?math=j) est supprimé si ![formula](https://render.githubusercontent.com/render/math?math=c_{ij}>a_r) . 
+Avec $k=1,2,3,..,l$ ,  $j!=k$ ,  $b_c$ ∈ $R$
+
+On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire $b_l$ . La nouvelle valeur de la connexion entre $j et $k$ est alors $c_{jk}=b_l(||x_j-x_k||)$
+Avec $b_l$ ∈ $R$
+
+
+Si l'entrée du réseau $u$ est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand $||d||>a_n$   avec $a_n$ ∈ $R$
+C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil $a_n$.
+
+
+Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit $a_r$ le seuil, le lien entre le neurone $i$ et $j$ est supprimé si $c_{ij}>a_r$ . 
 
 Quand un neurone n'a plus de lien, il est supprimé. (on préfèrera ici conserver tous les neurones)
 
@@ -182,19 +183,19 @@ La première étape de la modélisation est la création du graphe et l'ajout de
 
 On définit dans cette méthode 3 cas :
 - Si le graphe est vide : le neurone prend comme label son index, et aucune liaison n'est alors créée.
-- Si le graphe contient un seul neurone : on assigne au nouveau neurone le label du premier si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}), sinon son label est défini par son index. On crée ensuite la liaison entre les deux. (qui est ajouté aux deux neurones)
-- Si il y a plus que deux neurones, on calcul le foyer du nouveau neurone. Si la distance entre les deux est inférieure au seuil ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) il prend le label du foyer, et on connecte au nouveau neurone tous les autres à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}). Sinon, l'index du nouveau neurone devient aussi son label, et il n'est connecté qu'a son foyer.
+- Si le graphe contient un seul neurone : on assigne au nouveau neurone le label du premier si la distance entre les deux est inférieure au seuil `an`, sinon son label est défini par son index. On crée ensuite la liaison entre les deux. (qui est ajouté aux deux neurones)
+- Si il y a plus que deux neurones, on calcul le foyer du nouveau neurone. Si la distance entre les deux est inférieure au seuil `an` il prend le label du foyer, et on connecte au nouveau neurone tous les autres à une distance inférieure à `an` . Sinon, l'index du nouveau neurone devient aussi son label, et il n'est connecté qu'a son foyer.
 
 <br>
 
-Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n}) de son foyer, modifier le foyer ainsi que toutes ces liaisons et neurones voisins. Si une liaison devient supérieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{r}) durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) 
+Dans le modèle initial proposé par l'article, après chaque ajout d'un neurone on doit, si le neurone tout juste ajouté est à une distance inférieure à $a_{n}$ de son foyer, modifier le foyer ainsi que toutes ces liaisons et neurones voisins. Si une liaison devient supérieure à $a_{r}$ durant cette modification alors la liaison est supprimée. (tous les voisins du foyer sont déjà par définition à une distance inférieure à $a_{n}$)
 
 <br>
 
 On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces modifications :
 - `alterFoyer` : qui va altérer le vecteur du foyer du nouveau neurone ajouté
 - `alterVoisins` : qui va modifier les voisins du foyer du nouveau neurone ajouté, selon le modèle mathématique
-- `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à ![formula](https://render.githubusercontent.com/render/math?math=a_{r})
+- `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à `ar`
 
 <br> 
 Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
@@ -205,7 +206,7 @@ Dans l'implémentation on ajoute une méthode `fit()` qui prend en paramètre un
 
 <br>
 
-Un problème dans l'implémentation de la fonction d'affichage du graphe apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à ![formula](https://render.githubusercontent.com/render/math?math=a_{n})) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones (avec la méthode `__repr__` de chaque classe) du graphe avec leur label pour savoir comment le modèle les a rassemblés. 
+Un problème dans l'implémentation de la fonction d'affichage du graphe apparaît, en effet, l'ajout d'un neurone assez proche de son foyer (distance inférieure à $a_{n}$) induit une modification du foyer et des voisins et liaisons de ce dernier. Ceci déséquilibre le lien mathématique (de distance euclidienne) entre les neurones et de ce fait, la méthode permettant d'afficher le graphe ne permettra pas de le faire. On se basera ainsi sur l'affichage des neurones (avec la méthode `__repr__` de chaque classe) du graphe avec leur label pour savoir comment le modèle les a rassemblés. 
 
 <br>
 
@@ -215,7 +216,7 @@ Un problème dans l'implémentation de la fonction d'affichage du graphe appara�
 
 ## 1. Classification de fonctions classiques
 
-On va dans cette première partie utiliser le modèle de la façon la plus basique possible. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
+On va dans cette première partie utiliser le modèle de la façon la plus basique possible. La distance euclidienne utilisée par le réseau nous oblige à avoir des fonctions avec le même nombre de points. Les signaux que nous comparerons seront uniquement soumis à la distance euclidienne. Prenons un ensemble de 10 neurones, dont les index **0, 3, 4, 6, 7** sont ceux représentants des fonctions cosinus (en bas) et **1, 2, 5, 8, 9** des fonctions racines (en haut). On peut les représenter graphiquement : <br>
 
 <p align="center">
 	<img width="950" alt="Capture d’écran 2022-05-08 à 11 35 48" src="https://user-images.githubusercontent.com/63207451/167290435-eb73a979-1e67-4d85-9172-935158159ec6.png">
@@ -307,11 +308,10 @@ On observe à vue d'oeil des différences au niveau des fréquences. Appliquons 
 
 <br>
 
-Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit ![formula](https://render.githubusercontent.com/render/math?math=f) notre signal, alors sa transformée de Fourier et la fonction ![formula](https://render.githubusercontent.com/render/math?math=F(f)) définie par : 
+Ce sont ces signaux qui seront passés aux neurones. On rappelle que soit $f$ notre signal, alors sa transformée de Fourier et la fonction $F(f)$ définie par : 
 
-<p align="center">
-   <img src="https://render.githubusercontent.com/render/math?math=F(f)=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx" alt="FFT" width="250">
-	</p>
+$$F(f)=\int_{-\infty}^{+\infty} f(x)e^{-ix \xi} dx$$
+
 	
 <br>
 
