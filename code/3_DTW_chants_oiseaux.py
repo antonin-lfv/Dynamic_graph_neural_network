@@ -1,6 +1,6 @@
 from utils.classes import *
 
-""" Chants d'oiseaux et transformée de Fourier """
+""" Chants d'oiseaux """
 
 # chants d'oiseaux
 

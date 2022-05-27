@@ -2,6 +2,7 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 import numpy as np
 import math
+import time
 import itertools
 import random
 import json
@@ -51,12 +52,14 @@ class ConstThreshold_article:
     # ar_config1 = 150
     # ar_config2 = 100
     # ar_config3 = 30 # FFT signaux sinusoidaux
-    ar = 60
+    # ar = 60 # DTW
+    ar = 30
     # seuil après lequel le neurone est seulement connecté au foyer
     # an_config1 = 100
     # an_config2 = 35
     # an_config3 = 6.5 # FFT signaux sinusoidaux
-    an = 68
+    # an = 68 # DTW
+    an = 6.5
 
 
 class ConstPlotly:

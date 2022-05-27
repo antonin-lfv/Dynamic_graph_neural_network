@@ -62,7 +62,8 @@ class Graph:
         if fct_distance is None:
             # default - euclidean distance
             self.fct_distance = distance_neurons
-        self.fct_distance = fct_distance
+        else:
+            self.fct_distance = fct_distance
 
     def get_neuron_index(self):
         """Retourne les index des neurones du graphe"""

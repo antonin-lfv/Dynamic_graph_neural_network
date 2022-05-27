@@ -4,10 +4,6 @@ from utils.classes import *
 
 # ----- Config 3 -----
 
-# fonctions
-s = np.sin
-c = np.cos
-
 # constantes
 pi = np.pi
 np.random.seed(3)
@@ -43,4 +39,4 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux)
 
 
-# main(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+# main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
