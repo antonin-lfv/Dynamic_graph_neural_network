@@ -59,8 +59,9 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
 	4. [Classification de signaux avec la méthode Dynamic Time Warping](#4-Classification-de-signaux-avec-la-méthode-Dynamic-Time-Warping)
-4. [Bonus](#bonus)
-5. [Conclusion](#conclusion)
+5. [Utilisation du modèle](#Utilisation-du-modèle)
+6. [Bonus](#bonus)
+7. [Conclusion](#conclusion)
 
 <br>
 
@@ -460,6 +461,10 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 <br>
 
 Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au modèle (sauf dans le cas de l'utilisation de la transformée de Fourier où les 2 derniers seuils tournent autour de 10). Ainsi, lors l'utilisation de la méthode DTW, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" ces 2 derniers seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
+
+<br>
+
+# Utilisation du modèle 
 
 <br>
 	
