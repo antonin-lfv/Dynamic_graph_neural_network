@@ -146,17 +146,17 @@ class Graph:
             if len(n.liaisons) == 0:
                 n.label = n.index
 
-    def fit(self, X: dict):
+    def fit(self, X: dict, print_progress=True):
         """ Ajout des neurones
         @:param X : Ensemble de signaux sous forme de dictionnaire
         """
         color = fg('blue')
         compt = 0
-        print("Début de l'apprentissage")
-        print("========================")
+        print("==== Début de l'apprentissage ==== ")
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x))
-            print(color + f"[{compt}/{len(X)-1}]" + " Neurone ajouté !")
+            if print_progress:
+                print(color + f"[{compt}/{len(X)-1}]" + " Neurone ajouté !")
             compt += 1
 
 

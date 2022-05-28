@@ -15,7 +15,7 @@ abs_normal = np.linspace(x_min, x_max, ConstGraph_article.INPUT_SIZE_CONFIG_3)
 abs_fft = fftfreq(ConstGraph_article.INPUT_SIZE_CONFIG_3, x_max)[:ConstGraph_article.INPUT_SIZE_CONFIG_3 // 2]
 
 # création des signaux brutes :
-nb_neurons = 25
+nb_neurons = 50
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 
 # création des FFT des signaux brutes
@@ -31,7 +31,7 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_dict_signal(absc=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph()
-    G.fit(FFT)
+    G.fit(FFT, print_progress=False)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     # Affichage des signaux brutes classés par cluster
