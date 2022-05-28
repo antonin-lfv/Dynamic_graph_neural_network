@@ -114,20 +114,25 @@ def print_cluster(G, display):
         else:
             clusters[n.label] = [n.index]
     if display:
+        print("==== Configuration ====")
         for label, neurons in clusters.items():
             print(f"Label {label} : ", *neurons)
     return clusters
 
 
-def plot_signaux_par_cluster(G, dict_y, absc=None):
+def plot_signaux_par_cluster(G, dict_y, absc=None, sign_min_per_cluster=1):
     """
     :param G: le graphe
-    :param abs: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT
+    :param absc: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT
     :param dict_y: le dictionnaire des signaux brutes ou FFT
+    :param sign_min_per_cluster: minimum de signaux par cluster pour être affiché
     :return:
     """
     clusters = print_cluster(G, display=False)
-    fig = make_subplots(rows=max([len(i) for i in clusters.values()]), cols=len(clusters),
+    # Garder les clusters avec au moins sign_min_per_cluster signaux
+    clusters = dict(filter(lambda elem: len(elem[1]) >= sign_min_per_cluster, clusters.items()))
+    fig = make_subplots(rows=max([len(i) for i in clusters.values()]),
+                        cols=len(clusters),
                         column_titles=[f"Label {i}" for i in clusters.keys()])
     for label in clusters.keys():
         row_index = 1
@@ -142,7 +147,8 @@ def plot_signaux_par_cluster(G, dict_y, absc=None):
             row_index += 1
     fig.update_layout(
         paper_bgcolor=ConstPlotly.transparent_color,
-        showlegend=False
+        showlegend=False,
+        title=f"Ne sont affichés que les clusters d'au moins {sign_min_per_cluster} signaux"
     )
     plot(fig)
 

@@ -27,7 +27,7 @@ class ConstGraph_article:
     # avec les signaux brutes
     INPUT_SIZE_CONFIG_2 = 300
     # avec les FFT - signaux brutes
-    INPUT_SIZE_CONFIG_3 = 200
+    INPUT_SIZE_CONFIG_3 = 250
 
 
 class ConstThreshold_article:
