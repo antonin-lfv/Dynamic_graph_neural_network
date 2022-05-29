@@ -49,7 +49,7 @@ class Neuron:
 
 
 class Graph:
-    def __init__(self, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0):
+    def __init__(self, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0, suppr_neuron = False):
         """
         :param neurons: liste des neurones du graphe
         :param compt_neurons: nombre de neurones que le graphe aura vu
@@ -64,6 +64,7 @@ class Graph:
             self.fct_distance = distance_neurons
         else:
             self.fct_distance = fct_distance
+        self.suppr_neuron = suppr_neuron
 
     def get_neuron_index(self):
         """Retourne les index des neurones du graphe"""
@@ -141,10 +142,14 @@ class Graph:
                 foyer.alterVoisins(self)
                 foyer.alterLiaisons(self)
 
-        # si le neurone n'a plus de liaison, il est associé à un label à part
         for n in self.neurons.values():
             if len(n.liaisons) == 0:
-                n.label = n.index
+                if not self.suppr_neuron:
+                    # Cas 1 (défaut) : si un neurone n'a plus de liaison, il est associé à un label à part
+                    n.label = n.index
+                else:
+                    # Cas 2 : si un neurone n'a plus de liaison, il est supprimé
+                    del n
 
     def fit(self, X: dict, print_progress=True):
         """ Ajout des neurones
