@@ -469,7 +469,7 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
-De plus, concernant la classification en elle même, le modèle peut faire de la classification multiclasse (plus que 2), mais seulement si tous les groupes de données sont équitablement différents. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégrée" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
+De plus, concernant la classification en elle même, le modèle peut faire de la classification multiclasse (plus que 2), mais seulement si toutes les classes sont mutuellement différentes. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégré" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
 
 <br>
 
@@ -479,7 +479,7 @@ De plus, concernant la classification en elle même, le modèle peut faire de la
 
 <br>
 
-Dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dans ce cas le réseau va séparer et créer deux classes différentes, car il va considérer que les deux classes qui se ressemblent sont une seule et même classe. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
+Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dans ce cas le réseau va séparer et créer deux classes différentes, car il va considérer que les deux classes qui se ressemblent sont une seule et même classe. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
 
 <br>
 
