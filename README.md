@@ -469,7 +469,7 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
-De plus, concernant la classification en elle même, le modèle peut classer plusieurs classes en même temps, mais seulement si tous les groupes de données sont équitablement différents. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégrée" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
+De plus, concernant la classification en elle même, le modèle peut faire de la classification multiclasse (plus que 2), mais seulement si tous les groupes de données sont équitablement différents. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégrée" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
 
 <br>
 
