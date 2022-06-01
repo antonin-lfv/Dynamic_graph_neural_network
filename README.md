@@ -59,9 +59,10 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
 	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
 	4. [Classification de signaux avec la méthode Dynamic Time Warping](#4-Classification-de-signaux-avec-la-méthode-Dynamic-Time-Warping)
-5. [Utilisation du modèle](#Utilisation-du-modèle)
-6. [Bonus](#bonus)
-7. [Conclusion](#conclusion)
+5. [Résultats](#Résultats)
+6. [Utilisation du modèle](#Utilisation-du-modèle)
+7. [Bonus](#bonus)
+8. [Conclusion](#conclusion)
 
 <br>
 
@@ -460,7 +461,31 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 
 <br>
 
+# Résultats
+
+<br>
+
 Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au modèle (sauf dans le cas de l'utilisation de la transformée de Fourier où les 2 derniers seuils tournent autour de 10). Ainsi, lors l'utilisation de la méthode DTW, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" ces 2 derniers seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
+
+<br>
+
+De plus, concernant la classification en elle même, le modèle peut classer plusieurs classes en même temps, mais seulement si tous les groupes de données sont équitablement différents. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégrée" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
+
+<br>
+
+<p align="center">
+<img width="1050" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171507108-567b05a3-b212-42a7-b06c-d0f2b7bf84f3.png">
+	</p>
+
+<br>
+
+Dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dans ce cas le réseau va séparer et créer deux classes différentes, car il va considérer que les deux classes qui se ressemblent sont une seule et même classe. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
+
+<br>
+
+<p align="center">
+<img width="1050" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171507459-0028b965-ac1d-48d0-9b24-0e357c62f17c.png">
+	</p>
 
 <br>
 
@@ -468,7 +493,11 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur.
+Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. 
+
+<br>
+
+
 
 <br>
 	
