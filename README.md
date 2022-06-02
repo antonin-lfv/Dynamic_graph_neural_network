@@ -474,7 +474,7 @@ De plus, concernant la classification en elle même, le modèle peut faire de la
 <br>
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171507108-567b05a3-b212-42a7-b06c-d0f2b7bf84f3.png">
+<img width="850" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171688120-adbbfeb3-cded-48fe-8e7a-62de9bd00882.jpg">
 	</p>
 
 <br>
@@ -484,7 +484,7 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dan
 <br>
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171507459-0028b965-ac1d-48d0-9b24-0e357c62f17c.png">
+<img width="850" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171688231-f89598ca-dc2c-4a7a-ba14-4093c3a34f6b.jpg">
 	</p>
 
 <br>
