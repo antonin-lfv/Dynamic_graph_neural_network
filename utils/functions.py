@@ -54,7 +54,7 @@ def solve_inter_circles(centres_x, centres_y, rayons):
 
 
 def dict_of_signal(abscisse, nb_neurons):
-    """Retourne un dictionnaire de signaux
+    """Génère un dictionnaire de signaux
     @:param abscisse : la liste des abscisses
     @:param nb_neurons : le nombre de neurones"""
     # fonctions
@@ -103,7 +103,7 @@ def plot_dict_signal(dict_y, nb_neurons, absc=None):
 
 
 def dict_of_clustered_signal(abscisse, nb_neurons_cluster):
-    """Retourne un dictionnaire de signaux de 3 catégories distinctes
+    """Génère un dictionnaire de signaux de 3 catégories distinctes
     @:param abscisse : la liste des abscisses
     @:param nb_neurons : le nombre de neurones par cluster
     """
@@ -132,7 +132,7 @@ def dict_of_clustered_signal(abscisse, nb_neurons_cluster):
 
 
 def print_cluster(G, display):
-    """retourne la composition des cluster
+    """retourne la composition des cluster (console)
     @:param G: le graphe
     @:param display: True si affichage, sinon simple return du dict
     """

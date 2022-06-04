@@ -5,6 +5,14 @@ syllabes des chants d'oiseaux """
 
 
 def temps_exec_birds_DTW(nb_signaux):
+    # config
+    config = {
+        "bv": 0.40,
+        "bc": 0.40,
+        "bl": 0.40,
+        "ar": 60,
+        "an": 68
+    }
     # syllabes
     signaux, corr = dict_of_birds()
     # prendre que les 2 premières classes
@@ -16,7 +24,7 @@ def temps_exec_birds_DTW(nb_signaux):
         if plot_brutes:
             plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
         # Création réseau et ajout neurones
-        G = Graph(fct_distance=distance_neurons_DTW)  # on utilise la distance DTW
+        G = Graph(config=config, fct_distance=distance_neurons_DTW)  # on utilise la distance DTW
         G.fit(signaux)
         # affichage de la config du réseau finale
         # print_cluster(G, display=True)
@@ -30,6 +38,15 @@ def temps_exec_birds_DTW(nb_signaux):
 
 
 def temps_exec_sinus_fourier(nb_signaux):
+    # config
+    config = {
+        "INPUT_SIZE": 250,
+        "bv": 0.30,
+        "bc": 0.20,
+        "bl": 0.20,
+        "ar": 30,
+        "an": 6.5
+    }
     # intervalles signaux
     x_min, x_max = 0, 3
     abs_normal = np.linspace(x_min, x_max, 2041)
@@ -50,7 +67,7 @@ def temps_exec_sinus_fourier(nb_signaux):
         if plot_FFT:
             plot_dict_signal(absc=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
         # Création réseau et ajout neurones
-        G = Graph(fct_distance=None)
+        G = Graph(config=config, fct_distance=None)
         G.fit(FFT)
         # affichage de la config du réseau finale
         # print_cluster(G, display=True)

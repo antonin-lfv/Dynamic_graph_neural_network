@@ -2,8 +2,17 @@ from utils.classes import *
 
 """ Signaux sinusoidaux """
 
-# ----- Config 2 -----
+# ----- Config -----
 # Avec 9 neurones
+
+config = {
+    "INPUT_SIZE": 300,
+    "bv": 0.40,
+    "bc": 0.40,
+    "bl": 0.40,
+    "ar": 100,
+    "an": 130
+}
 
 # fonctions
 s = np.sin
@@ -15,13 +24,13 @@ np.random.seed(1)
 random.seed(1)
 
 # intervalle signal
-inter = np.linspace(0, 5, ConstGraph_article.INPUT_SIZE_CONFIG_2)
+inter = np.linspace(0, 5, config["INPUT_SIZE"])
 
 # Création des signaux brutes
 signaux = dict_of_signal(inter, 9)
 
 # Réseau
-G = Graph()
+G = Graph(config=config)
 G.fit(X=signaux)
 
 
@@ -38,7 +47,10 @@ def affichage_signaux():
 
 
 # Affichage des signaux des neurones
-affichage_signaux()
+# affichage_signaux()
+
+# Affichage des signaux par clusters
+plot_signaux_par_cluster(G, signaux, absc=inter)
 
 # affichage de la config du réseau
 G.neurons

@@ -4,9 +4,10 @@ from utils.functions import *
 
 
 class Neuron:
-    def __init__(self, vecteur: List, index: int = None, label: str = None, liaisons: dict = None):
+    def __init__(self, vecteur: List, config, index: int = None, label: str = None, liaisons: dict = None):
         """
         :param index: donné par le compteur du graphe
+        :param config: config du graphe
         :param vecteur: les données de taille ConstGraph.INPUT_SIZE
         :param liaisons: dictionary de liaison avec comme index l'index de l'arrivée et comme valeur le poids synaptique
         """
@@ -14,6 +15,7 @@ class Neuron:
             liaisons = {}
         self.index = index
         self.vecteur = vecteur
+        self.config = config
         self.liaisons = liaisons
         self.label = label
 
@@ -22,7 +24,7 @@ class Neuron:
 
     def alterFoyer(self, u: List[float]):
         """Alteration du neurone dans le cas ou il est le foyer :  Δz = bv*(z-u)"""
-        Deltaz = [ConstThreshold_article.bv * (a - b) for a, b in zip(self.vecteur, u)]
+        Deltaz = [self.config["bv"] * (a - b) for a, b in zip(self.vecteur, u)]
         self.vecteur = [a + b for a, b in zip(self.vecteur, Deltaz)]
 
     def alterVoisins(self, graph):
@@ -30,7 +32,7 @@ class Neuron:
         for k, val in self.liaisons.items():
             # k prend les valeurs des index des neurones voisins, donc de similarité < an
             graph.neurons[k].vecteur = [i + j for i, j in zip(graph.neurons[k].vecteur,
-                                                              [ConstThreshold_article.bc * val * (a - b) for a, b in
+                                                              [self.config["bc"] * val * (a - b) for a, b in
                                                                zip(self.vecteur, graph.neurons[k].vecteur)])]
 
     def alterLiaisons(self, graph):
@@ -38,7 +40,7 @@ class Neuron:
         C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
         a_suppr = []
         for k, val in self.liaisons.items():
-            if (tailleLiaison := self.liaisons[k] * ConstThreshold_article.bl) < ConstThreshold_article.ar:
+            if (tailleLiaison := self.liaisons[k] * self.config["bl"]) < self.config["ar"]:
                 self.liaisons[k] = graph.neurons[k].liaisons[self.index] = tailleLiaison
             else:
                 a_suppr.append(k)
@@ -49,8 +51,9 @@ class Neuron:
 
 
 class Graph:
-    def __init__(self, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0, suppr_neuron = False):
+    def __init__(self, config, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0, suppr_neuron=False):
         """
+        :param config: seuils du modèle
         :param neurons: liste des neurones du graphe
         :param compt_neurons: nombre de neurones que le graphe aura vu
         (sert à identifier les neurones à la création)
@@ -58,6 +61,7 @@ class Graph:
         if neurons is None:
             neurons = {}
         self.neurons = neurons
+        self.config = config
         self.compt_neurons = compt_neurons
         if fct_distance is None:
             # default - euclidean distance
@@ -109,35 +113,35 @@ class Graph:
             if len(self.neurons) == 1:
                 # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion
                 # Le label est attribué avec le seuil an
-                if self.fct_distance(foyer.vecteur, neuron.vecteur) > ConstThreshold_article.an:
+                if self.fct_distance(foyer.vecteur, neuron.vecteur) > self.config["an"]:
                     neuron.label = str(neuron.index)
                 else:
                     neuron.label = foyer.label
                 # on les connecte forcément pour éviter un arret instantané à cause du seuil de suppression des liaisons
                 neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = self.fct_distance(foyer.vecteur,
-                                                                                               neuron.vecteur)
+                                                                                                neuron.vecteur)
 
             else:
                 # ===== Il y a au moins 2 neurones dans le réseau
-                if self.fct_distance(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
+                if self.fct_distance(foyer.vecteur, neuron.vecteur) < self.config["an"]:
                     # set label
                     neuron.label = foyer.label
                     # Si la distance du foyer est plus petite que an on connecte à tous les neurones de distance < an
                     for n in self.neurons.values():
-                        if (d := self.fct_distance(n.vecteur, neuron.vecteur)) < ConstThreshold_article.an:
+                        if (d := self.fct_distance(n.vecteur, neuron.vecteur)) < self.config["an"]:
                             neuron.liaisons[n.index] = n.liaisons[neuron.index] = d
                 else:
                     # set label
                     neuron.label = str(neuron.index)
                     # Si la distance du foyer est supérieur à an on connecte le neurone seulement au foyer
                     neuron.liaisons[foyer.index] = foyer.liaisons[neuron.index] = self.fct_distance(foyer.vecteur,
-                                                                                                   neuron.vecteur)
+                                                                                                    neuron.vecteur)
             # On l'ajoute au réseau
             self.neurons[neuron.index] = neuron
             # on augmente le compteur du graphe
             self.compt_neurons += 1
             # on altère le foyer seulement si le neurone est très proche du foyer, cad d<an
-            if self.fct_distance(foyer.vecteur, neuron.vecteur) < ConstThreshold_article.an:
+            if self.fct_distance(foyer.vecteur, neuron.vecteur) < self.config["an"]:
                 foyer.alterFoyer(neuron.vecteur)
                 foyer.alterVoisins(self)
                 foyer.alterLiaisons(self)
@@ -159,9 +163,9 @@ class Graph:
         compt = 0
         print("==== Début de l'apprentissage ==== ")
         for x in X.values():
-            self.addNeuron(Neuron(vecteur=x))
+            self.addNeuron(Neuron(vecteur=x, config=self.config))
             if print_progress:
-                print(color + f"[{compt}/{len(X)-1}]" + " Neurone ajouté !")
+                print(color + f"[{compt}/{len(X) - 1}]" + " Neurone ajouté !")
             compt += 1
 
 
