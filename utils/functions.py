@@ -102,35 +102,6 @@ def plot_dict_signal(dict_y, nb_neurons, absc=None):
     plot(fig)
 
 
-def dict_of_clustered_signal(abscisse, nb_neurons_cluster):
-    """Génère un dictionnaire de signaux de 3 catégories distinctes
-    @:param abscisse : la liste des abscisses
-    @:param nb_neurons : le nombre de neurones par cluster
-    """
-    # fonctions
-    s = np.sin
-    c = np.cos
-    # constantes
-    pi = np.pi
-
-    def random_signal(cl):
-        signal = (-1) ** random.randint(1, 2) * random.uniform(0, cl) * s(abscisse)
-        common = random.randint(1, 3)
-        for _ in range(11):
-            signal += (-1) ** random.randint(1, 2) * random.uniform(0, cl) * c(
-                pi * random.uniform(1, 3) * common * abscisse) + (
-                          -1) ** random.randint(1, 2) * random.uniform(0, cl) * s(
-                pi * random.uniform(1, 3) * common * abscisse)
-        return signal
-
-    fct, compt_neuron = {}, 0
-    for nb_cluster in [1, 7, 17]:
-        for i in range(nb_neurons_cluster):
-            fct[compt_neuron] = random_signal(cl=nb_cluster*2)
-            compt_neuron += 1
-    return fct
-
-
 def print_cluster(G, display):
     """retourne la composition des cluster (console)
     @:param G: le graphe
@@ -143,7 +114,7 @@ def print_cluster(G, display):
         else:
             clusters[n.label] = [n.index]
     if display:
-        print("==== Configuration ====")
+        print("\n===== Configuration")
         for label, neurons in clusters.items():
             print(f"Label {label} : ", *neurons)
     return clusters
@@ -201,6 +172,15 @@ def plot_rapide(y):
     fig = go.Figure()
     fig.add_scatter(y=y)
     plot(fig)
+
+
+def shuffle_dict(dico: dict):
+    # shuffling values
+    temp = list(dico.values())
+    random.shuffle(temp)
+    # reassigning to keys
+    res = dict(zip(dico, temp))
+    return res
 
 
 """Lire les ressources - chants d'oiseaux"""

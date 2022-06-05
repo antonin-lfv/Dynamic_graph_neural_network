@@ -13,21 +13,16 @@ config = {
     "an": 6.5
 }
 
-
-# constantes
-pi = np.pi
-# np.random.seed(3)
-# random.seed(19)
-
 # intervalles signaux
 x_min, x_max = 0, 3
 abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
 abs_fft = fftfreq(config["INPUT_SIZE"], x_max)[:config["INPUT_SIZE"] // 2]
 
-# création des signaux brutes (3 classes de signaux différents):
-nb_neurons_cluster = 3
-nb_neurons = nb_neurons_cluster*3
-signaux = dict_of_clustered_signal(abscisse=abs_normal, nb_neurons_cluster=nb_neurons_cluster)
+# création des signaux brutes:
+nb_neurons = 20
+signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
+# mélange des signaux
+signaux = shuffle_dict(signaux)
 
 # création des FFT des signaux brutes
 FFT = dict_of_fft(signaux=signaux, taille_signaux=config["INPUT_SIZE"])
@@ -51,4 +46,5 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
     G.graphInfo()
 
 
-main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+if __name__ == '__main__':
+    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)

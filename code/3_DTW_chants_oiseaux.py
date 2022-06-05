@@ -33,4 +33,5 @@ def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
         plot_signaux_par_cluster(G, dict_y=signaux)
 
 
-main_birds(plot_brutes=False, plot_brutes_par_cluster=True)
+if __name__ == "__main__":
+    main_birds(plot_brutes=False, plot_brutes_par_cluster=True)

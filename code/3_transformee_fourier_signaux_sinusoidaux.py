@@ -48,4 +48,5 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux)
 
 
-main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+if __name__ == "__main__":
+    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)

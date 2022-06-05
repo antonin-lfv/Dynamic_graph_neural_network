@@ -78,12 +78,13 @@ class Graph:
         return f'G = Graph(neurons={self.neurons}, compt_neurons={self.compt_neurons})'
 
     def graphInfo(self):
+        print("\n===== Info Graphe")
         print(f"Nombre de neurones vus : {self.compt_neurons}")
         print(f"Nombre de neurones présents dans le réseau : {len(self.neurons)}")
         nb_liaisons = 0
         for n in self.neurons.values():
             nb_liaisons += len(n.liaisons)
-        print(f"Nombre de liaisons dans le réseau : {nb_liaisons / 2}")
+        print(f"Nombre de liaisons dans le réseau : {int(nb_liaisons / 2)}")
 
     def addNeuron(self, neuron: Neuron):
         """ Connecte le neurone au réseau
@@ -161,7 +162,8 @@ class Graph:
         """
         color = fg('blue')
         compt = 0
-        print("==== Début de l'apprentissage ==== ")
+        print("\n===== Début de l'apprentissage")
+        print(f"Ajout des {len(X)} neurones")
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x, config=self.config))
             if print_progress:
