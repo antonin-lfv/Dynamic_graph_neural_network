@@ -491,7 +491,7 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plu
 
 <br>
 
-Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour de la classification binaire en priorité.
+Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données.
 
 <br>
 
@@ -499,7 +499,7 @@ Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas dét
 
 <br>
 
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. 
+Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur.  
 
 <br>
 
