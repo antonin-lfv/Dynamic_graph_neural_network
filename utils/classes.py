@@ -36,22 +36,15 @@ class Neuron:
                                                                zip(self.vecteur, graph.neurons[k].vecteur)])]
 
     def alterLiaisons(self, graph):
-        """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)
-        C'est à ce moment là qu'on peut décider de couper des liaisons si le poids est supérieur à ar"""
-        a_suppr = []
+        """Alteration des liaisons dans le cas ou il est le foyer : cjk = bl*(||xj-xk||)"""
         for k, val in self.liaisons.items():
             if (tailleLiaison := self.liaisons[k] * self.config["bl"]) < self.config["ar"]:
                 self.liaisons[k] = graph.neurons[k].liaisons[self.index] = tailleLiaison
-            else:
-                a_suppr.append(k)
-
-        # suppression de la liaison si trop grande
-        for ele in a_suppr:
-            del self.liaisons[ele]
 
 
 class Graph:
-    def __init__(self, config, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0, suppr_neuron=False):
+    def __init__(self, config, fct_distance: Callable = None, neurons: dict = None, compt_neurons: int = 0,
+                 suppr_neuron=False):
         """
         :param config: seuils du modèle
         :param neurons: liste des neurones du graphe
@@ -78,7 +71,7 @@ class Graph:
         return f'G = Graph(neurons={self.neurons}, compt_neurons={self.compt_neurons})'
 
     def graphInfo(self):
-        print("\n===== Info Graphe")
+        print(colored("\n===== Info Graphe", "red"))
         print(f"Nombre de neurones vus : {self.compt_neurons}")
         print(f"Nombre de neurones présents dans le réseau : {len(self.neurons)}")
         nb_liaisons = 0
@@ -147,6 +140,19 @@ class Graph:
                 foyer.alterVoisins(self)
                 foyer.alterLiaisons(self)
 
+        # suppression des liaisons trop grandes
+        for n in self.neurons.values():
+            suppr_ = []
+            print("avant", n.liaisons)
+            for k, i in n.liaisons.items():
+                if i > self.config["ar"]:
+                    print(f"Suppression car lien = {i}, et ar = {self.config['ar']}")
+                    suppr_.append(k)
+            for ind_suppr in suppr_:
+                del n.liaisons[ind_suppr]
+            print("après", n.liaisons)
+
+        # Suppression du neurone si suppr_neuron à True (False pour les premiers tests)
         for n in self.neurons.values():
             if len(n.liaisons) == 0:
                 if not self.suppr_neuron:
@@ -160,14 +166,13 @@ class Graph:
         """ Ajout des neurones
         @:param X : Ensemble de signaux sous forme de dictionnaire
         """
-        color = fg('blue')
         compt = 0
-        print("\n===== Début de l'apprentissage")
-        print(f"Ajout des {len(X)} neurones")
+        print(colored("\n===== Début de l'apprentissage", "red"))
+        print("Ajout des", colored(f"{len(X)}", "green"), "neurones")
         for x in X.values():
             self.addNeuron(Neuron(vecteur=x, config=self.config))
             if print_progress:
-                print(color + f"[{compt}/{len(X) - 1}]" + " Neurone ajouté !")
+                print(colored(f"[{compt}/{len(X) - 1}]", "green") + " Neurone ajouté !")
             compt += 1
 
 

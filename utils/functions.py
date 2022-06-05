@@ -114,7 +114,7 @@ def print_cluster(G, display):
         else:
             clusters[n.label] = [n.index]
     if display:
-        print("\n===== Configuration")
+        print(colored("\n===== Résultat de la classification", "red"))
         for label, neurons in clusters.items():
             print(f"Label {label} : ", *neurons)
     return clusters
@@ -181,6 +181,12 @@ def shuffle_dict(dico: dict):
     # reassigning to keys
     res = dict(zip(dico, temp))
     return res
+
+
+def print_config(config: dict):
+    print(colored("\n===== Config", "red"))
+    for k, i in config.items():
+        print(f"{k}: {i}")
 
 
 """Lire les ressources - chants d'oiseaux"""

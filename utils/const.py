@@ -16,7 +16,7 @@ import librosa
 from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
 import pickle
-from colored import fg
+from termcolor import colored
 import warnings
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 

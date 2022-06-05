@@ -9,8 +9,8 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 30,
-    "an": 6.5
+    "ar": 10,
+    "an": 10
 }
 
 # intervalles signaux
@@ -19,7 +19,7 @@ abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
 abs_fft = fftfreq(config["INPUT_SIZE"], x_max)[:config["INPUT_SIZE"] // 2]
 
 # création des signaux brutes:
-nb_neurons = 20
+nb_neurons = 10
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 # mélange des signaux
 signaux = shuffle_dict(signaux)
@@ -29,6 +29,8 @@ FFT = dict_of_fft(signaux=signaux, taille_signaux=config["INPUT_SIZE"])
 
 
 def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
+    # affichage config
+    print_config(config)
     # affichage des signaux brutes
     if plot_brutes:
         plot_dict_signal(absc=abs_normal, dict_y=signaux, nb_neurons=nb_neurons)
