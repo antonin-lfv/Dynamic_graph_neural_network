@@ -9,7 +9,7 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 10,
+    "ar": 18,
     "an": 10
 }
 
@@ -19,7 +19,7 @@ abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
 abs_fft = fftfreq(config["INPUT_SIZE"], x_max)[:config["INPUT_SIZE"] // 2]
 
 # création des signaux brutes:
-nb_neurons = 10
+nb_neurons = 30
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 # mélange des signaux
 signaux = shuffle_dict(signaux)
@@ -44,7 +44,7 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
     print_cluster(G, display=True)
     # Affichage des signaux brutes classés par cluster
     if plot_brutes_par_cluster:
-        plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux, sign_min_per_cluster=1)
+        plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux, sign_min_per_cluster=2)
     G.graphInfo()
 
 

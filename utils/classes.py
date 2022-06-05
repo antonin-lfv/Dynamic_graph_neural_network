@@ -143,14 +143,11 @@ class Graph:
         # suppression des liaisons trop grandes
         for n in self.neurons.values():
             suppr_ = []
-            print("avant", n.liaisons)
             for k, i in n.liaisons.items():
                 if i > self.config["ar"]:
-                    print(f"Suppression car lien = {i}, et ar = {self.config['ar']}")
                     suppr_.append(k)
             for ind_suppr in suppr_:
                 del n.liaisons[ind_suppr]
-            print("après", n.liaisons)
 
         # Suppression du neurone si suppr_neuron à True (False pour les premiers tests)
         for n in self.neurons.values():
