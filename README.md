@@ -465,27 +465,33 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 
 <br>
 
-Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de DTW, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, mais il reste une chose sur laquelle discuter, qui concerne les seuils. Le modèle comporte en effet 5 seuils. Avec la pratique on peut fixer très rapidement les scalaires **bv** **bc** et **bl** en leur donnant une valeur aux alentours de 0.30, cependant, les 2 autres seuils, eux, dépendent complétement des données que l'on donne au modèle (sauf dans le cas de l'utilisation de la transformée de Fourier où les 2 derniers seuils tournent autour de 10). Ainsi, lors l'utilisation de la méthode DTW, avant de lancer une classification sur des données inconnues, il faudrait "calibrer" ces 2 derniers seuils avec des données connues qui sont à la même échelle que les données que l'on passera au modèle.
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
 
 <br>
+
+Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle, un calibrage des seuils avec une petite portion de données, qu'on appelera $test set$. 
 
 De plus, concernant la classification en elle même, le modèle peut faire de la classification multiclasse (plus que 2), mais seulement si toutes les classes sont mutuellement différentes. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégré" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
 
 <br>
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171688120-adbbfeb3-cded-48fe-8e7a-62de9bd00882.jpg">
+<img width="550" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171688120-adbbfeb3-cded-48fe-8e7a-62de9bd00882.jpg">
 	</p>
 
 <br>
 
-Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dans ce cas le réseau va séparer et créer deux classes différentes, car il va considérer que les deux classes qui se ressemblent sont une seule et même classe. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
+Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plus, alors dans ce cas le réseau va séparer et créer deux classes différentes, dont l'une des deux sera constitué des deux classes qui se ressemblent. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
 
 <br>
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171688231-f89598ca-dc2c-4a7a-ba14-4093c3a34f6b.jpg">
+<img width="550" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171688231-f89598ca-dc2c-4a7a-ba14-4093c3a34f6b.jpg">
 	</p>
+
+<br>
+
+Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données.
 
 <br>
 
@@ -493,7 +499,7 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent, alors dan
 
 <br>
 
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. 
+Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur.  
 
 <br>
 
