@@ -499,7 +499,7 @@ Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas dét
 
 <br>
 
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur.  
+Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. On ajoutera la suppression des neurones s'ils n'ont plus de liaisons.
 
 <br>
 
