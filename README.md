@@ -491,7 +491,7 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plu
 
 <br>
 
-Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données.
+Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données. Il y aura également un certains nombre de données classées toute seule, ou alors de cluster créés, du à l'imprecision des seuils et du modèle.
 
 <br>
 
