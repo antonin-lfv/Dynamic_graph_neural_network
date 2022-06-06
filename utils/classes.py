@@ -1,7 +1,5 @@
 from utils.functions import *
 
-"""Version de l'article"""
-
 
 class Neuron:
     def __init__(self, vecteur: List, config, index: int = None, label: str = None, liaisons: dict = None):
@@ -174,6 +172,9 @@ class Graph:
 
 
 """méthode de Graph pour afficher le graphe avec plotly"""
+# TODO : trier les neurones par nombre de liaisons, calculer l'intersection uniquement avec les liaisons existantes
+# TODO : commencer par le neurone avec le plus de liaisons, puis le suivant ...
+# TODO : définir l'ordre de passage des points
 
 
 def plotGraph(self):
