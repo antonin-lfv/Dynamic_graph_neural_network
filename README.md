@@ -199,7 +199,7 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à `ar`
 
 <br> 
-Si un neurone n'a plus de connexion on lui attribut son label comme classe. <br>
+Si un neurone n'a plus de connexion on lui attribut son label comme classe. (il constituera à lui seul un cluster) <br>
 
 <br>
 
