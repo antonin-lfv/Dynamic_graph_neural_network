@@ -502,7 +502,7 @@ Avec tous ces tests effectués, on choisiera d'utiliser la technique de la trans
 Étant donné les résultats précédents, nous devons appliquer notre modèle plusieurs fois, suivant ce principe:
 
 1. On applique le modèle sur toutes nos données
-2. On regarde le 1er cluster créé, et on relance le modèle sur toutes les données sauf ce premier cluster
+2. On regarde le 1er cluster créé, et on relance le modèle sur toutes les données sauf ce premier cluster. On choisit le premier cluster par défaut.
 3. On revient à l'étape 2
 
 On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour.
