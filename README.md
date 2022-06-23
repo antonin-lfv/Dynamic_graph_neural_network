@@ -505,7 +505,7 @@ Avec tous ces tests effectués, on choisiera d'utiliser la technique de la trans
 2. On regarde le 1er cluster créé, et on relance le modèle sur toutes les données sauf ce premier cluster. On choisit le premier cluster par défaut.
 3. On revient à l'étape 2
 
-On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour.
+On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour. Ce processus va réduire l'échelle petit à petit, et on pourra ainsi distinguer des groupes de données qui semblaient similaires en regardant l'ensemble des données.
 
 <br>
 
