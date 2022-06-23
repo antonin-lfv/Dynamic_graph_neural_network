@@ -490,7 +490,7 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plu
 
 <br>
 
-Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données. Il y aura également un certains nombre de données classées toute seule, ou alors de cluster créés, du à l'imprecision des seuils et du modèle.
+Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données. Il y aura également un certains nombre de données classées toute seule, ou alors de cluster créés, du à l'imprecision des seuils et du modèle. Pour résoudre ce problème, on fera tourner le modèle progressivement sur des portions de données de plus en plus petites, comme détaillé ci dessous.
 
 <br>
 
@@ -498,7 +498,14 @@ Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas dét
 
 <br>
 
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. On ajoutera la suppression des neurones s'ils n'ont plus de liaisons.
+Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. **On ajoutera la suppression des neurones s'ils n'ont plus de liaisons.**
+Étant donné les résultats précédents, nous devons appliquer notre modèle plusieurs fois, suivant ce principe:
+
+1. On applique le modèle sur toutes nos données
+2. On regarde le 1er cluster créé, et on relance le modèle sur toutes les données sauf ce premier cluster
+3. On revient à l'étape 2
+
+On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour.
 
 <br>
 
