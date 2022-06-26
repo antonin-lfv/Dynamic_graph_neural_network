@@ -13,40 +13,29 @@ config = {
     "an": 10
 }
 
-# intervalles signaux
+# abscisses signaux (taille fixe car FFT)
 x_min, x_max = 0, 3
 abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
 abs_fft = fftfreq(config["INPUT_SIZE"], x_max)[:config["INPUT_SIZE"] // 2]
 
-# création des signaux brutes:
-nb_neurons = 30
-signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
-# mélange des signaux
-signaux = shuffle_dict(signaux)
+"""
+Ici, on va appliquer la méthode décrite dans le ReadMe dans la partie Utilisation du modèle
 
-# création des FFT des signaux brutes
-FFT = dict_of_fft(signaux=signaux, taille_signaux=config["INPUT_SIZE"])
+1. On applique le modèle sur toutes nos données
+2. On regarde le cluster avec le plus de neurone, et on relance le modèle sur toutes les données sauf ce cluster
+3. On revient à l'étape 2
 
-
-def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
-    # affichage config
-    print_config(config)
-    # affichage des signaux brutes
-    if plot_brutes:
-        plot_dict_signal(absc=abs_normal, dict_y=signaux, nb_neurons=nb_neurons)
-    # Affichage des FFT
-    if plot_FFT:
-        plot_dict_signal(absc=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
-    # Création réseau et ajout neurones
-    G = Graph(config=config, suppr_neuron=True)
-    G.fit(FFT, print_progress=False)
-    # affichage de la config du réseau finale
-    print_cluster(G, display=True)
-    # Affichage des signaux brutes classés par cluster
-    if plot_brutes_par_cluster:
-        plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux, sign_min_per_cluster=2)
-    G.graphInfo()
+On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour. 
+Ce processus va réduire l'échelle petit à petit, et on pourra ainsi distinguer des groupes de données qui semblaient 
+similaires en regardant l'ensemble des données.
+"""
 
 
 if __name__ == '__main__':
-    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+    # création des signaux brutes:
+    nb_neurons = 20
+    brutes = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
+
+    model = ClassificationDNN(raw_data=brutes, config=config, nb_iteration=4)
+    model.fit()
+    model.showResult()

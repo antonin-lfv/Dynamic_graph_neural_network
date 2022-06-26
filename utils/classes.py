@@ -65,6 +65,14 @@ class Graph:
         """Retourne les index des neurones du graphe"""
         return [n.index for n in self.neurons.values()]
 
+    def get_vector_as_dict(self):
+        """retourne un dictionnaire avec les vecteurs des neurones"""
+        r, index = {}, 0
+        for neuron in self.neurons.values():
+            r[index] = neuron.vecteur
+            index += 1
+        return r
+
     def __repr__(self):
         return f'G = Graph(neurons={self.neurons}, compt_neurons={self.compt_neurons})'
 
@@ -88,7 +96,8 @@ class Graph:
         # Aucune liaison n'est créée
         if len(self.neurons) == 0:
             # set index
-            neuron.index = self.compt_neurons
+            if neuron.index is None:
+                neuron.index = self.compt_neurons
             # set label
             neuron.label = str(neuron.index)
             # On l'ajoute au réseau
@@ -98,7 +107,8 @@ class Graph:
 
         else:
             # set index
-            neuron.index = self.compt_neurons
+            if neuron.index is None:
+                neuron.index = self.compt_neurons
             # get foyer
             foyer = get_foyer(self, neuron)
             # set connexions
@@ -152,26 +162,88 @@ class Graph:
             if len(n.liaisons) == 0:
                 if not self.suppr_neuron:
                     # Cas 1 (défaut) : si un neurone n'a plus de liaison, il est associé à un label à part
-                    n.label = n.index
+                    n.label = str(n.index)
                 else:
                     # Cas 2 : si un neurone n'a plus de liaison, il est supprimé
                     del n
 
-    def fit(self, X: dict, print_progress=True):
-        """ Ajout des neurones
+    def fit(self, X: dict, print_progress=True, use_existing_index=False):
+        """ Ajout des neurones - Un seul ajout de tous les neurones
         @:param X : Ensemble de signaux sous forme de dictionnaire
         """
         compt = 0
-        print(colored("\n===== Début de l'apprentissage", "red"))
-        print("Ajout des", colored(f"{len(X)}", "green"), "neurones")
-        for x in X.values():
-            self.addNeuron(Neuron(vecteur=x, config=self.config))
+        if print_progress:
+            print(colored("\n===== Début de l'apprentissage", "red"))
+            print("Ajout des", colored(f"{len(X)}", "green"), "neurones")
+        for index, x in X.items():
+            if use_existing_index:
+                self.addNeuron(Neuron(vecteur=x, config=self.config, index=index))
+            else:
+                self.addNeuron(Neuron(vecteur=x, config=self.config))
             if print_progress:
                 print(colored(f"[{compt}/{len(X) - 1}]", "green") + " Neurone ajouté !")
             compt += 1
 
 
-"""méthode de Graph pour afficher le graphe avec plotly"""
+class ClassificationDNN:
+    def __init__(self, raw_data: dict, config: dict, nb_iteration: int):
+        self.nb_iteration = nb_iteration
+        self.config = config
+        self.raw_data = raw_data
+        self.FFT = shuffle_dict(dict_of_fft(signaux=self.raw_data, taille_signaux=self.config["INPUT_SIZE"]))
+        self.final_result = {}
+
+    def fit(self):
+        print(colored("\n===== Début de l'apprentissage", "red"))
+        assert self.FFT is not None, "Model already fitted"
+        # loop
+        for iteration in range(self.nb_iteration):
+            if self.FFT == {}:
+                # fin de la classification
+                break
+            G = Graph(config=self.config)
+            G.fit(X=self.FFT, print_progress=False, use_existing_index=True)
+            # on choisi le label avec le plus de neurones
+            m = {}
+            for i, n in G.neurons.items():
+                if n.label not in m.keys():
+                    m[n.label] = 1
+                else:
+                    m[n.label] += 1
+            max_neuron_label = max(m, key=m.get)
+            for ind, neuron in G.neurons.items():
+                if neuron.label == max_neuron_label:
+                    if iteration in self.final_result.keys():
+                        self.final_result[iteration].append(ind)
+                    else:
+                        self.final_result[iteration] = [ind]
+                    del self.FFT[ind]
+        if len(self.FFT) > 0:
+            # il reste des neurones
+            self.final_result[len(self.final_result)] = list(self.FFT.keys())
+            del self.FFT
+
+    def showResult(self):
+        fig = make_subplots(rows=max([len(i) for i in self.final_result.values()]),
+                            cols=len(self.final_result),
+                            column_titles=[f"Label {i}" for i in self.final_result.keys()])
+        for label in self.final_result.keys():
+            row_index = 1
+            for neuron_index in self.final_result[label]:
+                fig.add_scatter(row=row_index,
+                                col=list(self.final_result.keys()).index(label) + 1,
+                                y=self.raw_data[neuron_index],
+                                text=f"Index : {neuron_index}",
+                                hoverinfo="text")
+                row_index += 1
+        fig.update_layout(
+            paper_bgcolor=ConstPlotly.transparent_color,
+            showlegend=False,
+        )
+        plot(fig)
+
+
+"""ideée : méthode de Graph pour afficher le graphe avec plotly"""
 # TODO : trier les neurones par nombre de liaisons, calculer l'intersection uniquement avec les liaisons existantes
 # TODO : commencer par le neurone avec le plus de liaisons, puis le suivant ...
 # TODO : définir l'ordre de passage des points
