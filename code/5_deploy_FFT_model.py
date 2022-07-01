@@ -9,8 +9,8 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 18,
-    "an": 10
+    "ar": 25,
+    "an": 6.5
 }
 
 # abscisses signaux (taille fixe car FFT)
@@ -33,9 +33,13 @@ similaires en regardant l'ensemble des données.
 
 if __name__ == '__main__':
     # création des signaux brutes:
-    nb_neurons = 20
-    brutes = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
+    nb_neurons = 15
+    brutes = dict_of_signal(abscisse=abs_normal,
+                            nb_neurons=nb_neurons)
 
-    model = ClassificationDNN(raw_data=brutes, config=config, nb_iteration=4)
+    model = ClassificationDNN(raw_data=brutes,
+                              abscisse=abs_normal,
+                              config=config,
+                              nb_iteration=2)
     model.fit()
     model.showResult()

@@ -1,3 +1,5 @@
+import random
+
 from utils.const import *
 
 """Fonctions pour le graphe"""
@@ -174,12 +176,19 @@ def plot_rapide(y):
     plot(fig)
 
 
-def shuffle_dict(dico: dict):
-    # shuffling values
-    temp = list(dico.values())
-    random.shuffle(temp)
+def shuffle_dict(dico: dict, seed=1):
+    """
+    :param dico: Dictionnaire à mélanger
+    :param seed: graine de mélange, pour mélanger de la même façon les valeurs et les clés
+    :return: le dictionnaire mélangé
+    """
+    # shuffling values and keys
+    values = list(dico.values())
+    keys = list(dico.keys())
+    random.Random(seed).shuffle(values)
+    random.Random(seed).shuffle(keys)
     # reassigning to keys
-    res = dict(zip(dico, temp))
+    res = dict(zip(keys, values))
     return res
 
 

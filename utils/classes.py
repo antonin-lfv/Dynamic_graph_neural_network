@@ -1,3 +1,5 @@
+import numpy as np
+
 from utils.functions import *
 
 
@@ -184,10 +186,33 @@ class Graph:
                 print(colored(f"[{compt}/{len(X) - 1}]", "green") + " Neurone ajouté !")
             compt += 1
 
+    def print_cluster(self, display=False):
+        """retourne la composition des cluster (console)
+        @:param display: True si affichage, sinon simple return du dict
+        """
+        clusters = {}
+        for n in self.neurons.values():
+            if n.label in clusters.keys():
+                clusters[n.label].append(n.index)
+            else:
+                clusters[n.label] = [n.index]
+        if display:
+            print(colored("\n===== Résultat de la classification", "red"))
+            for label, neurons in clusters.items():
+                print(f"Label {label} : ", *neurons)
+        return clusters
+
 
 class ClassificationDNN:
-    def __init__(self, raw_data: dict, config: dict, nb_iteration: int):
+    def __init__(self, raw_data: dict, config: dict, nb_iteration: int, abscisse: np.array):
+        """
+        :param raw_data: dict des signaux brutes
+        :param abscisse: abscisse pour afficher les signaux brutes
+        :param config: configuration du réseau
+        :param nb_iteration: nombre d'itération du modèle
+        """
         self.nb_iteration = nb_iteration
+        self.abscisse = abscisse
         self.config = config
         self.raw_data = raw_data
         self.FFT = shuffle_dict(dict_of_fft(signaux=self.raw_data, taille_signaux=self.config["INPUT_SIZE"]))
@@ -201,7 +226,7 @@ class ClassificationDNN:
             if self.FFT == {}:
                 # fin de la classification
                 break
-            G = Graph(config=self.config)
+            G = Graph(config=self.config, suppr_neuron=True)
             G.fit(X=self.FFT, print_progress=False, use_existing_index=True)
             # on choisi le label avec le plus de neurones
             m = {}
@@ -233,6 +258,7 @@ class ClassificationDNN:
                 fig.add_scatter(row=row_index,
                                 col=list(self.final_result.keys()).index(label) + 1,
                                 y=self.raw_data[neuron_index],
+                                x=self.abscisse,
                                 text=f"Index : {neuron_index}",
                                 hoverinfo="text")
                 row_index += 1
@@ -244,6 +270,8 @@ class ClassificationDNN:
 
 
 """ideée : méthode de Graph pour afficher le graphe avec plotly"""
+
+
 # TODO : trier les neurones par nombre de liaisons, calculer l'intersection uniquement avec les liaisons existantes
 # TODO : commencer par le neurone avec le plus de liaisons, puis le suivant ...
 # TODO : définir l'ordre de passage des points
