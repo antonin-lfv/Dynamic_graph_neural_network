@@ -24,10 +24,6 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 <br>
 
-<br>
-
-> To Do :
-> - optimiser le calcul du **Dynamic Time Warping**
 
 
 <br>
@@ -502,10 +498,10 @@ Avec tous ces tests effectués, on choisiera d'utiliser la technique de la trans
 Étant donné les résultats précédents, nous devons appliquer notre modèle plusieurs fois, suivant ce principe:
 
 1. On applique le modèle sur toutes nos données
-2. On regarde le 1er cluster créé, et on relance le modèle sur toutes les données sauf ce premier cluster. On choisit le premier cluster par défaut.
+2. On regarde le cluster avec le plus de neurones, et on relance le modèle sur toutes les données sauf ce cluster.
 3. On revient à l'étape 2
 
-On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour. Ce processus va réduire l'échelle petit à petit, et on pourra ainsi distinguer des groupes de données qui semblaient similaires en regardant l'ensemble des données.
+On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour. Ce processus va réduire l'échelle petit à petit, et on pourra ainsi distinguer des groupes de données qui semblaient similaires en regardant l'ensemble des données. Ce processus de classification est implémenté dans la classe **ClassificationDNN**.
 
 <br>
 
