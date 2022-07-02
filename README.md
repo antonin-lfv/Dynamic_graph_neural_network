@@ -456,6 +456,7 @@ $$ \mathcal{W}_f(a, b)=\frac{1}{\sqrt a} $$
 L'ondelette mère que nous utiliserons ici est l'ondelette *"chapeau mexicain"* définit par :
 
 $$ \psi : \mathbb{R} \mapsto \mathbb{R} $$
+
 $$ t \rightarrow \frac{2}{\sqrt 3} \pi^{-\frac{1}{4}}(1-t^2)e^{-\frac{t^2}{2}} $$
 
 Et qui ressemble à ceci :
