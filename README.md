@@ -451,11 +451,7 @@ Dans cette section, nos données brutes seront modifiées à l'aide de la transf
 
 La transformée en ondelettes continue utilise des dilatations et des translations de la fonction ondelette mère $\psi$. La transformée en ondelettes continue de la fonction $f$ est définie à facteur constant près comme le produit scalaire de $f$ et de $\psi$.
 
-$$ \mathcal{W}_f(a, b)=\frac{1}{\sqrt a} \int_{-\infty}^{\infty}f(t). \hat{\psi}(\frac{t-b}{a}.dt) $$
-
-avec $a\in\mathbb{R}^*_+,b\in\mathbb{R}$
-
-L'ondelette mère que nous utiliserons ici est l'ondelette *"chapeau mexicain"* définit par :
+L'ondelette mère que nous utiliserons ici est l'ondelette **"chapeau mexicain"** définit par :
 
 $$ \psi : \mathbb{R} \mapsto \mathbb{R} $$
 
