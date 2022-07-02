@@ -447,7 +447,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 ## 5. Classification de signaux soumis à une transformée en Ondelettes
 
-Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. 
+Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle. 
 
 # Résultats
 
