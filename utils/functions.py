@@ -124,9 +124,9 @@ def print_cluster(G, display):
 
 def plot_signaux_par_cluster(G, dict_y, absc=None, sign_min_per_cluster=1):
     """
-    :param G: le graphe
-    :param absc: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT
-    :param dict_y: le dictionnaire des signaux brutes ou FFT
+    :param G: le graphe après fit()
+    :param absc: abs_normal si plot les signaux brutes, sinon abs_fft pour plot les signaux après FFT, etc
+    :param dict_y: le dictionnaire des signaux
     :param sign_min_per_cluster: minimum de signaux par cluster pour être affiché
     :return:
     """
@@ -155,12 +155,13 @@ def plot_signaux_par_cluster(G, dict_y, absc=None, sign_min_per_cluster=1):
     plot(fig)
 
 
-def dict_of_fft(signaux, taille_signaux=None):
+def dict_of_fft(signaux: dict, taille_signaux=None):
     """
+    :param signaux: signaux brutes
     Retourne un dictionnaire de fft correspondant aux signaux
     """
     fft_dict = {}
-    for index_fft, s in enumerate(signaux.values()):
+    for index_fft, s in signaux.items():
         if taille_signaux:
             fft_dict[index_fft] = 2.0 / taille_signaux * np.abs(
                 fft(s)[0:taille_signaux // 2])
@@ -170,9 +171,29 @@ def dict_of_fft(signaux, taille_signaux=None):
     return fft_dict
 
 
-def plot_rapide(y):
+def dict_of_wavelet(signaux: dict):
+    """
+    :param signaux: signaux brutes
+    Retourne un dictionnaire d'ondelettes correspondant aux signaux
+    """
+    wavelet_dict = {}
+    for index_wv, s in signaux.items():
+        cA, cD = pywt.cwt(s, wavelet='morl', scales=np.arange(1, 129))
+        wavelet_dict[index_wv] = cA[:, 0]
+    return wavelet_dict
+
+
+def plot_rapide(y, many=False):
+    """
+    :param y: data
+    :param many: if True, y must contains multiple array to plot
+    """
     fig = go.Figure()
-    fig.add_scatter(y=y)
+    if not many:
+        fig.add_scatter(y=y)
+    else:
+        for data in y:
+            fig.add_scatter(y=data)
     plot(fig)
 
 
