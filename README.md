@@ -460,7 +460,7 @@ $$ t \rightarrow \frac{2}{\sqrt 3} \pi^{-\frac{1}{4}}(1-t^2)e^{-\frac{t^2}{2}} $
 Et qui ressemble à ceci :
 
 <p align="center">
-![Capture d’écran 2022-07-02 à 22 14 22](https://user-images.githubusercontent.com/63207451/177014971-400525f7-8da1-4fe7-8856-ddf14a8072c5.png)
+<img width="950" alt="ondelette-mere" src="https://user-images.githubusercontent.com/63207451/177014971-400525f7-8da1-4fe7-8856-ddf14a8072c5.png">
 	</p>
 
 # Résultats
