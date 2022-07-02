@@ -40,3 +40,5 @@ from the MIT-BIH Arrhythmia database. The created database with ECG signals is d
 "14 LBBBB" : Left bundle branch block beat (103)
 "15 RBBBB" : Right bundle branch block beat (62)
 "16 SDHB" : Second-degree heart block (10)
+
+
