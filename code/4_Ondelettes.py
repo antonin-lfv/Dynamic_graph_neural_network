@@ -29,4 +29,3 @@ if __name__ == '__main__':
     G.fit(Wavelet, print_progress=False)
     # G.print_cluster(display=True)
     plot_signaux_par_cluster(G, absc=abs_normal, dict_y=brutes, sign_min_per_cluster=2)
-    print(distance_neurons(Wavelet[0], Wavelet[1]))
