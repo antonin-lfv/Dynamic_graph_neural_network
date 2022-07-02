@@ -467,7 +467,7 @@ Et qui ressemble à ceci :
 
 Les données utilisées pour cette classification sont des electrocardiogrammes qui sont de différentes natures. Il y a 2 classes de données avec des données sans anomalie cardiaque, et 15 classes de données avec des anomalies cardiaques. Pour chaque classe, nous prenons 10 échantillons, soit 170 données en tout.
 
-Voici les résultats d'une première classification, chaque label correspond à un cluster de données crées par le réseau, et les données d'une même pathologie cardiaque sont colorié de la même couleur (la pathologie $i$ correspond aux neurones d'index $i \ast 10$ à $i \ast 10+10$ ):
+Voici les résultats d'une première classification, chaque label correspond à un cluster de données crées par le réseau, et les données d'une même pathologie cardiaque sont colorié de la même couleur (la i-ème pathologie correspond aux neurones d'index $i \ast 10$ à $i \ast 10+9$ ) :
 
 <br>
 
