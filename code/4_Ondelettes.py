@@ -21,7 +21,8 @@ nb_neurons = 15
 brutes = dict_of_signal(abscisse=abs_normal,
                         nb_neurons=nb_neurons)
 
+cA, cD = pywt.dwt(brutes[0], 'morl')
 
 
 if __name__ == '__main__':
-    ...
+    print(cA, cD)
