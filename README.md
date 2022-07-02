@@ -453,7 +453,7 @@ L'ondelette que nous utiliserons ici est l'ondelette *"chapeau mexicain"* défin
 
 $$
 \psi : \mathbb{R} \mapsto \mathbb{R}
-\\
+\newline
 t \rightarrow \frac{2}{\sqrt 3} \pi^{-\frac{1}{4}}(1-t^2)e^{-\frac{t^2}{2}}
 $$
 
