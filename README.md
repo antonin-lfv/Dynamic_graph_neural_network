@@ -447,39 +447,46 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 ## 5. Classification de signaux soumis à une transformée en Ondelettes
 
-Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle. 
+Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle et continue. 
+
+La transformée en ondelettes continue utilise des dilatations et des translations de la fonction ondelette mère $\psi$. La transformée en ondelettes continue de la fonction $f$ est définie à facteur constant près comme le produit scalaire de $f$ et de$\psi$.
+
+L'ondelette mère que nous utiliserons ici est l'ondelette **"chapeau mexicain"** définit par :
+
+$$ \psi : \mathbb{R} \mapsto \mathbb{R} $$
+
+$$ t \rightarrow \frac{2}{\sqrt 3} \pi^{-\frac{1}{4}}(1-t^2)e^{-\frac{t^2}{2}} $$
+
+Et qui ressemble à ceci :
+
+<p align="center">
+<img width="750" alt="ondelette-mere" src="https://user-images.githubusercontent.com/63207451/177014971-400525f7-8da1-4fe7-8856-ddf14a8072c5.png">
+	</p>
+
+<br>
+
+Les données utilisées pour cette classification sont des electrocardiogrammes qui sont de différentes natures. Il y a 2 classes de données avec des données sans anomalie cardiaque, et 15 classes de données avec des anomalies cardiaques. Pour chaque classe, nous prenons 10 échantillons, soit 170 données en tout.
+
+Voici les résultats d'une première classification, chaque label correspond à un cluster de données crées par le réseau, et les données d'une même pathologie cardiaque sont colorié de la même couleur (la i-ème pathologie correspond aux neurones d'index $i \ast 10$ à $i \ast 10+9$ ) :
+
+<br>
+
+<p align="center">
+<img width="850" alt="Capture d’écran 2022-07-02 à 22 00 09" src="https://user-images.githubusercontent.com/63207451/177015729-bd28f35e-e6ce-413b-8285-aba5332ee26d.png">
+	</p>
+
+<br>
+
 
 # Résultats
 
 <br>
 
-Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Et, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près et également la transformée en ondelette qui est plus performante. Et, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
 
 <br>
 
-Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle, un calibrage des seuils avec une petite portion de données, qu'on appelera $test set$. 
-
-De plus, concernant la classification en elle même, le modèle peut faire de la classification multiclasse (plus que 2), mais seulement si toutes les classes sont mutuellement différentes. En effet, si nous essayons de procéder à la classification de signaux, et que 3 groupes distincts apparaissent, tous étant différents deux à deux avec un même "dégré" alors nous pourrons avoir en sortie du modèle les 3 classes se dessiner. On peut représenter cette situation comme ceci : 
-
-<br>
-
-<p align="center">
-<img width="550" alt="Capture d’écran 2022-06-01 à 21 57 54" src="https://user-images.githubusercontent.com/63207451/171688120-adbbfeb3-cded-48fe-8e7a-62de9bd00882.jpg">
-	</p>
-
-<br>
-
-Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plus, alors dans ce cas le réseau va séparer et créer deux classes différentes, dont l'une des deux sera constitué des deux classes qui se ressemblent. C'est un problème d'échelle induit par le modèle lui même. Voici la représentation de cette situation :
-
-<br>
-
-<p align="center">
-<img width="550" alt="Capture d’écran 2022-06-01 à 21 59 27" src="https://user-images.githubusercontent.com/63207451/171688231-f89598ca-dc2c-4a7a-ba14-4093c3a34f6b.jpg">
-	</p>
-
-<br>
-
-Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données. Il y aura également un certains nombre de données classées toute seule, ou alors de cluster créés, du à l'imprecision des seuils et du modèle. Pour résoudre ce problème, on fera tourner le modèle progressivement sur des portions de données de plus en plus petites, comme détaillé ci dessous.
+Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle, un calibrage des seuils avec une petite portion de données, qu'on appelera Test Set. 
 
 <br>
 
@@ -554,7 +561,7 @@ Les 5 neurones à gauche représentent des fonctions racines, et les 5 neurones 
 
 <br>
 
-Ce projet nous a ammené, au travers de cette branche des réseaux de neurones dynamiques, à découvrir de nouveaux concepts et de nouvelles représentations des données. On peut dire que ce type de réseau en graphe est très efficace pour classer des signaux notamment, et aussi pour détecter des outliers (des anomalies). Mais, comme les résultats l'ont montré, il ne faut pas seulement travailler avec les signaux brutes, mais plutôt avec leur transformée de Fourier (Ou autre méthode, qui pourrait faire l'objet d'une nouvelle partie dans ce projet) qui permet au réseau de généraliser les types de signaux de façon plus efficace et sans faire d'erreur grossière.
+Ce projet nous a ammené, au travers de cette branche des réseaux de neurones dynamiques, à découvrir de nouveaux concepts et de nouvelles représentations des données. On peut dire que ce type de réseau en graphe est très efficace pour classer des signaux notamment, et aussi pour détecter des outliers (des anomalies). Mais, comme les résultats l'ont montré, il ne faut pas seulement travailler avec les signaux brutes, mais plutôt avec leur transformée de Fourier, ou encore mieux, les transformées en ondelettes, qui permet au réseau de généraliser les types de signaux de façon plus efficace et sans faire d'erreur grossière.
 
 <br>
 
