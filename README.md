@@ -472,7 +472,7 @@ Voici les résultats d'une première classification, chaque label correspond à 
 <br>
 
 <p align="center">
-<img width="750" alt="Capture d’écran 2022-07-02 à 22 00 09" src="https://user-images.githubusercontent.com/63207451/177015729-bd28f35e-e6ce-413b-8285-aba5332ee26d.png">
+<img width="850" alt="Capture d’écran 2022-07-02 à 22 00 09" src="https://user-images.githubusercontent.com/63207451/177015729-bd28f35e-e6ce-413b-8285-aba5332ee26d.png">
 	</p>
 
 <br>
