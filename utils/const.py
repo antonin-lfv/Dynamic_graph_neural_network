@@ -18,6 +18,7 @@ from scipy.spatial.distance import euclidean
 import pickle
 from termcolor import colored
 import warnings
+import pywt
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 # ===== Config détails
