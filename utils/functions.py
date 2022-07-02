@@ -219,6 +219,20 @@ def print_config(config: dict):
         print(f"{k}: {i}")
 
 
+"""Python fonctions"""
+
+
+def get_file_in_folder(folder_path):
+    """Retourne la liste des fichiers d'un dossier"""
+    return glob.glob(folder_path+"/*")
+
+
+def numpy_from_matlab(path_matFile):
+    """Converti un fichier .mat en numpy array"""
+    mat = scipy.io.loadmat(path_matFile)['val']
+    return mat.reshape((len(mat[0], )))
+
+
 """Lire les ressources - chants d'oiseaux"""
 
 

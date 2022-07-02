@@ -13,14 +13,16 @@ config = {
     "an": 150
 }
 
-# abscisses signaux
+# ===== Signaux sinusoïdaux
 x_min, x_max = 0, 3
 abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
-# création des signaux brutes:
 nb_neurons = 20
 brutes = dict_of_signal(abscisse=abs_normal,
                         nb_neurons=nb_neurons)
 
+# ===== ECG
+numpy_from_matlab('data/ECG_signals/1 NSR/100m (0).mat')
+get_file_in_folder("data/ECG_signals/1 NSR")
 Wavelet = dict_of_wavelet(brutes)
 
 
