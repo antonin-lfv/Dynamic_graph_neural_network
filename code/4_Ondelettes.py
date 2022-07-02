@@ -1,6 +1,6 @@
 from utils.classes import *
 
-""" Signaux sinusoidaux et transformée de Fourier """
+""" ECG et transformée en ondelettes """
 
 # ----- Config -----
 
@@ -9,25 +9,34 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 25,
-    "an": 150
+    "ar": 350,
+    "an": 9000
 }
 
-# ===== Signaux sinusoïdaux
-x_min, x_max = 0, 3
-abs_normal = np.linspace(x_min, x_max, config["INPUT_SIZE"])
-nb_neurons = 20
-brutes = dict_of_signal(abscisse=abs_normal,
-                        nb_neurons=nb_neurons)
+# ----- ECG -----
+ECG, count_index = {}, 0
+prefixe_path = "data/ECG_signals"
+folders_name = get_file_in_folder(prefixe_path)
 
-# ===== ECG
-numpy_from_matlab('data/ECG_signals/1 NSR/100m (0).mat')
-get_file_in_folder("data/ECG_signals/1 NSR")
-Wavelet = dict_of_wavelet(brutes)
+# On garde seulement 10 data de chaque type ! Soit 17 * 10 = 170 données
+for data_folder in folders_name:
+    folders = get_file_in_folder(data_folder)
+    compt = 0
+    for sample_data_path in folders:
+        if compt < 10:
+            ECG[count_index] = numpy_from_matlab(sample_data_path)
+            count_index += 1
+            compt += 1
+        else:
+            break
 
+# création des ondelettes
+Wavelet = dict_of_wavelet(ECG)
+Wavelet = shuffle_dict(Wavelet)
 
 if __name__ == '__main__':
-    G = Graph(config=config)
+    G = Graph(config=config, suppr_neuron=True)
     G.fit(Wavelet, print_progress=False)
-    # G.print_cluster(display=True)
-    plot_signaux_par_cluster(G, absc=abs_normal, dict_y=brutes, sign_min_per_cluster=2)
+    G.print_cluster(display=True)
+    G.graphInfo()
+    print(f"Nombre de clusters crées : {len(G.print_cluster(display=False).keys())}")

@@ -82,10 +82,6 @@ class Graph:
         print(colored("\n===== Info Graphe", "red"))
         print(f"Nombre de neurones vus : {self.compt_neurons}")
         print(f"Nombre de neurones présents dans le réseau : {len(self.neurons)}")
-        nb_liaisons = 0
-        for n in self.neurons.values():
-            nb_liaisons += len(n.liaisons)
-        print(f"Nombre de liaisons dans le réseau : {int(nb_liaisons / 2)}")
 
     def addNeuron(self, neuron: Neuron):
         """ Connecte le neurone au réseau
