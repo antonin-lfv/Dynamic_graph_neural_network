@@ -453,7 +453,7 @@ La transformée en ondelettes continue utilise des dilatations et des translatio
 
 $$ \mathcal{W}_f(a, b)=\frac{1}{\sqrt a} \int_{-\infty}^{\infty}f(t). \hat{\psi}(\frac{t-b}{a}.dt) $$
 
-avec $ a \in \mathbb{R}^*_+, b \in \mathbb{R} $
+avec $a\in\mathbb{R}^*_+,b\in\mathbb{R}$
 
 L'ondelette mère que nous utiliserons ici est l'ondelette *"chapeau mexicain"* définit par :
 
