@@ -2,3 +2,9 @@ plot.html
 temp-plot.html
 code/temp-plot.html
 fastdtw
+*.pyc
+utils/__pycache__/functions.cpython-310.pyc
+utils/__pycache__/const.cpython-310.pyc
+utils/__pycache__/classes.cpython-310.pyc
+.DS_Store
+*.xml

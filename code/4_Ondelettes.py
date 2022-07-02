@@ -36,10 +36,3 @@ if __name__ == '__main__':
     nb_neurons = 15
     brutes = dict_of_signal(abscisse=abs_normal,
                             nb_neurons=nb_neurons)
-
-    model = ClassificationDNN(raw_data=brutes,
-                              abscisse=abs_normal,
-                              config=config,
-                              nb_iteration=2)
-    model.fit()
-    model.showResult()

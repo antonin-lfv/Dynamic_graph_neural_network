@@ -19,7 +19,7 @@ Les réseaux de neurones dynamiques sont une branche peu développée du Deep Le
 	</p>
 
 <p align="center">
-Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. On verra que l'utilisation de la transformée de Fourier sera nécessaire dans un premier temps. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, puis nous poursuivrons sur une classification de signaux sinusoïdaux. Dans un premier temps, les signeaux sont tous de la même taille, puis nous élargirons le domaine de compétences du réseau à des signaux de tailles différentes. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
+Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'un réseau de neurones dynamiques en graphe décrit par l'article scientifique dont le lien est ci-dessous (le deuxième). L'article n'évoque qu'une partie mathématique et quelques voix pour la mise en place du modèle. Ainsi, La première étape de ce projet sera d'implémenter la structure du graphe ainsi que les méthodes associées telles qu'elles sont décrites dans cet article, puis, en fonction des resultats, d'améliorer le modèle. On verra que l'utilisation de la transformée de Fourier sera nécessaire dans un premier temps. Ensuite, une partie graphique sera implémentée avec la librairie Plotly qui servira à s'assurer de la bonne mise en place des premières méthodes (uniquement sur la première partie de l'implémentation). Concernant les phases d'expérimentation, on tentera pour commencer de classer plusieurs types de fonctions classiques, puis nous poursuivrons sur une classification de signaux sinusoïdaux, tout cela sans pré traitement des données. Ensuite, nous testerons de modifier nos données d'entrées avec une transformée de Fourier, ou encore des transformée en Ondelettes. Dans ce repository, une première partie sera consacrée à l'aspect mathématique du modèle, pour mieux comprendre son fonctionnement. Puis sera expliqué l'implémentation avec Python avec les différents tests et résultats.
 	</p>
 
 <br>
@@ -44,20 +44,22 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 # Index
 
-1. [Librairies](#librairies)
-2. [Modèle mathématique](#modèle-mathématique)
-    1. [Principe](#principe)
-    2. [Prédictions](#prédictions)
-3. [Implémentation](#implémentation)
-4. [Expérimentations](#Expérimentations)
-	1. [Classification de fonctions classiques](#1-Classification-de-fonctions-classiques)
-	2. [Classification de signaux sinusoïdaux](#2-Classification-de-signaux-sinusoïdaux)
-	3. [Classification de signaux soumis à une transformée de Fourier](#3-Classification-de-signaux-soumis-à-une-transformée-de-Fourier)
-	4. [Classification de signaux avec la méthode Dynamic Time Warping](#4-Classification-de-signaux-avec-la-méthode-Dynamic-Time-Warping)
-5. [Résultats](#Résultats)
-6. [Utilisation du modèle](#Utilisation-du-modèle)
-7. [Bonus](#bonus)
-8. [Conclusion](#conclusion)
+- [Liens utiles](#liens-utiles)
+- [Index](#index)
+- [Librairies](#librairies)
+- [Modèle mathématique](#modèle-mathématique)
+	- [Principe](#principe)
+	- [Prédictions](#prédictions)
+- [Implémentation](#implémentation)
+- [Expérimentations](#expérimentations)
+	- [1. Classification de fonctions classiques](#1-classification-de-fonctions-classiques)
+	- [2. Classification de signaux sinusoïdaux](#2-classification-de-signaux-sinusoïdaux)
+	- [3. Classification de signaux avec la méthode Dynamic Time Warping](#3-classification-de-signaux-avec-la-méthode-dynamic-time-warping)
+	- [4. Classification de signaux soumis à une transformée de Fourier](#4-classification-de-signaux-soumis-à-une-transformée-de-fourier)
+	- [5. Classification de signaux soumis à une transformée en Ondelettes](#5-classification-de-signaux-soumis-à-une-transformée-en-ondelettes)
+- [Résultats](#résultats)
+- [Bonus](#bonus)
+- [Conclusion](#conclusion)
 
 <br>
 
@@ -285,7 +287,79 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-## 3. Classification de signaux soumis à une transformée de Fourier
+## 3. Classification de signaux avec la méthode Dynamic Time Warping
+
+<br>
+
+Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
+
+<br>
+
+<br>
+
+On peut représenter graphiquement la distance euclidienne comme ceci : <br>
+
+<br>
+
+<p align="center">
+<img width="500" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
+	</p>
+
+Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Et la distance euclidienne compare les valeurs une à une dans l'ordre. Ils sont alignés à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
+
+<br>
+
+Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cette méthode permet de trouver l’alignement global optimal entre deux signaux, c’est-à-dire d’associer chaque élément de chaque signal à au moins un élément de l’autre signal en minimisant les coûts d’association. Le coût d’une association correspond à la distance entre les deux éléments. Le résultat numérique fournit par DTW correspond à la somme des hauteurs des “barreaux” formés par les associations (les barres noires entre les signaux rouge et bleu). On remarque sur la figure ci-dessous à gauche des signaux que DTW a réaligné correctement les deux signaux, et parvient ainsi à saisir des similarités que la distance euclidienne ne peut extraire.
+
+<br>
+
+<p align="center">
+	<img width="500" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
+	</p>
+
+<br>
+
+Cette fois-ci nous allons utiliser de vraies données, qui sont des chants d'oiseaux. On isolera les syllabes de plusieurs espèces, ce qui constituera nos données d'entrées. Puis, on passera au modèle ces données qui utilisera la méthode DTW pour calculer les distances. 
+
+<br>
+
+Voici des exemples de syllabes de chants d'oiseaux: 
+
+<br>
+
+<p align="center">
+	<img width="500" alt="syll1" src="https://user-images.githubusercontent.com/63207451/168826924-ca1147e4-78be-495f-912d-dd408f406c26.png">
+	<img width="500" alt="syll2" src="https://user-images.githubusercontent.com/63207451/168826940-cdd69f52-584e-44e7-bbd4-8ce3ddd9afd7.png">
+	</p>
+
+<br>
+
+On remarque que les deux syllabes sont de tailles différentes, c'est ce qui motive l'utilisation du DTW. Maintenant, voici le dataset de syllabes de chants d'oiseaux que nous allons utiliser dans la suite des tests:
+
+<br>
+
+<p align="center">
+<img width="950" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
+	</p>
+
+<br>
+
+Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neurones 5 à 9 contiennent des syllabes d'une autre espèce. On ajoute maintenant les neurones au réseau, et on observe la classification du modèle :
+
+<br>
+
+<p align="center">
+<img width="950" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
+	</p>
+
+<br>
+
+Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été associée au même cluster (de label 0). Pour la deuxième espèce, le résultat est plus mitigé, en effet l'espèce a été divisée en trois sous-catégories (labels 5, 6 et 9). En fait, notre modèle a un pouvoir de classification trop élevé pour nos données. Il cherche a vraiment trouver les différences entre les signaux. Mais, la classification par le modèle reste stable, en effet après avoir essayé une multitude de seuils différents le réseau ne classe quasiment jamais deux signaux d'espèces différentes ensemble, ce qui est très encourageant en terme de véracité du modèle.
+
+<br>
+
+
+## 4. Classification de signaux soumis à une transformée de Fourier
 
 On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. C'est donc entre les transformées de Fourier des signaux que le modèle va faire les calculs de distance euclidienne. <br>
 
@@ -367,100 +441,19 @@ Il n'y a pas d'erreurs aberrantes, contrairement aux configurations précédente
 
 <br>
 
-Cependant, ce modèle a une limite dans son implémentation actuelle (telle que décrite dans l'article). En effet, tout est basé sur la distance euclidienne entre les neurones, ce qui immplique que les signaux doivent impérativement être de la même taille. Ainsi, il faudrait utiliser une méthode pour calculer la distance entre deux vecteurs de tailles différentes ... la méthode de **Dynamic Time Warping**.
+Cependant, ce modèle a une limite dans son implémentation actuelle (telle que décrite dans l'article). En effet, tout est basé sur la distance euclidienne entre les neurones, ce qui immplique que les signaux doivent impérativement être de la même taille.
 
 <br>
 
-## 4. Classification de signaux avec la méthode Dynamic Time Warping
+## 5. Classification de signaux soumis à une transformée en Ondelettes
 
-<br>
-
-Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
-
-<br>
-
-Ainsi, on se passera de la Transformée de Fourier dont le but était justement de pouvoir comparer des signaux qui était superposables à une translation près, et on va simplememtn changer la fonction qui calcule la distance entre les vecteurs des neurones, en utilisant la méthode Dynamic Time Warping (DTW) 
-
-<br>
-
-<br>
-
-On peut représenter graphiquement la distance euclidienne comme ceci : <br>
-
-<br>
-
-<p align="center">
-<img width="500" alt="Capture d’écran 2022-05-17 à 11 13 46" src="https://user-images.githubusercontent.com/63207451/168775722-ef3ad9f7-0ddc-4a2a-b92b-48e0cdd1315d.png">
-	</p>
-
-Le signal rouge est le vecteur de taille `n`, il est plus petit que le signal bleu de taille `m`. On peut alors remarqué que la distance euclidienne entre les deux sera grande, car les deux signaux, malgrès leur ressemblance, ne sont pas alignés. Et la distance euclidienne compare les valeurs une à une dans l'ordre. Ils sont alignés à une translation près, comme ce qu'on avait remarqué dans la partie 2. <br>
-
-<br>
-
-Pour palier à ce problème, il existe la méthode **Dynamic Time Warping**. Cette méthode permet de trouver l’alignement global optimal entre deux signaux, c’est-à-dire d’associer chaque élément de chaque signal à au moins un élément de l’autre signal en minimisant les coûts d’association. Le coût d’une association correspond à la distance entre les deux éléments. Le résultat numérique fournit par DTW correspond à la somme des hauteurs des “barreaux” formés par les associations (les barres noires entre les signaux rouge et bleu). On remarque sur la figure ci-dessous à gauche des signaux que DTW a réaligné correctement les deux signaux, et parvient ainsi à saisir des similarités que la distance euclidienne ne peut extraire.
-
-<br>
-
-<p align="center">
-	<img width="500" alt="Capture d’écran 2022-05-17 à 11 18 56" src="https://user-images.githubusercontent.com/63207451/168776805-50682d7f-29c6-4eda-af09-5bb4466a1504.png">
-	</p>
-
-<br>
-
-Cette fois-ci nous allons utiliser de vraies données, qui sont des chants d'oiseaux. On isolera les syllabes de plusieurs espèces, ce qui constituera nos données d'entrées. Puis, on passera au modèle ces données qui utilisera la méthode DTW pour calculer les distances. 
-
-<br>
-
-Voici des exemples de syllabes de chants d'oiseaux: 
-
-<br>
-
-<p align="center">
-	<img width="500" alt="syll1" src="https://user-images.githubusercontent.com/63207451/168826924-ca1147e4-78be-495f-912d-dd408f406c26.png">
-	<img width="500" alt="syll2" src="https://user-images.githubusercontent.com/63207451/168826940-cdd69f52-584e-44e7-bbd4-8ce3ddd9afd7.png">
-	</p>
-
-<br>
-
-On remarque que les deux syllabes sont de tailles différentes, c'est ce qui motive l'utilisation du DTW. Maintenant, voici le dataset de syllabes de chants d'oiseaux que nous allons utiliser dans la suite des tests:
-
-<br>
-
-<p align="center">
-<img width="950" alt="data" src="https://user-images.githubusercontent.com/63207451/169101252-e1916ba9-438d-4760-99cc-e524192e4805.png">
-	</p>
-
-<br>
-
-Les neurones 0 à 4 contiennent des syllabes d'une espèce d'oiseau, et les neurones 5 à 9 contiennent des syllabes d'une autre espèce. On ajoute maintenant les neurones au réseau, et on observe la classification du modèle :
-
-<br>
-
-<p align="center">
-<img width="950" alt="cluster" src="https://user-images.githubusercontent.com/63207451/169101745-19858034-7a21-4428-a1bc-87d20820ecbb.png">
-	</p>
-
-<br>
-
-Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été associée au même cluster (de label 0). Pour la deuxième espèce, le résultat est plus mitigé, en effet l'espèce a été divisée en trois sous-catégories (labels 5, 6 et 9). En fait, notre modèle a un pouvoir de classification trop élevé pour nos données. Il cherche a vraiment trouver les différences entre les signaux. Mais, la classification par le modèle reste stable, en effet après avoir essayé une multitude de seuils différents le réseau ne classe quasiment jamais deux signaux d'espèces différentes ensemble, ce qui est très encourageant en terme de véracité du modèle.
-
-<br>
-
-À noter que le calcul de la distance avec la méthode DTW est très long, et donc pour un nombre de neurones plus élevé, le temps de calcul sera très grand. En terme de rapidité c'est la méthode par transformée de Fourier qui l'emporte. On peut comparer le temps d'exécution des deux méthodes :
-
-<br>
-
-<p align="center">
-	<img width="1050" alt="temps exec" src="https://user-images.githubusercontent.com/63207451/169149156-e9cc45c9-91fa-402c-8285-cbff1057fffa.png">
-	</p>
-
-<br>
+Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. 
 
 # Résultats
 
 <br>
 
-Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Puis, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près. Et, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
 
 <br>
 
@@ -489,23 +482,6 @@ Mais dans le cas ou parmi ces 3 groupes de données, 2 se ressemblent un peu plu
 Ce modèle utilisant un apprentissage non supervisée, nous ne pourrons pas détecter ce problème d'association de classes différentes au sein d'un même cluster, c'est pour cela que ce modèle serait à utiliser pour classer, à chaque inférence, en deux catégories les données. Il y aura également un certains nombre de données classées toute seule, ou alors de cluster créés, du à l'imprecision des seuils et du modèle. Pour résoudre ce problème, on fera tourner le modèle progressivement sur des portions de données de plus en plus petites, comme détaillé ci dessous.
 
 <br>
-
-# Utilisation du modèle 
-
-<br>
-
-Avec tous ces tests effectués, on choisiera d'utiliser la technique de la transformée de Fourier. Cela rendra beaucoup plus rapide l'exécution et nous pourrons mettre un grand nombre de neurones, cependant les signaux devront avoir la même longueur. **On ajoutera la suppression des neurones s'ils n'ont plus de liaisons.**
-Étant donné les résultats précédents, nous devons appliquer notre modèle plusieurs fois, suivant ce principe:
-
-1. On applique le modèle sur toutes nos données
-2. On regarde le cluster avec le plus de neurones, et on relance le modèle sur toutes les données sauf ce cluster.
-3. On revient à l'étape 2
-
-On peut arrêter le processus quand il ne reste plus qu'une seule donnée, ou alors on peut fixer un nombre de tour. Ce processus va réduire l'échelle petit à petit, et on pourra ainsi distinguer des groupes de données qui semblaient similaires en regardant l'ensemble des données. Ce processus de classification est implémenté dans la classe **ClassificationDNN**.
-
-<br>
-
-
 
 <br>
 	

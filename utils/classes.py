@@ -203,73 +203,7 @@ class Graph:
         return clusters
 
 
-class ClassificationDNN:
-    def __init__(self, raw_data: dict, config: dict, nb_iteration: int, abscisse: np.array):
-        """
-        :param raw_data: dict des signaux brutes
-        :param abscisse: abscisse pour afficher les signaux brutes
-        :param config: configuration du réseau
-        :param nb_iteration: nombre d'itération du modèle
-        """
-        self.nb_iteration = nb_iteration
-        self.abscisse = abscisse
-        self.config = config
-        self.raw_data = raw_data
-        self.FFT = shuffle_dict(dict_of_fft(signaux=self.raw_data, taille_signaux=self.config["INPUT_SIZE"]))
-        self.final_result = {}
-
-    def fit(self):
-        print(colored("\n===== Début de l'apprentissage", "red"))
-        assert self.FFT is not None, "Model already fitted"
-        # loop
-        for iteration in range(self.nb_iteration):
-            if self.FFT == {}:
-                # fin de la classification
-                break
-            G = Graph(config=self.config, suppr_neuron=True)
-            G.fit(X=self.FFT, print_progress=False, use_existing_index=True)
-            # on choisi le label avec le plus de neurones
-            m = {}
-            for i, n in G.neurons.items():
-                if n.label not in m.keys():
-                    m[n.label] = 1
-                else:
-                    m[n.label] += 1
-            max_neuron_label = max(m, key=m.get)
-            for ind, neuron in G.neurons.items():
-                if neuron.label == max_neuron_label:
-                    if iteration in self.final_result.keys():
-                        self.final_result[iteration].append(ind)
-                    else:
-                        self.final_result[iteration] = [ind]
-                    del self.FFT[ind]
-        if len(self.FFT) > 0:
-            # il reste des neurones
-            self.final_result[len(self.final_result)] = list(self.FFT.keys())
-            del self.FFT
-
-    def showResult(self):
-        fig = make_subplots(rows=max([len(i) for i in self.final_result.values()]),
-                            cols=len(self.final_result),
-                            column_titles=[f"Label {i}" for i in self.final_result.keys()])
-        for label in self.final_result.keys():
-            row_index = 1
-            for neuron_index in self.final_result[label]:
-                fig.add_scatter(row=row_index,
-                                col=list(self.final_result.keys()).index(label) + 1,
-                                y=self.raw_data[neuron_index],
-                                x=self.abscisse,
-                                text=f"Index : {neuron_index}",
-                                hoverinfo="text")
-                row_index += 1
-        fig.update_layout(
-            paper_bgcolor=ConstPlotly.transparent_color,
-            showlegend=False,
-        )
-        plot(fig)
-
-
-"""ideée : méthode de Graph pour afficher le graphe avec plotly"""
+"""idée : méthode de Graph pour afficher le graphe avec plotly"""
 
 
 # TODO : trier les neurones par nombre de liaisons, calculer l'intersection uniquement avec les liaisons existantes
