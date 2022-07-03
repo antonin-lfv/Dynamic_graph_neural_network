@@ -119,13 +119,13 @@ Après modification du foyer, on va modifier de la même manière les neurones c
 $$\Delta x_j=b_c*c_{jk}(x_k-x_j)$$
 
 
-Avec $k=1,2,3,..,l$ ,  $j!=k$ ,  $b_c$ ∈ $R$
+Avec $k=1,2,3,..,l$ ,  $j!=k$ ,  $b_c \in R$
 
 On réduit aussi les connexions du foyers, ce qui rapproche les neurones similaires. La force avec laquelle elles sont actualisées est le scalaire $b_l$ . La nouvelle valeur de la connexion entre $j$ et $k$ est alors $c_{jk}=b_l(||x_j-x_k||)$
 Avec $b_l \in R$
 
 
-Si l'entrée du réseau  $u$  est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand $||d||>a_n$   avec $a_n \in R$
+Si l'entrée du réseau u est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand $||d||>a_n$   avec $a_n \in R$
 C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil $a_n$.
 
 
