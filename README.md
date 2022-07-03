@@ -125,7 +125,7 @@ On réduit aussi les connexions du foyers, ce qui rapproche les neurones similai
 Avec $b_l$ ∈ $R$
 
 
-Si l'entrée du réseau $u$ est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand $||d||>a_n$   avec $a_n$ ∈ $R$
+Si l'entrée du réseau  $u$  est complètement différente des autres neurones (en terme de distance euclidienne) alors un nouveau neurone ou groupe de neurones est ajouté et connecté au foyer. Un neurone est ajouté quand $||d||>a_n$   avec $a_n$ ∈ $R$
 C'est à dire si la distance minimale entre l'entrée et les neurones dépasse le seuil $a_n$.
 
 
