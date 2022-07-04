@@ -40,6 +40,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 - [Transformée de Fourier](https://helios2.mi.parisdescartes.fr/~eprovenz/include/Poly.pdf) et applications
 
+- [Transformée en Ondelettes continues](https://www.weisang.com/fr/dokumentation/timefreqspectrumalgorithmscwt_fr/)
+
 <br/>
 
 # Index
