@@ -155,19 +155,23 @@ class Graph:
             for ind_suppr in suppr_:
                 del n.liaisons[ind_suppr]
 
-        # Suppression du neurone si suppr_neuron à True (False pour les premiers tests)
+        # Suppression du neurone si suppr_neuron à True (on commence dès qu'il y a 2 neurones)
+        suppr_list = []
         for n in self.neurons.values():
-            if len(n.liaisons) == 0:
+            if len(n.liaisons) == 0 and len(self.neurons) > 1:
                 if not self.suppr_neuron:
                     # Cas 1 (défaut) : si un neurone n'a plus de liaison, il est associé à un label à part
                     n.label = str(n.index)
                 else:
                     # Cas 2 : si un neurone n'a plus de liaison, il est supprimé
-                    del n
+                    suppr_list.append(n.index)
+        for supp in suppr_list:
+            del self.neurons[supp]
 
     def fit(self, X: dict, print_progress=True, use_existing_index=False):
         """ Ajout des neurones - Un seul ajout de tous les neurones
-        @:param X : Ensemble de signaux sous forme de dictionnaire
+        :param X : Ensemble de signaux sous forme de dictionnaire
+        :param use_existing_index: Utilise l'index du neurone utilisé dans le dictionnaire passé en paramètre
         """
         compt = 0
         if print_progress:
@@ -196,6 +200,7 @@ class Graph:
             print(colored("\n===== Résultat de la classification", "red"))
             for label, neurons in clusters.items():
                 print(f"Label {label} : ", *neurons)
+            return 1
         return clusters
 
 

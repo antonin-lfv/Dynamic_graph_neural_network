@@ -29,6 +29,7 @@ signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 
 # création des FFT des signaux brutes
 FFT = dict_of_fft(signaux=signaux, taille_signaux=config["INPUT_SIZE"])
+FFT = shuffle_dict(FFT)
 
 
 def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
