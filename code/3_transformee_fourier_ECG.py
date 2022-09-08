@@ -78,7 +78,7 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
 
 
 if __name__ == "__main__":
-    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
-
+    # main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
+    ...
 
 plot_rapide_dash(ECG.values(), many=True)

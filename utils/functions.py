@@ -209,12 +209,16 @@ def plot_rapide(y, many=False):
 
 def plot_rapide_dash(y, many=False):
     app = Dash(__name__)
+    fig = go.Figure()
     if not many:
         # Un seul
-        f = dcc.Graph(figure=plot_rapide(y))
+        fig.add_scatter(y=y)
+        f = dcc.Graph(figure=fig)
     else:
         # pleins
-        f = [dcc.Graph(figure=plot_rapide(data_sign)) for data_sign in y]
+        for data in y:
+            fig.add_scatter(y=data)
+        f = [dcc.Graph(figure=fig)]
 
     app.layout = html.Div(children=[
         html.H1(children='Graphiques'),
