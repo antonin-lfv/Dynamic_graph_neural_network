@@ -451,7 +451,7 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle et continue. 
 
-La transformée en ondelettes continue utilise des dilatations et des translations de la fonction ondelette mère $\psi$. La transformée en ondelettes continue de la fonction $f$ est définie à facteur constant près comme le produit scalaire de $f$ et de$\psi$.
+La transformée en ondelettes continue utilise des dilatations et des translations de la fonction ondelette mère $\psi$. La transformée en ondelettes continue de la fonction $f$ est définie à facteur constant près comme le produit scalaire de $f$ et de $\psi$.
 
 L'ondelette mère que nous utiliserons ici est l'ondelette **"chapeau mexicain"** définit par :
 
@@ -469,13 +469,6 @@ Et qui ressemble à ceci :
 
 Les données utilisées pour cette classification sont des electrocardiogrammes qui sont de différentes natures. Il y a 2 classes de données avec des données sans anomalie cardiaque, et 15 classes de données avec des anomalies cardiaques. Pour chaque classe, nous prenons 10 échantillons, soit 170 données en tout.
 
-Voici les résultats d'une première classification, chaque label correspond à un cluster de données crées par le réseau, et les données d'une même pathologie cardiaque sont colorié de la même couleur (la i-ème pathologie correspond aux neurones d'index $i \ast 10$ à $i \ast 10+9$ ) :
-
-<br>
-
-<p align="center">
-<img width="850" alt="Capture d’écran 2022-07-02 à 22 00 09" src="https://user-images.githubusercontent.com/63207451/177015729-bd28f35e-e6ce-413b-8285-aba5332ee26d.png">
-	</p>
 
 <br>
 
