@@ -9,8 +9,8 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 30,
-    "an": 6.5
+    "ar": 150,
+    "an": 110
 }
 
 # ----- ECG -----
@@ -41,25 +41,44 @@ folders_name = ['data/ECG_signals/1 NSR',
 """
 
 # On garde seulement n data de chacun des k types ! Soit k * n données
+k = 10
 for data_folder in folders_name:
     folders = get_file_in_folder(data_folder)
     compt = 0
     for sample_data_path in folders:
-        if compt < 10:
+        if compt < k:
             ECG[count_index] = numpy_from_matlab(sample_data_path)
             count_index += 1
             compt += 1
         else:
             break
 
-# création des ondelettes
-Wavelet = dict_of_wavelet(ECG)
-Wavelet = shuffle_dict(Wavelet)
-Wavelet = normalize_dict_values(Wavelet)
 
-if __name__ == '__main__':
-    G = Graph(config=config, suppr_neuron=False)
-    G.fit(Wavelet, print_progress=False, use_existing_index=True)
-    G.print_cluster(display=True)
-    G.graphInfo()
-    print(f"Nombre de clusters crées : {len(G.print_cluster(display=False).keys())}")
+# création des FFT des signaux
+FFT = dict_of_fft(signaux=ECG, taille_signaux=config["INPUT_SIZE"])
+FFT = shuffle_dict(FFT)
+
+
+def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
+    # affichage des signaux brutes
+    if plot_brutes:
+        plot_dict_signal(dict_y=ECG, nb_neurons=len(ECG))
+    # Affichage des FFT
+    if plot_FFT:
+        plot_dict_signal(dict_y=FFT, nb_neurons=len(ECG))
+    # Création réseau et ajout neurones
+    G = Graph(config=config, suppr_neuron=True)
+    G.fit(FFT, use_existing_index=True)
+    # affichage de la config du réseau finale
+    print_cluster(G, display=True)
+    print(f"Nombre de neurones supprimés : {len(ECG) - len(G.neurons)}")
+    # Affichage des signaux brutes classés par cluster
+    if plot_brutes_par_cluster:
+        plot_signaux_par_cluster(G, dict_y=ECG, sign_min_per_cluster=2)
+
+
+if __name__ == "__main__":
+    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
+
+
+plot_rapide_dash(ECG.values(), many=True)

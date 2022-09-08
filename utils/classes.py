@@ -172,6 +172,7 @@ class Graph:
         """ Ajout des neurones - Un seul ajout de tous les neurones
         :param X : Ensemble de signaux sous forme de dictionnaire
         :param use_existing_index: Utilise l'index du neurone utilisé dans le dictionnaire passé en paramètre
+        (mettre à True pour les dico mélangés)
         """
         compt = 0
         if print_progress:

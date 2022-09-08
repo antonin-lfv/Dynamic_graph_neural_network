@@ -18,9 +18,11 @@ from scipy.spatial.distance import euclidean
 import pickle
 from termcolor import colored
 import warnings
+from sklearn.preprocessing import normalize
 import pywt
 import scipy.io
 import glob
+from dash import Dash, html, dcc
 warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 # ===== Config détails

@@ -179,8 +179,18 @@ def dict_of_wavelet(signaux: dict):
     wavelet_dict = {}
     for index_wv, s in signaux.items():
         cA, cD = pywt.cwt(s, wavelet='morl', scales=np.arange(1, 129))
-        wavelet_dict[index_wv] = cA[:, 0]
+        wavelet_dict[index_wv] = cA[:, 3]
     return wavelet_dict
+
+
+def normalize_dict_values(d: dict):
+    """
+    Normalise les vecteurs 1D d'un dictionnaire
+    :param d: le dictionnaire de données
+    """
+    for ind, val in d.items():
+        d[ind] = normalize(val.reshape(1, -1)).ravel()
+    return d
 
 
 def plot_rapide(y, many=False):
@@ -195,6 +205,26 @@ def plot_rapide(y, many=False):
         for data in y:
             fig.add_scatter(y=data)
     plot(fig)
+
+
+def plot_rapide_dash(y, many=False):
+    app = Dash(__name__)
+    if not many:
+        # Un seul
+        f = dcc.Graph(figure=plot_rapide(y))
+    else:
+        # pleins
+        f = [dcc.Graph(figure=plot_rapide(data_sign)) for data_sign in y]
+
+    app.layout = html.Div(children=[
+        html.H1(children='Graphiques'),
+
+        html.Div(children='''
+            Signaux
+        '''),
+        f
+    ])
+    app.run_server(debug=True)
 
 
 def shuffle_dict(dico: dict, seed=1):
