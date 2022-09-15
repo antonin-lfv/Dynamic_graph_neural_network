@@ -6,11 +6,11 @@ from utils.classes import *
 
 config = {
     "INPUT_SIZE": None,
-    "bv": 0.30,
-    "bc": 0.20,
-    "bl": 0.20,
-    "ar": 150,
-    "an": 110
+    "bv": 0.80,
+    "bc": 0.90,
+    "bl": 0.90,
+    "ar": 270,
+    "an": 210
 }
 
 # ----- ECG -----
@@ -68,17 +68,15 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_dict_signal(dict_y=FFT, nb_neurons=len(ECG))
     # Création réseau et ajout neurones
     G = Graph(config=config, suppr_neuron=True)
-    G.fit(FFT, use_existing_index=True)
+    G.fit(FFT, use_existing_index=True, print_progress=False)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     print(f"Nombre de neurones supprimés : {len(ECG) - len(G.neurons)}")
     # Affichage des signaux brutes classés par cluster
     if plot_brutes_par_cluster:
         plot_signaux_par_cluster(G, dict_y=ECG, sign_min_per_cluster=2)
+    return G
 
 
 if __name__ == "__main__":
-    # main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
-    ...
-
-plot_rapide_dash(ECG.values(), many=True)
+    G = main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)

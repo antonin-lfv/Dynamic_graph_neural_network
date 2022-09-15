@@ -205,6 +205,14 @@ class Graph:
         return clusters
 
 
+# TODO : plutot afficher le graphe en rassemblant chaque label dans un seul neurone
+# TODO : on ne les connecte qu'avec les autres labels
+
+# TODO : ajouter une phase d'optimisation
+# TODO : optimiser soit le nombre de classes finales
+# TODO : soit une autre métrique
+
+
 """idée : méthode de Graph pour afficher le graphe avec plotly"""
 
 
