@@ -75,6 +75,21 @@ class Graph:
             index += 1
         return r
 
+    def get_size_of_links(self, plotly_fig=True):
+        """Retourne la taille des liaisons du graphe"""
+        r = []
+        for neuron in self.neurons.values():
+            for val in neuron.liaisons.values():
+                r.append(val)
+        if plotly_fig:
+            fig = go.Figure(data=[go.Box(y=r,
+                                         boxpoints='all',  # can also be outliers, or suspectedoutliers, or False
+                                         jitter=0.3,  # add some jitter for a better separation between points
+                                         pointpos=-1.8  # relative position of points wrt box
+                                         )])
+            plot(fig)
+        return r
+
     def __repr__(self):
         return f'G = Graph(neurons={self.neurons}, compt_neurons={self.compt_neurons})'
 

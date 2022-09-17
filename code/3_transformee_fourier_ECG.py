@@ -6,11 +6,11 @@ from utils.classes import *
 
 config = {
     "INPUT_SIZE": None,
-    "bv": 0.80,
-    "bc": 0.90,
-    "bl": 0.90,
-    "ar": 270,
-    "an": 210
+    "bv": 5,
+    "bc": 6,
+    "bl": 2,
+    "ar": 0.27,
+    "an": 0.1
 }
 
 # ----- ECG -----
@@ -55,8 +55,10 @@ for data_folder in folders_name:
 
 
 # création des FFT des signaux
+config["INPUT_SIZE"] = len(ECG[0])
 FFT = dict_of_fft(signaux=ECG, taille_signaux=config["INPUT_SIZE"])
-FFT = shuffle_dict(FFT)
+# FFT = shuffle_dict(FFT)
+FFT = normalize_dict_values(FFT)
 
 
 def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
@@ -79,4 +81,5 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
 
 
 if __name__ == "__main__":
-    G = main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
+    Graphe = main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
+    Graphe.get_size_of_links(plotly_fig=True)

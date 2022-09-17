@@ -41,13 +41,16 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_dict_signal(absc=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph(config=config)
-    G.fit(FFT)
+    G.fit(FFT, print_progress=False)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
+    print(f"Nombre de neurones supprimés : {len(signaux) - len(G.neurons)}")
     # Affichage des signaux brutes classés par cluster
     if plot_brutes_par_cluster:
         plot_signaux_par_cluster(G, absc=abs_normal, dict_y=signaux)
+    return G
 
 
 if __name__ == "__main__":
-    main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+    Graphe = main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True)
+    Graphe.get_size_of_links(plotly_fig=False)

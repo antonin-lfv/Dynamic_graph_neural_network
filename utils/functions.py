@@ -82,7 +82,7 @@ def dict_of_signal(abscisse, nb_neurons):
 
 
 def plot_dict_signal(dict_y, nb_neurons, absc=None):
-    """Affiche un dictionnaire de signaux
+    """Affiche un dictionnaire de signaux (plotly)
     @:param abs: l'abscisse
     @:param dict_y: le dict de signaux
     """
