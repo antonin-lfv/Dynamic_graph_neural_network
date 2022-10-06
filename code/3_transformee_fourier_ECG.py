@@ -57,7 +57,7 @@ for data_folder in folders_name:
 # création des FFT des signaux
 config["INPUT_SIZE"] = len(ECG[0])
 FFT = dict_of_fft(signaux=ECG, taille_signaux=config["INPUT_SIZE"])
-# FFT = shuffle_dict(FFT)
+FFT = shuffle_dict(FFT)
 FFT = normalize_dict_values(FFT)
 
 

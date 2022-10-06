@@ -16,7 +16,9 @@ config = {
 signaux, corr = dict_of_birds()
 # prendre que les 2 premières classes
 nb_neurons = 10
-signaux = dict(itertools.islice(signaux.items(), 10))
+signaux = dict(itertools.islice(signaux.items(), nb_neurons))
+signaux = shuffle_dict(signaux)
+signaux = normalize_dict_values(signaux)
 
 
 def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
@@ -25,7 +27,7 @@ def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
         plot_dict_signal(dict_y=signaux, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph(config=config, fct_distance=distance_neurons_DTW)  # on utilise la distance DTW
-    G.fit(signaux)
+    G.fit(signaux, use_existing_index=True)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     # Affichage des signaux brutes classés par cluster

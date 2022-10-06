@@ -9,8 +9,8 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 30,
-    "an": 6.5
+    "ar": 0.7,
+    "an": 0.9
 }
 
 # constantes
@@ -30,6 +30,7 @@ signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 # création des FFT des signaux brutes
 FFT = dict_of_fft(signaux=signaux, taille_signaux=config["INPUT_SIZE"])
 FFT = shuffle_dict(FFT)
+FFT = normalize_dict_values(FFT)
 
 
 def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=True):
@@ -41,7 +42,7 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_dict_signal(absc=abs_fft, dict_y=FFT, nb_neurons=nb_neurons)
     # Création réseau et ajout neurones
     G = Graph(config=config)
-    G.fit(FFT, print_progress=False)
+    G.fit(FFT, print_progress=False, use_existing_index=True)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     print(f"Nombre de neurones supprimés : {len(signaux) - len(G.neurons)}")
