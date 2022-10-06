@@ -435,7 +435,7 @@ On peut réitérer la classification avec d'autres données, voici certains rés
 
 | Clusters | Signaux |
 | --- | ----------- |
-| <img width="300" alt="Capture d’écran 2022-05-11 à 11 44 09" src="https://user-images.githubusercontent.com/63207451/167820573-d5f9a896-e60b-497c-b66f-9eaef122f3b7.png"> | <img width="950" alt="Capture d’écran 2022-05-11 à 11 42 14" src="https://user-images.githubusercontent.com/63207451/167820128-908192cc-3327-48dd-b21e-0eb741b3271e.png"> |
+| <img width="300" alt="labels descr" src="https://user-images.githubusercontent.com/63207451/194428374-938d7628-6fb2-4931-8163-82486a0b2afe.png"> | <img width="950" alt="clusters" src="https://user-images.githubusercontent.com/63207451/194428526-fdfb0523-02c8-4810-b6fd-b57206afd82b.png"> |
 
 <br>
 
