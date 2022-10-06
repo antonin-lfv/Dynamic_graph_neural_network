@@ -481,6 +481,10 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
+Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivant dans la classification finale. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. 
+
+<br>
+
 Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle, un calibrage des seuils avec une petite portion de données, qu'on appelera Test Set. 
 
 <br>
