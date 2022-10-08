@@ -481,7 +481,7 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
-Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivant dans la classification finale. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. 
+Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivent dans la classification finale, et donc les résultats sont faussés. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. 
 
 <br>
 
