@@ -198,12 +198,14 @@ def plot_rapide(y, many=False):
     :param y: data
     :param many: if True, y must contains multiple array to plot
     """
-    fig = go.Figure()
+    fig = make_subplots(rows=len(y) if many == True else 1, cols=1)
     if not many:
         fig.add_scatter(y=y)
     else:
+        index = 1
         for data in y:
-            fig.add_scatter(y=data)
+            fig.add_scatter(y=data, row=index, col=1)
+            index += 1
     plot(fig)
 
 
@@ -258,7 +260,7 @@ def print_config(config: dict):
 
 def get_file_in_folder(folder_path):
     """Retourne la liste des fichiers d'un dossier"""
-    return glob.glob(folder_path+"/*")
+    return glob.glob(folder_path + "/*")
 
 
 def numpy_from_matlab(path_matFile):

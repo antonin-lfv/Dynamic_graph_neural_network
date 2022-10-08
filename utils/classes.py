@@ -183,10 +183,10 @@ class Graph:
         for supp in suppr_list:
             del self.neurons[supp]
 
-    def fit(self, X: dict, print_progress=True, use_existing_index=False):
+    def fit(self, X: dict, print_progress=True):
         """ Ajout des neurones - Un seul ajout de tous les neurones
+        :param print_progress: afficher l'état de l'apprentissage
         :param X : Ensemble de signaux sous forme de dictionnaire
-        :param use_existing_index: Utilise l'index du neurone utilisé dans le dictionnaire passé en paramètre
         (mettre à True pour les dico mélangés)
         """
         compt = 0
@@ -194,10 +194,7 @@ class Graph:
             print(colored("\n===== Début de l'apprentissage", "red"))
             print("Ajout des", colored(f"{len(X)}", "green"), "neurones")
         for index, x in X.items():
-            if use_existing_index:
-                self.addNeuron(Neuron(vecteur=x, config=self.config, index=index))
-            else:
-                self.addNeuron(Neuron(vecteur=x, config=self.config))
+            self.addNeuron(Neuron(vecteur=x, config=self.config, index=index))
             if print_progress:
                 print(colored(f"[{compt}/{len(X) - 1}]", "green") + " Neurone ajouté !")
             compt += 1

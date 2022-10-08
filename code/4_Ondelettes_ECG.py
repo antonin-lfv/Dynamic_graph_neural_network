@@ -9,8 +9,8 @@ config = {
     "bv": 0.30,
     "bc": 0.20,
     "bl": 0.20,
-    "ar": 30,
-    "an": 6.5
+    "ar": 0.4,
+    "an": 0.23
 }
 
 # ----- ECG -----
@@ -57,9 +57,12 @@ Wavelet = dict_of_wavelet(ECG)
 Wavelet = shuffle_dict(Wavelet)
 Wavelet = normalize_dict_values(Wavelet)
 
+plot_rapide([ECG[0], ECG[12]], many=True)
+
 if __name__ == '__main__':
     G = Graph(config=config, suppr_neuron=False)
-    G.fit(Wavelet, print_progress=False, use_existing_index=True)
+    G.fit(Wavelet, print_progress=False)
     G.print_cluster(display=True)
     G.graphInfo()
     print(f"Nombre de clusters crées : {len(G.print_cluster(display=False).keys())}")
+    # G.get_size_of_links(plotly_fig=True)

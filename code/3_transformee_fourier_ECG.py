@@ -70,7 +70,7 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
         plot_dict_signal(dict_y=FFT, nb_neurons=len(ECG))
     # Création réseau et ajout neurones
     G = Graph(config=config, suppr_neuron=True)
-    G.fit(FFT, use_existing_index=True, print_progress=False)
+    G.fit(FFT, print_progress=False)
     # affichage de la config du réseau finale
     print_cluster(G, display=True)
     print(f"Nombre de neurones supprimés : {len(ECG) - len(G.neurons)}")
@@ -82,4 +82,4 @@ def main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=Tru
 
 if __name__ == "__main__":
     Graphe = main_sinusoid(plot_brutes=False, plot_FFT=False, plot_brutes_par_cluster=False)
-    Graphe.get_size_of_links(plotly_fig=True)
+    Graphe.get_size_of_links(plotly_fig=False)
