@@ -189,6 +189,8 @@ class Graph:
         :param X : Ensemble de signaux sous forme de dictionnaire
         (mettre à True pour les dico mélangés)
         """
+        X = normalize_dict_values(X)
+        X = shuffle_dict(X)
         compt = 0
         if print_progress:
             print(colored("\n===== Début de l'apprentissage", "red"))

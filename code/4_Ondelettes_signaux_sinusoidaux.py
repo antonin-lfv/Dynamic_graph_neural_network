@@ -27,9 +27,7 @@ nb_neurons = 18
 signaux = dict_of_signal(abscisse=abs_normal, nb_neurons=nb_neurons)
 
 # Ondelettes
-Wavelet = dict_of_wavelet(signaux)
-Wavelet = shuffle_dict(Wavelet)
-Wavelet = normalize_dict_values(Wavelet)
+Wavelet = dict_of_wavelet(signaux, scale=30)
 
 if __name__ == '__main__':
     G = Graph(config=config, suppr_neuron=False)

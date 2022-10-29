@@ -54,8 +54,6 @@ for data_folder in folders_name:
 
 # création des ondelettes
 Wavelet = dict_of_wavelet(ECG)
-Wavelet = shuffle_dict(Wavelet)
-Wavelet = normalize_dict_values(Wavelet)
 
 plot_rapide([ECG[0], ECG[12]], many=True)
 

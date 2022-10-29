@@ -171,15 +171,16 @@ def dict_of_fft(signaux: dict, taille_signaux=None):
     return fft_dict
 
 
-def dict_of_wavelet(signaux: dict):
+def dict_of_wavelet(signaux: dict, scale: int = 3):
     """
+    :param scale: scale de l'ondelette
     :param signaux: signaux brutes
     Retourne un dictionnaire d'ondelettes correspondant aux signaux
     """
     wavelet_dict = {}
     for index_wv, s in signaux.items():
         cA, cD = pywt.cwt(s, wavelet='morl', scales=np.arange(1, 129))
-        wavelet_dict[index_wv] = cA[:, 3]
+        wavelet_dict[index_wv] = cA[:, scale]
     return wavelet_dict
 
 

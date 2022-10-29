@@ -17,8 +17,6 @@ signaux, corr = dict_of_birds()
 # prendre que les 2 premières classes
 nb_neurons = 10
 signaux = dict(itertools.islice(signaux.items(), nb_neurons))
-signaux = shuffle_dict(signaux)
-signaux = normalize_dict_values(signaux)
 
 
 def main_birds(plot_brutes=False, plot_brutes_par_cluster=True):
