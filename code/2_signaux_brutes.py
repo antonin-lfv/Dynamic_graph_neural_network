@@ -7,11 +7,11 @@ from utils.classes import *
 
 config = {
     "INPUT_SIZE": 300,
-    "bv": 0.40,
-    "bc": 0.40,
-    "bl": 0.40,
-    "ar": 100,
-    "an": 130
+    "bv": 0.30,
+    "bc": 0.20,
+    "bl": 0.20,
+    "ar": 2.1,
+    "an": 1.2
 }
 
 # fonctions
@@ -50,7 +50,7 @@ def affichage_signaux():
 # affichage_signaux()
 
 # Affichage des signaux par clusters
-plot_signaux_par_cluster(G, signaux, absc=inter)
+plot_signaux_par_cluster(G, signaux, absc=inter, sign_min_per_cluster=2)
 
 # affichage de la config du réseau
 G.neurons

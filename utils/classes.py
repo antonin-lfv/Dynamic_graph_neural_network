@@ -75,6 +75,21 @@ class Graph:
             index += 1
         return r
 
+    def get_foyer(self, neuron):
+        """Retourne l'index, la distance et le label du foyer d'un neurone d'entrée
+        :param graph:
+        :param neuron: le neurone d'entrée
+        """
+        if len(self.neurons) != 0:
+            distance_foyer, foyer = np.inf, self.neurons[list(self.neurons.keys())[0]]
+            for n in self.neurons.keys():
+                if (d := distance_neurons(neuron.vecteur, self.neurons[n].vecteur)) < distance_foyer:
+                    foyer = self.neurons[n]
+                    distance_foyer = d
+            return foyer
+        else:
+            raise ValueError("Le graphique ne contient aucun neurone")
+
     def get_size_of_links(self, plotly_fig=True):
         """Retourne la taille des liaisons du graphe"""
         r = []
@@ -123,7 +138,7 @@ class Graph:
             if neuron.index is None:
                 neuron.index = self.compt_neurons
             # get foyer
-            foyer = get_foyer(self, neuron)
+            foyer = self.get_foyer(neuron)
             # set connexions
             if len(self.neurons) == 1:
                 # ===== Il y a un seul neurone dans le réseau -> création d'une seule connexion

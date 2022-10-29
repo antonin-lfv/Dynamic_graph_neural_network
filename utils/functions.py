@@ -22,22 +22,6 @@ def distance_neurons_DTW(x: list, y: list) -> float:
     return round(distance, 3)
 
 
-def get_foyer(graph, neuron):
-    """Retourne l'index, la distance et le label du foyer d'un neurone d'entrée
-    :param graph:
-    :param neuron: le neurone d'entrée
-    """
-    if len(graph.neurons) != 0:
-        distance_foyer, foyer = np.inf, graph.neurons[list(graph.neurons.keys())[0]]
-        for n in graph.neurons.keys():
-            if (d := distance_neurons(neuron.vecteur, graph.neurons[n].vecteur)) < distance_foyer:
-                foyer = graph.neurons[n]
-                distance_foyer = d
-        return foyer
-    else:
-        raise ValueError("Le graphique ne contient aucun neurone")
-
-
 def solve_inter_circles(centres_x, centres_y, rayons):
     """Get one intersection of n circles
     :param centres_x: liste des abscisses des n centres des cercles

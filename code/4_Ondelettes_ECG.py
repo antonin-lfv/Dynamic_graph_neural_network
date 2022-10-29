@@ -55,8 +55,6 @@ for data_folder in folders_name:
 # création des ondelettes
 Wavelet = dict_of_wavelet(ECG)
 
-plot_rapide([ECG[0], ECG[12]], many=True)
-
 if __name__ == '__main__':
     G = Graph(config=config, suppr_neuron=False)
     G.fit(Wavelet, print_progress=False)
