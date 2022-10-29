@@ -323,51 +323,62 @@ def dict_of_birds():
 def create_dict_of_ECG():
     """
     Extraction des pulsations des ECG et remplissage des dictionnaires
+    Chaque pulsation sera prise sur une durée de 250
+    10 pulsations par classe
+    Classes présentes :
+    - NSR index de 0 à 9
+    - APB index de 10 à 19
+    - AFL index de 20 à 29
     """
     ECG = {}
     with open('data/ECG_signals/ECG.pkl', 'wb') as f:
-        birds[0] = read("data/Birdsong/Bird0/Wave/3.wav")[48900:50700]
-        birds[1] = read("data/Birdsong/Bird0/Wave/3.wav")[50900:52750]
-        birds[2] = read("data/Birdsong/Bird0/Wave/3.wav")[52976:54800]
-        birds[3] = read("data/Birdsong/Bird0/Wave/3.wav")[55000:57000]
-        birds[4] = read("data/Birdsong/Bird0/Wave/3.wav")[57280:59200]
-        birds[5] = read("data/Birdsong/Bird1/Wave/5.wav")[93381:95500]
-        birds[6] = read("data/Birdsong/Bird1/Wave/5.wav")[96000:98300]
-        birds[7] = read("data/Birdsong/Bird1/Wave/5.wav")[96000:98300]
-        birds[8] = read("data/Birdsong/Bird1/Wave/5.wav")[98800:101000]
-        birds[9] = read("data/Birdsong/Bird1/Wave/5.wav")[101500:103600]
-        birds[10] = read("data/Birdsong/Bird2/Wave/0.wav")[25700:94727]
-        birds[11] = read("data/Birdsong/Bird2/Wave/0.wav")[99180:160300]
-        birds[12] = read("data/Birdsong/Bird2/Wave/0.wav")[164300:206900]
-        birds[13] = read("data/Birdsong/Bird2/Wave/0.wav")[210500:256255]
-        birds[14] = read("data/Birdsong/Bird2/Wave/0.wav")[257000:309000]
+        # NSR
+        ECG[0] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[1050:1300]
+        ECG[1] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[1300:1550]
+        ECG[2] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[1550:1800]
+        ECG[3] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[1800:2050]
+        ECG[4] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[2050:2300]
+        ECG[5] = numpy_from_matlab('data/ECG_signals/1 NSR/105m (7).mat')[2300:2550]
+        ECG[6] = numpy_from_matlab('data/ECG_signals/1 NSR/100m (2).mat')[1050:1300]
+        ECG[7] = numpy_from_matlab('data/ECG_signals/1 NSR/100m (2).mat')[1300:1550]
+        ECG[8] = numpy_from_matlab('data/ECG_signals/1 NSR/100m (2).mat')[1550:1800]
+        ECG[9] = numpy_from_matlab('data/ECG_signals/1 NSR/100m (2).mat')[1800:2050]
+        # APB
+        ECG[10] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[1050:1300]
+        ECG[11] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[1300:1550]
+        ECG[12] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[1550:1800]
+        ECG[13] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[1800:2050]
+        ECG[14] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[2050:2300]
+        ECG[15] = numpy_from_matlab('data/ECG_signals/2 APB/100m (2).mat')[2200:2450]
+        ECG[16] = numpy_from_matlab('data/ECG_signals/2 APB/100m (3).mat')[1100:1350]
+        ECG[17] = numpy_from_matlab('data/ECG_signals/2 APB/103m (0).mat')[950:1200]
+        ECG[18] = numpy_from_matlab('data/ECG_signals/2 APB/103m (0).mat')[1250:1500]
+        ECG[19] = numpy_from_matlab('data/ECG_signals/2 APB/103m (0).mat')[1600:1850]
+        # AFL
+        ECG[20] = numpy_from_matlab('data/ECG_signals/3 AFL/202m (0).mat')[1300:1550]
+        ECG[21] = numpy_from_matlab('data/ECG_signals/3 AFL/202m (0).mat')[1800:2050]
+        ECG[22] = numpy_from_matlab('data/ECG_signals/3 AFL/202m (0).mat')[2000:2250]
+        ECG[23] = numpy_from_matlab('data/ECG_signals/3 AFL/202m (0).mat')[2650:2900]
+        ECG[24] = numpy_from_matlab('data/ECG_signals/3 AFL/202m (0).mat')[2950:3200]
+        ECG[25] = numpy_from_matlab('data/ECG_signals/3 AFL/222m (10).mat')[1330:1580]
+        ECG[26] = numpy_from_matlab('data/ECG_signals/3 AFL/222m (10).mat')[2600:2850]
+        ECG[27] = numpy_from_matlab('data/ECG_signals/3 AFL/222m (10).mat')[3050:3300]
+        ECG[28] = numpy_from_matlab('data/ECG_signals/3 AFL/203m (2).mat')[400:650]
+        ECG[29] = numpy_from_matlab('data/ECG_signals/3 AFL/203m (2).mat')[1000:1250]
         pickle.dump(ECG, f)
 
     with open('data/ECG_signals/corr.pkl', 'wb') as f:
-        corr = {
-            0: 0,
-            1: 0,
-            2: 0,
-            3: 0,
-            4: 0,
-            5: 1,
-            6: 1,
-            7: 1,
-            8: 1,
-            9: 1,
-            10: 2,
-            11: 2,
-            12: 2,
-            13: 2,
-            14: 2
-        }
+        corr = {}
+        classes = ["NSR", "APB", "AFL"]
+        for i in range(len(ECG)):
+            corr.update({i: classes[i//10]})
         pickle.dump(corr, f)
 
 
 def dict_of_ECG():
     """
-    Retourne un dictionnaire de 15 chants d'oiseaux et un dictionnaire de correspondance avec la classe d'oiseau
-    Ici, les signaux 0 à 4 seront ceux de l'oiseau 0, 5 à 9 ceux de l'oiseau 1 et 10 à 14 de l'oiseau 2
+    Retourne un dictionnaire de pulsation extraites des ECG ECG_dict
+    Ainsi que les correspondances avec la classe
     """
     ECG_dict = pickle.load(open('data/ECG_signals/ECG.pkl', 'rb'))
     corr_dict = pickle.load(open('data/ECG_signals/corr.pkl', 'rb'))
