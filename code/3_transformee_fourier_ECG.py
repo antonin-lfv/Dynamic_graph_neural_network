@@ -14,6 +14,9 @@ config = {
 }
 
 # ----- ECG -----
+create_dict_of_ECG()  # one time
+signaux, corr = dict_of_ECG()
+
 ECG, count_index = {}, 0
 prefixe_path = "data/ECG_signals"
 folders_name = ['data/ECG_signals/1 NSR',
