@@ -133,7 +133,7 @@ C'est à dire si la distance minimale entre l'entrée et les neurones dépasse l
 
 Élagage du réseau : On supprime les liens qui deviennent trop longs, c'est à dire soit $a_r$ le seuil, le lien entre le neurone $i$ et $j$ est supprimé si $c_{ij}>a_r$ . 
 
-Quand un neurone n'a plus de lien, il est supprimé. (on préfèrera dans un premier temps conserver tous les neurones)
+Quand un neurone n'a plus de lien, il est supprimé.
 
 ## Prédictions
 
