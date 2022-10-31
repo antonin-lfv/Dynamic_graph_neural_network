@@ -169,6 +169,7 @@ L'implémentation repose sur la création de deux classes. Une classe représent
 
 La classe `Neuron` possède plusieurs paramètres : 
 - vecteur : qui représente le vecteur du neurone, c'est sur ce vecteur que repose le modèle
+- config : qui contient les seuils du modèle ainsi que la taille des signaux si nécessaire
 - index : identifiant unique d'un neurone dans un graphe, il est attribué grâce à un compteur interne au graphe
 - label : c'est la classe à laquelle le neurone appartient, il est attribué lors de l'ajout des neurones
 - liaisons : qui est un dictionnaire des liaisons dont les clés représentent l'index d'un neurone, et la valeur son poids
@@ -176,6 +177,7 @@ La classe `Neuron` possède plusieurs paramètres :
 La classe `Graph` possède également plusieurs paramètres :
 - neurons : qui est un dictionnaire contenant tous les neurones du graphe, indexé par l'index des neurones
 - compt_neurons : qui est initialisé à 0 lors de la création du graphe et qui correspond au compteur de neurones, pour l'attribution des index
+- fct_distance : technique de calcul de la distance entre les neurones, par défaut la distance euclidienne
 
 Ces paramètres seront fixes tout au long de ce projet. Concernant les méthodes de ces deux classes, elles seront détaillées par la suite.
 
@@ -200,6 +202,7 @@ On définit alors trois méthodes dans la classe `Neuron` qui vont permettre ces
 - `alterLiaisons` : qui va altérer les liaisons du foyer du nouveau neurone ajouté selon le modèle mathématique, et supprimer celles qui deviennent supérieures à `ar`
 
 <br> 
+
 Si un neurone n'a plus de connexion on lui attribut son label comme classe. (il constituera à lui seul un cluster) <br>
 
 <br>
