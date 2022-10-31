@@ -462,24 +462,11 @@ Voici à quoi ressemble un cycle normal :
 	</p>
 	
 En faisant passer nos données dans le réseau voici le résultat. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
+![Capture d’écran 2022-10-31 à 23 41 02](https://user-images.githubusercontent.com/63207451/199123613-e1ced34a-7a25-43fa-b081-49ad1607ede1.png)
 
-<p align="center">
-<img width="1000" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
-	</p>
-
-Voici le descriptif des signaux : 
-
-```txt
-===== Résultat de la classification
-Label 26 :  26 6 15 8
-Label 16 :  16 11 10 7 9 13 12
-Label 29 :  29
-Label 20 :  20 0 22 21 24
-Label 28 :  28 3 2 4
-Label 17 :  17 19 18
-Label 25 :  25 27
-Nombre de neurones supprimés : 4
-```
+| Clusters | Signaux |
+| --- | ----------- |
+| <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/199123613-e1ced34a-7a25-43fa-b081-49ad1607ede1.png"> | <img width="1000" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png"> |
 
 Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associéer des ECG de même nature. À noter que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents des cycles normaux, ce qui peut expliquer les erreurs.
 
