@@ -462,7 +462,6 @@ Voici à quoi ressemble un cycle normal :
 	</p>
 	
 En faisant passer nos données dans le réseau voici le résultat. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
-![Capture d’écran 2022-10-31 à 23 41 02](https://user-images.githubusercontent.com/63207451/199123613-e1ced34a-7a25-43fa-b081-49ad1607ede1.png)
 
 | Clusters | Signaux |
 | --- | ----------- |
