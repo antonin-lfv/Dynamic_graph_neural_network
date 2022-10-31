@@ -467,7 +467,7 @@ En faisant passer nos données dans le réseau voici le résultat. Chaque colonn
 | --- | ----------- |
 | <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/199123613-e1ced34a-7a25-43fa-b081-49ad1607ede1.png"> | <img width="1000" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png"> |
 
-Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associéer des ECG de même nature. À noter que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents des cycles normaux, ce qui peut expliquer les erreurs.
+Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associéer des ECG de même nature. À noter que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents des cycles normaux, ce qui peut expliquer les erreurs. Par exemple, le neurone 20 (le premier du label 20) ressemble beaucoup au neurone 6 (le deuxième du label 26) alors que le neurone 20 correspond à la pathologie du flutter atrial et le neurone 6 à un cycle normal.
 
 <br>
 
