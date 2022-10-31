@@ -505,7 +505,7 @@ Et qui ressemble à ceci :
 
 <br>
 
-En faisant passer les données dans le réseau nous obtenons ces résultats: 
+En faisant passer les données dans le réseau nous obtenons ces résultats. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
 
 <p align="center">
 <img width="850" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png">
