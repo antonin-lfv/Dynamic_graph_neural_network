@@ -58,7 +58,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	- [2. Classification de signaux sinusoïdaux](#2-classification-de-signaux-sinusoïdaux)
 	- [3. Classification de signaux avec la méthode Dynamic Time Warping](#3-classification-de-signaux-avec-la-méthode-dynamic-time-warping)
 	- [4. Classification de signaux soumis à une transformée de Fourier](#4-classification-de-signaux-soumis-à-une-transformée-de-fourier)
-	- [5. Classification de signaux soumis à une transformée en Ondelettes](#5-classification-de-signaux-soumis-à-une-transformée-en-ondelettes)
+	- [5. Classification d'électrocardiogramme soumis à une transformée de Fourier](#5-classification-de-signaux-soumis-à-une-transformée-de-fourier)
+	- [6. Classification d'électrocardiogramme soumis à une transformée en Ondelettes](#6-classification-de-signaux-soumis-à-une-transformée-en-ondelettes)
 - [Résultats](#résultats)
 - [Bonus](#bonus)
 - [Conclusion](#conclusion)
@@ -447,9 +448,43 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 
 <br>
 
-## 5. Classification de signaux soumis à une transformée en Ondelettes
+## 5. Classification d'électrocardiogrammes soumis à une transformée de fourier
 
-Dans cette section, nos données brutes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle et continue. 
+À partir de cette section nous utiliserons des électrocardiogrammes pour tester notre réseau. Nous avons extrait 30 cycles cardiaques qui appartiennent à 3 classes de dysfonctionnement cardiaque différentes. Ces cycles sont indéxés de 0 à 29. Les cycles de 0 à 9 correspondent à des cycles normaux, les cycles 10 à 19 correspondent à un battement auriculaire prématuré et les cycles 20 à 29 à un flutter atrial. 
+
+Voici à quoi ressemble un cycle normal :
+
+<p align="center">
+<img width="850" alt="Capture d’écran 2022-10-31 à 22 26 14" src="https://user-images.githubusercontent.com/63207451/199113665-550ee99c-8f1f-4c89-8664-031d8e3bd727.png">
+	</p>
+	
+En faisant passer nos données dans le réseau voici le résultat:
+
+<p align="center">
+<img width="1422" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
+	</p>
+
+Voici le descriptif des signaux : 
+
+```txt
+===== Résultat de la classification
+Label 26 :  26 6 15 8
+Label 16 :  16 11 10 7 9 13 12
+Label 29 :  29
+Label 20 :  20 0 22 21 24
+Label 28 :  28 3 2 4
+Label 17 :  17 19 18
+Label 25 :  25 27
+Nombre de neurones supprimés : 4
+```
+
+Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associés des ECG de même nature. À noté que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents de cycles normaux, ce qui peut expliquer les erreurs.
+
+<br>
+
+## 6. Classification d'électrocardiogrammes soumis à une transformée en Ondelettes
+
+Dans cette section, nos cycles cardiaques des électrocardiogrammes seront modifiées à l'aide de la transformée en Ondelettes. La transformation par les ondelettes est une transformation des fonctions/signaux plus performante que celle de Fourier car elle est notamment capable de détecter les portions du signal qui varient plus rapidement que d’autres. La décomposition d’une fonction en ondelettes consiste à l’écrire comme une somme pondérée de fonctions obtenues à partir d’opérations simples effectuées sur une fonction principale appelée ondelette-mère. Ces opérations consistent en des translations et dilatations de la variable. Selon que ces translations et dilatations sont choisies de manière continue ou discrète, on parlera d’une transformée en ondelettes continue ou discrète. Ici, nous n'utiliserons que la transformation en ondelettes unidimensionnelle et continue. 
 
 La transformée en ondelettes continue utilise des dilatations et des translations de la fonction ondelette mère $\psi$. La transformée en ondelettes continue de la fonction $f$ est définie à facteur constant près comme le produit scalaire de $f$ et de $\psi$.
 
@@ -467,8 +502,27 @@ Et qui ressemble à ceci :
 
 <br>
 
-Les données utilisées pour cette classification sont des electrocardiogrammes qui sont de différentes natures. Il y a 2 classes de données avec des données sans anomalie cardiaque, et 15 classes de données avec des anomalies cardiaques. Pour chaque classe, nous prenons 10 échantillons, soit 170 données en tout.
+En faisant passer les données dans le réseau nous obtenons ces résultats: 
 
+<p align="center">
+<img width="850" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png">
+	</p>
+
+Voici le descriptif du réseau:
+
+```txt
+===== Résultat de la classification
+Label 26 :  26 23 29
+Label 16 :  16 11 10 19
+Label 1 :  1 7 20 9 0 21 3
+Label 5 :  5 2 24 18 4
+Label 28 :  28 17
+Label 13 :  13 6 12 14 15 8
+Label 22 :  22
+Label 25 :  25 27
+```
+
+Les performances sont meilleures qu'avec la transformée de Fourier, il y a moins d'erreur.
 
 <br>
 
@@ -477,11 +531,11 @@ Les données utilisées pour cette classification sont des electrocardiogrammes 
 
 <br>
 
-Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des signaux de même taille. Nous avons utilisé la transformée de Fourier pour permettre au réseau de ne pas se faire tromper sur des signaux ressemblant à une translation près et également la transformée en ondelette qui est plus performante. Et, nous avons élargies ses compétences en lui permettant d'utiliser une autre méthode de calcul des distances, la méthode de $DTW$, qui permet de calculer la ressemblance entre deux signaux de tailles différentes. Les tests sont assez concluants, malgré le temps d'exécution trop long de la méthode $DTW$. 
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des fonctions classiques. Nous avons ensuite utilisé la transformée de Fourier pour permettre au réseau de ne pas se tromper sur des signaux ressemblant à une translation près en entrainant un réseau sur des signaux sinusoïdaux puis sur des ECG, en observant des résultats plutot satisfaisant. Nous avons également utilisé la transformée en ondelette, qui est plus performante que la transformée de Fourier, pour entrainer un réseau sur les ECG qui est légerement plus performant que le modèle utilisant la transformée de Fourier. Nous avons enfin tenté d'utiliser la méthode DTW qui permet de calculer la distance entre 2 signaux de tailles différentes, mais à cause de son temps d'execution, on ne l'utilisera pas.
 
 <br>
 
-Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivent dans la classification finale, et donc les résultats sont faussés. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. 
+Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivent dans la classification finale, et donc les résultats sont faussés. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. Ces méthodes sont ajoutés dans la class `Graph` qui permet de normaliser et mélanger les données.
 
 <br>
 
