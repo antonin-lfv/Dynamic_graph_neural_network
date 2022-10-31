@@ -455,13 +455,13 @@ Cependant, ce modèle a une limite dans son implémentation actuelle (telle que 
 Voici à quoi ressemble un cycle normal :
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-10-31 à 22 26 14" src="https://user-images.githubusercontent.com/63207451/199113665-550ee99c-8f1f-4c89-8664-031d8e3bd727.png">
+<img width="900" alt="Capture d’écran 2022-10-31 à 22 26 14" src="https://user-images.githubusercontent.com/63207451/199113665-550ee99c-8f1f-4c89-8664-031d8e3bd727.png">
 	</p>
 	
 En faisant passer nos données dans le réseau voici le résultat:
 
 <p align="center">
-<img width="1422" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
+<img width="900" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
 	</p>
 
 Voici le descriptif des signaux : 
