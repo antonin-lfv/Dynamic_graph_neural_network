@@ -493,23 +493,10 @@ Et qui ressemble à ceci :
 
 En faisant passer les données dans le réseau nous obtenons ces résultats. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
 
-<p align="center">
-<img width="1000" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png">
-	</p>
+| Clusters | Signaux |
+| --- | ----------- |
+| <img width="300" alt="Capture d’écran 2022-05-10 à 20 42 22" src="https://user-images.githubusercontent.com/63207451/199123875-112f4e75-f1f7-4fe0-9c3b-d6cc7cd213aa.png"> | <img width="1000" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png"> |
 
-Voici le descriptif du réseau:
-
-```txt
-===== Résultat de la classification
-Label 26 :  26 23 29
-Label 16 :  16 11 10 19
-Label 1 :  1 7 20 9 0 21 3
-Label 5 :  5 2 24 18 4
-Label 28 :  28 17
-Label 13 :  13 6 12 14 15 8
-Label 22 :  22
-Label 25 :  25 27
-```
 
 Les performances sont meilleures qu'avec la transformée de Fourier, il y a moins d'erreur.
 
