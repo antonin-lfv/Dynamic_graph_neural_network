@@ -481,7 +481,7 @@ Label 25 :  25 27
 Nombre de neurones supprimés : 4
 ```
 
-Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associés des ECG de même nature. À noté que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents de cycles normaux, ce qui peut expliquer les erreurs.
+Les deux premiers clusters ne sont pas vraiment optimum, mais tous les suivants le sont à une erreur près. Le réseau est relativement efficace pour associéer des ECG de même nature. À noter que pour une pathologie cardiaque, tous les cycles ne sont pas forcément différents des cycles normaux, ce qui peut expliquer les erreurs.
 
 <br>
 
