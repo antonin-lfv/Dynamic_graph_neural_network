@@ -464,7 +464,7 @@ Voici à quoi ressemble un cycle normal :
 En faisant passer nos données dans le réseau voici le résultat. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
 
 <p align="center">
-<img width="900" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
+<img width="1000" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
 	</p>
 
 Voici le descriptif des signaux : 
@@ -508,7 +508,7 @@ Et qui ressemble à ceci :
 En faisant passer les données dans le réseau nous obtenons ces résultats. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
 
 <p align="center">
-<img width="850" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png">
+<img width="1000" alt="Capture d’écran 2022-10-31 à 22 51 06" src="https://user-images.githubusercontent.com/63207451/199117201-114fa75c-caf7-4989-b3a1-11a67e30b960.png">
 	</p>
 
 Voici le descriptif du réseau:
