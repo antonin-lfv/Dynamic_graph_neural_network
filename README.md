@@ -59,7 +59,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 	- [3. Classification de signaux avec la méthode Dynamic Time Warping](#3-classification-de-signaux-avec-la-méthode-dynamic-time-warping)
 	- [4. Classification de signaux soumis à une transformée de Fourier](#4-classification-de-signaux-soumis-à-une-transformée-de-fourier)
 	- [5. Classification d'électrocardiogramme soumis à une transformée de Fourier](#5-classification-délectrocardiogrammes-soumis-à-une-transformée-de-fourier)
-	- [6. Classification d'électrocardiogramme soumis à une transformée en Ondelettes](#6-classification-d-électrocardiogramme-soumis-à-une-transformée-en-ondelettes)
+	- [6. Classification d'électrocardiogramme soumis à une transformée en Ondelettes](#6-classification-délectrocardiogrammes-soumis-à-une-transformée-en-ondelettes)
 - [Résultats](#résultats)
 - [Bonus](#bonus)
 - [Conclusion](#conclusion)
