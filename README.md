@@ -461,7 +461,7 @@ Voici à quoi ressemble un cycle normal :
 <img width="900" alt="Capture d’écran 2022-10-31 à 22 26 14" src="https://user-images.githubusercontent.com/63207451/199113665-550ee99c-8f1f-4c89-8664-031d8e3bd727.png">
 	</p>
 	
-En faisant passer nos données dans le réseau voici le résultat:
+En faisant passer nos données dans le réseau voici le résultat. Chaque colonne représente un cluster, et chaque courbe est un cycle cardiaque.
 
 <p align="center">
 <img width="900" alt="Capture d’écran 2022-10-31 à 22 35 47" src="https://user-images.githubusercontent.com/63207451/199114927-6bbc1c3a-6d0f-4b00-833a-63cd7b1e2050.png">
@@ -500,7 +500,7 @@ $$ t \rightarrow \frac{2}{\sqrt 3} \pi^{-\frac{1}{4}}(1-t^2)e^{-\frac{t^2}{2}} $
 Et qui ressemble à ceci :
 
 <p align="center">
-<img width="750" alt="ondelette-mere" src="https://user-images.githubusercontent.com/63207451/177014971-400525f7-8da1-4fe7-8856-ddf14a8072c5.png">
+<img width="500" alt="ondelette-mere" src="https://user-images.githubusercontent.com/63207451/177014971-400525f7-8da1-4fe7-8856-ddf14a8072c5.png">
 	</p>
 
 <br>
