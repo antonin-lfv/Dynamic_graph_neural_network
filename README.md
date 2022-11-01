@@ -56,8 +56,8 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 - [Expérimentations](#expérimentations)
 	- [1. Classification de fonctions classiques](#1-classification-de-fonctions-classiques)
 	- [2. Classification de signaux sinusoïdaux](#2-classification-de-signaux-sinusoïdaux)
-	- [3. Classification de signaux avec la méthode Dynamic Time Warping](#3-classification-de-signaux-avec-la-méthode-dynamic-time-warping)
-	- [4. Classification de signaux soumis à une transformée de Fourier](#4-classification-de-signaux-soumis-à-une-transformée-de-fourier)
+	- [3. Classification de chants d'oiseaux avec la méthode Dynamic Time Warping](#3-classification-de-chants-doiseaux-avec-la-méthode-dynamic-time-warping)
+	- [4. Classification de signaux sinusoïdaux soumis à une transformée de Fourier](#4-classification-de-signaux-sinusoïdaux-soumis-à-une-transformée-de-fourier)
 	- [5. Classification d'électrocardiogrammes soumis à une transformée de Fourier](#5-classification-délectrocardiogrammes-soumis-à-une-transformée-de-fourier)
 	- [6. Classification d'électrocardiogrammes soumis à une transformée en Ondelettes](#6-classification-délectrocardiogrammes-soumis-à-une-transformée-en-ondelettes)
 - [Résultats](#résultats)
@@ -293,7 +293,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-## 3. Classification de signaux avec la méthode Dynamic Time Warping
+## 3. Classification de chants d'oiseaux avec la méthode Dynamic Time Warping
 
 <br>
 
@@ -365,7 +365,7 @@ Tout d'abord, on s'aperçoit que toute la première espèce d'oiseau a été ass
 <br>
 
 
-## 4. Classification de signaux soumis à une transformée de Fourier
+## 4. Classification de signaux sinusoïdaux soumis à une transformée de Fourier
 
 On va dans cette section utiliser la transformée de Fourier pour voir si le modèle réussi à mieux classer les signaux. On va prendre comme précédemment des signaux sinusoïdaux aléatoires. Le principe est donc le suivant : on va effectuer une transformée de Fourier sur chacun des signaux brutes, et le résultat de chacune des transformations est alors passé aux neurones. Cette manipulation va permettre au réseau de ne pas être trompé entre deux signaux en moyenne identiques, et parfaitement superposables. C'est donc entre les transformées de Fourier des signaux que le modèle va faire les calculs de distance euclidienne. <br>
 
