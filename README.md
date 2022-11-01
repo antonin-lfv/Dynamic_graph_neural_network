@@ -289,7 +289,7 @@ On peut relever que le modèle a rassemblé les signaux qui se superposent bien,
 
 <br>
 
-On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers pour mieux les comparer .. avec **une décomposition en séries de Fourier**.
+On pourrait alors essayer de représenter ces signaux d'une autre manière, qui pourrait faire ressortir les caractéristiques de ces derniers pour mieux les comparer .. avec **une décomposition en séries de Fourier** (Voir partie 4 et 5).
 
 <br>
 
