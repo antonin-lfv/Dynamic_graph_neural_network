@@ -507,7 +507,7 @@ Les performances sont meilleures qu'avec la transformée de Fourier, il y a moin
 
 <br>
 
-Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des fonctions classiques. Nous avons ensuite utilisé la transformée de Fourier pour permettre au réseau de ne pas se tromper sur des signaux ressemblant à une translation près en entrainant un réseau sur des signaux sinusoïdaux puis sur des ECG, en observant des résultats plutot satisfaisant. Nous avons également utilisé la transformée en ondelette, qui est plus performante que la transformée de Fourier, pour entrainer un réseau sur les ECG qui est légerement plus performant que le modèle utilisant la transformée de Fourier. Nous avons enfin tenté d'utiliser la méthode DTW qui permet de calculer la distance entre 2 signaux de tailles différentes, mais à cause de son temps d'execution, on ne l'utilisera pas.
+Nous avons donc réussi à développer dans un premier temps un modèle qui classifie des fonctions classiques (cosinus et racine). Nous avons ensuite utilisé la transformée de Fourier pour permettre au réseau de ne pas se tromper sur des signaux ressemblant à une translation près en entrainant un réseau sur des signaux sinusoïdaux puis sur des ECG, en observant des résultats plutot satisfaisant. Nous avons également utilisé la transformée en ondelette, qui est plus performante que la transformée de Fourier, pour entrainer un réseau sur les ECG qui est légerement plus performant que le modèle utilisant la transformée de Fourier. Nous avons enfin tenté d'utiliser la méthode DTW (sans prè-traitement de données) qui permet de calculer la distance entre 2 signaux de tailles différentes, mais à cause de son temps d'execution, on ne l'utilisera pas.
 
 <br>
 
