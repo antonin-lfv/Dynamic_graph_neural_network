@@ -511,11 +511,11 @@ Nous avons donc réussi à développer dans un premier temps un modèle qui clas
 
 <br>
 
-Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivent dans la classification finale, et donc les résultats sont faussés. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. Ces méthodes sont ajoutés dans la class `Graph` qui permet de normaliser et mélanger les données.
+Durant les tests, on remarque que si les données sont rangées dans l'ordre lors du `fit()` alors les neurones se suivent dans la classification finale, et donc les résultats sont faussés. Ainsi, on veillera à mélanger les données avant la phase d'aprentissage. De plus, on ajoutera une normalisation des données pour accélerer les calculs. Ces méthodes sont ajoutées dans la class `Graph` qui permet de normaliser et mélanger les données.
 
 <br>
 
-Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle, un calibrage des seuils avec une petite portion de données, qu'on appelera Test Set. 
+Quelques problèmes apparaissent, en effet le modèle utilise un certains nombre de seuils, qui ne peuvent qu'être définie de façon empirique selon les données. Cela impose donc, lors de l'utilisation du modèle. 
 
 <br>
 
