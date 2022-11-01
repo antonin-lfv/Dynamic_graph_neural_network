@@ -297,7 +297,7 @@ On pourrait alors essayer de représenter ces signaux d'une autre manière, qui 
 
 <br>
 
-Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
+Dans cette section, nous allons changer la façon de calculer les distances à l'interieur du réseau, mais nous n'utiliserons pas de preprocessing sur les donnés, les signaux restent bruts. En effet, la distance euclidienne ne convient que pour des signaux de même taille. Si on calcule la distance euclidienne entre un vecteur de taille `n` et un autre de taille `m` tel que `n<m` alors cela revient à calculer la distance entre deux vecteur de taille `n`. (le vecteur de taille `m` est tronqué) <br>
 
 <br>
 
