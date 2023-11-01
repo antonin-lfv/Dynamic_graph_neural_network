@@ -24,7 +24,7 @@ Concernant ce projet, il a pour objectif de tester le pouvoir classificateur d'u
 
 <br>
 
-
+L'article lié à ce projet est disponible sur [mon site](https://antonin-lfv.github.io/publications/)
 
 <br>
 
